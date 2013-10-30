@@ -1,0 +1,40 @@
+/* =================== FOOTER ============================= */
+#footer { background: #231f20; height: auto; padding: 0px 0px 10px 0px; width: 100%; }
+#footer a,
+#footer .copyright { color: #fff; font-size: 11px; font-family: 'ITCAvantGardeStd-Medium'; }
+.footer-border { font-size: 0; line-height: 0;}
+.footer-border span { display: inline-block; width: 25%; height: 6px;}
+.footer-border .orange { background-color: #e87734;}
+.footer-border .purple { background-color: #a3238e;}
+.footer-border .red { background-color: #ee312f;}
+.footer-border .blue { background-color: #32afcc;}
+.footer-nav {margin: 0; padding: 0; font-size: 0; height: 14px;}
+.footer-nav li a { transition: margin 0.2s linear;-webkit-transition: margin 0.2s linear;-moz-transition: margin 0.2s linear; display: block; vertical-align: bottom; border-left: solid 1px #fff; line-height: 8px; padding: 0px 10px;}
+.footer-nav li a:hover { margin-top: -2px;}
+
+/* Mobile style */
+@media screen and (max-width: 719px) {
+    #footer { height: auto;}
+    .footer-nav { margin: 10px 0px 0px 0px; width: auto; height: auto;}
+    .footer-nav li { display: inline-block; vertical-align: top; text-align: left; line-height: 12px;}
+    .footer-nav li:first-child a { border-left: none; padding-left: 0px;}
+    .footer-nav li.last-child,
+    .footer-nav li:last-child { border-right: none;}
+    .fb_edge_widget_with_comment { float: none; display: block; margin-top: 10px;}
+}
+/* Tablet style */
+@media screen and (min-width: 720px) and (max-width: 939px) {
+    .footer-nav { margin: 10px 0px; width: auto;}
+    .footer-nav li { display: inline-block; vertical-align: top; text-align: left; line-height: 12px;}
+    .footer-nav li:first-child a { border-left: none; padding-left: 0px;}
+    .footer-nav li.last-child,
+    .footer-nav li:last-child { border-right: none;}
+    .fb_edge_widget_with_comment { float: none; display: block; margin-top: 10px;}
+}
+/* Desktop style */
+@media screen and (min-width: 940px) {
+    .footer-nav { margin-top: 18px;}
+    .footer-nav li { display: inline-block; vertical-align: top; text-align: left; padding: 0px; line-height: 12px;}
+    .footer-nav li:first-child a { border-left: none; padding-left: 0px;}
+
+}

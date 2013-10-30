@@ -1,0 +1,46 @@
+/* --------- header ------------- */
+
+
+/* Mobile style */
+@media screen and (max-width: 719px) {
+
+}
+
+/* tablet style */
+@media screen and (min-width: 720px) and (max-width: 939px) {
+
+}
+/* deskt
+
+}
+/* desktop style */
+@media screen and (min-width: 940px) {
+    #header h1 {margin: 0; padding: 0; width: 100%; height: 40px; background:#171717;}
+    #logo { display: block;height: 40px; }
+    #logo span{ background: url('../img/icons.png') no-repeat -96px -32px scroll transparent; display: block; float: right; width: 76px; height: 38px;}
+    .sub-slider .bx-wrapper {margin-right: 30%;}
+    .banner { margin-top: 15px;}
+    .banner .banner-text { display: block; margin-left: 20px; float: left; font-size: 22px; padding: 25px; border-left: solid 1px #afafb0;}
+    .banner-text span { display: block;}
+    .signup-wrapper { display: block; background: #f5f4f4; height: 34px; padding: 8px; border-radius: 25px;-webkit-border-radius: 25px;-moz-border-radius: 25px; float: right;}
+    .signup-wrapper .sign-show,
+    .signup-wrapper .sign-up { font-size: 16px; padding: 0px 0px 0px 20px; vertical-align: middle;}
+    .signup-wrapper .sign-show { padding-right: 4px; margin-right: 8px;}
+    .signup-wrapper .sign-up { padding-right: 8px;}
+    .sign-up > span,
+    .sign-show > span {line-height: 40px; margin: 0; padding: 0; float: left; display: inline-block; overflow: hidden;}
+    .facebook-wrapper { position: absolute; right: 0px; bottom: 10px; line-height: 32px;}
+    #btnLogout { display: inline-block;}
+    .top-menu-wrapper { margin-top: 15px;}
+    .navbar .nav>li>a { padding: 14px 5px 12px 14px;}
+    .navbar .nav>li>a:before{ left: 2px;}
+
+
+}
+@media screen and (min-width: 1200px) {
+    .top-menu-wrapper { width: 100%;}
+    .navbar { width: 1170px; margin: auto;}
+    .navbar .nav>li>a { padding: 14px 15px 12px 30px; }
+    .navbar .nav>li>a:before{ left: 8px;}
+}
+
