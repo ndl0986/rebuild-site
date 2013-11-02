@@ -93,6 +93,8 @@
     <Content Include="Css\jquery.bxslider.css" />
     <Content Include="Css\reset.css" />
     <Content Include="Css\styles.css" />
+    <Content Include="db\scriptDB_20131102_1628_initial.sql" />
+    <Content Include="db\scriptDB_20131102_1644_add_category_news.sql" />
     <Content Include="Default.aspx" />
     <Content Include="fckeditor\editor\css\behaviors\disablehandles.htc" />
     <Content Include="fckeditor\editor\css\behaviors\showtableborders.htc" />
