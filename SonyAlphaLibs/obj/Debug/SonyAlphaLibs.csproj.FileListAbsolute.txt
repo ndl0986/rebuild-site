@@ -1,0 +1,4 @@
+D:\SourceDev\rebuild-site.git\trunk\SonyAlphaLibs\bin\Debug\SonyAlphaLibs.dll
+D:\SourceDev\rebuild-site.git\trunk\SonyAlphaLibs\bin\Debug\SonyAlphaLibs.pdb
+D:\SourceDev\rebuild-site.git\trunk\SonyAlphaLibs\obj\Debug\SonyAlphaLibs.dll
+D:\SourceDev\rebuild-site.git\trunk\SonyAlphaLibs\obj\Debug\SonyAlphaLibs.pdb

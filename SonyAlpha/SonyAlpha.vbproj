@@ -632,6 +632,8 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\BaseModel.vb" />
+    <Compile Include="Classes\Test.vb" />
     <Compile Include="Default.aspx.designer.vb">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
@@ -814,7 +816,6 @@
   <ItemGroup>
     <Folder Include="admin\" />
     <Folder Include="App_Data\" />
-    <Folder Include="Classes\" />
     <Folder Include="controls\admin\" />
     <Folder Include="controls\views\" />
     <Folder Include="fckeditor\images\" />
@@ -1000,6 +1001,12 @@
     <Folder Include="Img\" />
     <Folder Include="Js\controllers\" />
     <Folder Include="upload\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SonyAlphaLibs\SonyAlphaLibs.csproj">
+      <Project>{82222A2B-799B-406C-AC59-66EC4C0D7B3E}</Project>
+      <Name>SonyAlphaLibs</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
