@@ -1,0 +1,3 @@
+﻿/*
+This document will be used to note everything about how to create and use class from libs
+*/

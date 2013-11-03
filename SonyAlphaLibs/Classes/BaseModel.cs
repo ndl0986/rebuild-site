@@ -7,6 +7,14 @@ namespace SonyAlphaLibs
 {
     public abstract class BaseModel
     {
+        private string connectionString;
+
+        public string ConnnectionString
+        {
+            get { return connectionString; }
+            set { connectionString = value; }
+        }
+        
         private int id;
 
         public int Id
@@ -30,7 +38,19 @@ namespace SonyAlphaLibs
             get { return updated; }
             set { updated = value; }
         }
-        
-        
+
+        public BaseModel() {
+            id = 0;
+            created = DateTime.Now;
+            updated = DateTime.Now;
+            connectionString = "";
+        }
+
+        public BaseModel(string connString) {
+            id = 0;
+            created = DateTime.Now;
+            updated = DateTime.Now;
+            connectionString = connString;
+        }
     }
 }
