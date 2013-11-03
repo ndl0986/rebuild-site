@@ -26,11 +26,6 @@ namespace SonyAlphaLibs
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="model"></param>
-        void getId(BaseModel model);
-        /// <summary>
-        /// 
-        /// </summary>
         /// <returns></returns>
         List<BaseModel> getListAll();
         /// <summary>
@@ -38,6 +33,6 @@ namespace SonyAlphaLibs
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        BaseModel getById(int id);
+        virtual BaseModel getById(int id);
     }
 }
