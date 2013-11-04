@@ -12,7 +12,7 @@ namespace SonyAlphaLibs
         /// 
         /// </summary>
         /// <param name="model"></param>
-        virtual void getTotal(BaseModel model);
+        void getTotal(BaseModel model);
         /// <summary>
         /// 
         /// </summary>
@@ -22,7 +22,7 @@ namespace SonyAlphaLibs
         /// 
         /// </summary>
         /// <param name="model"></param>
-        virtual void removeById(int id);
+        void removeById(int id);
         /// <summary>
         /// 
         /// </summary>
@@ -33,6 +33,6 @@ namespace SonyAlphaLibs
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        virtual BaseModel getById(int id);
+        BaseModel getById(int id);
     }
 }

@@ -41,7 +41,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\BaseModel.cs" />
-    <Compile Include="Classes\User.cs" />
     <Compile Include="Example\example.cs" />
     <Compile Include="Interfaces\IBaseFunction.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
