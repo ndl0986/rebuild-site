@@ -1,0 +1,5 @@
+C:\Alpha\rebuild-site\SonyAlphaLibs\bin\Debug\SonyAlphaLibs.dll
+C:\Alpha\rebuild-site\SonyAlphaLibs\bin\Debug\SonyAlphaLibs.pdb
+C:\Alpha\rebuild-site\SonyAlphaLibs\obj\Debug\ResolveAssemblyReference.cache
+C:\Alpha\rebuild-site\SonyAlphaLibs\obj\Debug\SonyAlphaLibs.dll
+C:\Alpha\rebuild-site\SonyAlphaLibs\obj\Debug\SonyAlphaLibs.pdb

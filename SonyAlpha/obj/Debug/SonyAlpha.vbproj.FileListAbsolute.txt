@@ -1,0 +1,12 @@
+C:\Alpha\rebuild-site\SonyAlpha\bin\SonyAlpha.dll
+C:\Alpha\rebuild-site\SonyAlpha\bin\SonyAlpha.pdb
+C:\Alpha\rebuild-site\SonyAlpha\bin\SonyAlpha.xml
+C:\Alpha\rebuild-site\SonyAlpha\bin\SonyAlphaLibs.dll
+C:\Alpha\rebuild-site\SonyAlpha\bin\SonyAlphaLibs.pdb
+C:\Alpha\rebuild-site\SonyAlpha\obj\Debug\ResolveAssemblyReference.cache
+C:\Alpha\rebuild-site\SonyAlpha\obj\Debug\SonyAlpha.Resources.resources
+C:\Alpha\rebuild-site\SonyAlpha\obj\Debug\GenerateResource.read.1.tlog
+C:\Alpha\rebuild-site\SonyAlpha\obj\Debug\GenerateResource.write.1.tlog
+C:\Alpha\rebuild-site\SonyAlpha\obj\Debug\SonyAlpha.dll
+C:\Alpha\rebuild-site\SonyAlpha\obj\Debug\SonyAlpha.xml
+C:\Alpha\rebuild-site\SonyAlpha\obj\Debug\SonyAlpha.pdb
