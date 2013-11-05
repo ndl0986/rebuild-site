@@ -90,6 +90,18 @@
     <Content Include="controls\admin\uc_account.ascx" />
     <Content Include="controls\admin\uc_accountgroup.ascx" />
     <Content Include="controls\admin\uc_adminmenu.ascx" />
+    <Content Include="controls\views\uc_album.ascx" />
+    <Content Include="controls\views\uc_albumdetail.ascx" />
+    <Content Include="controls\views\uc_banner.ascx" />
+    <Content Include="controls\views\uc_footer.ascx" />
+    <Content Include="controls\views\uc_header.ascx" />
+    <Content Include="controls\views\uc_menu.ascx" />
+    <Content Include="controls\views\uc_newscategory.ascx" />
+    <Content Include="controls\views\uc_newsdetail.ascx" />
+    <Content Include="controls\views\uc_page.ascx" />
+    <Content Include="controls\views\uc_photo.ascx" />
+    <Content Include="controls\views\uc_product.ascx" />
+    <Content Include="controls\views\uc_seller.ascx" />
     <Content Include="Css\admin.css" />
     <Content Include="Css\bootstrap-select.css" />
     <Content Include="Css\bootstrap.min.css" />
@@ -668,6 +680,90 @@
       <DependentUpon>uc_adminmenu.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="controls\views\uc_album.ascx.designer.vb">
+      <DependentUpon>uc_album.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\views\uc_album.ascx.vb">
+      <DependentUpon>uc_album.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\views\uc_albumdetail.ascx.designer.vb">
+      <DependentUpon>uc_albumdetail.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\views\uc_albumdetail.ascx.vb">
+      <DependentUpon>uc_albumdetail.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\views\uc_banner.ascx.designer.vb">
+      <DependentUpon>uc_banner.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\views\uc_banner.ascx.vb">
+      <DependentUpon>uc_banner.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\views\uc_footer.ascx.designer.vb">
+      <DependentUpon>uc_footer.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\views\uc_footer.ascx.vb">
+      <DependentUpon>uc_footer.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\views\uc_header.ascx.designer.vb">
+      <DependentUpon>uc_header.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\views\uc_header.ascx.vb">
+      <DependentUpon>uc_header.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\views\uc_menu.ascx.designer.vb">
+      <DependentUpon>uc_menu.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\views\uc_menu.ascx.vb">
+      <DependentUpon>uc_menu.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\views\uc_newscategory.ascx.designer.vb">
+      <DependentUpon>uc_newscategory.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\views\uc_newscategory.ascx.vb">
+      <DependentUpon>uc_newscategory.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\views\uc_newsdetail.ascx.designer.vb">
+      <DependentUpon>uc_newsdetail.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\views\uc_newsdetail.ascx.vb">
+      <DependentUpon>uc_newsdetail.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\views\uc_page.ascx.designer.vb">
+      <DependentUpon>uc_page.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\views\uc_page.ascx.vb">
+      <DependentUpon>uc_page.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\views\uc_photo.ascx.designer.vb">
+      <DependentUpon>uc_photo.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\views\uc_photo.ascx.vb">
+      <DependentUpon>uc_photo.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\views\uc_product.ascx.designer.vb">
+      <DependentUpon>uc_product.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\views\uc_product.ascx.vb">
+      <DependentUpon>uc_product.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\views\uc_seller.ascx.designer.vb">
+      <DependentUpon>uc_seller.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\views\uc_seller.ascx.vb">
+      <DependentUpon>uc_seller.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="Default.aspx.designer.vb">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
@@ -849,7 +945,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="controls\views\" />
     <Folder Include="fckeditor\images\" />
     <Folder Include="fckeditor\lang\" />
     <Folder Include="fckeditor\plugins\about\dialogs\" />
