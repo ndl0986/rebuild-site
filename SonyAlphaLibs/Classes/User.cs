@@ -73,5 +73,10 @@ namespace SonyAlphaLibs
         {
             return UserServices.getById(id, connString);
         }
+
+        public bool login(User user, String connString)
+        {
+            return UserServices.login(user, connString);
+        }
     }
 }

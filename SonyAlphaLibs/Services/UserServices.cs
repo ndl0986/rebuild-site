@@ -22,5 +22,10 @@ namespace SonyAlphaLibs.Services
         {
             return new List<User>();
         }
+
+        public static bool login(User user, String connString)
+        {
+            return true;
+        }
     }
 }
