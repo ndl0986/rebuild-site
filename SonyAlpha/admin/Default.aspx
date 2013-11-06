@@ -3,9 +3,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" >
 <head id="Head1" runat="server">
-    <title>DealBox - Control Panel</title>
+    <title>Sony Alpha - Admin Control Panel</title>
     <meta http-equiv="Content-Type" content="text/aspx; charset=utf-8" />
-    <link rel="stylesheet" type="text/css" href="css/admin.css"/>  
+    <link rel="stylesheet" type="text/css" href="../css/reset.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/admin.css"/>  
 </head>
 <body>
     <form id="form1" runat="server">
@@ -46,10 +47,10 @@
         <asp:HiddenField ID="isValid" Value="0" runat="server" />
     </div>
     </form>
-    <script type="text/javascript" language="javascript" src="js/libs/jquery-2.0.3.min.js"></script>
-    <script type="text/javascript" language="javascript" src="js/libs/bootstrap.min.js"></script>
-    <script type="text/javascript" language="javascript" src="js/plugins/jquery.bxslider.min.js"></script>
-    <script type="text/javascript" language="javascript" src="js/plugins/jquery.validate.js"></script>
+    <script type="text/javascript" language="javascript" src="../js/libs/jquery-2.0.3.min.js"></script>
+    <script type="text/javascript" language="javascript" src="../js/libs/bootstrap.min.js"></script>
+    <script type="text/javascript" language="javascript" src="../js/plugins/jquery.bxslider.min.js"></script>
+    <script type="text/javascript" language="javascript" src="../js/plugins/jquery.validate.js"></script>
     <script>
         function ConfirmDelete(str) {
             return confirm(str);

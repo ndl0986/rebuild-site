@@ -87,9 +87,16 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="admin\Default.aspx" />
+    <Content Include="admin\FileManager.aspx" />
+    <Content Include="admin\Login.aspx" />
     <Content Include="controls\admin\uc_account.ascx" />
     <Content Include="controls\admin\uc_accountgroup.ascx" />
     <Content Include="controls\admin\uc_adminmenu.ascx" />
+    <Content Include="controls\admin\uc_newscategory.ascx" />
+    <Content Include="controls\admin\uc_newsdetail.ascx" />
+    <Content Include="controls\admin\uc_newslist.ascx" />
+    <Content Include="controls\admin\uc_pages.ascx" />
+    <Content Include="controls\admin\uc_permission.ascx" />
     <Content Include="controls\views\uc_album.ascx" />
     <Content Include="controls\views\uc_albumdetail.ascx" />
     <Content Include="controls\views\uc_banner.ascx" />
@@ -657,6 +664,20 @@
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
+    <Compile Include="admin\FileManager.aspx.designer.vb">
+      <DependentUpon>FileManager.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\FileManager.aspx.vb">
+      <DependentUpon>FileManager.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="admin\Login.aspx.designer.vb">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\Login.aspx.vb">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
     <Compile Include="Classes\BaseModel.vb" />
     <Compile Include="Classes\Test.vb" />
     <Compile Include="controls\admin\uc_account.ascx.designer.vb">
@@ -678,6 +699,41 @@
     </Compile>
     <Compile Include="controls\admin\uc_adminmenu.ascx.vb">
       <DependentUpon>uc_adminmenu.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\admin\uc_newscategory.ascx.designer.vb">
+      <DependentUpon>uc_newscategory.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\admin\uc_newscategory.ascx.vb">
+      <DependentUpon>uc_newscategory.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\admin\uc_newsdetail.ascx.designer.vb">
+      <DependentUpon>uc_newsdetail.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\admin\uc_newsdetail.ascx.vb">
+      <DependentUpon>uc_newsdetail.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\admin\uc_newslist.ascx.designer.vb">
+      <DependentUpon>uc_newslist.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\admin\uc_newslist.ascx.vb">
+      <DependentUpon>uc_newslist.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\admin\uc_pages.ascx.designer.vb">
+      <DependentUpon>uc_pages.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\admin\uc_pages.ascx.vb">
+      <DependentUpon>uc_pages.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\admin\uc_permission.ascx.designer.vb">
+      <DependentUpon>uc_permission.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\admin\uc_permission.ascx.vb">
+      <DependentUpon>uc_permission.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="controls\views\uc_album.ascx.designer.vb">
