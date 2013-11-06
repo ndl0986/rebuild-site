@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using SonyAlphaLibs.Services;
 
 namespace SonyAlphaLibs
 {
@@ -53,22 +54,9 @@ namespace SonyAlphaLibs
             set { base.Created = value; }
         }
         
-        //void User(int _id, string _userName, string _passWord, string _fullName,
-        //        bool _status, int _groupId, DateTime _registered, DateTime _updated) 
-        //{
-        //    base.Id = _id;
-        //    UserName = _userName;
-        //    PassWord = _passWord;
-        //    FullName = _fullName;
-        //    Status = _status;
-        //    GroupId = _groupId;
-        //    Registered = _registered;
-        //    Updated = _updated;
-        //}
-
-        public bool add(User user) 
+        public bool add(User user, String connString) 
         {
-            return false;    
+            return UserServices.addUser(user, connString);
         }
 
         public bool removeById(int id)
@@ -76,14 +64,14 @@ namespace SonyAlphaLibs
             return false;
         }
 
-        public List<User> getListAll()
+        public List<User> getListAll(String connString)
         {
             return new List<User>();
         }
 
-        public User getById(int id)
+        public User getById(int id, String connString)
         {
-            return new User();
+            return UserServices.getById(id, connString);
         }
     }
 }

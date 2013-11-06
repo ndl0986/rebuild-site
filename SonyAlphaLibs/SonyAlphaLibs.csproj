@@ -45,6 +45,7 @@
     <Compile Include="Example\example.cs" />
     <Compile Include="Interfaces\IBaseFunction.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\UserServices.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Documents\Note.txt" />
