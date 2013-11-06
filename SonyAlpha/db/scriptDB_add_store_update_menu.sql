@@ -22,8 +22,6 @@ CREATE PROCEDURE [dbo].[sony_sp_update_menu]
 	@isadmin bit,
 	@visible bit,
 	@order int,
-	@created datetime,
-	@updated datetime,
 	@returnVal int OUTPUT
 AS
 BEGIN
@@ -34,17 +32,17 @@ BEGIN
     -- Insert statements for procedure here
     IF EXISTS (SELECT TOP (1) * FROM sony_menu WHERE name=@name)
     BEGIN
+		SET @updated = GETDATE()
 		UPDATE [sony_rebuild_alpha].[dbo].[sony_menu]
-		   SET [isparent] = @isparent
+			SET [isparent] = @isparent
 			  ,[parentid] = @parentId
 			  ,[seoUrl] = @seoUrl
 			  ,[isadmin] = @isadmin
 			  ,[visible] = @visible
 			  ,[order] = @order
-			  ,[created] = @created
 			  ,[updated] = @updated
-		 WHERE [name]=@name
-		 SET @returnVal = (SELECT @@IDENTITY)
+		WHERE [name]=@name
+		SET @returnVal = (SELECT @@IDENTITY)
 	END
 END
 
