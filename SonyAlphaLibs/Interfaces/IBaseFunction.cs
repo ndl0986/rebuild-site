@@ -6,33 +6,28 @@ using System.Collections;
 
 namespace SonyAlphaLibs
 {
-    interface IBaseFunction : IEnumerator
+    interface IBaseFunction<T>
     {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="model"></param>
-        void getTotal(BaseModel model);
+        bool add(T model);
         /// <summary>
         /// 
         /// </summary>
         /// <param name="model"></param>
-        void add(BaseModel model);
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="model"></param>
-        void removeById(int id);
+        bool removeById(int id);
         /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
-        List<BaseModel> getListAll();
+        List<T> getListAll();
         /// <summary>
         /// 
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        BaseModel getById(int id);
+        T getById(int id);
     }
 }
