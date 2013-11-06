@@ -31,8 +31,7 @@ BEGIN
 	SET @returnVal = 0;
     -- Insert statements for procedure here
     IF EXISTS (SELECT TOP (1) * FROM sony_menu WHERE name=@name)
-    BEGIN
-		SET @updated = GETDATE()
+    BEGIN		
 		UPDATE [sony_rebuild_alpha].[dbo].[sony_menu]
 			SET [isparent] = @isparent
 			  ,[parentid] = @parentId
@@ -40,7 +39,7 @@ BEGIN
 			  ,[isadmin] = @isadmin
 			  ,[visible] = @visible
 			  ,[order] = @order
-			  ,[updated] = @updated
+			  ,[updated] = GETDATE()
 		WHERE [name]=@name
 		SET @returnVal = (SELECT @@IDENTITY)
 	END
