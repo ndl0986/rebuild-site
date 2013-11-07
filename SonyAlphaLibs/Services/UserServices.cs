@@ -50,7 +50,40 @@ namespace SonyAlphaLibs.Services
 
         public static List<User> getListAll(String connString)
         {
-            return new List<User>();
+            List<User> lists = new List<User>();
+            using (SqlConnection conn = new SqlConnection(connString))
+            {
+                try
+                {
+                    conn.Open();
+                    using (SqlCommand cmd = conn.CreateCommand())
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.CommandText = "sony_sp_get_all_user";
+
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                User user = new User();
+                                user.Id = (int)reader["id"];
+                                user.UserName = reader["username"].ToString();
+                                user.FullName = reader["fullname"].ToString();
+                                user.Status = reader["status"].ToString() == "1" ? true : false;
+                                user.GroupId = (int)reader["groupId"];
+                                user.Registered = (DateTime)reader["registered"];
+                                user.Updated = (DateTime)reader["updated"];
+                                lists.Add(user);
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    return new List<User>();
+                }
+            }
+            return lists;
         }
 
         public static bool login(User user, String connString)
