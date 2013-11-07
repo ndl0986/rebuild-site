@@ -8,7 +8,7 @@ Public Class TestPage
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         Dim myUser As New User
         myUser.UserName = "luannd3"
-        myUser.FullName = "Nguyen Dinh Luan"
+        myUser.FullName = "Nguyen Dinh Luan 1"
         myUser.PassWord = "123456"
         myUser.Status = True
         myUser.Registered = DateTime.Now
@@ -23,7 +23,9 @@ Public Class TestPage
             ' test add user
             'txtTest.Text = myUser.add(connString.ToString)
             ' test login
-            txtTest.Text = myUser.login(connString.ToString)
+            'txtTest.Text = myUser.login(connString.ToString)
+            ' test update user
+            txtTest.Text = myUser.update(connString.ToString)
         End If
 
     End Sub
