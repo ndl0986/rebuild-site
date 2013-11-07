@@ -89,6 +89,7 @@
     <Content Include="admin\Default.aspx" />
     <Content Include="admin\FileManager.aspx" />
     <Content Include="admin\Login.aspx" />
+    <Content Include="admin\TestPage.aspx" />
     <Content Include="controls\admin\uc_account.ascx" />
     <Content Include="controls\admin\uc_accountgroup.ascx" />
     <Content Include="controls\admin\uc_adminmenu.ascx" />
@@ -648,7 +649,9 @@
     <Content Include="Js\libs\respond.min.js" />
     <Content Include="Js\plugins\bootstrap-select.min.js" />
     <Content Include="Js\plugins\jquery.bxslider.min.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -676,6 +679,13 @@
     </Compile>
     <Compile Include="admin\Login.aspx.vb">
       <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="admin\TestPage.aspx.designer.vb">
+      <DependentUpon>TestPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\TestPage.aspx.vb">
+      <DependentUpon>TestPage.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="Classes\BaseModel.vb" />
