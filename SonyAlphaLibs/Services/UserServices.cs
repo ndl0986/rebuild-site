@@ -11,6 +11,7 @@ namespace SonyAlphaLibs.Services
     {
         public static bool addUser(User user, String connString)
         {
+            bool rs = false;
             using (SqlConnection conn = new SqlConnection(connString))
             {
                 try
@@ -31,7 +32,7 @@ namespace SonyAlphaLibs.Services
                         cmd.Parameters.Add(returnVal);
 
                         cmd.ExecuteNonQuery();
-                        return ((int)cmd.Parameters["@indentity"].Value == 1);
+                        rs = ((int)cmd.Parameters["@indentity"].Value != 0);
                     }
                 }
                 catch (Exception ex)
@@ -39,7 +40,7 @@ namespace SonyAlphaLibs.Services
                     return false;
                 }
             }
-            return false;
+            return rs;
         }
 
         public static User getById(int id, String connString)
@@ -59,6 +60,7 @@ namespace SonyAlphaLibs.Services
 
         public static bool login(String userName, String passWord, String connString)
         {
+            bool rs = false;
             using (SqlConnection conn = new SqlConnection(connString))
             {
                 try
@@ -79,16 +81,15 @@ namespace SonyAlphaLibs.Services
                                 break;
                             }
                         }
-                        return (!String.IsNullOrEmpty(getPass) && getPass == passWord);                        
+                        rs = (!String.IsNullOrEmpty(getPass) && getPass == passWord);                        
                     }
                 }
                 catch (Exception ex)
                 {
-                    //conn.Close();
-                    return false;
+                    return rs;
                 }
             }
-            return false;
+            return rs;
         }
     }
 }

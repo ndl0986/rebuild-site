@@ -11,8 +11,9 @@ namespace SonyAlphaLibs
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="model"></param>
-        bool add(T model, String connString);
+        /// <param name="connString"></param>
+        /// <returns></returns>
+        bool add(String connString);
         /// <summary>
         /// 
         /// </summary>

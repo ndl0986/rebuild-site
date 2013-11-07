@@ -9,7 +9,7 @@ namespace SonyAlphaLibs
     public class User : BaseModel, IBaseFunction<User>
     {
         private string userName;
-
+        
         public string UserName
         {
             get { return userName; }
@@ -54,9 +54,9 @@ namespace SonyAlphaLibs
             set { base.Created = value; }
         }
         
-        public bool add(User user, String connString) 
-        {
-            return UserServices.addUser(user, connString);
+        public bool add(String connString) 
+        {            
+            return UserServices.addUser(this, connString);
         }
 
         public bool removeById(int id)
@@ -74,9 +74,9 @@ namespace SonyAlphaLibs
             return UserServices.getById(id, connString);
         }
 
-        public bool login(User user, String connString)
+        public bool login(String connString)
         {
-            return UserServices.login(user, connString);
+            return UserServices.login(this.UserName, this.PassWord, connString);
         }
     }
 }

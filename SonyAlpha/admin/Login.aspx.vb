@@ -4,7 +4,7 @@ Public Class Login
     ' How to add user
     ' Dim myUser as User
     ' ...set info for myUser
-    ' call method to add user: myUser.add(myUser, connectionString)
+    ' call method to add user: myUser.add(connectionString)
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
 
     End Sub
