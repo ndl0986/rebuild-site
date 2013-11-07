@@ -59,6 +59,11 @@ namespace SonyAlphaLibs
             return UserServices.addUser(this, connString);
         }
 
+        public bool update(String connString)
+        {
+            return UserServices.update(this, connString);
+        }
+
         public bool removeById(int id)
         {
             return false;

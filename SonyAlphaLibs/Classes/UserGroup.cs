@@ -29,6 +29,11 @@ namespace SonyAlphaLibs
             return UserGroupServices.addUserGroup(this, connString);    
         }
 
+        public bool update(String connString)
+        {
+            return false;
+        }
+
         public bool removeById(int id)
         {
             return false;
