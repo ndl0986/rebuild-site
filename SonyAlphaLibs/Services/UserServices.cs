@@ -125,7 +125,7 @@ namespace SonyAlphaLibs.Services
             return rs;
         }
 
-        internal static bool update(User user, string connString)
+        public static bool update(User user, string connString)
         {
             bool rs = false;
             using (SqlConnection conn = new SqlConnection(connString))

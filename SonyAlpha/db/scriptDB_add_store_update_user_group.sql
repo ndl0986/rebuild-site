@@ -1,12 +1,13 @@
 USE [sony_rebuild_alpha]
 GO
 
-/****** Object:  StoredProcedure [dbo].[sony_sp_update_user_group]    Script Date: 11/07/2013 22:46:52 ******/
+/****** Object:  StoredProcedure [dbo].[sony_sp_update_user_group]    Script Date: 11/07/2013 22:52:20 ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
+
 
 
 -- =============================================
@@ -19,7 +20,6 @@ CREATE PROCEDURE [dbo].[sony_sp_update_user_group]
 	@id int,
 	@groupname nvarchar(150),
 	@issuper bit,
-	@created datetime,
 	@updated datetime,
 	@returnVal int OUTPUT
 AS
@@ -41,6 +41,7 @@ BEGIN
 		SET @returnVal = 1;
 	END
 END
+
 
 
 GO
