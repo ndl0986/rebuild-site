@@ -108,5 +108,41 @@ namespace SonyAlphaLibs.Services
             }
             return rs;
         }
+
+        public static List<UserGroup> getListAll(String connString)
+        {
+            List<UserGroup> lists = new List<UserGroup>();
+            using (SqlConnection conn = new SqlConnection(connString))
+            {
+                try
+                {
+                    conn.Open();
+                    using (SqlCommand cmd = conn.CreateCommand())
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.CommandText = "sony_sp_get_all_user_group";
+
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                UserGroup usergroup = new UserGroup();
+                                usergroup.Id = (int)reader["id"];
+                                usergroup.GroupName = reader["groupname"].ToString();
+                                usergroup.IsSuper = reader["issuper"].ToString() == "1" ? true : false;
+                                usergroup.Created = (DateTime)reader["created"];
+                                usergroup.Updated = (DateTime)reader["updated"];
+                                lists.Add(usergroup);
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    return new List<UserGroup>();
+                }
+            }
+            return lists;
+        }
     }
 }
