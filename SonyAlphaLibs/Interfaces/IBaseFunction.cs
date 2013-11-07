@@ -17,6 +17,12 @@ namespace SonyAlphaLibs
         /// <summary>
         /// 
         /// </summary>
+        /// <param name="connString"></param>
+        /// <returns></returns>
+        bool update(String connString);
+        /// <summary>
+        /// 
+        /// </summary>
         /// <param name="model"></param>
         bool removeById(int id);
         /// <summary>
