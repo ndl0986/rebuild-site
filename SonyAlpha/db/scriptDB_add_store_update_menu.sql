@@ -1,12 +1,13 @@
 USE [sony_rebuild_alpha]
 GO
 
-/****** Object:  StoredProcedure [dbo].[sony_sp_update_menu]    Script Date: 11/06/2013 20:11:59 ******/
+/****** Object:  StoredProcedure [dbo].[sony_sp_update_menu]    Script Date: 11/08/2013 22:26:46 ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
+
 
 -- =============================================
 -- Author:		ndl0986
@@ -22,6 +23,7 @@ CREATE PROCEDURE [dbo].[sony_sp_update_menu]
 	@isadmin bit,
 	@visible bit,
 	@order int,
+	@updated datetime,
 	@returnVal int OUTPUT
 AS
 BEGIN
@@ -31,19 +33,20 @@ BEGIN
 	SET @returnVal = 0;
     -- Insert statements for procedure here
     IF EXISTS (SELECT TOP (1) * FROM sony_menu WHERE name=@name)
-    BEGIN		
+    BEGIN
 		UPDATE [sony_rebuild_alpha].[dbo].[sony_menu]
-			SET [isparent] = @isparent
+		   SET [isparent] = @isparent
 			  ,[parentid] = @parentId
 			  ,[seoUrl] = @seoUrl
 			  ,[isadmin] = @isadmin
 			  ,[visible] = @visible
 			  ,[order] = @order
-			  ,[updated] = GETDATE()
-		WHERE [name]=@name
-		SET @returnVal = (SELECT @@IDENTITY)
+			  ,[updated] = @updated
+		 WHERE [name]=@name
+		 SET @returnVal = (SELECT @@IDENTITY)
 	END
 END
+
 
 GO
 
