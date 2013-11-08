@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\BaseModel.cs" />
+    <Compile Include="Classes\Menu.cs" />
     <Compile Include="Classes\User.cs" />
     <Compile Include="Classes\UserGroup.cs" />
     <Compile Include="Example\example.cs" />
