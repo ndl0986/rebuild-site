@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using SonyAlphaLibs.Services;
 
 namespace SonyAlphaLibs
 {
@@ -55,34 +56,43 @@ namespace SonyAlphaLibs
             set { order = value; }
         }
 
+        private int parentId;
+
+        public int ParentId
+        {
+            get { return parentId; }
+            set { parentId = value; }
+        }
+        
+
         public bool add(String connString)
         {
-            return false;
+            return MenuServices.addMenu(this, connString);
         }
 
         public bool update(String connString)
         {
-            return false;
+            return MenuServices.updateMenu(this, connString);
         }
 
         public bool removeById(String connString)
         {
-            return false;
+            return MenuServices.removeById(this.Id, connString);
         }
 
         public List<Menu> getListAll(String connString)
         {
-            return new List<Menu>();
+            return MenuServices.getListAll(connString);
         }
 
         public Menu getById(String connString)
         {
-            return new Menu();
+            return MenuServices.getById(this.Id, connString);
         }
 
-        public List<Menu> getListByGroupId(int groupId, String connString)
-        {
-            return new List<Menu>();
-        }
+        //public List<Menu> getListByGroupId(String connString)
+        //{ 
+            
+        //}
     }
 }
