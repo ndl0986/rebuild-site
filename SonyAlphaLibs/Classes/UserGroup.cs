@@ -31,7 +31,7 @@ namespace SonyAlphaLibs
 
         public bool update(String connString)
         {
-            return false;
+            return UserGroupServices.update(this, connString);
         }
 
         public bool removeById(String connString)
@@ -41,12 +41,12 @@ namespace SonyAlphaLibs
 
         public List<UserGroup> getListAll(String connString)
         {
-            return new List<UserGroup>();
+            return UserGroupServices.getListAll(connString);
         }
 
         public UserGroup getById(String connString)
         {
-            return new UserGroup();
+            return UserGroupServices.getById(this.Id, connString);
         }
     }
 }
