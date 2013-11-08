@@ -34,7 +34,7 @@ namespace SonyAlphaLibs
             return false;
         }
 
-        public bool removeById(int id)
+        public bool removeById(String connString)
         {
             return false;
         }
@@ -44,7 +44,7 @@ namespace SonyAlphaLibs
             return new List<UserGroup>();
         }
 
-        public UserGroup getById(int id, String connString)
+        public UserGroup getById(String connString)
         {
             return new UserGroup();
         }

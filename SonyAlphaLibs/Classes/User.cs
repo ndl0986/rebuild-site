@@ -64,7 +64,7 @@ namespace SonyAlphaLibs
             return UserServices.update(this, connString);
         }
 
-        public bool removeById(int id)
+        public bool removeById(String connString)
         {
             return false;
         }
@@ -74,9 +74,9 @@ namespace SonyAlphaLibs
             return new List<User>();
         }
 
-        public User getById(int id, String connString)
+        public User getById(String connString)
         {
-            return UserServices.getById(id, connString);
+            return UserServices.getById(this.Id, connString);
         }
 
         public bool login(String connString)

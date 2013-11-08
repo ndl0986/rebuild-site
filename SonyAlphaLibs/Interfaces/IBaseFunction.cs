@@ -24,7 +24,7 @@ namespace SonyAlphaLibs
         /// 
         /// </summary>
         /// <param name="model"></param>
-        bool removeById(int id);
+        bool removeById(String connString);
         /// <summary>
         /// 
         /// </summary>
@@ -35,6 +35,6 @@ namespace SonyAlphaLibs
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        T getById(int id, String connString);
+        T getById(String connString);
     }
 }
