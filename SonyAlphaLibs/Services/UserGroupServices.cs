@@ -129,7 +129,7 @@ namespace SonyAlphaLibs.Services
                                 UserGroup usergroup = new UserGroup();
                                 usergroup.Id = (int)reader["id"];
                                 usergroup.GroupName = reader["groupname"].ToString();
-                                usergroup.IsSuper = reader["status"].ToString().Equals("1") || reader["status"].ToString().Equals("True") ? true : false;
+                                usergroup.IsSuper = reader["issuper"].ToString().Equals("1") || reader["issuper"].ToString().Equals("True") ? true : false;
                                 usergroup.Created = (DateTime)reader["created"];
                                 usergroup.Updated = (DateTime)reader["updated"];
                                 lists.Add(usergroup);
