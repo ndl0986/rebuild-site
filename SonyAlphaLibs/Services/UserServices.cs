@@ -180,7 +180,7 @@ namespace SonyAlphaLibs.Services
                                 rs.UserName = userName;
                                 rs.Status = reader["status"].ToString().Equals("1") || reader["status"].ToString().Equals("True") ? true : false;
                                 rs.Created = (DateTime)reader["registered"];
-                                rs.Updated = (DateTime)reader["update"];
+                                rs.Updated = (DateTime)reader["updated"];
                                 rs.FullName = reader["fullname"].ToString();
                                 rs.GroupId = (int)reader["groupId"];
                                 break;
