@@ -46,7 +46,7 @@ namespace SonyAlphaLibs
 
         public UserGroup getById(String connString)
         {
-            return UserGroupServices.getById(this.Id, connString);
+            return UserGroupServices.getById(Id, connString);
         }
     }
 }

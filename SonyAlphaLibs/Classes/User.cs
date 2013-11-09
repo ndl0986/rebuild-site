@@ -76,7 +76,7 @@ namespace SonyAlphaLibs
 
         public User getById(String connString)
         {
-            return UserServices.getById(this.Id, connString);
+            return UserServices.getById(Id, connString);
         }
 
         public bool login(String connString)
