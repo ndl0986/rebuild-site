@@ -23,7 +23,7 @@
                     </div>
                     <div class="row clearfix">
                         <button id="btnLogIn" runat="server" class="action blue"><span class="label">Đăng nhập</span></button>
-                        <button id="btnCancel" runat="server" class="action"><span class="label">Hủy</span></button>
+                        <button id="btnCancel" runat="server" class="action"><span class="label">Thoát</span></button>
                     </div>
                 </div>
             </ContentTemplate>

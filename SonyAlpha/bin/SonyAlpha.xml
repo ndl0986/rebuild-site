@@ -6,57 +6,17 @@ SonyAlpha
 </name>
 </assembly>
 <members>
-<member name="F:SonyAlpha.Login.frmMain">
+<member name="F:SonyAlpha._Error.form1">
 	<summary>
-frmMain control.
+form1 control.
 </summary>
 	<remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:SonyAlpha.Login.ScriptManager1">
+</member><member name="F:SonyAlpha.FileManager.form1">
 	<summary>
-ScriptManager1 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:SonyAlpha.Login.UpdatePanel1">
-	<summary>
-UpdatePanel1 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:SonyAlpha.Login.txtAccount">
-	<summary>
-txtAccount control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:SonyAlpha.Login.txtPassword">
-	<summary>
-txtPassword control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:SonyAlpha.Login.btnLogIn">
-	<summary>
-btnLogIn control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:SonyAlpha.Login.btnCancel">
-	<summary>
-btnCancel control.
+form1 control.
 </summary>
 	<remarks>
 Auto-generated field.
@@ -138,6 +98,78 @@ To modify move field declaration from designer file to code-behind file.
 </member><member name="F:SonyAlpha.uc_accountgroup.objGroupAccount">
 	<summary>
 objGroupAccount control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:SonyAlpha.Login.frmMain">
+	<summary>
+frmMain control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:SonyAlpha.Login.ScriptManager1">
+	<summary>
+ScriptManager1 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:SonyAlpha.Login.UpdatePanel1">
+	<summary>
+UpdatePanel1 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:SonyAlpha.Login.txtAccount">
+	<summary>
+txtAccount control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:SonyAlpha.Login.txtPassword">
+	<summary>
+txtPassword control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:SonyAlpha.Login.btnLogIn">
+	<summary>
+btnLogIn control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:SonyAlpha.Login.btnCancel">
+	<summary>
+btnCancel control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:SonyAlpha.TestPage.formTest">
+	<summary>
+formTest control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:SonyAlpha.TestPage.txtTest">
+	<summary>
+txtTest control.
 </summary>
 	<remarks>
 Auto-generated field.

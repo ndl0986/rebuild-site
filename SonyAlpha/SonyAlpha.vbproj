@@ -131,6 +131,7 @@
     <Content Include="db\scriptDB_add_store_update_user_group.sql" />
     <Content Include="db\scriptDB_initial.sql" />
     <Content Include="Default.aspx" />
+    <Content Include="Error.aspx" />
     <Content Include="fckeditor\editor\css\behaviors\disablehandles.htc" />
     <Content Include="fckeditor\editor\css\behaviors\showtableborders.htc" />
     <Content Include="fckeditor\editor\css\fck_editorarea.css" />
@@ -700,6 +701,7 @@
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="Classes\BaseModel.vb" />
+    <Compile Include="Classes\Db.vb" />
     <Compile Include="Classes\Test.vb" />
     <Compile Include="controls\admin\uc_account.ascx.designer.vb">
       <DependentUpon>uc_account.ascx</DependentUpon>
@@ -848,6 +850,13 @@
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
+    <Compile Include="Error.aspx.designer.vb">
+      <DependentUpon>Error.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Error.aspx.vb">
+      <DependentUpon>Error.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
     <Compile Include="Global.asax.vb">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -880,6 +889,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="errors\errs.json" />
     <None Include="fckeditor\editor\dialog\fck_spellerpages\spellerpages\server-scripts\spellchecker.cfm" />
     <None Include="fckeditor\editor\dialog\fck_spellerpages\spellerpages\server-scripts\spellchecker.php" />
     <None Include="fckeditor\editor\dialog\fck_spellerpages\spellerpages\server-scripts\spellchecker.pl" />
