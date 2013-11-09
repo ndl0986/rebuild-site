@@ -69,7 +69,7 @@ namespace SonyAlphaLibs.Services
                                 user.Id = (int)reader["id"];
                                 user.UserName = reader["username"].ToString();
                                 user.FullName = reader["fullname"].ToString();
-                                user.Status = reader["status"].ToString() == "1" ? true : false;
+                                user.Status = reader["status"].ToString().Equals("1") || reader["status"].ToString().Equals("True") ? true : false;
                                 user.GroupId = (int)reader["groupId"];
                                 user.Registered = (DateTime)reader["registered"];
                                 user.Updated = (DateTime)reader["updated"];
@@ -178,10 +178,11 @@ namespace SonyAlphaLibs.Services
                             {
                                 rs.Id = (int)reader["id"];
                                 rs.UserName = userName;
-                                rs.Status = reader["status"].ToString().Equals("1") ? true : false;
+                                rs.Status = reader["status"].ToString().Equals("1") || reader["status"].ToString().Equals("True") ? true : false;
                                 rs.Created = (DateTime)reader["created"];
                                 rs.Updated = (DateTime)reader["update"];
                                 rs.FullName = reader["fullname"].ToString();
+                                rs.GroupId = (int)reader["groupId"];
                                 break;
                             }
                         }

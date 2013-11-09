@@ -107,11 +107,11 @@ namespace SonyAlphaLibs.Services
                                 Menu menu = new Menu();
                                 menu.Id = (int)reader["id"];
                                 menu.Name = reader["name"].ToString();
-                                menu.IsParent = reader["isparent"].ToString() == "1" ? true : false;
+                                menu.IsParent = reader["isparent"].ToString().Equals("1") || reader["isparent"].ToString().Equals("True") ? true : false;
                                 menu.ParentId = (int)reader["parentId"];
                                 menu.SeoUrl = reader["seoUrl"].ToString();
-                                menu.IsAdmin = reader["isadmin"].ToString() == "1" ? true : false;
-                                menu.Visible = reader["visible"].ToString() == "1" ? true : false;
+                                menu.IsAdmin = reader["isadmin"].ToString().Equals("1") || reader["isadmin"].ToString().Equals("True") ? true : false;
+                                menu.Visible = reader["visible"].ToString().Equals("1") || reader["visible"].ToString().Equals("True") ? true : false;
                                 menu.Order = (int)reader["order"];
                                 menu.Created = (DateTime)reader["created"];
                                 menu.Updated = (DateTime)reader["updated"];
