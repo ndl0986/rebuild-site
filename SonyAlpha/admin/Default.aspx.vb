@@ -21,6 +21,8 @@
                 Select Case LCase(Request.QueryString("tpl"))
                     Case "accounts"
                         tpl = Page.LoadControl("../controls/admin/uc_account.ascx")
+                    Case "editaccount", "profile"
+                        tpl = Page.LoadControl("../controls/admin/uc_editaccount.ascx")
                     Case "accountgroup"
                         tpl = Page.LoadControl("../controls/admin/uc_accountgroup.ascx")
                     Case "editaccount"

@@ -93,6 +93,7 @@
     <Content Include="controls\admin\uc_account.ascx" />
     <Content Include="controls\admin\uc_accountgroup.ascx" />
     <Content Include="controls\admin\uc_adminmenu.ascx" />
+    <Content Include="controls\admin\uc_editaccount.ascx" />
     <Content Include="controls\admin\uc_newscategory.ascx" />
     <Content Include="controls\admin\uc_newsdetail.ascx" />
     <Content Include="controls\admin\uc_newslist.ascx" />
@@ -722,6 +723,13 @@
     </Compile>
     <Compile Include="controls\admin\uc_adminmenu.ascx.vb">
       <DependentUpon>uc_adminmenu.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\admin\uc_editaccount.ascx.designer.vb">
+      <DependentUpon>uc_editaccount.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\admin\uc_editaccount.ascx.vb">
+      <DependentUpon>uc_editaccount.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="controls\admin\uc_newscategory.ascx.designer.vb">

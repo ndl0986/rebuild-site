@@ -6,7 +6,79 @@ SonyAlpha
 </name>
 </assembly>
 <members>
-<member name="F:SonyAlpha._Error.form1">
+<member name="F:SonyAlpha.uc_editaccount.linkAccount">
+	<summary>
+linkAccount control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:SonyAlpha.uc_editaccount.ddlGroup">
+	<summary>
+ddlGroup control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:SonyAlpha.uc_editaccount.txtUsername">
+	<summary>
+txtUsername control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:SonyAlpha.uc_editaccount.txtName">
+	<summary>
+txtName control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:SonyAlpha.uc_editaccount.txtPass">
+	<summary>
+txtPass control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:SonyAlpha.uc_editaccount.hdfPass">
+	<summary>
+hdfPass control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:SonyAlpha.uc_editaccount.txtConfirmPass">
+	<summary>
+txtConfirmPass control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:SonyAlpha.uc_editaccount.btnSave">
+	<summary>
+btnSave control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:SonyAlpha.uc_editaccount.objGroupAccount">
+	<summary>
+objGroupAccount control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:SonyAlpha._Error.form1">
 	<summary>
 form1 control.
 </summary>
