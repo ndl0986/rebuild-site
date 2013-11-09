@@ -83,5 +83,10 @@ namespace SonyAlphaLibs
         {
             return UserServices.login(this.UserName, this.PassWord, connString);
         }
+
+        public User getByUserName(String connString)
+        {
+            return UserServices.getByUserName(this.UserName, connString);
+        }
     }
 }

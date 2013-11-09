@@ -157,5 +157,42 @@ namespace SonyAlphaLibs.Services
             }
             return rs;
         }
+
+        internal static User getByUserName(string userName, string connString)
+        {
+            User rs = new User();
+            using (SqlConnection conn = new SqlConnection(connString))
+            {
+                try
+                {
+                    conn.Open();
+                    using (SqlCommand cmd = conn.CreateCommand())
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.CommandText = "sony_sp_get_user_by_username";
+                        cmd.Parameters.AddWithValue("@username", userName);
+
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                rs.Id = (int)reader["id"];
+                                rs.UserName = userName;
+                                rs.Status = reader["status"].ToString().Equals("1") ? true : false;
+                                rs.Created = (DateTime)reader["created"];
+                                rs.Updated = (DateTime)reader["update"];
+                                rs.FullName = reader["fullname"].ToString();
+                                break;
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    return rs;
+                }
+            }
+            return rs;
+        }
     }
 }
