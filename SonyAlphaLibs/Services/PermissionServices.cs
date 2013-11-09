@@ -190,5 +190,10 @@ namespace SonyAlphaLibs.Services
             }
             return permission;
         }
+
+        internal static bool removeById(int p, string connString)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

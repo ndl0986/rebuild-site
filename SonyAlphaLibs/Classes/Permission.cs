@@ -69,5 +69,10 @@ namespace SonyAlphaLibs
         {
             return PermissionServices.getByName(this.Name, connString);
         }
+
+        public bool removeById(String connString)
+        {
+            return PermissionServices.removeById(base.Id, connString);
+        }
     }
 }
