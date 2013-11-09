@@ -191,9 +191,41 @@ namespace SonyAlphaLibs.Services
             return permission;
         }
 
-        internal static bool removeById(int p, string connString)
+        internal static bool removeById(int id, string connString)
         {
             throw new NotImplementedException();
+        }
+
+        internal static bool setPermission2Group(int permissionId, int groupId, string connString)
+        {
+            bool rs = false;
+            using (SqlConnection conn = new SqlConnection(connString))
+            {
+                try
+                {
+                    conn.Open();
+                    using (SqlCommand cmd = conn.CreateCommand())
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.CommandText = "sony_sp_add_permission_group";
+                        cmd.Parameters.AddWithValue("@groupId", groupId);
+                        cmd.Parameters.AddWithValue("@permissionId", permissionId);
+                        cmd.Parameters.AddWithValue("@created", DateTime.Now);
+                        cmd.Parameters.AddWithValue("@updated", DateTime.Now);
+                        SqlParameter returnVal = new SqlParameter("@returnVal", SqlDbType.Int);
+                        returnVal.Direction = ParameterDirection.Output;
+                        cmd.Parameters.Add(returnVal);
+
+                        cmd.ExecuteNonQuery();
+                        rs = ((int)cmd.Parameters["@returnVal"].Value != 0);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    return false;
+                }
+            }
+            return rs;
         }
     }
 }
