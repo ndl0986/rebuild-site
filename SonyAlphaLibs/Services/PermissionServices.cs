@@ -227,5 +227,74 @@ namespace SonyAlphaLibs.Services
             }
             return rs;
         }
+
+        internal static bool setPermission2MenuPage(int permissionGroupId, int menuPageId,
+            bool isPage, String connString)
+        {
+            bool rs = false;
+            using (SqlConnection conn = new SqlConnection(connString))
+            {
+                try
+                {
+                    conn.Open();
+                    using (SqlCommand cmd = conn.CreateCommand())
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.CommandText = "sony_sp_add_page_menu_permission";
+                        cmd.Parameters.AddWithValue("@permissionGroup", permissionGroupId);
+                        cmd.Parameters.AddWithValue("@menuPageId", menuPageId);
+                        cmd.Parameters.AddWithValue("@isPage", isPage ? 1 : 0);
+                        cmd.Parameters.AddWithValue("@created", DateTime.Now);
+                        cmd.Parameters.AddWithValue("@updated", DateTime.Now);
+                        SqlParameter returnVal = new SqlParameter("@returnVal", SqlDbType.Int);
+                        returnVal.Direction = ParameterDirection.Output;
+                        cmd.Parameters.Add(returnVal);
+
+                        cmd.ExecuteNonQuery();
+                        rs = ((int)cmd.Parameters["@returnVal"].Value != 0);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    return false;
+                }
+            }
+            return rs;
+        }
+
+        internal static Permission getPermissionOfGroup(int groupId, String connString)
+        {
+            using (SqlConnection conn = new SqlConnection(connString))
+            {
+                try
+                {
+                    conn.Open();
+                    using (SqlCommand cmd = conn.CreateCommand())
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.CommandText = "sony_sp_get_permission_of_group";
+                        cmd.Parameters.AddWithValue("@groupId", groupId);
+
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            Permission permisison = new Permission();
+                            permisison.Id = (int)reader["id"];
+                            permisison.Name = reader["name"].ToString();
+                            permisison.AllowInsert = reader["allowinsert"].ToString().Equals("1") || reader["allowinsert"].ToString().Equals("True") ? true : false;
+                            permisison.AllowUpdate = reader["allowupdate"].ToString().Equals("1") || reader["allowupdate"].ToString().Equals("True") ? true : false;
+                            permisison.AllowDelete = reader["allowdelete"].ToString().Equals("1") || reader["allowdelete"].ToString().Equals("True") ? true : false;
+                            permisison.Created = (DateTime)reader["created"];
+                            permisison.Updated = (DateTime)reader["updated"];
+                            return permisison;
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    return new Permission();
+                }
+            } 
+            return new Permission();
+        }
     }
 }
