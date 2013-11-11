@@ -1577,7 +1577,7 @@ overflow:auto;
 resize:none;
 }
 
-input,button,input:active,input:focus,input[type=button],input[type=submit],input[type=reset],input[type=file]::-webkit-file-upload-button,button {
+input,button,input:active,input:focus,input[type=submit],input[type=reset],input[type=file]::-webkit-file-upload-button,button {
 background:none;
 border:none;
 outline:0;
