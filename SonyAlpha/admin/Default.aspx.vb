@@ -23,10 +23,18 @@
                         tpl = Page.LoadControl("../controls/admin/uc_account.ascx")
                     Case "editaccount", "profile"
                         tpl = Page.LoadControl("../controls/admin/uc_editaccount.ascx")
-                    Case "accountgroup"
+                    Case "accountsgroup"
                         tpl = Page.LoadControl("../controls/admin/uc_accountgroup.ascx")
-                    Case "addnew","editnew"
+                    Case "newscategory"
+                        tpl = Page.LoadControl("../controls/admin/uc_newscategory.ascx")
+                    Case "news"
+                        tpl = Page.LoadControl("../controls/admin/uc_newslist.ascx")
+                    Case "addnews", "editnews"
                         tpl = Page.LoadControl("../controls/admin/uc_newsdetail.ascx")
+                    Case "pages"
+                        tpl = Page.LoadControl("../controls/admin/uc_pages.ascx")
+                    Case "addpage", "editpage"
+                        tpl = Page.LoadControl("../controls/admin/uc_pagedetail.ascx")
                     Case "permissions"
                         tpl = Page.LoadControl("../controls/admin/uc_permission.ascx")
                     Case "productcategory"
@@ -35,6 +43,8 @@
                         tpl = Page.LoadControl("../controls/admin/uc_products.ascx")
                     Case "addproduct"
                         tpl = Page.LoadControl("../controls/admin/uc_addproduct.ascx")
+                    Case "files"
+                        Response.Redirect("FileManager.aspx")
                     Case "logout"
                         Session("accountid") = ""
                         'Session("accountpass") = ""
