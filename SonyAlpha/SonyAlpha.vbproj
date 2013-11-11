@@ -46,8 +46,19 @@
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AjaxControlToolkit, Version=4.1.40412.0, Culture=neutral, PublicKeyToken=28f01b0e84b6d53e, processorArchitecture=MSIL">
+    <Reference Include="AjaxControlToolkit, Version=4.1.7.1005, Culture=neutral, PublicKeyToken=28f01b0e84b6d53e, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
+      <HintPath>packages\AjaxControlToolkit.7.1005\lib\40\AjaxControlToolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="AjaxMin">
+      <HintPath>packages\AjaxMin.4.97.4951.28483\lib\net40\AjaxMin.dll</HintPath>
+    </Reference>
+    <Reference Include="FredCK.FCKeditorV2, Version=2.6.3.22451, Culture=neutral, PublicKeyToken=4f86767c9b519a06, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\FredCK.FCKeditorV2.dll</HintPath>
+    </Reference>
+    <Reference Include="HtmlAgilityPack">
+      <HintPath>packages\HtmlAgilityPack.1.4.6\lib\Net40\HtmlAgilityPack.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -100,6 +111,7 @@
     <Content Include="controls\admin\uc_newscategory.ascx" />
     <Content Include="controls\admin\uc_newsdetail.ascx" />
     <Content Include="controls\admin\uc_newslist.ascx" />
+    <Content Include="controls\admin\uc_pagedetail.ascx" />
     <Content Include="controls\admin\uc_pages.ascx" />
     <Content Include="controls\admin\uc_permission.ascx" />
     <Content Include="controls\views\uc_album.ascx" />
@@ -621,53 +633,6 @@
     <Content Include="fckeditor\plugins\youtube\youtube.html" />
     <Content Include="fckeditor\plugins\youtube\youtube.js" />
     <Content Include="fckeditor\_documentation.html" />
-    <Content Include="fckeditor\_samples\adobeair\application.xml" />
-    <Content Include="fckeditor\_samples\adobeair\icons\128.png" />
-    <Content Include="fckeditor\_samples\adobeair\icons\16.png" />
-    <Content Include="fckeditor\_samples\adobeair\icons\32.png" />
-    <Content Include="fckeditor\_samples\adobeair\icons\48.png" />
-    <Content Include="fckeditor\_samples\adobeair\sample01.html" />
-    <Content Include="fckeditor\_samples\asp\sample01.asp" />
-    <Content Include="fckeditor\_samples\asp\sample02.asp" />
-    <Content Include="fckeditor\_samples\asp\sample03.asp" />
-    <Content Include="fckeditor\_samples\asp\sample04.asp" />
-    <Content Include="fckeditor\_samples\asp\sampleposteddata.asp" />
-    <Content Include="fckeditor\_samples\default.html" />
-    <Content Include="fckeditor\_samples\html\assets\sample06.config.js" />
-    <Content Include="fckeditor\_samples\html\assets\sample11_frame.html" />
-    <Content Include="fckeditor\_samples\html\assets\sample14.config.js" />
-    <Content Include="fckeditor\_samples\html\assets\sample14.styles.css" />
-    <Content Include="fckeditor\_samples\html\assets\sample15.config.js" />
-    <Content Include="fckeditor\_samples\html\assets\sample16.config.js" />
-    <Content Include="fckeditor\_samples\html\assets\sample16.swf" />
-    <Content Include="fckeditor\_samples\html\assets\swfobject.js" />
-    <Content Include="fckeditor\_samples\html\sample01.html" />
-    <Content Include="fckeditor\_samples\html\sample02.html" />
-    <Content Include="fckeditor\_samples\html\sample03.html" />
-    <Content Include="fckeditor\_samples\html\sample04.html" />
-    <Content Include="fckeditor\_samples\html\sample05.html" />
-    <Content Include="fckeditor\_samples\html\sample06.html" />
-    <Content Include="fckeditor\_samples\html\sample07.html" />
-    <Content Include="fckeditor\_samples\html\sample08.html" />
-    <Content Include="fckeditor\_samples\html\sample09.html" />
-    <Content Include="fckeditor\_samples\html\sample10.html" />
-    <Content Include="fckeditor\_samples\html\sample11.html" />
-    <Content Include="fckeditor\_samples\html\sample12.html" />
-    <Content Include="fckeditor\_samples\html\sample13.html" />
-    <Content Include="fckeditor\_samples\html\sample14.html" />
-    <Content Include="fckeditor\_samples\html\sample15.html" />
-    <Content Include="fckeditor\_samples\html\sample16.html" />
-    <Content Include="fckeditor\_samples\sample.css" />
-    <Content Include="fckeditor\_samples\sampleslist.html" />
-    <Content Include="fckeditor\_samples\_plugins\findreplace\fckplugin.js" />
-    <Content Include="fckeditor\_samples\_plugins\findreplace\find.gif" />
-    <Content Include="fckeditor\_samples\_plugins\findreplace\find.html" />
-    <Content Include="fckeditor\_samples\_plugins\findreplace\lang\en.js" />
-    <Content Include="fckeditor\_samples\_plugins\findreplace\lang\fr.js" />
-    <Content Include="fckeditor\_samples\_plugins\findreplace\lang\it.js" />
-    <Content Include="fckeditor\_samples\_plugins\findreplace\replace.gif" />
-    <Content Include="fckeditor\_samples\_plugins\findreplace\replace.html" />
-    <Content Include="fckeditor\_samples\_plugins\samples\fckplugin.js" />
     <Content Include="fckeditor\_upgrade.html" />
     <Content Include="fckeditor\_whatsnew.html" />
     <Content Include="fckeditor\_whatsnew_history.html" />
@@ -767,6 +732,13 @@
     </Compile>
     <Compile Include="controls\admin\uc_newslist.ascx.vb">
       <DependentUpon>uc_newslist.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\admin\uc_pagedetail.ascx.designer.vb">
+      <DependentUpon>uc_pagedetail.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\admin\uc_pagedetail.ascx.vb">
+      <DependentUpon>uc_pagedetail.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="controls\admin\uc_pages.ascx.designer.vb">
@@ -1007,43 +979,6 @@
     <None Include="fckeditor\fckeditor_php4.php" />
     <None Include="fckeditor\fckeditor_php5.php" />
     <None Include="fckeditor\fckutils.cfm" />
-    <None Include="fckeditor\_samples\adobeair\package.bat" />
-    <None Include="fckeditor\_samples\adobeair\run.bat" />
-    <None Include="fckeditor\_samples\adobeair\sample01_cert.pfx" />
-    <None Include="fckeditor\_samples\afp\fck.afpa" />
-    <None Include="fckeditor\_samples\afp\fck.afpa.code" />
-    <None Include="fckeditor\_samples\afp\sample01.afp" />
-    <None Include="fckeditor\_samples\afp\sample02.afp" />
-    <None Include="fckeditor\_samples\afp\sample03.afp" />
-    <None Include="fckeditor\_samples\afp\sample04.afp" />
-    <None Include="fckeditor\_samples\afp\sampleposteddata.afp" />
-    <None Include="fckeditor\_samples\cfm\sample01.cfm" />
-    <None Include="fckeditor\_samples\cfm\sample01_mx.cfm" />
-    <None Include="fckeditor\_samples\cfm\sample02.cfm" />
-    <None Include="fckeditor\_samples\cfm\sample02_mx.cfm" />
-    <None Include="fckeditor\_samples\cfm\sample03.cfm" />
-    <None Include="fckeditor\_samples\cfm\sample03_mx.cfm" />
-    <None Include="fckeditor\_samples\cfm\sample04.cfm" />
-    <None Include="fckeditor\_samples\cfm\sample04_mx.cfm" />
-    <None Include="fckeditor\_samples\cfm\sampleposteddata.cfm" />
-    <None Include="fckeditor\_samples\html\assets\sample16.fla" />
-    <None Include="fckeditor\_samples\lasso\sample01.lasso" />
-    <None Include="fckeditor\_samples\lasso\sample02.lasso" />
-    <None Include="fckeditor\_samples\lasso\sample03.lasso" />
-    <None Include="fckeditor\_samples\lasso\sample04.lasso" />
-    <None Include="fckeditor\_samples\lasso\sampleposteddata.lasso" />
-    <None Include="fckeditor\_samples\perl\sample01.cgi" />
-    <None Include="fckeditor\_samples\perl\sample02.cgi" />
-    <None Include="fckeditor\_samples\perl\sample03.cgi" />
-    <None Include="fckeditor\_samples\perl\sample04.cgi" />
-    <None Include="fckeditor\_samples\perl\sampleposteddata.cgi" />
-    <None Include="fckeditor\_samples\php\sample01.php" />
-    <None Include="fckeditor\_samples\php\sample02.php" />
-    <None Include="fckeditor\_samples\php\sample03.php" />
-    <None Include="fckeditor\_samples\php\sample04.php" />
-    <None Include="fckeditor\_samples\php\sampleposteddata.php" />
-    <None Include="fckeditor\_samples\py\sample01.py" />
-    <None Include="fckeditor\_samples\py\sampleposteddata.py" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
@@ -1053,6 +988,7 @@
       <CustomToolNamespace>My</CustomToolNamespace>
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
+    <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1134,108 +1070,6 @@
     <Folder Include="fckeditor\skins\office2003\images\" />
     <Folder Include="fckeditor\skins\v2\images\" />
     <Folder Include="fckeditor\themes\default\" />
-    <Folder Include="fckeditor\_samples\api_dialog\" />
-    <Folder Include="fckeditor\_source\core\dom\" />
-    <Folder Include="fckeditor\_source\core\htmlparser\" />
-    <Folder Include="fckeditor\_source\lang\" />
-    <Folder Include="fckeditor\_source\plugins\about\dialogs\" />
-    <Folder Include="fckeditor\_source\plugins\basicstyles\" />
-    <Folder Include="fckeditor\_source\plugins\blockquote\" />
-    <Folder Include="fckeditor\_source\plugins\button\" />
-    <Folder Include="fckeditor\_source\plugins\clipboard\dialogs\" />
-    <Folder Include="fckeditor\_source\plugins\colorbutton\" />
-    <Folder Include="fckeditor\_source\plugins\contextmenu\" />
-    <Folder Include="fckeditor\_source\plugins\dialogui\" />
-    <Folder Include="fckeditor\_source\plugins\dialog\" />
-    <Folder Include="fckeditor\_source\plugins\domiterator\" />
-    <Folder Include="fckeditor\_source\plugins\editingblock\" />
-    <Folder Include="fckeditor\_source\plugins\elementspath\" />
-    <Folder Include="fckeditor\_source\plugins\enterkey\" />
-    <Folder Include="fckeditor\_source\plugins\entities\" />
-    <Folder Include="fckeditor\_source\plugins\fakeobjects\" />
-    <Folder Include="fckeditor\_source\plugins\filebrowser\" />
-    <Folder Include="fckeditor\_source\plugins\find\dialogs\" />
-    <Folder Include="fckeditor\_source\plugins\flash\dialogs\" />
-    <Folder Include="fckeditor\_source\plugins\flash\images\" />
-    <Folder Include="fckeditor\_source\plugins\floatpanel\" />
-    <Folder Include="fckeditor\_source\plugins\font\" />
-    <Folder Include="fckeditor\_source\plugins\format\" />
-    <Folder Include="fckeditor\_source\plugins\forms\dialogs\" />
-    <Folder Include="fckeditor\_source\plugins\horizontalrule\" />
-    <Folder Include="fckeditor\_source\plugins\htmldataprocessor\" />
-    <Folder Include="fckeditor\_source\plugins\htmlwriter\" />
-    <Folder Include="fckeditor\_source\plugins\iframedialog\" />
-    <Folder Include="fckeditor\_source\plugins\image\dialogs\" />
-    <Folder Include="fckeditor\_source\plugins\indent\" />
-    <Folder Include="fckeditor\_source\plugins\justify\" />
-    <Folder Include="fckeditor\_source\plugins\keystrokes\" />
-    <Folder Include="fckeditor\_source\plugins\link\dialogs\" />
-    <Folder Include="fckeditor\_source\plugins\link\images\" />
-    <Folder Include="fckeditor\_source\plugins\listblock\" />
-    <Folder Include="fckeditor\_source\plugins\list\" />
-    <Folder Include="fckeditor\_source\plugins\maximize\" />
-    <Folder Include="fckeditor\_source\plugins\menubutton\" />
-    <Folder Include="fckeditor\_source\plugins\menu\" />
-    <Folder Include="fckeditor\_source\plugins\newpage\" />
-    <Folder Include="fckeditor\_source\plugins\pagebreak\images\" />
-    <Folder Include="fckeditor\_source\plugins\panelbutton\" />
-    <Folder Include="fckeditor\_source\plugins\panel\" />
-    <Folder Include="fckeditor\_source\plugins\pastefromword\dialogs\" />
-    <Folder Include="fckeditor\_source\plugins\pastetext\dialogs\" />
-    <Folder Include="fckeditor\_source\plugins\popup\" />
-    <Folder Include="fckeditor\_source\plugins\preview\" />
-    <Folder Include="fckeditor\_source\plugins\print\" />
-    <Folder Include="fckeditor\_source\plugins\removeformat\" />
-    <Folder Include="fckeditor\_source\plugins\resize\" />
-    <Folder Include="fckeditor\_source\plugins\richcombo\" />
-    <Folder Include="fckeditor\_source\plugins\save\" />
-    <Folder Include="fckeditor\_source\plugins\scayt\dialogs\" />
-    <Folder Include="fckeditor\_source\plugins\selection\" />
-    <Folder Include="fckeditor\_source\plugins\showblocks\images\" />
-    <Folder Include="fckeditor\_source\plugins\smiley\dialogs\" />
-    <Folder Include="fckeditor\_source\plugins\smiley\images\" />
-    <Folder Include="fckeditor\_source\plugins\sourcearea\" />
-    <Folder Include="fckeditor\_source\plugins\specialchar\dialogs\" />
-    <Folder Include="fckeditor\_source\plugins\stylescombo\styles\" />
-    <Folder Include="fckeditor\_source\plugins\styles\" />
-    <Folder Include="fckeditor\_source\plugins\tabletools\dialogs\" />
-    <Folder Include="fckeditor\_source\plugins\table\dialogs\" />
-    <Folder Include="fckeditor\_source\plugins\tab\" />
-    <Folder Include="fckeditor\_source\plugins\templates\dialogs\" />
-    <Folder Include="fckeditor\_source\plugins\templates\templates\images\" />
-    <Folder Include="fckeditor\_source\plugins\toolbar\" />
-    <Folder Include="fckeditor\_source\plugins\uicolor\dialogs\" />
-    <Folder Include="fckeditor\_source\plugins\uicolor\lang\" />
-    <Folder Include="fckeditor\_source\plugins\uicolor\yui\assets\" />
-    <Folder Include="fckeditor\_source\plugins\undo\" />
-    <Folder Include="fckeditor\_source\plugins\wsc\dialogs\" />
-    <Folder Include="fckeditor\_source\plugins\wysiwygarea\" />
-    <Folder Include="fckeditor\_source\skins\kama\images\" />
-    <Folder Include="fckeditor\_source\skins\office2003\images\" />
-    <Folder Include="fckeditor\_source\skins\v2\images\" />
-    <Folder Include="fckeditor\_source\tests\core\dom\" />
-    <Folder Include="fckeditor\_source\tests\core\htmlparser\" />
-    <Folder Include="fckeditor\_source\tests\core\plugins\myplugins\sample\" />
-    <Folder Include="fckeditor\_source\tests\core\_editor\" />
-    <Folder Include="fckeditor\_source\tests\plugins\domiterator\" />
-    <Folder Include="fckeditor\_source\tests\plugins\htmldataprocessor\" />
-    <Folder Include="fckeditor\_source\tests\plugins\link\" />
-    <Folder Include="fckeditor\_source\tests\plugins\list\" />
-    <Folder Include="fckeditor\_source\tests\plugins\selection\" />
-    <Folder Include="fckeditor\_source\tests\plugins\styles\" />
-    <Folder Include="fckeditor\_source\tests\_assets\" />
-    <Folder Include="fckeditor\_source\themes\default\" />
-    <Folder Include="fckeditor\_tests\core\dom\" />
-    <Folder Include="fckeditor\_tests\core\htmlparser\" />
-    <Folder Include="fckeditor\_tests\core\plugins\myplugins\sample\" />
-    <Folder Include="fckeditor\_tests\core\_editor\" />
-    <Folder Include="fckeditor\_tests\plugins\domiterator\" />
-    <Folder Include="fckeditor\_tests\plugins\htmldataprocessor\" />
-    <Folder Include="fckeditor\_tests\plugins\link\" />
-    <Folder Include="fckeditor\_tests\plugins\list\" />
-    <Folder Include="fckeditor\_tests\plugins\selection\" />
-    <Folder Include="fckeditor\_tests\plugins\styles\" />
-    <Folder Include="fckeditor\_tests\_assets\" />
     <Folder Include="Img\" />
     <Folder Include="Js\controllers\" />
     <Folder Include="upload\" />
