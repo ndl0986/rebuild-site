@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="Classes\BaseModel.cs" />
     <Compile Include="Classes\Menu.cs" />
+    <Compile Include="Classes\Page.cs" />
     <Compile Include="Classes\Permission.cs" />
     <Compile Include="Classes\User.cs" />
     <Compile Include="Classes\UserGroup.cs" />
@@ -49,6 +50,7 @@
     <Compile Include="Interfaces\IBaseFunction.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\MenuServices.cs" />
+    <Compile Include="Services\PageServices.cs" />
     <Compile Include="Services\PermissionGroupServices.cs" />
     <Compile Include="Services\PermissionServices.cs" />
     <Compile Include="Services\UserGroupServices.cs" />
