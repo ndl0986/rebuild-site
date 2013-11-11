@@ -289,6 +289,13 @@ Public Module Db
     End Function
     Public Function PageSeUrl(ByVal id As Integer, ByVal Title As String) As String
         Dim result As String
+        Title = CleanURL(Title)
+        If ConfigurationManager.AppSettings("vird") <> "" Then
+            result = "/" & ConfigurationManager.AppSettings("vird") & "/page/" & id & "_" & Title
+        Else
+            result = "/page/" & id & "_" & Title
+        End If
+        result = result & ".aspx"
         Return result
     End Function
     Public Function PhotoAlbumSeUrl(ByVal id As Integer) As String
