@@ -25,8 +25,8 @@
                         tpl = Page.LoadControl("../controls/admin/uc_editaccount.ascx")
                     Case "accountgroup"
                         tpl = Page.LoadControl("../controls/admin/uc_accountgroup.ascx")
-                    Case "editaccount"
-                        tpl = Page.LoadControl("../controls/admin/uc_editaccount.ascx")
+                    Case "addnew","editnew"
+                        tpl = Page.LoadControl("../controls/admin/uc_newsdetail.ascx")
                     Case "permissions"
                         tpl = Page.LoadControl("../controls/admin/uc_permission.ascx")
                     Case "productcategory"
