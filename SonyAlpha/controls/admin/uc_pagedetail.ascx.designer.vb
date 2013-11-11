@@ -11,32 +11,41 @@ Option Strict On
 Option Explicit On
 
 
-Partial Public Class uc_pages
+Partial Public Class uc_pagedetail
 
     '''<summary>
-    '''lblMessage control.
+    '''txtTitle control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents lblMessage As Global.System.Web.UI.WebControls.Label
+    Protected WithEvents txtTitle As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
-    '''grvPages control.
+    '''txtUrl control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents grvPages As Global.System.Web.UI.WebControls.GridView
+    Protected WithEvents txtUrl As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
-    '''objPage control.
+    '''fckEditor control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents objPage As Global.System.Web.UI.WebControls.ObjectDataSource
+    Protected WithEvents fckEditor As Global.FredCK.FCKeditorV2.FCKeditor
+
+    '''<summary>
+    '''btnSave control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btnSave As Global.System.Web.UI.HtmlControls.HtmlButton
 End Class
