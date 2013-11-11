@@ -264,7 +264,8 @@ namespace SonyAlphaLibs.Services
             #endregion
         }
 
-        internal static List<Page> getListPage(int pageNum, int order, int pageSize, string orderBy, string connString)
+        internal static List<Page> getListPage(int pageNum, int order, int pageSize, 
+            string orderBy, string connString)
         {
             #region code
             List<Page> lists = new List<Page>();
