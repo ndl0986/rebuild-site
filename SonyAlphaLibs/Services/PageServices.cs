@@ -8,7 +8,7 @@ using System.Data;
 
 namespace SonyAlphaLibs.Services
 {
-    public class PageServices
+    public class PageServices : BaseService
     {
 
         internal static bool addPage(Page page, string connString)
@@ -312,5 +312,7 @@ namespace SonyAlphaLibs.Services
             return lists;
             #endregion
         }
+
+        
     }
 }

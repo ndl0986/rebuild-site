@@ -7,7 +7,7 @@ using System.Data;
 
 namespace SonyAlphaLibs.Services
 {
-    public static class MenuServices
+    public class MenuServices : BaseService
     {
         internal static bool addMenu(Menu menu, string connString)
         {

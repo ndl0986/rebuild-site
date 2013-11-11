@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SonyAlphaLibs.Services
 {
-    public static class PermissionGroupServices
+    public class PermissionGroupServices : BaseService
     {
 
     }

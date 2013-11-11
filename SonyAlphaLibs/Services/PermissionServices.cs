@@ -8,7 +8,7 @@ using System.Data.SqlClient;
 
 namespace SonyAlphaLibs.Services
 {
-    public static class PermissionServices
+    public class PermissionServices : BaseService
     {
 
         internal static bool addPermission(Permission permission, string connString)

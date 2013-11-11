@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SonyAlphaLibs.Services
 {
-    public static class BannerServices
+    public class BannerServices : BaseService
     {
 
         internal static bool addBanner(Banner banner, string connString)

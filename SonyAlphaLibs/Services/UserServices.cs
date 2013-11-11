@@ -7,7 +7,7 @@ using System.Data;
 
 namespace SonyAlphaLibs.Services
 {
-    public static class UserServices
+    public class UserServices : BaseService
     {
         public static bool addUser(User user, String connString)
         {

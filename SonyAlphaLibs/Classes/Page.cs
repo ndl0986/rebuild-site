@@ -116,6 +116,11 @@ namespace SonyAlphaLibs
         {
             return PageServices.getListPage(pageNum, order, pageSize, orderBy, connString);
         }
+
+        public int getCurrentMaxId(String connString)
+        {
+            return PageServices.getCurrentMaxId("sony_page", connString);
+        }
         #endregion
     }
 }

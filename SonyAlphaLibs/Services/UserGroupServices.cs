@@ -7,7 +7,7 @@ using System.Data;
 
 namespace SonyAlphaLibs.Services
 {
-    public static class UserGroupServices
+    public class UserGroupServices : BaseService
     {
         public static bool addUserGroup(UserGroup userGroup, String connString)
         {
