@@ -10,6 +10,10 @@
         <ul class="form">
             <li class="row clerafix">
                 <div class="caption" >Tiêu đề trang :</div>
+                <div class="item"><asp:TextBox runat="server" ID="TextBox1" CssClass="textbox" required minlength="4" maxlength="20"></asp:TextBox></div>
+            </li>
+            <li class="row clerafix">
+                <div class="caption" >Tiêu đề trang :</div>
                 <div class="item"><asp:TextBox runat="server" ID="txtTitle" CssClass="textbox" required minlength="4" maxlength="20"></asp:TextBox></div>
             </li>
             <li class="row clerafix">

@@ -14,6 +14,15 @@ Option Explicit On
 Partial Public Class uc_pagedetail
 
     '''<summary>
+    '''TextBox1 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents TextBox1 As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
     '''txtTitle control.
     '''</summary>
     '''<remarks>

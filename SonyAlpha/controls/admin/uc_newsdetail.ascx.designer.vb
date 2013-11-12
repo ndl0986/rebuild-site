@@ -12,13 +12,4 @@ Option Explicit On
 
 
 Partial Public Class uc_newsdetail1
-
-    '''<summary>
-    '''Editor1 control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents Editor1 As Global.AjaxControlToolkit.HTMLEditor.Editor
 End Class
