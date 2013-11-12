@@ -164,7 +164,7 @@ namespace SonyAlphaLibs.Services
             throw new NotImplementedException();
         }
 
-        internal static bool setPhoto2Banner(List<BannerPhoto> listPhotos, string connString)
+        internal static bool setPhoto2Banner(int bannerId, List<BannerPhoto> listPhotos, string connString)
         {
             #region code
             bool rs = false;
@@ -183,13 +183,13 @@ namespace SonyAlphaLibs.Services
                             {
                                 String sql = String.Empty;
                                 sql = @"
-                                EXEC sony_sp_add_banner_photo @bannerId{0}, @imageUrl{0}, @link2{0}, @returlVal{0};
+                                EXEC sony_sp_add_banner_photo @bannerId{0}, @imageUrl{0}, @link2{0}, @returnVal{0};
                             ";
                                 for (int i = 0; i < listPhotos.Count; i++)
                                 {
                                     BannerPhoto bannerPhoto = listPhotos[i];
                                     cmd.CommandText = String.Format(sql, i);
-                                    cmd.Parameters.AddWithValue("@bannerId" + i.ToString(), bannerPhoto.BannerId);
+                                    cmd.Parameters.AddWithValue("@bannerId" + i.ToString(), bannerId);
                                     cmd.Parameters.AddWithValue("@imageUrl" + i.ToString(), bannerPhoto.ImageUrl);
                                     cmd.Parameters.AddWithValue("@link2" + i.ToString(), bannerPhoto.Link2);
                                     SqlParameter returnVal = new SqlParameter("@returnVal" + i.ToString(), SqlDbType.Int);

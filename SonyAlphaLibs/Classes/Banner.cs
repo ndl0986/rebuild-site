@@ -33,7 +33,7 @@ namespace SonyAlphaLibs
             set { bannerType = value; }
         }
 
-        public List<BannerPhoto> listPhotos = new List<BannerPhoto>();
+        public List<BannerPhoto> ListPhotos = new List<BannerPhoto>();
         #endregion
 
         #region base method
@@ -60,7 +60,7 @@ namespace SonyAlphaLibs
         public Banner getById(String connString)
         {
             Banner banner = BannerServices.getById(base.Id, connString);
-            banner.listPhotos = BannerServices.getPhotoOfBanner(base.Id, connString);
+            banner.ListPhotos = BannerServices.getPhotoOfBanner(base.Id, connString);
             return banner;
         }
         #endregion
@@ -73,7 +73,12 @@ namespace SonyAlphaLibs
 
         public bool setPhoto2Banner(String connString)
         {
-            return BannerServices.setPhoto2Banner(this.listPhotos, connString);
+            return BannerServices.setPhoto2Banner(base.Id, this.ListPhotos, connString);
+        }
+
+        public int getCurrentMaxId(String connString)
+        {
+            return BannerServices.getCurrentMaxId("sony_banner", connString);
         }
         #endregion
     }
