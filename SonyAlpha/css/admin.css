@@ -425,7 +425,6 @@ clear:right;
 .ui-datepicker-cover {
 position:absolute;
 z-index:-1;
-filter:mask();
 top:-4px;
 left:-4px;
 width:200px;
@@ -1536,8 +1535,7 @@ background-image:url(../img/ui-icons_454545_256x240.png);
 background-position:-80px -160px;
 }
 
-* {margin:0;padding:0;
-}
+* {margin:0;padding:0;}
 
 @font-face {
     font-family: 'open_sans';
@@ -1798,7 +1796,6 @@ font-weight:700;
 }
 
 .colLeft {
--webkit-transition:margin .3s linear;
 float:left;
 left:0;
 position:relative;
@@ -1806,7 +1803,6 @@ width:250px;
 }
 
 .colRight {
--webkit-transition:margin .3s linear;
 display:block;
 height:100%;
 margin-left:250px;
@@ -2141,102 +2137,87 @@ line-height:34px;
 
 .datatable {
 border:none;
-margin-bottom:20px;
-width:100%;
+background: #fff;
+width: 100%;
 }
 
-.datatable tr:hover {
+#nav li a {
+background:#efefef;
+border-bottom:1px solid #6678B1;
+border-top:1px solid #eee;
+color:#666;
+display:block;
+text-decoration:none;
+padding:10px 15px;
+}
+
+#nav li a:hover,#nav li a.active {
 background:#E9EDFE;
-}
-
-.datatable tr td {
-border-bottom:1px solid #CCC;
-color:#669;
-padding:6px 8px;
-}
-
-.datatable tr th {
-border-bottom:2px solid #6678B1;
 color:#039;
-cursor:pointer;
-font-size:14px;
-font-weight:400;
-text-align:left;
-padding:10px 8px;
 }
 
-.datatable input[type=text] {
--moz-border-radius:4px;
--moz-box-shadow:inset 0 1px 2px #ddd;
--o-border-radius:4px;
--webkit-border-radius:4px;
--webkit-box-shadow:inset 0 1px 2px #DDD;
+#nav li ul li a {
 background:#fff;
-border:solid 1px #c4c4c4;
-border-radius:4px;
-box-shadow:inset 0 1px 2px #DDD;
+border-bottom:1px dotted #ccc;
+padding:10px 25px;
+}
+
+input[type=button]:disabled,input[type=submit]:disabled,button:disabled,input[type=button]:disabled:hover,input[type=submit]:disabled:hover,button:disabled:hover {
+-moz-box-shadow:none;
+-webkit-box-shadow:none;
+background:#eee;
+border:solid 1px #ccc;
+box-shadow:none;
+color:#aaa;
+cursor:default;
+}
+
+.footer .caption,.fullitem .picture {
+margin-bottom:20px;
+}
+
+.formlogin button .label,.form .full {
+float:none;
+}
+.datatable tr:hover{background:#E9EDFE}.datatable tr td{border-bottom:1px solid #CCC;color:#669;padding:6px 8px}.datatable tr th{border-bottom:2px solid #6678B1;color:#039;cursor:pointer;font-size:14px;font-weight:400;text-align:left;padding:10px 8px}
+.datatable tr:hover td,.datatable tr th a {
+color:#039;
+}
+
+.datatable .button,.datatable button,.datatable .button:hover,.datatable button:hover {
+background:none;
+border:none;
+padding:0;
+float:none;
+}
+.datatable .button span.icon,.datatable button span.icon {margin:0;}
+.buttons:before,.buttons:after {
+content:"\0020";
+display:block;
+height:0;
+visibility:hidden;
+}
+
+button,.button {
+-moz-border-radius:2px;
+-moz-transition:border-color .20s;
+-o-transition:border-color .20s;
+-webkit-border-radius:2px;
+-webkit-transition:border-color .20s;
+background:#F3F3F3;
+border:solid 1px #D9D9D9;
+border-radius:2px;
+color:#444;
 display:inline-block;
-font-weight:700;
-height:28px;
-overflow:hidden;
-text-indent:10px;
-}
-
-.form .row {
-display:block;
-margin-bottom:10px;
-min-height:30px;
-}
-
-.form .caption {
-color:#669;
-display:block;
 float:left;
-line-height:30px;
-min-height:30px;
-text-transform:capitalize;
-width:150px;
+font:bold 11px Helvetica, Arial, sans
+float:left;
 }
-
-.form .item {
-display:block;
-margin-left:160px;
-}
-
-.form .fullitem {
-display:block;
-margin:10px 0;
-}
-
-.form .textbox {
-min-width:250px;
-}
-
-.form select {
-min-width:150px;
-}
-
-.form textarea.textbox {
-min-height:50px;
-min-width:230px;
-padding:10px;
-}
-
-.heading {
-color:#4e4e4e;
-display:block;
-font-weight:100;
-letter-spacing:0;
-text-transform:none;
-width:100%;
-margin:10px 0;
-}
-
-.section .heading {
-border-bottom:solid 2px #390;
-padding-bottom:10px;
-}
-
+.form { margin-top: 10px;}
+.form .row{display:block;margin-bottom:10px;min-height:30px}.form .caption{color:#669;display:block;float:left;line-height:30px;min-height:30px;text-transform:capitalize;width:150px}.form .item{display:block;margin-left:160px}.form .fullitem{display:block;margin:10px 0}.form .textbox{min-width:250px}.form select{min-width:150px}.form textarea.textbox{min-height:50px;min-width:230px;padding:10px}
+.heading{color:#4e4e4e;display:block;font-weight:100;letter-spacing:0;text-transform:none;width:100%;margin:10px 0}
+.section .heading{border-bottom:solid 2px #390;padding-bottom:10px; margin-bottom: 0px; float: left;}
+.section .heading:after{clear: both;display: block; content: '';}
 .breakcurm .heading {
 display:block;
 font-weight:700;
@@ -2339,8 +2320,9 @@ color:#039;
 background:none;
 border:none;
 padding:0;
+float:none;
 }
-
+.datatable .button span.icon,.datatable button span.icon {margin:0;}
 .buttons:before,.buttons:after {
 content:"\0020";
 display:block;
