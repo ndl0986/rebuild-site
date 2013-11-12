@@ -89,6 +89,7 @@ namespace SonyAlphaLibs.Services
 
         internal static List<Menu> getListAll(string connString)
         {
+            #region code
             List<Menu> lists = new List<Menu>();
             using (SqlConnection conn = new SqlConnection(connString))
             {
@@ -125,7 +126,8 @@ namespace SonyAlphaLibs.Services
                     return new List<Menu>();
                 }
             }
-            return lists;
+            return lists; 
+            #endregion
         }
 
         internal static Menu getById(int id, string connString)

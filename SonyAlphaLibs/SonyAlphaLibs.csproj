@@ -46,6 +46,7 @@
     <Compile Include="Classes\Menu.cs" />
     <Compile Include="Classes\Page.cs" />
     <Compile Include="Classes\Permission.cs" />
+    <Compile Include="Classes\Setting.cs" />
     <Compile Include="Classes\User.cs" />
     <Compile Include="Classes\UserGroup.cs" />
     <Compile Include="Example\example.cs" />
@@ -57,6 +58,7 @@
     <Compile Include="Services\PageServices.cs" />
     <Compile Include="Services\PermissionGroupServices.cs" />
     <Compile Include="Services\PermissionServices.cs" />
+    <Compile Include="Services\SettingServices.cs" />
     <Compile Include="Services\UserGroupServices.cs" />
     <Compile Include="Services\UserServices.cs" />
   </ItemGroup>
