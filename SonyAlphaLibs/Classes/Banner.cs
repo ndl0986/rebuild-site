@@ -59,7 +59,9 @@ namespace SonyAlphaLibs
 
         public Banner getById(String connString)
         {
-            return BannerServices.getById(base.Id, connString);
+            Banner banner = BannerServices.getById(base.Id, connString);
+            banner.listPhotos = BannerServices.getPhotoOfBanner(base.Id, connString);
+            return banner;
         }
         #endregion
 
