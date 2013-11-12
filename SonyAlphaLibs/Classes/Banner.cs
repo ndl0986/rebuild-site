@@ -33,6 +33,7 @@ namespace SonyAlphaLibs
             set { bannerType = value; }
         }
 
+        public List<BannerPhoto> listPhotos = new List<BannerPhoto>();
         #endregion
 
         #region base method
@@ -59,6 +60,18 @@ namespace SonyAlphaLibs
         public Banner getById(String connString)
         {
             return BannerServices.getById(base.Id, connString);
+        }
+        #endregion
+
+        #region ext method
+        public bool setPhoto2Banner(int photoId, String connString)
+        {
+            return BannerServices.setPhoto2Banner(photoId, connString);
+        }
+
+        public bool setPhoto2Banner(String connString)
+        {
+            return BannerServices.setPhoto2Banner(this.listPhotos, connString);
         }
         #endregion
     }

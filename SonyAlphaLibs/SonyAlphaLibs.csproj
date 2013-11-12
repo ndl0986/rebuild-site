@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\Banner.cs" />
+    <Compile Include="Classes\BannerPhoto.cs" />
     <Compile Include="Classes\BaseModel.cs" />
     <Compile Include="Classes\Menu.cs" />
     <Compile Include="Classes\Page.cs" />

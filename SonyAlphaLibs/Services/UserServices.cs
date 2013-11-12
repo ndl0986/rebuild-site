@@ -11,6 +11,7 @@ namespace SonyAlphaLibs.Services
     {
         public static bool addUser(User user, String connString)
         {
+            #region code
             bool rs = false;
             using (SqlConnection conn = new SqlConnection(connString))
             {
@@ -40,7 +41,8 @@ namespace SonyAlphaLibs.Services
                     return false;
                 }
             }
-            return rs;
+            return rs; 
+            #endregion
         }
 
         public static User getById(int id, String connString)
@@ -50,6 +52,7 @@ namespace SonyAlphaLibs.Services
 
         public static List<User> getListAll(String connString)
         {
+            #region code
             List<User> lists = new List<User>();
             using (SqlConnection conn = new SqlConnection(connString))
             {
@@ -83,7 +86,8 @@ namespace SonyAlphaLibs.Services
                     return new List<User>();
                 }
             }
-            return lists;
+            return lists; 
+            #endregion
         }
 
         public static bool login(User user, String connString)
