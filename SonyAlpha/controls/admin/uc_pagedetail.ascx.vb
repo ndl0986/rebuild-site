@@ -7,7 +7,8 @@ Public Class uc_pagedetail
     Sub LoadPage(id As String)
         myPage.Id = CInt(id)
         myPage = myPage.getById(CN.ConnectionString)
-        txtTitle.Text = myPage.LongTitle
+        txtTitle.Text = myPage.Title
+        txtLongTitle.Text = myPage.LongTitle
         fckEditor.Value = myPage.PageContent
         txtUrl.Text = myPage.SeoUrl
 
@@ -28,11 +29,11 @@ Public Class uc_pagedetail
     End Sub
 
     Private Sub btnSave_ServerClick(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnSave.ServerClick
-        myPage.LongTitle = txtTitle.Text.Trim
-        If myPage.LongTitle.Length > 300 Then
-            myPage.Title = myPage.LongTitle.Substring(0, 300)
+        myPage.LongTitle = txtLongTitle.Text.Trim
+        If txtTitle.Text = "" Then
+            myPage.Title = txtLongTitle.Text.Trim
         Else
-            myPage.Title = myPage.LongTitle
+            myPage.Title = txtTitle.Text
         End If
 
         myPage.PageContent = fckEditor.Value
@@ -47,7 +48,7 @@ Public Class uc_pagedetail
         If result Then
             ScriptManager.RegisterStartupScript(Me, GetType(String), "Message", "alert('Lưu page thành công !!!');", True)
         Else
-            ScriptManager.RegisterStartupScript(Me, GetType(String), "Message", "alert('Đã lưu page không thành công !!!');", True)
+            ScriptManager.RegisterStartupScript(Me, GetType(String), "Message", "alert('lưu page không thành công !!!');", True)
         End If
     End Sub
 End Class

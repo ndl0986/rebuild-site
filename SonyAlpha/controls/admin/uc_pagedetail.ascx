@@ -9,12 +9,12 @@
     <div class="section">
         <ul class="form">
             <li class="row clerafix">
-                <div class="caption" >Tiêu đề trang :</div>
-                <div class="item"><asp:TextBox runat="server" ID="TextBox1" CssClass="textbox" required minlength="4" maxlength="20"></asp:TextBox></div>
+                <div class="caption" >Trang :</div>
+                <div class="item"><asp:TextBox runat="server" ID="txtTitle" CssClass="textbox" required maxlength="300"></asp:TextBox></div>
             </li>
             <li class="row clerafix">
                 <div class="caption" >Tiêu đề trang :</div>
-                <div class="item"><asp:TextBox runat="server" ID="txtTitle" CssClass="textbox" required minlength="4" maxlength="20"></asp:TextBox></div>
+                <div class="item"><asp:TextBox runat="server" ID="txtLongTitle" CssClass="textbox" required maxlength="500"></asp:TextBox></div>
             </li>
             <li class="row clerafix">
                 <div class="caption" >Url</div>
@@ -29,7 +29,7 @@
             <li class="row clerafix">
                 <div class="item textright" >
                     <button class="action btnOk" runat="server" ID="btnSave" disabled="disabled" ><span class="label">Lưu</span></button>
-                    <a class="button action" id="btnCancel"><span class="label">Hủy</span></a>
+                    <a href="javascript:void(0);" class="button action" id="btnCancel"><span class="label">Hủy</span></a>
                 </div>
             </li>
         </ul>

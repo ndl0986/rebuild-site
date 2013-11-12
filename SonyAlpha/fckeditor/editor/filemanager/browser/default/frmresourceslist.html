@@ -1,4 +1,4 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <!--
  * FCKeditor - The text editor for Internet - http://www.fckeditor.net
  * Copyright (C) 2003-2008 Frederico Caldeira Knabben
@@ -25,10 +25,8 @@
 <head>
 	<title>Resources</title>
 	<link href="browser.css" type="text/css" rel="stylesheet">
-    <link href="../../../../../css/lightbox.css" stylesheet" type="text/css" />
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<script type="text/javascript" src="js/common.js"></script>
-    <script type="text/javascript" language="javascript" src="../../../../../script/lightbox.js"></script>
 	<script type="text/javascript">
 	
 function showP(str)
@@ -133,7 +131,7 @@ function GetFoldersAndFilesCallBack( fckXml )
 	if ( oConnector.CheckError( fckXml ) != 0 )
 		return ;
 
-    var root = 'http://ngaycuoivn.com/';
+	var root = globalPath;
 	// Get the current folder path.
 	var oFolderNode = fckXml.SelectSingleNode( 'Connector/CurrentFolder' ) ;
 	if ( oFolderNode == null )
@@ -175,7 +173,7 @@ function GetFoldersAndFilesCallBack( fckXml )
 	oHtml.Append( '<\/table>' ) ;
 
 	document.body.innerHTML = oHtml.ToString() ;
-    document.body.innerHTML=document.body.innerHTML + '<div id="dPreview"><img id="iPreview" src=""/></div><br style="clear:both;"/>';
+    document.body.innerHTML=document.body.innerHTML + '<div id="dPreview"><img id="iPreview" src=""/></div>';
 
 //	window.top.document.title = 'Finished processing in ' + ( ( ( new Date() ) - dTimer ) / 1000 ) + ' seconds' ;
 

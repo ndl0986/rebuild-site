@@ -23,7 +23,7 @@
  * Follow this link for more information:
  * http://docs.fckeditor.net/FCKeditor_2.x/Developers_Guide/Configuration/Configuration_Options
  */
-
+var globalPath = 'http://localhost:15058/';
 FCKConfig.CustomConfigurationsPath = '' ;
 
 FCKConfig.EditorAreaCSS = FCKConfig.BasePath + 'css/fck_editorarea.css' ;
@@ -32,7 +32,7 @@ FCKConfig.ToolbarComboPreviewCSS = '' ;
 
 FCKConfig.DocType = '' ;
 
-FCKConfig.BaseHref = 'http://ngaycuoivn.com/';
+FCKConfig.BaseHref = globalPath;
 
 FCKConfig.FullPage = false ;
 

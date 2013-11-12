@@ -9,4 +9,9 @@
 
     End Sub
 
+    Private Sub grvPages_SelectedIndexChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles grvPages.SelectedIndexChanged
+        Dim strURL As String
+        strURL = "?tpl=addpage&id=" & grvPages.Rows(grvPages.SelectedIndex).Cells(0).Text
+        Response.Redirect(strURL)
+    End Sub
 End Class

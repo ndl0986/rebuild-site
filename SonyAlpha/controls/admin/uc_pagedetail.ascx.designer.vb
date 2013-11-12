@@ -14,15 +14,6 @@ Option Explicit On
 Partial Public Class uc_pagedetail
 
     '''<summary>
-    '''TextBox1 control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents TextBox1 As Global.System.Web.UI.WebControls.TextBox
-
-    '''<summary>
     '''txtTitle control.
     '''</summary>
     '''<remarks>
@@ -30,6 +21,15 @@ Partial Public Class uc_pagedetail
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents txtTitle As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''txtLongTitle control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtLongTitle As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
     '''txtUrl control.

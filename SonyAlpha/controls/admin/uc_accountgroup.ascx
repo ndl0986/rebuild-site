@@ -11,10 +11,18 @@
         <asp:GridView EmptyDataText="Không có nhóm tài khoản nào" ID="grvGroupAccount" 
             runat="server" AllowPaging="True" AllowSorting="True" 
             DataSourceID="objGroupAccount"  SkinID="Defaultgridview" 
-            AutoGenerateColumns="False" CssClass="datatable" GridLines="None" 
-            DataKeyNames="">
+            AutoGenerateColumns="False" CssClass="datatable" GridLines="None">
             <HeaderStyle CssClass="girdheader"/>
             <Columns>
+                <asp:BoundField DataField="Id" HeaderText="Id" SortExpression="Id" ReadOnly="true"/>
+                <asp:BoundField DataField="GroupName" HeaderText="Nhóm" 
+                    SortExpression="GroupName" />
+                <asp:CheckBoxField DataField="IsSuper" HeaderText="Nhóm quản trị" 
+                    SortExpression="IsSuper" />
+                <asp:BoundField DataField="Created" HeaderText="Created" 
+                    SortExpression="Created" />
+                <asp:BoundField DataField="Updated" HeaderText="Updated" 
+                    SortExpression="Updated" />
                 <asp:TemplateField HeaderText="Commands" ShowHeader="False">
                     <ItemTemplate>
                         <asp:LinkButton ID="lEdit" runat="server" CausesValidation="False" CommandName="Edit" Text="Edit" CssClass="button"><span class="icon icon46"></span></asp:LinkButton>
@@ -32,6 +40,7 @@
     </div>
     <div class="section">
         <h4 class="heading">2. Tạo nhóm tài khoản</h4>
+        <div class="clearfix"></div>
         <ul class="form">
             <li class="row clerafix">
                 <div class="caption" >Nhóm Tài khoản :</div>
@@ -51,4 +60,19 @@
         </ul>
     </div>
 </div>
-<asp:ObjectDataSource ID="objGroupAccount" runat="server"></asp:ObjectDataSource>
+<asp:ObjectDataSource ID="objGroupAccount" runat="server" 
+    DeleteMethod="removeById" InsertMethod="add" SelectMethod="getListAll" 
+    TypeName="SonyAlphaLibs.UserGroup" UpdateMethod="update">
+    <DeleteParameters>
+        <asp:Parameter Name="connString" Type="String" />
+    </DeleteParameters>
+    <InsertParameters>
+        <asp:Parameter Name="connString" Type="String" />
+    </InsertParameters>
+    <SelectParameters>
+        <asp:Parameter Name="connString" Type="String" />
+    </SelectParameters>
+    <UpdateParameters>
+        <asp:Parameter Name="connString" Type="String" />
+    </UpdateParameters>
+</asp:ObjectDataSource>
