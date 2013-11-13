@@ -36,6 +36,7 @@ namespace SonyAlphaLibs.Services
                 }
                 catch (Exception ex)
                 {
+                    writeLog("", "Add Banner Error: " + ex.Message, connString);
                     return false;
                 }
             }
@@ -70,6 +71,7 @@ namespace SonyAlphaLibs.Services
                 }
                 catch (Exception ex)
                 {
+                    writeLog("", "Update Banner Error: " + ex.Message, connString);
                     return false;
                 }
             }
@@ -114,6 +116,7 @@ namespace SonyAlphaLibs.Services
                 }
                 catch (Exception ex)
                 {
+                    writeLog("", "Get All Banner Error: " + ex.Message, connString);
                     return new List<Banner>();
                 }
             }
@@ -152,6 +155,7 @@ namespace SonyAlphaLibs.Services
                 }
                 catch (Exception ex)
                 {
+                    writeLog("", "Get Banner By Id Error: " + ex.Message, connString);
                     return new Banner();
                 }
             }
@@ -206,9 +210,9 @@ namespace SonyAlphaLibs.Services
                         myTrans.Commit();
                         rs = true;
                     }
-                    catch (Exception)
+                    catch (Exception ex)
                     {
-                        ///TODO -  do something here
+                        writeLog("", "Set Photo Banner Error: " + ex.Message, connString);
                         rs = false;
                         //throw;
                     }
@@ -250,6 +254,7 @@ namespace SonyAlphaLibs.Services
                 }
                 catch (Exception ex)
                 {
+                    writeLog("", "Get Photo Of Banner Error: " + ex.Message, connString);
                     return new List<BannerPhoto>();
                 }
             }

@@ -39,5 +39,31 @@ namespace SonyAlphaLibs.Services
             return rs;
             #endregion
         }
+
+        internal static void writeLog(String userName, String description, String connString)
+        {
+            #region code
+            using (SqlConnection conn = new SqlConnection(connString))
+            {
+                try
+                {
+                    conn.Open();
+                    using (SqlCommand cmd = conn.CreateCommand())
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.CommandText = "sony_sp_add_action_log";
+                        cmd.Parameters.AddWithValue("@username", String.IsNullOrEmpty(userName) ? "admin" : userName);
+                        cmd.Parameters.AddWithValue("@description", String.IsNullOrEmpty(description) ? "" : description);
+
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    //return 0;
+                }
+            }
+            #endregion
+        }
     }
 }
