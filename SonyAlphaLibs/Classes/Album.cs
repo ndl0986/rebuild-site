@@ -40,6 +40,14 @@ namespace SonyAlphaLibs
             get { return viewCound; }
             set { viewCound = value; }
         }
+
+        private List<Photo> listPhotos;
+
+        public List<Photo> ListPhotos
+        {
+            get { return listPhotos; }
+            set { listPhotos = value; }
+        }
         
         #endregion
 
@@ -66,32 +74,52 @@ namespace SonyAlphaLibs
 
         public Album getById(String connString)
         {
-            return AlbumServices.getById(base.Id, connString);
+            Album album = AlbumServices.getById(base.Id, connString);
+            album.ListPhotos = AlbumServices.getPhotoOfAlbum(this.albumImage, connString);
+            return album;
         }
         #endregion
 
         #region ext method
         public List<Photo> getPhotoOfAlbum(String connString)
         {
-            return AlbumServices.getPhotoOfAlbum(base.Id, connString);
+            return AlbumServices.getPhotoOfAlbum(this.albumImage, connString);
         }
 
         public bool setPhoto2Album(Photo photo, String connString)
         {
-            return setPhoto2Album(photo.Id, connString);
+            return setPhoto2Album(base.Id, photo.Id, connString);
         }
 
         public bool setPhoto2Album(List<Photo> listPhotos, String connString)
         {
-            return AlbumServices.setPhoto2Album(listPhotos, connString);
+            return AlbumServices.setPhoto2Album(base.Id, listPhotos, connString);
         }
 
-        public bool setPhoto2Album(int photoId, String connString)
+        private bool setPhoto2Album(int albumId, int photoId, String connString)
         {
-            return AlbumServices.setPhoto2Album(photoId, connString);
+            return AlbumServices.setPhoto2Album(albumId, photoId, connString);
         }
 
-        //public bool setComment2AlbumPhoto(
+        public bool setComment2AlbumPhoto(AlbumComment albumComment, String connString)
+        {
+            return AlbumServices.setComment2Album(albumComment, connString);
+        }
+
+        public List<AlbumComment> getCommentOfAlbumPhoto(int photoId, String connString)
+        {
+            return AlbumServices.getListCommentOfAlbum(base.Id, photoId, connString);
+        }
+
+        public int getViewCount(String connString)
+        {
+            return AlbumServices.getViewCount(base.Id, connString);
+        }
+
+        public int increaseView(String connString)
+        {
+            return AlbumServices.increaseView(base.Id, connString);
+        }
         #endregion
     }
 }
