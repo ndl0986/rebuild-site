@@ -187,7 +187,7 @@ namespace SonyAlphaLibs.Services
                             {
                                 String sql = String.Empty;
                                 sql = @"
-                                EXEC sony_sp_add_banner_photo @bannerId{0}, @imageUrl{0}, @link2{0}, @returnVal{0};
+                                EXEC sony_sp_add_banner_photo @bannerId{0}, @imageUrl{0}, @link2{0}, @sortOrder{0}, @returnVal{0};
                             ";
                                 for (int i = 0; i < listPhotos.Count; i++)
                                 {
@@ -196,6 +196,7 @@ namespace SonyAlphaLibs.Services
                                     cmd.Parameters.AddWithValue("@bannerId" + i.ToString(), bannerId);
                                     cmd.Parameters.AddWithValue("@imageUrl" + i.ToString(), bannerPhoto.ImageUrl);
                                     cmd.Parameters.AddWithValue("@link2" + i.ToString(), bannerPhoto.Link2);
+                                    cmd.Parameters.AddWithValue("@sortOrder" + i.ToString(), bannerPhoto.SortOrder);
                                     SqlParameter returnVal = new SqlParameter("@returnVal" + i.ToString(), SqlDbType.Int);
                                     returnVal.Direction = ParameterDirection.Output;
                                     cmd.Parameters.Add(returnVal);
