@@ -33,7 +33,14 @@ namespace SonyAlphaLibs
             set { bannerType = value; }
         }
 
-        public List<BannerPhoto> ListPhotos = new List<BannerPhoto>();
+        private List<BannerPhoto> listPhotos;
+
+        public List<BannerPhoto> ListPhotos
+        {
+            get { return listPhotos; }
+            set { listPhotos = value; }
+        }
+        
         #endregion
 
         #region base method
