@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using SonyAlphaLibs.Services;
 
 namespace SonyAlphaLibs
 {
-    public class Photo : BaseModel
+    public class Photo : BaseModel, IBaseFunction<Photo>
     {
         #region fields
         private string title;
@@ -167,7 +168,65 @@ namespace SonyAlphaLibs
             get { return likeCount; }
             set { likeCount = value; }
         }
+        #endregion
 
+        #region base method
+        public bool add(String connString)
+        {
+            return PhotoServices.addPhoto(this, connString);
+        }
+
+        public bool update(String connString)
+        {
+            return PhotoServices.updatePhoto(this, connString);
+        }
+
+        public bool removeById(String connString)
+        {
+            return PhotoServices.removeById(base.Id, connString);
+        }
+
+        public List<Photo> getListAll(String connString)
+        {
+            return PhotoServices.getListAll(connString);
+        }
+
+        public Photo getById(String connString)
+        {
+            return PhotoServices.getById(base.Id, connString);
+        }
+        #endregion
+
+        #region ext method
+        public int getViewCount(String connString)
+        {
+            return PhotoServices.getViewCount(base.Id, connString);
+        }
+
+        public int getVoteCount(String connString)
+        {
+            return PhotoServices.getVoteCount(base.Id, connString);
+        }
+
+        public int getLikeCount(String connString)
+        {
+            return PhotoServices.getLikeCount(base.Id, connString);
+        }
+
+        public int increaseViewCount(String connString)
+        {
+            return PhotoServices.increaseViewCount(base.Id, connString);
+        }
+
+        public int increaseVoteCount(String connString)
+        {
+            return PhotoServices.increaseVoteCount(base.Id, connString);
+        }
+
+        public int increaseLikeCount(String connString)
+        {
+            return PhotoServices.increaseLikeCount(base.Id, connString);
+        }
         #endregion
     }
 }

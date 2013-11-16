@@ -6,7 +6,7 @@ using SonyAlphaLibs.Services;
 
 namespace SonyAlphaLibs
 {
-    public class Album : BaseModel
+    public class Album : BaseModel, IBaseFunction<Album>
     {
         #region fields
         private string fullName;

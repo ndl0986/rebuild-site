@@ -62,6 +62,7 @@
     <Compile Include="Services\PageServices.cs" />
     <Compile Include="Services\PermissionGroupServices.cs" />
     <Compile Include="Services\PermissionServices.cs" />
+    <Compile Include="Services\PhotoServices.cs" />
     <Compile Include="Services\SettingServices.cs" />
     <Compile Include="Services\UserGroupServices.cs" />
     <Compile Include="Services\UserServices.cs" />
