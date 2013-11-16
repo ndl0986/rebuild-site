@@ -323,4 +323,24 @@ Public Module Db
         Dim result As String = New [String](decoded_char)
         Return result
     End Function
+
+    Public Function GetBannerPos(ByVal pos As Integer) As String
+        Try
+
+            Select Case pos
+                Case 0
+                    Return "Full width"
+                Case 1
+                    Return "Trái"
+                Case 2
+                    Return "Phải"
+                Case Else
+                    Return "error"
+            End Select
+
+
+        Catch ex As Exception
+            Return "error"
+        End Try
+    End Function
 End Module
