@@ -375,5 +375,38 @@ namespace SonyAlphaLibs.Services
             return rs;
             #endregion
         }
+
+        internal static List<int> getListBannerId(int pageId, string connString)
+        {
+            #region code
+            List<int> rs = new List<int>();
+            using (SqlConnection conn = new SqlConnection(connString))
+            {
+                try
+                {
+                    conn.Open();
+                    using (SqlCommand cmd = conn.CreateCommand())
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.CommandText = "sony_sp_get_list_banner_id_by_page_id";
+                        cmd.Parameters.AddWithValue("@pageId", pageId);
+
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                rs.Add((int)reader["id"]);
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    return rs;
+                }
+            }
+            return rs;
+            #endregion
+        }
     }
 }

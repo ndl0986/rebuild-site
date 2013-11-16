@@ -131,6 +131,11 @@ namespace SonyAlphaLibs
         {
             return PageServices.setBanner2Page(base.Id, bannerId, connString);
         }
+
+        public List<int> getListBannerId(String connString)
+        {
+            return PageServices.getListBannerId(base.Id, connString);
+        }
         #endregion
     }
 }
