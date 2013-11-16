@@ -313,8 +313,6 @@ namespace SonyAlphaLibs.Services
             #endregion
         }
 
-
-
         internal static bool setBanner2Page(int pageId, int bannerId, string connString)
         {
             bool rs = false;
