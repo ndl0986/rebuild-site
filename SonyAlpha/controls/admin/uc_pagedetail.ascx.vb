@@ -13,6 +13,10 @@ Public Class uc_pagedetail
         txtUrl.Text = myPage.SeoUrl
 
     End Sub
+
+    Private Sub Page_Init(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Init
+        objBanner.SelectParameters.Item("connString").DefaultValue = CN.ConnectionString
+    End Sub
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         Dim id As String
         id = Request.QueryString("id")

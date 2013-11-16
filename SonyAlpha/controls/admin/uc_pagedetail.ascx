@@ -21,6 +21,11 @@
                 <div class="item"><asp:TextBox runat="server" ID="txtUrl" CssClass="textbox" ReadOnly=true ></asp:TextBox></div>
             </li>
             <li class="row clerafix">
+                <div class="caption" >Banner :</div>
+                <div class="item">
+                </div>
+            </li>
+            <li class="row clerafix">
                 <div class="caption" >Nội dung :</div>
                 <div class="item">
                     <FCKeditorV2:FCKeditor ID="fckEditor" runat="server" Height="500px"></FCKeditorV2:FCKeditor>
@@ -35,3 +40,4 @@
         </ul>
     </div>
 </div>
+  

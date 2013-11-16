@@ -43,6 +43,12 @@
                         tpl = Page.LoadControl("../controls/admin/uc_products.ascx")
                     Case "addproduct"
                         tpl = Page.LoadControl("../controls/admin/uc_addproduct.ascx")
+                    Case "banners"
+                        tpl = Page.LoadControl("../controls/admin/uc_banners.ascx")
+                    Case "addbanner"
+                        tpl = Page.LoadControl("../controls/admin/uc_banneradd.ascx")
+                    Case "editbanner"
+                        tpl = Page.LoadControl("../controls/admin/uc_banneraddphoto.ascx")
                     Case "files"
                         Response.Redirect("FileManager.aspx")
                     Case "logout"

@@ -103,10 +103,14 @@
     <Content Include="admin\Default.aspx" />
     <Content Include="admin\FileManager.aspx" />
     <Content Include="admin\Login.aspx" />
+    <Content Include="admin\Photos.aspx" />
     <Content Include="admin\TestPage.aspx" />
     <Content Include="controls\admin\uc_account.ascx" />
     <Content Include="controls\admin\uc_accountgroup.ascx" />
     <Content Include="controls\admin\uc_adminmenu.ascx" />
+    <Content Include="controls\admin\uc_banneradd.ascx" />
+    <Content Include="controls\admin\uc_banneraddphoto.ascx" />
+    <Content Include="controls\admin\uc_banners.ascx" />
     <Content Include="controls\admin\uc_editaccount.ascx" />
     <Content Include="controls\admin\uc_newscategory.ascx" />
     <Content Include="controls\admin\uc_newsdetail.ascx" />
@@ -114,6 +118,7 @@
     <Content Include="controls\admin\uc_pagedetail.ascx" />
     <Content Include="controls\admin\uc_pages.ascx" />
     <Content Include="controls\admin\uc_permission.ascx" />
+    <Content Include="controls\admin\uc_productcategory.ascx" />
     <Content Include="controls\views\uc_album.ascx" />
     <Content Include="controls\views\uc_albumdetail.ascx" />
     <Content Include="controls\views\uc_banner.ascx" />
@@ -675,6 +680,13 @@
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
+    <Compile Include="admin\Photos.aspx.designer.vb">
+      <DependentUpon>Photos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\Photos.aspx.vb">
+      <DependentUpon>Photos.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
     <Compile Include="admin\TestPage.aspx.designer.vb">
       <DependentUpon>TestPage.aspx</DependentUpon>
     </Compile>
@@ -704,6 +716,27 @@
     </Compile>
     <Compile Include="controls\admin\uc_adminmenu.ascx.vb">
       <DependentUpon>uc_adminmenu.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\admin\uc_banneradd.ascx.designer.vb">
+      <DependentUpon>uc_banneradd.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\admin\uc_banneradd.ascx.vb">
+      <DependentUpon>uc_banneradd.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\admin\uc_banneraddphoto.ascx.designer.vb">
+      <DependentUpon>uc_banneraddphoto.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\admin\uc_banneraddphoto.ascx.vb">
+      <DependentUpon>uc_banneraddphoto.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\admin\uc_banners.ascx.designer.vb">
+      <DependentUpon>uc_banners.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\admin\uc_banners.ascx.vb">
+      <DependentUpon>uc_banners.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="controls\admin\uc_editaccount.ascx.designer.vb">
@@ -753,6 +786,13 @@
     </Compile>
     <Compile Include="controls\admin\uc_permission.ascx.vb">
       <DependentUpon>uc_permission.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\admin\uc_productcategory.ascx.designer.vb">
+      <DependentUpon>uc_productcategory.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\admin\uc_productcategory.ascx.vb">
+      <DependentUpon>uc_productcategory.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="controls\views\uc_album.ascx.designer.vb">

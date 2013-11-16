@@ -50,15 +50,6 @@ Partial Public Class FileManager
     Protected WithEvents lstImage As Global.System.Web.UI.WebControls.ListBox
 
     '''<summary>
-    '''ifrBrowse control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents ifrBrowse As Global.System.Web.UI.HtmlControls.HtmlGenericControl
-
-    '''<summary>
     '''FileUpload1 control.
     '''</summary>
     '''<remarks>

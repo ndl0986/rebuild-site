@@ -22,9 +22,9 @@
                     <asp:CheckBoxField DataField="Status" HeaderText="Trạng thái" SortExpression="Status" />
                     <asp:BoundField DataField="Creator" HeaderText="Người tạo" SortExpression="Creator" />
                     <asp:BoundField DataField="Updator" HeaderText="Người cập nhật" SortExpression="Updator" />
-                    <asp:BoundField DataField="Created" HeaderText="Created at" SortExpression="Created" />
-                    <asp:BoundField DataField="Updated" HeaderText="Last modified" SortExpression="Updated" />
-                    <asp:TemplateField HeaderText="Commands" ShowHeader="False" ItemStyle-HorizontalAlign=Center>
+                    <asp:BoundField DataField="Created" HeaderText="Created at" SortExpression="Created" dataformatstring="{0:dd/MM/yyyy}" htmlencode="false" />
+                    <asp:BoundField DataField="Updated" HeaderText="Last modified" SortExpression="Updated" dataformatstring="{0:dd/MM/yyyy}" htmlencode="false"/>
+                    <asp:TemplateField HeaderText="Commands" ShowHeader="False" HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign=Center>
                         <ItemTemplate>
                             <asp:LinkButton ID="lEdit" runat="server" CausesValidation="False" CommandName="Select" Text="Edit" CssClass="button"><span class="icon icon46"></span></asp:LinkButton>
                             <asp:LinkButton ID="lDelete" runat="server" CausesValidation="False" CommandName="Delete" Text="Delete" CssClass="actDel button" messdelete="Delete this post ?"><span class="icon icon186"></span></asp:LinkButton>

@@ -21,7 +21,7 @@ Public Class FileManager
             BindFolder(strDpath, fNode)
         Next
     End Sub
-    Function GetURL(ByVal strPath As String) As String
+    Public Function GetURL(ByVal strPath As String) As String
         Try
             Dim str As String
             str = strPath.Substring(strPath.IndexOf("\upload\"))
@@ -31,15 +31,6 @@ Public Class FileManager
             Return ""
         End Try
     End Function
-
-    Private Sub lstImage_SelectedIndexChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles lstImage.SelectedIndexChanged
-        Try
-            txtURL.Text = GetURL(trvFolder.SelectedNode.Value) & "/" & lstImage.SelectedValue
-            ifrBrowse.Attributes.Add("src", txtURL.Text)
-        Catch ex As Exception
-        End Try
-    End Sub
-
     Private Sub btnOK_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnOK.Click
         Try
             Dim filePath As String
@@ -52,7 +43,10 @@ Public Class FileManager
                 Select Case LCase(Path.GetExtension(filePath))
                     Case ".7z", ".doc", ".pdf", ".txt", ".xls", ".jpg", ".bmp", ".png", ".gif", ".zip", ".rar", ".wmv", ".wma", ".mp3", ".swf", ".flv", ".mp4", ".mov"
                         FileUpload1.PostedFile.SaveAs(NewsPath & "\" & fileName)
-                        lstImage.Items.Insert(lstImage.Items.Count, fileName)
+                        Dim item As New ListItem
+                        item.Text = fileName
+                        item.Value = GetURL(NewsPath) & "/" & item.Text
+                        lstImage.Items.Insert(lstImage.Items.Count, item)
                     Case Else
                 End Select
             End If
@@ -88,7 +82,10 @@ Public Class FileManager
         For Each oFile In oFiles
             Select Case LCase(oFile.Extension)
                 Case ".doc", ".pdf", ".txt", ".xls", ".jpg", ".bmp", ".png", ".gif", ".zip", ".rar", ".wmv", ".wma", ".mp3", ".swf", ".flv", ".mp4"
-                    lstImage.Items.Insert(lstImage.Items.Count, oFile.Name)
+                    Dim item As New ListItem
+                    item.Text = oFile.Name
+                    item.Value = GetURL(trvFolder.SelectedNode.Value) & "/" & item.Text
+                    lstImage.Items.Insert(lstImage.Items.Count, item)
                 Case Else
             End Select
         Next
