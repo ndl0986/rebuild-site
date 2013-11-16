@@ -313,6 +313,67 @@ namespace SonyAlphaLibs.Services
             #endregion
         }
 
-        
+
+
+        internal static bool setBanner2Page(int pageId, int bannerId, string connString)
+        {
+            bool rs = false;
+            using (SqlConnection conn = new SqlConnection(connString))
+            {
+                try
+                {
+                    conn.Open();
+                    using (SqlCommand cmd = conn.CreateCommand())
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.CommandText = "sony_sp_set_banner_to_page";
+                        cmd.Parameters.AddWithValue("@pageId", pageId);
+                        cmd.Parameters.AddWithValue("@bannerId", bannerId);
+                        SqlParameter returnVal = new SqlParameter("@returnVal", SqlDbType.Int);
+                        returnVal.Direction = ParameterDirection.Output;
+                        cmd.Parameters.Add(returnVal);
+
+                        cmd.ExecuteNonQuery();
+                        rs = ((int)cmd.Parameters["@returnVal"].Value != 0);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    return false;
+                }
+            }
+            return rs;
+        }
+
+        internal static int getBannerId(int pageId, string connString)
+        {
+            #region code
+            int rs = 0;
+            using (SqlConnection conn = new SqlConnection(connString))
+            {
+                try
+                {
+                    conn.Open();
+                    using (SqlCommand cmd = conn.CreateCommand())
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.CommandText = "sony_sp_get_banner_id_by_page_id";
+                        cmd.Parameters.AddWithValue("@pageId", pageId);
+                        SqlParameter returnVal = new SqlParameter("@returnVal", SqlDbType.Int);
+                        returnVal.Direction = ParameterDirection.Output;
+                        cmd.Parameters.Add(returnVal);
+
+                        cmd.ExecuteNonQuery();
+                        rs = (int)cmd.Parameters["@returnVal"].Value;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    return 0;
+                }
+            }
+            return rs;
+            #endregion
+        }
     }
 }
