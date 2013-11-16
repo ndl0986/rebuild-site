@@ -30,7 +30,16 @@ namespace SonyAlphaLibs
         {
             get { return link2; }
             set { link2 = value; }
-        } 
+        }
+
+        private int sortOrder;
+
+        public int SortOrder
+        {
+            get { return sortOrder; }
+            set { sortOrder = value; }
+        }
+        
         #endregion        
     }
 }

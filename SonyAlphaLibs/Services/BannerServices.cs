@@ -245,6 +245,7 @@ namespace SonyAlphaLibs.Services
                                 bannerP.Id = (int)reader["id"];
                                 bannerP.ImageUrl = reader["imageUrl"].ToString();
                                 bannerP.Link2 = reader["link2"].ToString();
+                                bannerP.SortOrder = (int)reader["sortOrder"];
                                 bannerP.Created = (DateTime)reader["created"];
                                 bannerP.Updated = (DateTime)reader["updated"];
                                 lists.Add(bannerP);
