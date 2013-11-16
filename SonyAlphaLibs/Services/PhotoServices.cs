@@ -421,5 +421,97 @@ namespace SonyAlphaLibs.Services
             return rs;
             #endregion
         }
+
+        internal static bool setPhoto2Product(int productId, List<String> list, string connString)
+        {
+            #region code
+            bool rs = false;
+            string imageUrls = string.Empty;
+            if (list != null && list.Count > 0) {
+                foreach (string url in list)
+                {
+                    if (!string.IsNullOrEmpty(url))
+                    {
+                        imageUrls += url + ",";
+                    }
+                }
+            }
+            if (imageUrls.EndsWith(","))
+            {
+                imageUrls = imageUrls.Substring(0, imageUrls.Length - 1);
+            }
+            using (SqlConnection conn = new SqlConnection(connString))
+            {
+                try
+                {
+                    conn.Open();
+                    using (SqlCommand cmd = conn.CreateCommand())
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.CommandText = "sony_sp_set_photo_to_product";
+                        cmd.Parameters.AddWithValue("@productId", productId);
+                        cmd.Parameters.AddWithValue("@imageUrls", imageUrls);
+                        SqlParameter returnVal = new SqlParameter("@returnVal", SqlDbType.Int);
+                        returnVal.Direction = ParameterDirection.Output;
+                        cmd.Parameters.Add(returnVal);
+
+                        cmd.ExecuteNonQuery();
+                        rs = ((int)cmd.Parameters["@returnVal"].Value != 0);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    writeLog("", "Set Photo to Product Error: " + ex.Message, connString);
+                    return false;
+                }
+            }
+            return rs;
+            #endregion
+        }
+
+        internal static List<String> getPhotoOfProduct(int productId, string connString)
+        {
+            #region code
+            List<String> lists = new List<String>();
+            using (SqlConnection conn = new SqlConnection(connString))
+            {
+                try
+                {
+                    conn.Open();
+                    using (SqlCommand cmd = conn.CreateCommand())
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.CommandText = "sony_sp_get_photo_of_product";
+                        cmd.Parameters.AddWithValue("@productId", productId);
+
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                String urls = reader["imageUrls"].ToString();
+                                string[] arrs = urls.Split(',');
+                                if (arrs != null && arrs.Length > 0)
+                                {
+                                    foreach (string s in arrs)
+                                    {
+                                        if (!String.IsNullOrEmpty(s))
+                                        {
+                                            lists.Add(s);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    writeLog("", "getPhotoOfProduct Error: " + ex.Message, connString);
+                    return new List<String>();
+                }
+            }
+            return lists;
+            #endregion
+        }
     }
 }

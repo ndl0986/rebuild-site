@@ -135,6 +135,14 @@ namespace SonyAlphaLibs
             set { lensDiameter = value; }
         }
 
+        private List<String> listPhotoUrls;
+
+        public List<String> ListPhotoUrls
+        {
+            get { return listPhotoUrls; }
+            set { listPhotoUrls = value; }
+        }
+
         #endregion
 
         #region base method
@@ -165,7 +173,15 @@ namespace SonyAlphaLibs
         #endregion
 
         #region ext method
+        public bool setPhoto2Product(String connString)
+        {
+            return PhotoServices.setPhoto2Product(base.Id, this.listPhotoUrls, connString);
+        }
 
+        public List<String> getPhotoOfProduct(String connString)
+        {
+            return PhotoServices.getPhotoOfProduct(base.Id, connString);
+        }
         #endregion
     }
 }
