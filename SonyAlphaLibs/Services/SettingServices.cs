@@ -74,9 +74,36 @@ namespace SonyAlphaLibs.Services
             #endregion
         }
 
-        internal static bool removeById(int p, string connString)
+        internal static bool removeById(int id, string connString)
         {
-            throw new NotImplementedException();
+            #region code
+            bool rs = false;
+            using (SqlConnection conn = new SqlConnection(connString))
+            {
+                try
+                {
+                    conn.Open();
+                    using (SqlCommand cmd = conn.CreateCommand())
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.CommandText = "sony_sp_delete_setting_by_id";
+                        cmd.Parameters.AddWithValue("@id", id);
+                        SqlParameter returnVal = new SqlParameter("@returnVal", SqlDbType.Int);
+                        returnVal.Direction = ParameterDirection.Output;
+                        cmd.Parameters.Add(returnVal);
+
+                        cmd.ExecuteNonQuery();
+                        rs = ((int)cmd.Parameters["@returnVal"].Value != 0);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    writeLog("", "Delete Setting Error: " + ex.Message, connString);
+                    return false;
+                }
+            }
+            return rs;
+            #endregion
         }
 
         internal static List<Setting> getListAll(string connString)

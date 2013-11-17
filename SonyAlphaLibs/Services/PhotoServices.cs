@@ -136,7 +136,7 @@ namespace SonyAlphaLibs.Services
                 }
                 catch (Exception ex)
                 {
-                    writeLog("", "Delete Page Error: " + ex.Message, connString);
+                    writeLog("", "Delete Photo Error: " + ex.Message, connString);
                     return false;
                 }
             }
