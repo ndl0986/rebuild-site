@@ -1,16 +1,16 @@
 USE [sony_rebuild_alpha]
 GO
 
-IF  EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'[DF__sony_news__viewC__6EE06CCD]') AND type = 'D')
+IF  EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'[DF__sony_news__viewC__15FA39EE]') AND type = 'D')
 BEGIN
-ALTER TABLE [dbo].[sony_news] DROP CONSTRAINT [DF__sony_news__viewC__6EE06CCD]
+ALTER TABLE [dbo].[sony_news] DROP CONSTRAINT [DF__sony_news__viewC__15FA39EE]
 END
 
 GO
 
-IF  EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'[DF__sony_news__likeC__6FD49106]') AND type = 'D')
+IF  EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'[DF__sony_news__likeC__16EE5E27]') AND type = 'D')
 BEGIN
-ALTER TABLE [dbo].[sony_news] DROP CONSTRAINT [DF__sony_news__likeC__6FD49106]
+ALTER TABLE [dbo].[sony_news] DROP CONSTRAINT [DF__sony_news__likeC__16EE5E27]
 END
 
 GO
@@ -18,7 +18,7 @@ GO
 USE [sony_rebuild_alpha]
 GO
 
-/****** Object:  Table [dbo].[sony_news]    Script Date: 11/17/2013 14:58:22 ******/
+/****** Object:  Table [dbo].[sony_news]    Script Date: 11/18/2013 00:49:41 ******/
 IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[sony_news]') AND type in (N'U'))
 DROP TABLE [dbo].[sony_news]
 GO
@@ -26,7 +26,7 @@ GO
 USE [sony_rebuild_alpha]
 GO
 
-/****** Object:  Table [dbo].[sony_news]    Script Date: 11/17/2013 14:58:23 ******/
+/****** Object:  Table [dbo].[sony_news]    Script Date: 11/18/2013 00:49:41 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -41,6 +41,7 @@ CREATE TABLE [dbo].[sony_news](
 	[title] [nvarchar](500) NOT NULL,
 	[seoUrl] [nvarchar](500) NULL,
 	[detail] [nvarchar](max) NULL,
+	[description] [nvarchar](500) NULL,
 	[categoryId] [int] NOT NULL,
 	[published] [bit] NOT NULL,
 	[metaTag] [nvarchar](500) NULL,
