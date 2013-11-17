@@ -25,7 +25,7 @@ namespace SonyAlphaLibs.Services
                         cmd.CommandText = "sony_sp_add_album";
                         cmd.Parameters.AddWithValue("@fullname", album.FullName);
                         cmd.Parameters.AddWithValue("@albumCreator", String.IsNullOrEmpty(album.AlbumCreator) ? "admin" : album.AlbumCreator);
-                        cmd.Parameters.AddWithValue("@albumImage", album.AlbumImage);
+                        cmd.Parameters.AddWithValue("@albumImage", String.IsNullOrEmpty(album.AlbumImage) ? "" : album.AlbumImage);
                         cmd.Parameters.AddWithValue("@viewCound", album.ViewCount);
                         SqlParameter returnVal = new SqlParameter("@returnVal", SqlDbType.Int);
                         returnVal.Direction = ParameterDirection.Output;
@@ -61,7 +61,7 @@ namespace SonyAlphaLibs.Services
                         cmd.Parameters.AddWithValue("@id", album.Id);
                         cmd.Parameters.AddWithValue("@fullname", album.FullName);
                         cmd.Parameters.AddWithValue("@albumCreator", String.IsNullOrEmpty(album.AlbumCreator) ? "admin" : album.AlbumCreator);
-                        cmd.Parameters.AddWithValue("@albumImage", album.AlbumImage);
+                        cmd.Parameters.AddWithValue("@albumImage", String.IsNullOrEmpty(album.AlbumImage) ? "" : album.AlbumImage);
                         cmd.Parameters.AddWithValue("@viewCound", album.ViewCount);
                         SqlParameter returnVal = new SqlParameter("@returnVal", SqlDbType.Int);
                         returnVal.Direction = ParameterDirection.Output;
