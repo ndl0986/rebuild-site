@@ -104,9 +104,11 @@
                 inputs.val('').text('');
                 $(inputs[0]).focus();
             });
-            $('.actDel').click(function () {
-                return ConfirmDelete($(this).attr('messdelete'))
-            })
+            $('#UpdatePanelMain').on('click', '.actDel', function () {
+                return ConfirmDelete($(this).attr('messdelete'));
+            });
+
+
             $("#form1").validate();
             $("#form1").keyup(function () {
                 if ($("#form1").valid() == true) {

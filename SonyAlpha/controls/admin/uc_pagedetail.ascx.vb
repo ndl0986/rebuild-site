@@ -44,26 +44,28 @@ Public Class uc_pagedetail
     End Sub
 
     Private Sub btnSave_ServerClick(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnSave.ServerClick
-        myPage.LongTitle = txtLongTitle.Text.Trim
-        If txtTitle.Text = "" Then
-            myPage.Title = txtLongTitle.Text.Trim
-        Else
-            myPage.Title = txtTitle.Text
-        End If
+        If Page.IsPostBack Then
+            myPage.LongTitle = txtLongTitle.Text.Trim
+            If txtTitle.Text = "" Then
+                myPage.Title = txtLongTitle.Text.Trim
+            Else
+                myPage.Title = txtTitle.Text
+            End If
 
-        myPage.PageContent = fckEditor.Value
-        Dim result
-        If bolUpdate = False Then
-            myPage.SeoUrl = PageSeUrl(myPage.getCurrentMaxId(CN.ConnectionString) + 1, myPage.Title)
-            result = myPage.add(CN.ConnectionString)
-        Else
-            myPage.SeoUrl = PageSeUrl(myPage.Id, myPage.Title)
-            result = myPage.update(CN.ConnectionString)
-        End If
-        If result Then
-            ScriptManager.RegisterStartupScript(Me, GetType(String), "Message", "alert('Lưu page thành công !!!');", True)
-        Else
-            ScriptManager.RegisterStartupScript(Me, GetType(String), "Message", "alert('lưu page không thành công !!!');", True)
+            myPage.PageContent = fckEditor.Value
+            Dim result
+            If bolUpdate = False Then
+                myPage.SeoUrl = PageSeUrl(myPage.getCurrentMaxId(CN.ConnectionString) + 1, myPage.Title)
+                result = myPage.add(CN.ConnectionString)
+            Else
+                myPage.SeoUrl = PageSeUrl(myPage.Id, myPage.Title)
+                result = myPage.update(CN.ConnectionString)
+            End If
+            If result Then
+                ScriptManager.RegisterStartupScript(Me, GetType(String), "Message", "alert('Lưu page thành công !!!');", True)
+            Else
+                ScriptManager.RegisterStartupScript(Me, GetType(String), "Message", "alert('lưu page không thành công !!!');", True)
+            End If
         End If
     End Sub
 End Class

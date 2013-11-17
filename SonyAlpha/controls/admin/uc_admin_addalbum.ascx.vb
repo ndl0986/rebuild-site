@@ -9,17 +9,20 @@ Public Class uc_admin_addalbum
     End Sub
 
     Private Sub btnSave_ServerClick(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnSave.ServerClick
-        myAlbum.FullName = txtName.Text.Trim
-        myAlbum.AlbumCreator = Session("accountname")
-        myAlbum.AlbumImage = ""
-        myAlbum.ViewCount = 0
-        Dim result
-        result = myAlbum.add(CN.ConnectionString)
-        If result Then
-            ScriptManager.RegisterStartupScript(Me, GetType(String), "Message", "alert('Lưu album thành công !!!');", True)
-            Response.Redirect("?tpl=addphotos&id=" + myAlbum.getCurrentMaxId(CN.ConnectionString))
-        Else
-            ScriptManager.RegisterStartupScript(Me, GetType(String), "Message", "alert('lưu album không thành công !!!');", True)
+        If Page.IsPostBack Then
+            myAlbum.FullName = txtName.Text.Trim
+            myAlbum.AlbumCreator = Session("accountname")
+            myAlbum.AlbumImage = ""
+            myAlbum.ViewCount = 0
+            Dim result
+            result = myAlbum.add(CN.ConnectionString)
+            'ScriptManager.RegisterStartupScript(Me, GetType(String), "Message", "alert('Lưu album thành công !!!');", True)
+            If result = True Then
+                'ScriptManager.RegisterStartupScript(Me, GetType(String), "Message", "alert('Lưu album thành công !!!');", True)
+                Response.Redirect("?tpl=addphotos&id=" & myAlbum.getCurrentMaxId(CN.ConnectionString).ToString)
+            Else
+                'ScriptManager.RegisterStartupScript(Me, GetType(String), "Message", "alert('lưu album không thành công !!!');", False)
+            End If
         End If
     End Sub
 End Class

@@ -23,13 +23,13 @@ Partial Public Class uc_admin_album
     Protected WithEvents lblMessage As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''grvPages control.
+    '''grvAlbums control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents grvPages As Global.System.Web.UI.WebControls.GridView
+    Protected WithEvents grvAlbums As Global.System.Web.UI.WebControls.GridView
 
     '''<summary>
     '''objAlbums control.

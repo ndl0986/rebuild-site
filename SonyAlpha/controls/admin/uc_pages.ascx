@@ -37,7 +37,7 @@
 </div>
 <asp:ObjectDataSource ID="objPage" runat="server" DeleteMethod="removeById" 
 SelectMethod="getListAll" TypeName="SonyAlphaLibs.Page" 
-UpdateMethod="update" OldValuesParameterFormatString="AccountId">
+UpdateMethod="update">
     <DeleteParameters>
         <asp:Parameter Name="connString" Type="String" />
     </DeleteParameters>
