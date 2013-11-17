@@ -25,7 +25,7 @@ namespace SonyAlphaLibs.Services
                         cmd.Parameters.AddWithValue("@name", product.Name);
                         cmd.Parameters.AddWithValue("@productType", product.ProductType);
                         cmd.Parameters.AddWithValue("@categoryId", product.CategoryId);
-                        cmd.Parameters.AddWithValue("@imageUrl", product.ImageUrl);                        
+                        cmd.Parameters.AddWithValue("@imageUrl", product.ImageUrl);
                         cmd.Parameters.AddWithValue("@shortDesc", product.ShortDesc);
                         cmd.Parameters.AddWithValue("@description", product.Description);
                         cmd.Parameters.AddWithValue("@status", product.Status ? 1 : 0);
@@ -133,7 +133,7 @@ namespace SonyAlphaLibs.Services
                                 product.ImageUrl = reader["imageUrl"].ToString();
                                 product.ShortDesc = reader["shortDesc"].ToString();
                                 product.Description = reader["description"].ToString();
-                                product.Status = reader["status"].ToString().Equals("1") || reader["status"].ToString().Equals("True");                                
+                                product.Status = reader["status"].ToString().Equals("1") || reader["status"].ToString().Equals("True");
                                 product.FStop = reader["fStop"].ToString();
                                 product.FMax = reader["fMax"].ToString();
                                 product.FMin = reader["fMin"].ToString();
@@ -208,6 +208,131 @@ namespace SonyAlphaLibs.Services
             }
             return product;
             #endregion
+        }
+
+        internal static bool addProductCategory(ProductCategory productCategory, string connString)
+        {
+            #region code
+            bool rs = false;
+            using (SqlConnection conn = new SqlConnection(connString))
+            {
+                try
+                {
+                    conn.Open();
+                    using (SqlCommand cmd = conn.CreateCommand())
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.CommandText = "sony_sp_add_product_category";
+                        cmd.Parameters.AddWithValue("@name", productCategory.Name);
+                        cmd.Parameters.AddWithValue("@imageUrl", productCategory.ImageUrl);
+                        cmd.Parameters.AddWithValue("@parentId", productCategory.ParentId);
+                        cmd.Parameters.AddWithValue("@description", productCategory.Description);
+                        cmd.Parameters.AddWithValue("@seoUrl", productCategory.SeoUrl);
+                        SqlParameter returnVal = new SqlParameter("@returnVal", SqlDbType.Int);
+                        returnVal.Direction = ParameterDirection.Output;
+                        cmd.Parameters.Add(returnVal);
+
+                        cmd.ExecuteNonQuery();
+                        rs = ((int)cmd.Parameters["@returnVal"].Value != 0);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    writeLog("", "Add Product Category Error: " + ex.Message, connString);
+                    return false;
+                }
+            }
+            return rs;
+            #endregion
+        }
+
+        internal static bool updateProductCategory(ProductCategory productCategory, string connString)
+        {
+            #region code
+            bool rs = false;
+            using (SqlConnection conn = new SqlConnection(connString))
+            {
+                try
+                {
+                    conn.Open();
+                    using (SqlCommand cmd = conn.CreateCommand())
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.CommandText = "sony_sp_update_product_category";
+                        cmd.Parameters.AddWithValue("@id", productCategory.Id);
+                        cmd.Parameters.AddWithValue("@name", productCategory.Name);
+                        cmd.Parameters.AddWithValue("@imageUrl", productCategory.ImageUrl);
+                        cmd.Parameters.AddWithValue("@parentId", productCategory.ParentId);
+                        cmd.Parameters.AddWithValue("@description", productCategory.Description);
+                        cmd.Parameters.AddWithValue("@seoUrl", productCategory.SeoUrl);
+                        SqlParameter returnVal = new SqlParameter("@returnVal", SqlDbType.Int);
+                        returnVal.Direction = ParameterDirection.Output;
+                        cmd.Parameters.Add(returnVal);
+
+                        cmd.ExecuteNonQuery();
+                        rs = ((int)cmd.Parameters["@returnVal"].Value != 0);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    writeLog("", "Update Product Category Error: " + ex.Message, connString);
+                    return false;
+                }
+            }
+            return rs;
+            #endregion
+        }
+
+        internal static bool removeProductCategoryById(int p, string connString)
+        {
+            throw new NotImplementedException();
+        }
+
+        internal static List<ProductCategory> getListAllProductCategory(string connString)
+        {
+            #region code
+            List<ProductCategory> lists = new List<ProductCategory>();
+            using (SqlConnection conn = new SqlConnection(connString))
+            {
+                try
+                {
+                    conn.Open();
+                    using (SqlCommand cmd = conn.CreateCommand())
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.CommandText = "sony_sp_get_all_product";
+
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                ProductCategory productCategory = new ProductCategory();
+                                productCategory.Id = (int)reader["id"];
+                                productCategory.Name = reader["name"].ToString();
+                                productCategory.ImageUrl = reader["imageUrl"].ToString();
+                                productCategory.ParentId = (int)reader["parentId"];
+                                productCategory.Description = reader["description"].ToString();
+                                productCategory.SeoUrl = reader["seoUrl"].ToString();
+                                productCategory.Created = (DateTime)reader["Created"];
+                                productCategory.Updated = (DateTime)reader["Updated"];
+                                lists.Add(productCategory);
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    writeLog("", "Get All Product Category Error: " + ex.Message, connString);
+                    return new List<ProductCategory>();
+                }
+            }
+            return lists;
+            #endregion
+        }
+
+        internal static ProductCategory getProductCategoryById(int p, string connString)
+        {
+            throw new NotImplementedException();
         }
     }
 }

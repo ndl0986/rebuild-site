@@ -56,9 +56,11 @@
     <Compile Include="Classes\BaseModel.cs" />
     <Compile Include="Classes\Menu.cs" />
     <Compile Include="Classes\Page.cs" />
+    <Compile Include="Classes\PageBanner.cs" />
     <Compile Include="Classes\Permission.cs" />
     <Compile Include="Classes\Photo.cs" />
     <Compile Include="Classes\Product.cs" />
+    <Compile Include="Classes\ProductCategory.cs" />
     <Compile Include="Classes\Setting.cs" />
     <Compile Include="Classes\User.cs" />
     <Compile Include="Classes\UserGroup.cs" />

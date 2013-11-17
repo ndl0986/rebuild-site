@@ -264,7 +264,7 @@ namespace SonyAlphaLibs.Services
             #endregion
         }
 
-        internal static List<Page> getListPage(int pageNum, int order, int pageSize, 
+        internal static List<Page> getListPage(int pageNum, int order, int pageSize,
             string orderBy, string connString)
         {
             #region code
@@ -404,6 +404,46 @@ namespace SonyAlphaLibs.Services
                 }
             }
             return rs;
+            #endregion
+        }
+
+        internal static List<Banner> getListBanner(int pageId, string connString)
+        {
+            #region code
+            List<Banner> lists = new List<Banner>();
+            using (SqlConnection conn = new SqlConnection(connString))
+            {
+                try
+                {
+                    conn.Open();
+                    using (SqlCommand cmd = conn.CreateCommand())
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.CommandText = "sony_sp_get_list_banner_by_page_id";
+                        cmd.Parameters.AddWithValue("@pageId", pageId);
+
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                Banner banner = new Banner();
+                                banner.Id = (int)reader["id"];
+                                banner.Name = reader["name"].ToString();
+                                banner.Visible = reader["visible"].ToString().Equals("1") || reader["visible"].ToString().Equals("True");
+                                banner.BannerType = (int)reader["bannerType"];
+                                banner.Created = (DateTime)reader["created"];
+                                banner.Updated = (DateTime)reader["updated"];
+                                lists.Add(banner);
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    return new List<Banner>();
+                }
+            }
+            return lists;
             #endregion
         }
     }
