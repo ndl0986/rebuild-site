@@ -120,6 +120,11 @@ namespace SonyAlphaLibs
         {
             return AlbumServices.increaseView(base.Id, connString);
         }
+
+        public int getCurrentMaxId(String connString)
+        {
+            return AlbumServices.getCurrentMaxId("sony_album", connString);
+        }
         #endregion
     }
 }

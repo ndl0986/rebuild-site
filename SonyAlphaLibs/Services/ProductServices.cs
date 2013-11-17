@@ -300,7 +300,7 @@ namespace SonyAlphaLibs.Services
                     using (SqlCommand cmd = conn.CreateCommand())
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.CommandText = "sony_sp_get_all_product";
+                        cmd.CommandText = "sony_sp_get_all_product_category";
 
                         using (SqlDataReader reader = cmd.ExecuteReader())
                         {
@@ -332,7 +332,45 @@ namespace SonyAlphaLibs.Services
 
         internal static ProductCategory getProductCategoryById(int p, string connString)
         {
-            throw new NotImplementedException();
+            return new ProductCategory();
+            #region code
+            //List<ProductCategory> lists = new List<ProductCategory>();
+            //using (SqlConnection conn = new SqlConnection(connString))
+            //{
+            //    try
+            //    {
+            //        conn.Open();
+            //        using (SqlCommand cmd = conn.CreateCommand())
+            //        {
+            //            cmd.CommandType = CommandType.StoredProcedure;
+            //            cmd.CommandText = "sony_sp_get_all_product_category";
+
+            //            using (SqlDataReader reader = cmd.ExecuteReader())
+            //            {
+            //                while (reader.Read())
+            //                {
+            //                    ProductCategory productCategory = new ProductCategory();
+            //                    productCategory.Id = (int)reader["id"];
+            //                    productCategory.Name = reader["name"].ToString();
+            //                    productCategory.ImageUrl = reader["imageUrl"].ToString();
+            //                    productCategory.ParentId = (int)reader["parentId"];
+            //                    productCategory.Description = reader["description"].ToString();
+            //                    productCategory.SeoUrl = reader["seoUrl"].ToString();
+            //                    productCategory.Created = (DateTime)reader["Created"];
+            //                    productCategory.Updated = (DateTime)reader["Updated"];
+            //                    lists.Add(productCategory);
+            //                }
+            //            }
+            //        }
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //        writeLog("", "Get All Product Category Error: " + ex.Message, connString);
+            //        return new List<ProductCategory>();
+            //    }
+            //}
+            //return lists;
+            #endregion
         }
     }
 }
