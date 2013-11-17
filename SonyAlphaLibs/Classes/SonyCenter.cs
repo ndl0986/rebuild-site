@@ -130,7 +130,12 @@ namespace SonyAlphaLibs
 
         public SonyCenter getById(String connString)
         {
-            return SonyCenterServices.getCenterById(base.Id, connString);
+            return SonyCenterServices.getCenterById(this.Id, connString);
+        }
+
+        public int getCurrentMaxId(String connString)
+        {
+            return SonyCenterServices.getCurrentMaxId("sony_center", connString);
         }
         #endregion
     }
