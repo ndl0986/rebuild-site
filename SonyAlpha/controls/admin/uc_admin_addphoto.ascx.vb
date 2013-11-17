@@ -8,6 +8,17 @@ Public Class uc_admin_addphoto
     Dim myPhoto As New SonyAlphaLibs.Photo
     Dim bolUpdate As Boolean
     Dim UploadFolderPath As String = ""
+    Function CheckDuplicate()
+        Dim result As Boolean = True
+        For Each ePhoto In myAlbum.ListPhotos
+            If ePhoto.Id = myPhoto.Id Then
+                result = False
+                Exit For
+            End If
+        Next
+        Return result
+    End Function
+
     Sub LoadPhoto(ByVal id As String)
         myPhoto.Id = CInt(id)
         myPhoto = myPhoto.getById(CN.ConnectionString)
@@ -67,7 +78,6 @@ Public Class uc_admin_addphoto
     End Sub
 
     Private Sub btnSave_ServerClick(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnSave.ServerClick
-
         If Page.IsPostBack Then
             Try
                 myPhoto.FileName = txtFileName.Text
@@ -86,15 +96,20 @@ Public Class uc_admin_addphoto
                 myPhoto.ISO = txtISO.Text
                 myPhoto.SubjectDistance = txtSubjectDistance.Text
 
+
+
                 Dim result As Boolean
                 If bolUpdate = False Then
                     myPhoto.add(CN.ConnectionString)
                     myPhoto.Id = SonyAlphaLibs.Services.PhotoServices.getCurrentMaxId("sony_photo", CN.ConnectionString)
 
-                    result = myAlbum.setPhoto2Album(myPhoto, CN.ConnectionString)
+                    If CheckDuplicate() Then
+                        result = myAlbum.setPhoto2Album(myPhoto, CN.ConnectionString)
+                    End If
                 Else
                     result = myPhoto.update(CN.ConnectionString)
                 End If
+
                 Response.Redirect("?tpl=editalbum&id=" & myAlbum.Id.ToString)
             Catch ex As Exception
 
