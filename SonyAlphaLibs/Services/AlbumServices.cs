@@ -10,7 +10,7 @@ namespace SonyAlphaLibs.Services
     public class AlbumServices : BaseService
     {
 
-        internal static bool addAlbum(Album album, string connString)
+        public static bool addAlbum(Album album, string connString)
         {
             #region code
             bool rs = false;
@@ -45,7 +45,7 @@ namespace SonyAlphaLibs.Services
             #endregion
         }
 
-        internal static bool updateAlbum(Album album, string connString)
+        public static bool updateAlbum(Album album, string connString)
         {
             #region code
             bool rs = false;
@@ -81,7 +81,7 @@ namespace SonyAlphaLibs.Services
             #endregion
         }
 
-        internal static bool removeById(int id, string connString)
+        public static bool removeById(int id, string connString)
         {
             #region code
             bool rs = false;
@@ -113,7 +113,7 @@ namespace SonyAlphaLibs.Services
             #endregion
         }
 
-        internal static List<Album> getListAll(string connString)
+        public static List<Album> getListAll(string connString)
         {
             #region code
             List<Album> lists = new List<Album>();
@@ -154,7 +154,7 @@ namespace SonyAlphaLibs.Services
             #endregion
         }
 
-        internal static Album getById(int id, string connString)
+        public static Album getById(int id, string connString)
         {
             #region code
             Album album = new Album();
@@ -194,7 +194,7 @@ namespace SonyAlphaLibs.Services
             #endregion
         }
 
-        internal static List<Photo> getPhotoOfAlbum(string listImageIds, string connString)
+        public static List<Photo> getPhotoOfAlbum(string listImageIds, string connString)
         {
             #region code
             List<Photo> lists = new List<Photo>();
@@ -255,12 +255,12 @@ namespace SonyAlphaLibs.Services
             #endregion
         }
 
-        internal static bool setPhoto2Album(Photo photo, string connString)
+        public static bool setPhoto2Album(Photo photo, string connString)
         {
             throw new NotImplementedException();
         }
 
-        internal static bool setPhoto2Album(int albumId, List<Photo> listPhotos, string connString)
+        public static bool setPhoto2Album(int albumId, List<Photo> listPhotos, string connString)
         {
             #region code
             bool rs = false;
@@ -305,7 +305,7 @@ namespace SonyAlphaLibs.Services
             #endregion
         }
 
-        internal static bool setPhoto2Album(int albumId, int photoId, string connString)
+        public static bool setPhoto2Album(int albumId, int photoId, string connString)
         {
             #region code
             bool rs = false;
@@ -338,7 +338,7 @@ namespace SonyAlphaLibs.Services
             #endregion
         }
 
-        internal static bool setComment2Album(AlbumComment albumComment, string connString)
+        public static bool setComment2Album(AlbumComment albumComment, string connString)
         {
             #region code
             bool rs = false;
@@ -374,7 +374,7 @@ namespace SonyAlphaLibs.Services
             #endregion
         }
 
-        internal static List<AlbumComment> getListCommentOfAlbum(int albumId, int photoId, string connString)
+        public static List<AlbumComment> getListCommentOfAlbum(int albumId, int photoId, string connString)
         {
             #region code
             List<AlbumComment> lists = new List<AlbumComment>();
@@ -416,7 +416,7 @@ namespace SonyAlphaLibs.Services
             #endregion
         }
 
-        internal static int getViewCount(int albumId, string connString)
+        public static int getViewCount(int albumId, string connString)
         {
             #region code
             int rs = 0;
@@ -454,7 +454,7 @@ namespace SonyAlphaLibs.Services
         /// <param name="albumId"></param>
         /// <param name="connString"></param>
         /// <returns>return new view count (view count after updating)</returns>
-        internal static int increaseView(int albumId, string connString)
+        public static int increaseView(int albumId, string connString)
         {
             #region code
             int rs = 0;

@@ -10,7 +10,7 @@ namespace SonyAlphaLibs.Services
     public class BannerServices : BaseService
     {
 
-        internal static bool addBanner(Banner banner, string connString)
+        public static bool addBanner(Banner banner, string connString)
         {
             #region code
             bool rs = false;
@@ -44,7 +44,7 @@ namespace SonyAlphaLibs.Services
             #endregion
         }
 
-        internal static bool updateBanner(Banner banner, string connString)
+        public static bool updateBanner(Banner banner, string connString)
         {
             #region code
             bool rs = false;
@@ -79,7 +79,7 @@ namespace SonyAlphaLibs.Services
             #endregion
         }
 
-        internal static bool removeById(int id, string connString)
+        public static bool removeById(int id, string connString)
         {
             #region code
             bool rs = false;
@@ -111,7 +111,7 @@ namespace SonyAlphaLibs.Services
             #endregion
         }
 
-        internal static List<Banner> getListAll(string connString)
+        public static List<Banner> getListAll(string connString)
         {
             #region code
             List<Banner> lists = new List<Banner>();
@@ -151,7 +151,7 @@ namespace SonyAlphaLibs.Services
             #endregion
         }
 
-        internal static Banner getById(int id, string connString)
+        public static Banner getById(int id, string connString)
         {
             #region code
             Banner banner = new Banner();
@@ -190,12 +190,12 @@ namespace SonyAlphaLibs.Services
             #endregion
         }
 
-        internal static bool setPhoto2Banner(int photoId, string connString)
+        public static bool setPhoto2Banner(int photoId, string connString)
         {
             throw new NotImplementedException();
         }
 
-        internal static bool setPhoto2Banner(int bannerId, List<BannerPhoto> listPhotos, string connString)
+        public static bool setPhoto2Banner(int bannerId, List<BannerPhoto> listPhotos, string connString)
         {
             #region code
             bool rs = false;
@@ -250,7 +250,7 @@ namespace SonyAlphaLibs.Services
             #endregion
         }
 
-        internal static List<BannerPhoto> getPhotoOfBanner(int bannerId, string connString)
+        public static List<BannerPhoto> getPhotoOfBanner(int bannerId, string connString)
         {
             #region code
             List<BannerPhoto> lists = new List<BannerPhoto>();

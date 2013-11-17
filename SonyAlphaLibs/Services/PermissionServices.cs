@@ -11,7 +11,7 @@ namespace SonyAlphaLibs.Services
     public class PermissionServices : BaseService
     {
 
-        internal static bool addPermission(Permission permission, string connString)
+        public static bool addPermission(Permission permission, string connString)
         {
             bool rs = false;
             using (SqlConnection conn = new SqlConnection(connString))
@@ -45,12 +45,12 @@ namespace SonyAlphaLibs.Services
             return rs;
         }
 
-        internal static bool updatePermission(Permission permission, string connString)
+        public static bool updatePermission(Permission permission, string connString)
         {
             throw new NotImplementedException();
         }
 
-        internal static bool deletePermission(Permission permission, string connString)
+        public static bool deletePermission(Permission permission, string connString)
         {
             bool rs = false;
             using (SqlConnection conn = new SqlConnection(connString))
@@ -79,7 +79,7 @@ namespace SonyAlphaLibs.Services
             return rs;
         }
 
-        internal static List<Permission> getListAll(string connString)
+        public static List<Permission> getListAll(string connString)
         {
             List<Permission> lists = new List<Permission>();
             using (SqlConnection conn = new SqlConnection(connString))
@@ -117,7 +117,7 @@ namespace SonyAlphaLibs.Services
             return lists;
         }
 
-        internal static Permission getById(int id, string connString)
+        public static Permission getById(int id, string connString)
         {
             Permission permission = new Permission();
             using (SqlConnection conn = new SqlConnection(connString))
@@ -154,7 +154,7 @@ namespace SonyAlphaLibs.Services
             return permission;
         }
 
-        internal static Permission getByName(string name, string connString)
+        public static Permission getByName(string name, string connString)
         {
             Permission permission = new Permission();
             using (SqlConnection conn = new SqlConnection(connString))
@@ -191,12 +191,12 @@ namespace SonyAlphaLibs.Services
             return permission;
         }
 
-        internal static bool removeById(int id, string connString)
+        public static bool removeById(int id, string connString)
         {
             throw new NotImplementedException();
         }
 
-        internal static bool setPermission2Group(int permissionId, int groupId, string connString)
+        public static bool setPermission2Group(int permissionId, int groupId, string connString)
         {
             bool rs = false;
             using (SqlConnection conn = new SqlConnection(connString))
@@ -228,7 +228,7 @@ namespace SonyAlphaLibs.Services
             return rs;
         }
 
-        internal static bool setPermission2MenuPage(int permissionGroupId, int menuPageId,
+        public static bool setPermission2MenuPage(int permissionGroupId, int menuPageId,
             bool isPage, String connString)
         {
             bool rs = false;
@@ -262,7 +262,7 @@ namespace SonyAlphaLibs.Services
             return rs;
         }
 
-        internal static Permission getPermissionOfGroup(int groupId, String connString)
+        public static Permission getPermissionOfGroup(int groupId, String connString)
         {
             using (SqlConnection conn = new SqlConnection(connString))
             {

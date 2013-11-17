@@ -9,7 +9,7 @@ namespace SonyAlphaLibs.Services
 {
     public class MenuServices : BaseService
     {
-        internal static bool addMenu(Menu menu, string connString)
+        public static bool addMenu(Menu menu, string connString)
         {
             bool rs = false;
             using (SqlConnection conn = new SqlConnection(connString))
@@ -46,7 +46,7 @@ namespace SonyAlphaLibs.Services
             return rs;
         }
 
-        internal static bool updateMenu(Menu menu, string connString)
+        public static bool updateMenu(Menu menu, string connString)
         {
             bool rs = false;
             using (SqlConnection conn = new SqlConnection(connString))
@@ -82,7 +82,7 @@ namespace SonyAlphaLibs.Services
             return rs;
         }
 
-        internal static bool removeById(int id, string connString)
+        public static bool removeById(int id, string connString)
         {
             #region code
             bool rs = false;
@@ -114,7 +114,7 @@ namespace SonyAlphaLibs.Services
             #endregion
         }
 
-        internal static List<Menu> getListAll(string connString)
+        public static List<Menu> getListAll(string connString)
         {
             #region code
             List<Menu> lists = new List<Menu>();
@@ -157,7 +157,7 @@ namespace SonyAlphaLibs.Services
             #endregion
         }
 
-        internal static Menu getById(int id, string connString)
+        public static Menu getById(int id, string connString)
         {
             Menu rs = new Menu();
             using (SqlConnection conn = new SqlConnection(connString))

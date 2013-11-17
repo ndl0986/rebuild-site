@@ -9,7 +9,7 @@ namespace SonyAlphaLibs.Services
 {
     public class PhotoServices : BaseService
     {
-        internal static bool addPhoto(Photo photo, string connString)
+        public static bool addPhoto(Photo photo, string connString)
         {
             #region code
             bool rs = false;
@@ -60,7 +60,7 @@ namespace SonyAlphaLibs.Services
             #endregion
         }
 
-        internal static bool updatePhoto(Photo photo, string connString)
+        public static bool updatePhoto(Photo photo, string connString)
         {
             #region code
             bool rs = false;
@@ -112,7 +112,7 @@ namespace SonyAlphaLibs.Services
             #endregion
         }
 
-        internal static bool removeById(int id, string connString)
+        public static bool removeById(int id, string connString)
         {
             #region code
             bool rs = false;
@@ -144,7 +144,7 @@ namespace SonyAlphaLibs.Services
             #endregion
         }
 
-        internal static List<Photo> getListAll(string connString)
+        public static List<Photo> getListAll(string connString)
         {
             #region code
             List<Photo> lists = new List<Photo>();
@@ -201,7 +201,7 @@ namespace SonyAlphaLibs.Services
             #endregion
         }
 
-        internal static Photo getById(int id, string connString)
+        public static Photo getById(int id, string connString)
         {
             #region code
             Photo photo = new Photo();
@@ -257,7 +257,7 @@ namespace SonyAlphaLibs.Services
             #endregion
         }
 
-        internal static int getViewCount(int photoId, string connString)
+        public static int getViewCount(int photoId, string connString)
         {
             #region code
             int rs = 0;
@@ -289,7 +289,7 @@ namespace SonyAlphaLibs.Services
             #endregion
         }
 
-        internal static int getVoteCount(int photoId, string connString)
+        public static int getVoteCount(int photoId, string connString)
         {
             #region code
             int rs = 0;
@@ -321,7 +321,7 @@ namespace SonyAlphaLibs.Services
             #endregion
         }
 
-        internal static int getLikeCount(int photoId, string connString)
+        public static int getLikeCount(int photoId, string connString)
         {
             #region code
             int rs = 0;
@@ -353,7 +353,7 @@ namespace SonyAlphaLibs.Services
             #endregion
         }
 
-        internal static int increaseViewCount(int photoId, string connString)
+        public static int increaseViewCount(int photoId, string connString)
         {
             #region code
             int rs = 0;
@@ -385,7 +385,7 @@ namespace SonyAlphaLibs.Services
             #endregion
         }
 
-        internal static int increaseVoteCount(int photoId, string connString)
+        public static int increaseVoteCount(int photoId, string connString)
         {
             #region code
             int rs = 0;
@@ -417,7 +417,7 @@ namespace SonyAlphaLibs.Services
             #endregion
         }
 
-        internal static int increaseLikeCount(int photoId, string connString)
+        public static int increaseLikeCount(int photoId, string connString)
         {
             #region code
             int rs = 0;
@@ -449,7 +449,7 @@ namespace SonyAlphaLibs.Services
             #endregion
         }
 
-        internal static bool setPhoto2Product(int productId, List<String> list, string connString)
+        public static bool setPhoto2Product(int productId, List<String> list, string connString)
         {
             #region code
             bool rs = false;
@@ -496,7 +496,7 @@ namespace SonyAlphaLibs.Services
             #endregion
         }
 
-        internal static List<String> getPhotoOfProduct(int productId, string connString)
+        public static List<String> getPhotoOfProduct(int productId, string connString)
         {
             #region code
             List<String> lists = new List<String>();

@@ -11,8 +11,9 @@ namespace SonyAlphaLibs.Services
     public class PageServices : BaseService
     {
 
-        internal static bool addPage(Page page, string connString)
+        public static bool addPage(Page page, string connString)
         {
+            #region code
             bool rs = false;
             using (SqlConnection conn = new SqlConnection(connString))
             {
@@ -44,11 +45,13 @@ namespace SonyAlphaLibs.Services
                     return false;
                 }
             }
-            return rs;
+            return rs; 
+            #endregion
         }
 
-        internal static bool updatePage(Page page, string connString)
+        public static bool updatePage(Page page, string connString)
         {
+            #region code
             bool rs = false;
             using (SqlConnection conn = new SqlConnection(connString))
             {
@@ -80,10 +83,11 @@ namespace SonyAlphaLibs.Services
                     return false;
                 }
             }
-            return rs;
+            return rs; 
+            #endregion
         }
 
-        internal static List<Page> getListAll(string connString)
+        public static List<Page> getListAll(string connString)
         {
             #region code
             List<Page> lists = new List<Page>();
@@ -127,7 +131,7 @@ namespace SonyAlphaLibs.Services
             #endregion
         }
 
-        internal static bool removeById(int id, string connString)
+        public static bool removeById(int id, string connString)
         {
             #region code
             bool rs = false;
@@ -159,7 +163,7 @@ namespace SonyAlphaLibs.Services
             #endregion
         }
 
-        internal static Page getById(int id, string connString)
+        public static Page getById(int id, string connString)
         {
             #region code
             Page page = new Page();
@@ -202,7 +206,7 @@ namespace SonyAlphaLibs.Services
             #endregion
         }
 
-        internal static Page getByName(string name, string connString)
+        public static Page getByName(string name, string connString)
         {
             #region code
             Page page = new Page();
@@ -245,7 +249,7 @@ namespace SonyAlphaLibs.Services
             #endregion
         }
 
-        internal static List<Page> getListPage(int pageNum, int order, string connString)
+        public static List<Page> getListPage(int pageNum, int order, string connString)
         {
             #region code
             List<Page> lists = new List<Page>();
@@ -291,7 +295,7 @@ namespace SonyAlphaLibs.Services
             #endregion
         }
 
-        internal static List<Page> getListPage(int pageNum, int order, int pageSize,
+        public static List<Page> getListPage(int pageNum, int order, int pageSize,
             string orderBy, string connString)
         {
             #region code
@@ -340,8 +344,9 @@ namespace SonyAlphaLibs.Services
             #endregion
         }
 
-        internal static bool setBanner2Page(int pageId, int bannerId, string connString)
+        public static bool setBanner2Page(int pageId, int bannerId, string connString)
         {
+            #region code
             bool rs = false;
             using (SqlConnection conn = new SqlConnection(connString))
             {
@@ -367,10 +372,11 @@ namespace SonyAlphaLibs.Services
                     return false;
                 }
             }
-            return rs;
+            return rs; 
+            #endregion
         }
 
-        internal static int getBannerId(int pageId, string connString)
+        public static int getBannerId(int pageId, string connString)
         {
             #region code
             int rs = 0;
@@ -401,7 +407,7 @@ namespace SonyAlphaLibs.Services
             #endregion
         }
 
-        internal static List<int> getListBannerId(int pageId, string connString)
+        public static List<int> getListBannerId(int pageId, string connString)
         {
             #region code
             List<int> rs = new List<int>();
@@ -434,7 +440,7 @@ namespace SonyAlphaLibs.Services
             #endregion
         }
 
-        internal static List<Banner> getListBanner(int pageId, string connString)
+        public static List<Banner> getListBanner(int pageId, string connString)
         {
             #region code
             List<Banner> lists = new List<Banner>();

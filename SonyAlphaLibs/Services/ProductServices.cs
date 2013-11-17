@@ -9,7 +9,7 @@ namespace SonyAlphaLibs.Services
 {
     public class ProductServices : BaseService
     {
-        internal static bool addProduct(Product product, string connString)
+        public static bool addProduct(Product product, string connString)
         {
             #region code
             bool rs = false;
@@ -55,7 +55,7 @@ namespace SonyAlphaLibs.Services
             #endregion
         }
 
-        internal static bool updateProduct(Product product, string connString)
+        public static bool updateProduct(Product product, string connString)
         {
             #region code
             bool rs = false;
@@ -102,7 +102,7 @@ namespace SonyAlphaLibs.Services
             #endregion
         }
 
-        internal static bool removeById(int id, string connString)
+        public static bool removeById(int id, string connString)
         {
             #region code
             bool rs = false;
@@ -134,7 +134,7 @@ namespace SonyAlphaLibs.Services
             #endregion
         }
 
-        internal static List<Product> getListAll(string connString)
+        public static List<Product> getListAll(string connString)
         {
             #region code
             List<Product> lists = new List<Product>();
@@ -186,7 +186,7 @@ namespace SonyAlphaLibs.Services
             #endregion
         }
 
-        internal static Product getById(int id, string connString)
+        public static Product getById(int id, string connString)
         {
             #region code
             Product product = new Product();
@@ -237,7 +237,7 @@ namespace SonyAlphaLibs.Services
             #endregion
         }
 
-        internal static bool addProductCategory(ProductCategory productCategory, string connString)
+        public static bool addProductCategory(ProductCategory productCategory, string connString)
         {
             #region code
             bool rs = false;
@@ -273,7 +273,7 @@ namespace SonyAlphaLibs.Services
             #endregion
         }
 
-        internal static bool updateProductCategory(ProductCategory productCategory, string connString)
+        public static bool updateProductCategory(ProductCategory productCategory, string connString)
         {
             #region code
             bool rs = false;
@@ -310,7 +310,7 @@ namespace SonyAlphaLibs.Services
             #endregion
         }
 
-        internal static bool removeProductCategoryById(int id, string connString)
+        public static bool removeProductCategoryById(int id, string connString)
         {
             #region code
             bool rs = false;
@@ -342,7 +342,7 @@ namespace SonyAlphaLibs.Services
             #endregion
         }
 
-        internal static List<ProductCategory> getListAllProductCategory(string connString)
+        public static List<ProductCategory> getListAllProductCategory(string connString)
         {
             #region code
             List<ProductCategory> lists = new List<ProductCategory>();
@@ -384,7 +384,7 @@ namespace SonyAlphaLibs.Services
             #endregion
         }
 
-        internal static ProductCategory getProductCategoryById(int p, string connString)
+        public static ProductCategory getProductCategoryById(int p, string connString)
         {            
             #region code
             ProductCategory productCategory = new ProductCategory();

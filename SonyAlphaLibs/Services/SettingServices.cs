@@ -10,7 +10,7 @@ namespace SonyAlphaLibs.Services
     public class SettingServices : BaseService
     {
 
-        internal static bool addSetting(Setting setting, string connString)
+        public static bool addSetting(Setting setting, string connString)
         {
             #region code
             bool rs = false;
@@ -42,7 +42,7 @@ namespace SonyAlphaLibs.Services
             #endregion
         }
 
-        internal static bool updateSetting(Setting setting, string connString)
+        public static bool updateSetting(Setting setting, string connString)
         {
             #region code
             bool rs = false;
@@ -74,7 +74,7 @@ namespace SonyAlphaLibs.Services
             #endregion
         }
 
-        internal static bool removeById(int id, string connString)
+        public static bool removeById(int id, string connString)
         {
             #region code
             bool rs = false;
@@ -106,7 +106,7 @@ namespace SonyAlphaLibs.Services
             #endregion
         }
 
-        internal static List<Setting> getListAll(string connString)
+        public static List<Setting> getListAll(string connString)
         {
             #region code
             List<Setting> lists = new List<Setting>();
@@ -144,7 +144,7 @@ namespace SonyAlphaLibs.Services
             #endregion
         }
 
-        internal static Setting getById(int id, string connString)
+        public static Setting getById(int id, string connString)
         {
             #region code
             Setting setting = new Setting();
@@ -181,7 +181,7 @@ namespace SonyAlphaLibs.Services
             #endregion
         }
 
-        internal static Setting getByName(string name, string connString)
+        public static Setting getByName(string name, string connString)
         {
             #region code
             Setting setting = new Setting();

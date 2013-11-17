@@ -162,7 +162,7 @@ namespace SonyAlphaLibs.Services
             return rs;
         }
 
-        internal static User getByUserName(string userName, string connString)
+        public static User getByUserName(string userName, string connString)
         {
             User rs = new User();
             using (SqlConnection conn = new SqlConnection(connString))

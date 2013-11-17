@@ -9,7 +9,7 @@ namespace SonyAlphaLibs.Services
 {
     public class BaseService
     {
-        internal static int getCurrentMaxId(string tableName, string connString)
+        public static int getCurrentMaxId(string tableName, string connString)
         {
             #region code
             int rs = 0;
@@ -40,7 +40,7 @@ namespace SonyAlphaLibs.Services
             #endregion
         }
 
-        internal static void writeLog(String userName, String description, String connString)
+        public static void writeLog(String userName, String description, String connString)
         {
             #region code
             using (SqlConnection conn = new SqlConnection(connString))

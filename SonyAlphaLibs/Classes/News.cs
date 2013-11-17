@@ -134,6 +134,13 @@ namespace SonyAlphaLibs
         }
         #endregion
 
+        #region ext method
+        public NewsCategory getCategoryInfo(String connString)
+        {
+            return NewsServices.getNewsCategoryById(this.CategoryId, connString);
+        }
+        #endregion
+
         #region constructor
         public News() { }
 

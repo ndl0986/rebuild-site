@@ -56,6 +56,7 @@
     <Compile Include="Classes\BaseModel.cs" />
     <Compile Include="Classes\Menu.cs" />
     <Compile Include="Classes\News.cs" />
+    <Compile Include="Classes\NewsCategory.cs" />
     <Compile Include="Classes\Page.cs" />
     <Compile Include="Classes\PageBanner.cs" />
     <Compile Include="Classes\Permission.cs" />
