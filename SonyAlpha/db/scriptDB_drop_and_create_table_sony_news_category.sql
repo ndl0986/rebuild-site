@@ -37,7 +37,7 @@ CREATE TABLE [dbo].[sony_news_category](
 	[imageUrl] [varchar](500) NULL,
 	[created] [datetime] NOT NULL,
 	[updated] [datetime] NOT NULL,
- CONSTRAINT [PK_sony_category] PRIMARY KEY CLUSTERED 
+ CONSTRAINT [PK_sony_news_category] PRIMARY KEY CLUSTERED 
 (
 	[id] ASC
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
