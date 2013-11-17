@@ -68,6 +68,11 @@ namespace SonyAlphaLibs
         {
             return NewsServices.getNewsCategoryById(base.Id, connString);
         }
+
+        public int getCurrentMaxId(String connString)
+        {
+            return NewsServices.getCurrentMaxId("sony_news_category", connString);
+        }
         #endregion
     }
 }
