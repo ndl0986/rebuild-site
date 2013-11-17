@@ -18,8 +18,8 @@
                 <asp:BoundField DataField="FullName" HeaderText="FullName" SortExpression="FullName" />
                 <asp:BoundField DataField="AlbumCreator" HeaderText="AlbumCreator" SortExpression="AlbumCreator" />
                 <asp:BoundField DataField="ViewCount" HeaderText="ViewCount" SortExpression="ViewCount" />
-                <asp:BoundField DataField="Created" HeaderText="Created" SortExpression="Created" />
-                <asp:BoundField DataField="Updated" HeaderText="Updated" SortExpression="Updated" />
+                <asp:BoundField DataField="Created" HeaderText="Created" SortExpression="Created" dataformatstring="{0:dd/MM/yyyy}" htmlencode="false"/>
+                <asp:BoundField DataField="Updated" HeaderText="Updated" SortExpression="Updated" dataformatstring="{0:dd/MM/yyyy}" htmlencode="false"/>
                 <asp:TemplateField HeaderText="Commands" ShowHeader="False" HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign=Center>
                     <ItemTemplate>
                         <asp:LinkButton ID="lEdit" runat="server" CausesValidation="False" CommandName="Select" Text="Edit" CssClass="button"><span class="icon icon46"></span></asp:LinkButton>
