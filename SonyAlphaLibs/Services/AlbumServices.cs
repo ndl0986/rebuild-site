@@ -209,7 +209,7 @@ namespace SonyAlphaLibs.Services
                         {
                             cmd.CommandType = CommandType.StoredProcedure;
                             cmd.CommandText = "sony_sp_get_album_list_photo";
-                            cmd.Parameters.AddWithValue("@listPhotos", listImageIds);
+                            cmd.Parameters.AddWithValue("@listPhotoIds", listImageIds);
 
                             using (SqlDataReader reader = cmd.ExecuteReader())
                             {

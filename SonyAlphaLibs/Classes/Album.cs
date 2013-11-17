@@ -80,7 +80,7 @@ namespace SonyAlphaLibs
         public Album getById(String connString)
         {
             Album album = AlbumServices.getById(base.Id, connString);
-            album.ListPhotos = AlbumServices.getPhotoOfAlbum(this.albumImage, connString);
+            album.ListPhotos = AlbumServices.getPhotoOfAlbum(album.AlbumImage, connString);
             return album;
         }
         #endregion
