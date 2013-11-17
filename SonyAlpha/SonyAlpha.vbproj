@@ -108,6 +108,9 @@
     <Content Include="controls\admin\uc_account.ascx" />
     <Content Include="controls\admin\uc_accountgroup.ascx" />
     <Content Include="controls\admin\uc_adminmenu.ascx" />
+    <Content Include="controls\admin\uc_admin_addalbum.ascx" />
+    <Content Include="controls\admin\uc_admin_addphoto.ascx" />
+    <Content Include="controls\admin\uc_admin_album.ascx" />
     <Content Include="controls\admin\uc_banneradd.ascx" />
     <Content Include="controls\admin\uc_banneraddphoto.ascx" />
     <Content Include="controls\admin\uc_banners.ascx" />
@@ -115,6 +118,7 @@
     <Content Include="controls\admin\uc_newscategory.ascx" />
     <Content Include="controls\admin\uc_newsdetail.ascx" />
     <Content Include="controls\admin\uc_newslist.ascx" />
+    <Content Include="controls\admin\uc_pagebanner.ascx" />
     <Content Include="controls\admin\uc_pagedetail.ascx" />
     <Content Include="controls\admin\uc_pages.ascx" />
     <Content Include="controls\admin\uc_permission.ascx" />
@@ -718,6 +722,27 @@
       <DependentUpon>uc_adminmenu.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="controls\admin\uc_admin_addalbum.ascx.designer.vb">
+      <DependentUpon>uc_admin_addalbum.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\admin\uc_admin_addalbum.ascx.vb">
+      <DependentUpon>uc_admin_addalbum.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\admin\uc_admin_addphoto.ascx.designer.vb">
+      <DependentUpon>uc_admin_addphoto.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\admin\uc_admin_addphoto.ascx.vb">
+      <DependentUpon>uc_admin_addphoto.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\admin\uc_admin_album.ascx.designer.vb">
+      <DependentUpon>uc_admin_album.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\admin\uc_admin_album.ascx.vb">
+      <DependentUpon>uc_admin_album.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="controls\admin\uc_banneradd.ascx.designer.vb">
       <DependentUpon>uc_banneradd.ascx</DependentUpon>
     </Compile>
@@ -765,6 +790,13 @@
     </Compile>
     <Compile Include="controls\admin\uc_newslist.ascx.vb">
       <DependentUpon>uc_newslist.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\admin\uc_pagebanner.ascx.designer.vb">
+      <DependentUpon>uc_pagebanner.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\admin\uc_pagebanner.ascx.vb">
+      <DependentUpon>uc_pagebanner.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="controls\admin\uc_pagedetail.ascx.designer.vb">
