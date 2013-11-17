@@ -26,6 +26,7 @@ namespace SonyAlphaLibs.Services
                         cmd.Parameters.AddWithValue("@title", news.Title);
                         cmd.Parameters.AddWithValue("@seoUrl", news.SeoUrl);
                         cmd.Parameters.AddWithValue("@detail", news.Detail);
+                        cmd.Parameters.AddWithValue("@description", news.Description);
                         cmd.Parameters.AddWithValue("@categoryId", news.CategoryId);
                         cmd.Parameters.AddWithValue("@published", news.Published);
                         cmd.Parameters.AddWithValue("@metaTag", news.MetaTag);
@@ -70,6 +71,7 @@ namespace SonyAlphaLibs.Services
                         cmd.Parameters.AddWithValue("@title", news.Title);
                         cmd.Parameters.AddWithValue("@seoUrl", news.SeoUrl);
                         cmd.Parameters.AddWithValue("@detail", news.Detail);
+                        cmd.Parameters.AddWithValue("@description", news.Description);
                         cmd.Parameters.AddWithValue("@categoryId", news.CategoryId);
                         cmd.Parameters.AddWithValue("@published", news.Published);
                         cmd.Parameters.AddWithValue("@metaTag", news.MetaTag);
@@ -152,6 +154,7 @@ namespace SonyAlphaLibs.Services
                                 news.Title = reader["title"].ToString();
                                 news.SeoUrl = reader["seoUrl"].ToString();
                                 news.Detail = reader["detail"].ToString();
+                                news.Description = reader["description"].ToString();
                                 news.CategoryId = (int)reader["categoryId"];
                                 news.Published = reader["published"].ToString().Equals("1") || reader["published"].ToString().Equals("True");
                                 news.MetaTag = reader["metaTag"].ToString();
@@ -200,6 +203,7 @@ namespace SonyAlphaLibs.Services
                                 news.Title = reader["title"].ToString();
                                 news.SeoUrl = reader["seoUrl"].ToString();
                                 news.Detail = reader["detail"].ToString();
+                                news.Description = reader["description"].ToString();
                                 news.CategoryId = (int)reader["categoryId"];
                                 news.Published = reader["published"].ToString().Equals("1") || reader["published"].ToString().Equals("True");
                                 news.MetaTag = reader["metaTag"].ToString();

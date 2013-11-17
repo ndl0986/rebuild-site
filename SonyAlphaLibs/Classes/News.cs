@@ -33,6 +33,14 @@ namespace SonyAlphaLibs
             set { detail = value; }
         }
 
+        private string description;
+
+        public string Description
+        {
+            get { return description; }
+            set { description = value; }
+        }
+        
         private int categoryId;
 
         public int CategoryId
