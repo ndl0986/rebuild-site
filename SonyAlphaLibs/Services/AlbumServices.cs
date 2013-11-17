@@ -27,6 +27,7 @@ namespace SonyAlphaLibs.Services
                         cmd.Parameters.AddWithValue("@albumCreator", String.IsNullOrEmpty(album.AlbumCreator) ? "admin" : album.AlbumCreator);
                         cmd.Parameters.AddWithValue("@albumImage", String.IsNullOrEmpty(album.AlbumImage) ? "" : album.AlbumImage);
                         cmd.Parameters.AddWithValue("@viewCount", album.ViewCount);
+                        cmd.Parameters.AddWithValue("@isForCenter", album.IsForCenter ? 1 : 0);
                         SqlParameter returnVal = new SqlParameter("@returnVal", SqlDbType.Int);
                         returnVal.Direction = ParameterDirection.Output;
                         cmd.Parameters.Add(returnVal);
@@ -63,6 +64,7 @@ namespace SonyAlphaLibs.Services
                         cmd.Parameters.AddWithValue("@albumCreator", String.IsNullOrEmpty(album.AlbumCreator) ? "admin" : album.AlbumCreator);
                         cmd.Parameters.AddWithValue("@albumImage", String.IsNullOrEmpty(album.AlbumImage) ? "" : album.AlbumImage);
                         cmd.Parameters.AddWithValue("@viewCount", album.ViewCount);
+                        cmd.Parameters.AddWithValue("@isForCenter", album.IsForCenter ? 1 : 0);
                         SqlParameter returnVal = new SqlParameter("@returnVal", SqlDbType.Int);
                         returnVal.Direction = ParameterDirection.Output;
                         cmd.Parameters.Add(returnVal);
@@ -137,6 +139,7 @@ namespace SonyAlphaLibs.Services
                                 album.AlbumCreator = reader["albumCreator"].ToString();
                                 album.AlbumImage = reader["albumImage"].ToString();
                                 album.ViewCount = (int)reader["viewCount"];
+                                album.IsForCenter = reader["isForCenter"].ToString().Equals("1") || reader["isForCenter"].ToString().Equals("True");
                                 album.Created = (DateTime)reader["created"];
                                 album.Updated = (DateTime)reader["updated"];
                                 lists.Add(album);
@@ -178,6 +181,7 @@ namespace SonyAlphaLibs.Services
                                 album.AlbumCreator = reader["albumCreator"].ToString();
                                 album.AlbumImage = reader["albumImage"].ToString();
                                 album.ViewCount = (int)reader["viewCount"];
+                                album.IsForCenter = reader["isForCenter"].ToString().Equals("1") || reader["isForCenter"].ToString().Equals("True");
                                 album.Created = (DateTime)reader["created"];
                                 album.Updated = (DateTime)reader["updated"];
                             }

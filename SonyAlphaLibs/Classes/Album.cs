@@ -41,6 +41,14 @@ namespace SonyAlphaLibs
             set { viewCound = value; }
         }
 
+        private bool isForCenter;
+
+        public bool IsForCenter
+        {
+            get { return isForCenter; }
+            set { isForCenter = value; }
+        }
+        
         private List<Photo> listPhotos;
 
         public List<Photo> ListPhotos
