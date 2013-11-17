@@ -1,7 +1,7 @@
 ﻿<%@ Control Language="vb" AutoEventWireup="false" CodeBehind="uc_pagebanner.ascx.vb" Inherits="SonyAlpha.uc_pagebanner" %>
 <div class="navigations">
     <div class="breakcurm clearfix">
-        <a class="button"><span class="icon icon4"></span></a><span class="heading">Hệ thống > Trang nội dung : </span>
+        <a class="button"><span class="icon icon4"></span></a><span class="heading">Hệ thống > Trang nội dung : <a class="button floatright" href="javascript:history.go(-1);"><span class="icon icon8"></span></a></span>
     </div>
 </div>
 <div class="content">

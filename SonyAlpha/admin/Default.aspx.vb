@@ -42,7 +42,7 @@
                     Case "products"
                         tpl = Page.LoadControl("../controls/admin/uc_products.ascx")
                     Case "addproduct"
-                        tpl = Page.LoadControl("../controls/admin/uc_addproduct.ascx")
+                        tpl = Page.LoadControl("../controls/admin/uc_productdetail.ascx")
                     Case "banners"
                         tpl = Page.LoadControl("../controls/admin/uc_banners.ascx")
                     Case "addbanner"

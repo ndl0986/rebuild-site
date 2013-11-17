@@ -124,6 +124,8 @@
     <Content Include="controls\admin\uc_pages.ascx" />
     <Content Include="controls\admin\uc_permission.ascx" />
     <Content Include="controls\admin\uc_productcategory.ascx" />
+    <Content Include="controls\admin\uc_products.ascx" />
+    <Content Include="controls\admin\uc_product_detail.ascx" />
     <Content Include="controls\views\uc_album.ascx" />
     <Content Include="controls\views\uc_albumdetail.ascx" />
     <Content Include="controls\views\uc_banner.ascx" />
@@ -840,6 +842,20 @@
     </Compile>
     <Compile Include="controls\admin\uc_productcategory.ascx.vb">
       <DependentUpon>uc_productcategory.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\admin\uc_products.ascx.designer.vb">
+      <DependentUpon>uc_products.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\admin\uc_products.ascx.vb">
+      <DependentUpon>uc_products.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\admin\uc_product_detail.ascx.designer.vb">
+      <DependentUpon>uc_product_detail.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\admin\uc_product_detail.ascx.vb">
+      <DependentUpon>uc_product_detail.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="controls\views\uc_album.ascx.designer.vb">

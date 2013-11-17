@@ -3702,4 +3702,4 @@ span.icon200 {
 .form .textbox.small { width: 30px; min-width: 0px; text-align: center; vertical-align: middle;}
 .hidden,.hiddencol { visibility: hidden; display: none;}
 .img_preview img { width: 100px; height: auto; max-height: 100px;}
-.row .thumbnail { width: 200px; height: auto; display: block; margin-bottom: 5px;}
+.row .thumbnail { width: 200px; height: 200px; display: block; margin-bottom: 5px; background-size: cover !important;}

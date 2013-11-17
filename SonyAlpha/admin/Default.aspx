@@ -100,6 +100,9 @@
             return confirm(str);
         }
         $(document).ready(function () {
+            var container = $($('.container')[0]);
+            container.css('min-height',$(window).innerHeight()-150);
+
             var inputs = $('.form').find('input');
             $('#btnCancel').click(function () {
                 inputs.val('').text('');

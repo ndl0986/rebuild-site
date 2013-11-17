@@ -1,7 +1,7 @@
 ﻿<%@ Control Language="vb" AutoEventWireup="false" CodeBehind="uc_admin_addphoto.ascx.vb" Inherits="SonyAlpha.uc_admin_addphoto" %>
 <div class="navigations">
     <div class="breakcurm clearfix">
-        <a class="button"><span class="icon icon4"></span></a><span class="heading">Hệ thống > Albums : </span>
+        <a class="button"><span class="icon icon4"></span></a><span class="heading">Hệ thống > Albums > Add photo to Album :<a class="button floatright" href="javascript:history.go(-1);"><span class="icon icon8"></span></a></span>
     </div>
 </div>
 <div class="content">
@@ -26,7 +26,7 @@
             </li>
             <li class="row clerafix detail hidden">
                 <div class="caption" >Ghi chú :</div>
-                <div class="item"><asp:TextBox runat="server" ID="txtDes" CssClass="textbox" maxlength="500"></asp:TextBox></div>
+                <div class="item"><asp:TextBox runat="server" ID="txtDes" CssClass="textbox" TextMode="MultiLine" maxlength="500"></asp:TextBox></div>
             </li>
             <li class="row clerafix detail hidden">
                 <div class="caption" >Camera :</div>
@@ -86,6 +86,12 @@
     </div>
 </div>
 <script type = "text/javascript">
+    $(document).ready(function () {
+        if ($('#txtFileName').val() != '') {
+            showDetail();
+        }
+    });
+
     function uploadComplete(sender,args) {
         $('#txtFileName').val($('#urlPath').val() + args.get_fileName());
         showDetail();
@@ -96,12 +102,8 @@
     }
 
     function showDetail() {
-        //var img = new Image();
-       //img.src = $('#txtFileName').val();
-        //$(img).addClass("thumbnail");
-        //img.onload = function () {
-        //    $('#fileUpload').after(img).addClass('hidden');
-        //}
+        var img = $('<div class="thumbnail"></div>').attr('style', 'background:url("' + $('#txtFileName').val() + '");');
+        $('#fileUpload').after(img).addClass('hidden');
         $('.detail').removeClass("hidden");
     }
 </script>

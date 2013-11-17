@@ -7,11 +7,9 @@ Public Class uc_admin_editalbum
     Dim myListPhoto As List(Of SonyAlphaLibs.Photo)
     Dim bolUpdate As Boolean
     Sub LoadAlbum(ByVal id As String)
-
         myAlbum.Id = CInt(id)
         myAlbum = myAlbum.getById(CN.ConnectionString)
         txtName.Text = myAlbum.FullName
-
         myListPhoto = myAlbum.getPhotoOfAlbum(CN.ConnectionString)
         grvPhotos.DataSource = myListPhoto
         grvPhotos.DataBind()
@@ -43,9 +41,7 @@ Public Class uc_admin_editalbum
                         Exit For
                     End If
                 Next
-
                 myAlbum.setPhoto2Album(myListPhoto, CN.ConnectionString)
-
                 grvPhotos.DataSource = myListPhoto
                 grvPhotos.DataBind()
             End If
@@ -58,5 +54,12 @@ Public Class uc_admin_editalbum
         Dim strURL As String
         strURL = "?tpl=addphotos&aid=" & Request.QueryString("id") & "&id=" & grvPhotos.Rows(grvPhotos.SelectedIndex).Cells(0).Text
         Response.Redirect(strURL)
+    End Sub
+
+    Private Sub btnSave_ServerClick(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnSave.ServerClick
+        If Page.IsPostBack Then
+            myAlbum.FullName = txtName.Text
+            myAlbum.update(CN.ConnectionString)
+        End If
     End Sub
 End Class

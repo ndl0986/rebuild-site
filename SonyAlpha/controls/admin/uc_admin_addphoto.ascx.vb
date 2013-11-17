@@ -11,6 +11,21 @@ Public Class uc_admin_addphoto
     Sub LoadPhoto(ByVal id As String)
         myPhoto.Id = CInt(id)
         myPhoto = myPhoto.getById(CN.ConnectionString)
+        txtFileName.Text = myPhoto.FileName
+        txtName.Text = myPhoto.Title
+        txtCamera.Text = myPhoto.CameraName
+        txtCameraModel.Text = myPhoto.CameraModel
+        txtDes.Text = myPhoto.Description
+        txtExposureBlas.Text = myPhoto.ExposureBlas
+        txtExposureTime.Text = myPhoto.ExposureTime
+        txtFlashEnergy.Text = myPhoto.FlashEnergy
+        txtFlashMode.Text = myPhoto.FlashMode
+        txtFocalLengh.Text = myPhoto.FocalLengh
+        txtFstop.Text = myPhoto.FStop
+        txtMateringMode.Text = myPhoto.MateringMode
+        txtMaxAperture.Text = myPhoto.MaxAperture
+        txtISO.Text = myPhoto.ISO
+        txtSubjectDistance.Text = myPhoto.SubjectDistance
     End Sub
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         Dim id As String
@@ -57,13 +72,30 @@ Public Class uc_admin_addphoto
             Try
                 myPhoto.FileName = txtFileName.Text
                 myPhoto.Title = txtName.Text
-                myPhoto.add(CN.ConnectionString)
-                myPhoto.Id = SonyAlphaLibs.Services.PhotoServices.getCurrentMaxId("sony_photo", CN.ConnectionString)
+                myPhoto.CameraName = txtCamera.Text
+                myPhoto.CameraModel = txtCameraModel.Text
+                myPhoto.Description = txtDes.Text
+                myPhoto.ExposureBlas = txtExposureBlas.Text
+                myPhoto.ExposureTime = txtExposureTime.Text
+                myPhoto.FlashEnergy = txtFlashEnergy.Text
+                myPhoto.FlashMode = txtFlashMode.Text
+                myPhoto.FocalLengh = txtFocalLengh.Text
+                myPhoto.FStop = txtFstop.Text
+                myPhoto.MateringMode = txtMateringMode.Text
+                myPhoto.MaxAperture = txtMaxAperture.Text
+                myPhoto.ISO = txtISO.Text
+                myPhoto.SubjectDistance = txtSubjectDistance.Text
 
                 Dim result As Boolean
+                If bolUpdate = False Then
+                    myPhoto.add(CN.ConnectionString)
+                    myPhoto.Id = SonyAlphaLibs.Services.PhotoServices.getCurrentMaxId("sony_photo", CN.ConnectionString)
 
-                result = myAlbum.setPhoto2Album(myPhoto, CN.ConnectionString)
-
+                    result = myAlbum.setPhoto2Album(myPhoto, CN.ConnectionString)
+                Else
+                    result = myPhoto.update(CN.ConnectionString)
+                End If
+                Response.Redirect("?tpl=editalbum&id=" & myAlbum.Id.ToString)
             Catch ex As Exception
 
             End Try
