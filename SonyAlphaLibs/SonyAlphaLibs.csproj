@@ -64,6 +64,7 @@
     <Compile Include="Classes\Product.cs" />
     <Compile Include="Classes\ProductCategory.cs" />
     <Compile Include="Classes\Setting.cs" />
+    <Compile Include="Classes\SonyCenter.cs" />
     <Compile Include="Classes\User.cs" />
     <Compile Include="Classes\UserGroup.cs" />
     <Compile Include="Example\example.cs" />
@@ -80,6 +81,7 @@
     <Compile Include="Services\PhotoServices.cs" />
     <Compile Include="Services\ProductServices.cs" />
     <Compile Include="Services\SettingServices.cs" />
+    <Compile Include="Services\SonyCenterServices.cs" />
     <Compile Include="Services\UserGroupServices.cs" />
     <Compile Include="Services\UserServices.cs" />
   </ItemGroup>
