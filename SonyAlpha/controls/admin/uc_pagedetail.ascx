@@ -23,6 +23,11 @@
             <li class="row clerafix">
                 <div class="caption" >Banner :</div>
                 <div class="item">
+                    <asp:Repeater ID="rptListBanner" runat="server">
+                        <ItemTemplate>
+                            <label><%#Container.DataItem("Name")%></label>
+                        </ItemTemplate>
+                    </asp:Repeater>
                 </div>
             </li>
             <li class="row clerafix">

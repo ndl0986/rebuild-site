@@ -3,6 +3,7 @@ Imports SonyAlphaLibs.Services
 Public Class uc_pagedetail
     Inherits System.Web.UI.UserControl
     Dim myPage As New SonyAlphaLibs.Page
+
     Dim bolUpdate As Boolean
     Sub LoadPage(id As String)
         myPage.Id = CInt(id)
@@ -11,6 +12,19 @@ Public Class uc_pagedetail
         txtLongTitle.Text = myPage.LongTitle
         fckEditor.Value = myPage.PageContent
         txtUrl.Text = myPage.SeoUrl
+
+        Dim str As List(Of Integer)
+        Dim listBanner As New List(Of SonyAlphaLibs.Banner)
+        str = myPage.getListBannerId(CN.ConnectionString)
+
+        For Each bId As Integer In str
+            Dim pBanner As New SonyAlphaLibs.Banner
+            pBanner = pBanner.getById(bId)
+            listBanner.Add(pBanner)
+        Next
+
+        rptListBanner.DataSource = listBanner
+        rptListBanner.DataBind()
 
     End Sub
 

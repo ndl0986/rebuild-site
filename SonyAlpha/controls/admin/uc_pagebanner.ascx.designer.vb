@@ -11,52 +11,43 @@ Option Strict On
 Option Explicit On
 
 
-Partial Public Class uc_pagedetail
+Partial Public Class uc_pagebanner
 
     '''<summary>
-    '''txtTitle control.
+    '''lblMessage control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtTitle As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents lblMessage As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''txtLongTitle control.
+    '''grvPageBanner control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtLongTitle As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents grvPageBanner As Global.System.Web.UI.WebControls.GridView
 
     '''<summary>
-    '''txtUrl control.
+    '''ddlPage control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtUrl As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents ddlPage As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
-    '''rptListBanner control.
+    '''ddlBanner control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents rptListBanner As Global.System.Web.UI.WebControls.Repeater
-
-    '''<summary>
-    '''fckEditor control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents fckEditor As Global.FredCK.FCKeditorV2.FCKeditor
+    Protected WithEvents ddlBanner As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
     '''btnSave control.

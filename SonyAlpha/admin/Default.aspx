@@ -60,7 +60,7 @@
                         </li>
                         <li><a href="#">Hình ảnh</a>
                         <ul>
-                            <li><a href="?tpl=album">Albums</a></li>
+                            <li><a href="?tpl=albums">Albums</a></li>
                             <li><a href="?tpl=photocomments">Comments</a></li>
                         </ul>
                         </li>
@@ -94,7 +94,7 @@
     <script type="text/javascript" language="javascript" src="../js/libs/bootstrap.min.js"></script>
     <script type="text/javascript" language="javascript" src="../js/plugins/jquery.bxslider.min.js"></script>
     <script type="text/javascript" language="javascript" src="../js/plugins/jquery.validate.js"></script>
-    <script>
+    <script type="text/javascript">
         function ConfirmDelete(str) {
             return confirm(str);
         }

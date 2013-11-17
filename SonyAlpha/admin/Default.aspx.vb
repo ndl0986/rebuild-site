@@ -49,6 +49,16 @@
                         tpl = Page.LoadControl("../controls/admin/uc_banneradd.ascx")
                     Case "editbanner"
                         tpl = Page.LoadControl("../controls/admin/uc_banneraddphoto.ascx")
+                    Case "banerpage"
+                        tpl = Page.LoadControl("../controls/admin/uc_pagebanner.ascx")
+                    Case "addalbum"
+                        tpl = Page.LoadControl("../controls/admin/uc_admin_addalbum.ascx")
+                    Case "albums"
+                        tpl = Page.LoadControl("../controls/admin/uc_admin_album.ascx")
+                    Case "addphotos"
+                        tpl = Page.LoadControl("../controls/admin/uc_admin_addphoto.ascx")
+                    Case "photocomments"
+                        tpl = Page.LoadControl("../controls/admin/uc_admin_photocomments.ascx")
                     Case "files"
                         Response.Redirect("FileManager.aspx")
                     Case "logout"
