@@ -343,4 +343,14 @@ Public Module Db
             Return "error"
         End Try
     End Function
+    Public Function GetURL(ByVal strPath As String) As String
+        Try
+            Dim str As String
+            str = strPath.Substring(strPath.IndexOf("\upload\"))
+            str = str.Replace("\", "/")
+            GetURL = ConfigurationManager.AppSettings("URL") & str
+        Catch ex As Exception
+            Return ""
+        End Try
+    End Function
 End Module
