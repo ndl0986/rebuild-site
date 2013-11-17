@@ -8,7 +8,10 @@
     <div class="section">
         <asp:Label runat="server" ID="lblMessage"></asp:Label>
         <h4 class="heading">Danh sách albums photo<a href="?tpl=addalbum" class="floatright button action"><span class="icon icon68"></span></a></h4>
-        <asp:GridView EmptyDataText="Không có albums nào" ID="grvAlbums" runat="server" AllowPaging="True" AllowSorting="True" DataSourceID="objAlbums" SkinID="Defaultgridview" AutoGenerateColumns="False" CssClass="datatable" GridLines="None">
+        <asp:GridView EmptyDataText="Không có albums nào" ID="grvAlbums" runat="server" 
+            AllowPaging="True" AllowSorting="True" DataSourceID="objAlbums"
+            SkinID="Defaultgridview" AutoGenerateColumns="False" CssClass="datatable" 
+            GridLines="None">
             <HeaderStyle CssClass="girdheader"/>
             <Columns>
                 <asp:BoundField DataField="Id" HeaderText="Id" SortExpression="Id" ReadOnly="true"/>
@@ -17,10 +20,10 @@
                 <asp:BoundField DataField="ViewCount" HeaderText="ViewCount" SortExpression="ViewCount" />
                 <asp:BoundField DataField="Created" HeaderText="Created" SortExpression="Created" dataformatstring="{0:dd/MM/yyyy}" htmlencode="false"/>
                 <asp:BoundField DataField="Updated" HeaderText="Updated" SortExpression="Updated" dataformatstring="{0:dd/MM/yyyy}" htmlencode="false"/>
-                <asp:TemplateField HeaderText="Commands" ShowHeader="False" HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign=Center>
+                <asp:TemplateField HeaderText="Commands" ShowHeader="False" HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center">
                     <ItemTemplate>
                         <asp:LinkButton ID="lEdit" runat="server" CausesValidation="False" CommandName="Select" Text="Edit" CssClass="button"><span class="icon icon46"></span></asp:LinkButton>
-                        <asp:LinkButton ID="lDelete" runat="server" CausesValidation="False" CommandName="Delete" Text="Delete" CssClass="actDel button" messdelete="Delete this album ?"><span class="icon icon186"></span></asp:LinkButton>
+                        <asp:LinkButton ID="lDelete" runat="server" CausesValidation="False" CommandArgument='<%#Eval("Id") %>' CommandName="DeleteRow" Text="Delete" CssClass="actDel button" messdelete="Delete this album ?"><span class="icon icon186"></span></asp:LinkButton>
                     </ItemTemplate>
                 </asp:TemplateField>
             </Columns>

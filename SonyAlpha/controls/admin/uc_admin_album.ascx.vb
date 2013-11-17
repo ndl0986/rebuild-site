@@ -11,11 +11,24 @@ Public Class uc_admin_album
 
     End Sub
 
+    Private Sub grvAlbums_RowCommand(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewCommandEventArgs) Handles grvAlbums.RowCommand
+        Try
+            If e.CommandName = "DeleteRow" Then
+                myAlbum.Id = CInt(e.CommandArgument)
+                myAlbum = myAlbum.getById(CN.ConnectionString)
+                myAlbum.removeById(CN.ConnectionString)
+
+                grvAlbums.DataSourceID = ""
+                grvAlbums.DataSourceID = "objAlbums"
+            End If
+        Catch ex As Exception
+
+        End Try
+    End Sub
+
     Private Sub grvAlbums_RowDeleting(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewDeleteEventArgs) Handles grvAlbums.RowDeleting
         Try
-            myAlbum.Id = e.Values("Id")
-            myAlbum = myAlbum.getById(CN.ConnectionString)
-            myAlbum.removeById(CN.ConnectionString)
+            grvAlbums.DataBind()
         Catch ex As Exception
 
         End Try
