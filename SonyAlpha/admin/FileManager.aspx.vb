@@ -21,16 +21,7 @@ Public Class FileManager
             BindFolder(strDpath, fNode)
         Next
     End Sub
-    Public Function GetURL(ByVal strPath As String) As String
-        Try
-            Dim str As String
-            str = strPath.Substring(strPath.IndexOf("\upload\"))
-            str = str.Replace("\", "/")
-            GetURL = ConfigurationManager.AppSettings("URL") & str
-        Catch ex As Exception
-            Return ""
-        End Try
-    End Function
+
     Private Sub btnOK_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnOK.Click
         Try
             Dim filePath As String

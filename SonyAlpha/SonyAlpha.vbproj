@@ -111,6 +111,7 @@
     <Content Include="controls\admin\uc_admin_addalbum.ascx" />
     <Content Include="controls\admin\uc_admin_addphoto.ascx" />
     <Content Include="controls\admin\uc_admin_album.ascx" />
+    <Content Include="controls\admin\uc_admin_editalbum.ascx" />
     <Content Include="controls\admin\uc_banneradd.ascx" />
     <Content Include="controls\admin\uc_banneraddphoto.ascx" />
     <Content Include="controls\admin\uc_banners.ascx" />
@@ -646,6 +647,13 @@
     <Content Include="fckeditor\_whatsnew.html" />
     <Content Include="fckeditor\_whatsnew_history.html" />
     <Content Include="Global.asax" />
+    <Content Include="Img\ajax-loader.gif" />
+    <Content Include="Img\bg_admin.jpg" />
+    <Content Include="Img\bg_form_login.png" />
+    <Content Include="Img\google+-ui-sprite-colour.png" />
+    <Content Include="Img\google+-ui-sprite-gray.png" />
+    <Content Include="Img\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Img\ui-icons_222222_256x240.png" />
     <Content Include="Js\libs\bootstrap.min.js" />
     <Content Include="Js\libs\jquery-2.0.3.min.js" />
     <Content Include="Js\libs\modernizr-2.5.3.min.js" />
@@ -741,6 +749,13 @@
     </Compile>
     <Compile Include="controls\admin\uc_admin_album.ascx.vb">
       <DependentUpon>uc_admin_album.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\admin\uc_admin_editalbum.ascx.designer.vb">
+      <DependentUpon>uc_admin_editalbum.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\admin\uc_admin_editalbum.ascx.vb">
+      <DependentUpon>uc_admin_editalbum.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="controls\admin\uc_banneradd.ascx.designer.vb">
@@ -1142,7 +1157,6 @@
     <Folder Include="fckeditor\skins\office2003\images\" />
     <Folder Include="fckeditor\skins\v2\images\" />
     <Folder Include="fckeditor\themes\default\" />
-    <Folder Include="Img\" />
     <Folder Include="Js\controllers\" />
     <Folder Include="upload\" />
   </ItemGroup>

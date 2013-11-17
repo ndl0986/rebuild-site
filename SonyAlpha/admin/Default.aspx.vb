@@ -57,6 +57,8 @@
                         tpl = Page.LoadControl("../controls/admin/uc_admin_album.ascx")
                     Case "addphotos"
                         tpl = Page.LoadControl("../controls/admin/uc_admin_addphoto.ascx")
+                    Case "editalbum"
+                        tpl = Page.LoadControl("../controls/admin/uc_admin_editalbum.ascx")
                     Case "photocomments"
                         tpl = Page.LoadControl("../controls/admin/uc_admin_photocomments.ascx")
                     Case "files"

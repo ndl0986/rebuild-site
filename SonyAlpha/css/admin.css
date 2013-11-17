@@ -2183,7 +2183,7 @@ input.dateinput {
 }
 
 .form .textbox {
-    min-width: 250px;
+    min-width: 250px; vertical-align: top;
 }
 
 .form select {
@@ -3700,3 +3700,5 @@ span.icon200 {
 #ulPhotos img { width: auto; height: auto; max-width: 100%; vertical-align: middle;}
 #ulPhotos .title { font-size: 14px; color:#333;-webkit-backface-visibility: hidden;}
 .form .textbox.small { width: 30px; min-width: 0px; text-align: center; vertical-align: middle;}
+.hidden { visibility: hidden; display: none;}
+.row .thumbnail { width: 200px; height: auto; display: block; margin-bottom: 5px;}
