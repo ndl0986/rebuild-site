@@ -278,6 +278,7 @@ namespace SonyAlphaLibs.Services
                         cmd.Parameters.AddWithValue("@name", newsCategory.Name);
                         cmd.Parameters.AddWithValue("@seoUrl", newsCategory.SeoUrl);
                         cmd.Parameters.AddWithValue("@imageUrl", newsCategory.ImageUrl);
+                        cmd.Parameters.AddWithValue("@parentId", newsCategory.ParentId);
 
                         SqlParameter returnVal = new SqlParameter("@returnVal", SqlDbType.Int);
                         returnVal.Direction = ParameterDirection.Output;
@@ -313,6 +314,7 @@ namespace SonyAlphaLibs.Services
                         cmd.Parameters.AddWithValue("@name", newsCategory.Name);
                         cmd.Parameters.AddWithValue("@seoUrl", newsCategory.SeoUrl);
                         cmd.Parameters.AddWithValue("@imageUrl", newsCategory.ImageUrl);
+                        cmd.Parameters.AddWithValue("@parentId", newsCategory.ParentId);
 
                         SqlParameter returnVal = new SqlParameter("@returnVal", SqlDbType.Int);
                         returnVal.Direction = ParameterDirection.Output;
@@ -386,6 +388,7 @@ namespace SonyAlphaLibs.Services
                                 newsCategory.Name = reader["name"].ToString();
                                 newsCategory.SeoUrl = reader["seoUrl"].ToString();
                                 newsCategory.ImageUrl = reader["imageUrl"].ToString();
+                                newsCategory.ParentId = (int)reader["parentId"];
                                 newsCategory.Created = (DateTime)reader["created"];
                                 newsCategory.Updated = (DateTime)reader["updated"];
                                 lists.Add(newsCategory);

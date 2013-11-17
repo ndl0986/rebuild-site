@@ -9,6 +9,14 @@ namespace SonyAlphaLibs
     public class NewsCategory : BaseModel
     {
         #region fields
+        private int parentId;
+
+        public int ParentId
+        {
+            get { return parentId; }
+            set { parentId = value; }
+        }
+        
         private string name;
 
         public string Name

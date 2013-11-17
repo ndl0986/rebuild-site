@@ -152,7 +152,7 @@ namespace SonyAlphaLibs.Services
                                 sonyCenter.Fax = reader["fax"].ToString();
                                 sonyCenter.Province = reader["province"].ToString();
                                 sonyCenter.Description = reader["description"].ToString();
-                                sonyCenter.RetailLevel = (int)reader["title"];
+                                sonyCenter.RetailLevel = (int)reader["retailLevel"];
                                 sonyCenter.CenterImage = reader["CenterImage"].ToString();
                                 sonyCenter.OpenTime = reader["opentime"].ToString();
                                 sonyCenter.CloseTime = reader["closetime"].ToString();
