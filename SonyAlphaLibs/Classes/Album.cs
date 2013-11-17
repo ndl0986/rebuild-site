@@ -57,6 +57,11 @@ namespace SonyAlphaLibs
             return AlbumServices.addAlbum(this, connString);
         }
 
+        public bool add()
+        {
+            return AlbumServices.addAlbum(this, base.ConnString);
+        }
+
         public bool update(String connString)
         {
             return AlbumServices.updateAlbum(this, connString);
@@ -124,6 +129,15 @@ namespace SonyAlphaLibs
         public int getCurrentMaxId(String connString)
         {
             return AlbumServices.getCurrentMaxId("sony_album", connString);
+        }
+        #endregion
+
+        #region constructor
+        public Album() { }
+
+        public Album(String connString)
+        {
+            base.ConnString = connString;
         }
         #endregion
     }

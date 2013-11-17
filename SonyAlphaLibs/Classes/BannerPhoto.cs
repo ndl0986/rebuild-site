@@ -41,5 +41,14 @@ namespace SonyAlphaLibs
         }
         
         #endregion        
+
+        #region constructor
+        public BannerPhoto() { }
+
+        public BannerPhoto(String connString)
+        {
+            base.ConnString = connString;
+        }
+        #endregion
     }
 }

@@ -13,7 +13,7 @@ namespace SonyAlphaLibs
         public List<Banner> ListBanner { get; set; }
         #endregion
 
-        #region constructure
+        #region constructor
         public PageBanner()
         {
             this.Page = new Page();
@@ -23,8 +23,14 @@ namespace SonyAlphaLibs
         public PageBanner(int pageId, string connString)
         {
             Page.Id = pageId;
+            base.ConnString = connString;
             Page = PageServices.getById(pageId, connString);
             ListBanner = PageServices.getListBanner(pageId, connString);
+        }
+
+        public PageBanner(string connString)
+        {
+            base.ConnString = connString;
         }
         #endregion
     }

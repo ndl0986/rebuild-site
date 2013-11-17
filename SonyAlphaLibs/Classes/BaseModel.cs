@@ -31,6 +31,14 @@ namespace SonyAlphaLibs
             set { updated = value; }
         }
 
+        private string connString;
+
+        public string ConnString
+        {
+            get { return connString; }
+            set { connString = value; }
+        }
+        
         public BaseModel() {
             id = 0;
             created = DateTime.Now;

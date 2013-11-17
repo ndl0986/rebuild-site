@@ -8,6 +8,7 @@ namespace SonyAlphaLibs
 {
     public class Permission : BaseModel, IBaseFunction<Permission>
     {
+        #region fields
         private string name;
 
         public string Name
@@ -38,8 +39,10 @@ namespace SonyAlphaLibs
         {
             get { return allowDelete; }
             set { allowDelete = value; }
-        }
+        } 
+        #endregion
 
+        #region base method
         public bool add(String connString)
         {
             return PermissionServices.addPermission(this, connString);
@@ -63,8 +66,10 @@ namespace SonyAlphaLibs
         public Permission getById(String connString)
         {
             return PermissionServices.getById(base.Id, connString);
-        }
+        } 
+        #endregion
 
+        #region ext method
         public Permission getByName(String connString)
         {
             return PermissionServices.getByName(this.Name, connString);
@@ -73,6 +78,16 @@ namespace SonyAlphaLibs
         public bool removeById(String connString)
         {
             return PermissionServices.removeById(base.Id, connString);
+        } 
+        #endregion
+
+        #region constructor
+        public Permission() { }
+
+        public Permission(String connString)
+        {
+            base.ConnString = connString;
         }
+        #endregion
     }
 }

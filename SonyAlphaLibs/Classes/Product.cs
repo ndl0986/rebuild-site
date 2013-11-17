@@ -183,5 +183,14 @@ namespace SonyAlphaLibs
             return PhotoServices.getPhotoOfProduct(base.Id, connString);
         }
         #endregion
+
+        #region constructor
+        public Product() { }
+
+        public Product(String connString)
+        {
+            base.ConnString = connString;
+        }
+        #endregion
     }
 }

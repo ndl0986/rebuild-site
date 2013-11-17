@@ -228,5 +228,14 @@ namespace SonyAlphaLibs
             return PhotoServices.increaseLikeCount(base.Id, connString);
         }
         #endregion
+
+        #region constructor
+        public Photo() { }
+
+        public Photo(String connString)
+        {
+            base.ConnString = connString;
+        }
+        #endregion
     }
 }

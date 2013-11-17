@@ -8,6 +8,7 @@ namespace SonyAlphaLibs
 {
     public class Menu : BaseModel, IBaseFunction<Menu>
     {
+        #region fields
         private string name;
 
         public string Name
@@ -62,9 +63,11 @@ namespace SonyAlphaLibs
         {
             get { return parentId; }
             set { parentId = value; }
-        }
-        
+        } 
+        #endregion
 
+
+        #region base method
         public bool add(String connString)
         {
             return MenuServices.addMenu(this, connString);
@@ -88,11 +91,16 @@ namespace SonyAlphaLibs
         public Menu getById(String connString)
         {
             return MenuServices.getById(this.Id, connString);
-        }
+        } 
+        #endregion
 
-        //public List<Menu> getListByGroupId(String connString)
-        //{ 
-            
-        //}
+       #region constructor
+        public Menu() { }
+
+        public Menu(String connString)
+        {
+            base.ConnString = connString;
+        }
+        #endregion
     }
 }

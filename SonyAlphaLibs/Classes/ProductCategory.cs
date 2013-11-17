@@ -77,5 +77,14 @@ namespace SonyAlphaLibs
             return ProductServices.getProductCategoryById(base.Id, connString);
         }
         #endregion
+
+        #region constructor
+        public ProductCategory() { }
+
+        public ProductCategory(String connString)
+        {
+            base.ConnString = connString;
+        }
+        #endregion
     }
 }

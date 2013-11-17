@@ -8,8 +8,9 @@ namespace SonyAlphaLibs
 {
     public class User : BaseModel, IBaseFunction<User>
     {
+        #region fields
         private string userName;
-        
+
         public string UserName
         {
             get { return userName; }
@@ -31,7 +32,7 @@ namespace SonyAlphaLibs
             get { return fullName; }
             set { fullName = value; }
         }
-        
+
         private Boolean status;
 
         public Boolean Status
@@ -52,10 +53,12 @@ namespace SonyAlphaLibs
         {
             get { return base.Created; }
             set { base.Created = value; }
-        }
-        
-        public bool add(String connString) 
-        {            
+        } 
+        #endregion
+
+        #region base method
+        public bool add(String connString)
+        {
             return UserServices.addUser(this, connString);
         }
 
@@ -77,8 +80,10 @@ namespace SonyAlphaLibs
         public User getById(String connString)
         {
             return UserServices.getById(Id, connString);
-        }
+        } 
+        #endregion
 
+        #region ext method
         public bool login(String connString)
         {
             return UserServices.login(this.UserName, this.PassWord, connString);
@@ -87,6 +92,16 @@ namespace SonyAlphaLibs
         public User getByUserName(String connString)
         {
             return UserServices.getByUserName(this.UserName, connString);
+        } 
+        #endregion
+
+        #region constructor
+        public User() { }
+
+        public User(String connString)
+        {
+            base.ConnString = connString;
         }
+        #endregion
     }
 }

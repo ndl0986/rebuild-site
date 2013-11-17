@@ -49,5 +49,14 @@ namespace SonyAlphaLibs
         }
         
         #endregion
+
+        #region constructor
+        public AlbumComment() { }
+
+        public AlbumComment(String connString)
+        {
+            base.ConnString = connString;
+        }
+        #endregion
     }
 }

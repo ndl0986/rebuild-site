@@ -8,6 +8,7 @@ namespace SonyAlphaLibs
 {
     public class UserGroup : BaseModel, IBaseFunction<UserGroup>
     {
+        #region fields
         private string groupName;
 
         public string GroupName
@@ -22,11 +23,13 @@ namespace SonyAlphaLibs
         {
             get { return isSuper; }
             set { isSuper = value; }
-        }
+        } 
+        #endregion
 
-        public bool add(String connString) 
+        #region base method
+        public bool add(String connString)
         {
-            return UserGroupServices.addUserGroup(this, connString);    
+            return UserGroupServices.addUserGroup(this, connString);
         }
 
         public bool update(String connString)
@@ -47,6 +50,16 @@ namespace SonyAlphaLibs
         public UserGroup getById(String connString)
         {
             return UserGroupServices.getById(Id, connString);
+        } 
+        #endregion
+
+        #region constructor
+        public UserGroup() { }
+
+        public UserGroup(String connString)
+        {
+            base.ConnString = connString;
         }
+        #endregion
     }
 }

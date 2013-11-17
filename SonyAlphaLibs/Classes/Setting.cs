@@ -60,5 +60,14 @@ namespace SonyAlphaLibs
             return SettingServices.getByName(this.Name, connString);
         }
         #endregion
+
+        #region constructor
+        public Setting() { }
+
+        public Setting(String connString)
+        {
+            base.ConnString = connString;
+        }
+        #endregion
     }
 }

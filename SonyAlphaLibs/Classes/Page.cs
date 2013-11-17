@@ -137,5 +137,14 @@ namespace SonyAlphaLibs
             return PageServices.getListBannerId(base.Id, connString);
         }
         #endregion
+
+        #region constructor
+        public Page() { }
+
+        public Page(String connString)
+        {
+            base.ConnString = connString;
+        }
+        #endregion
     }
 }
