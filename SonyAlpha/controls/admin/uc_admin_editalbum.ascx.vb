@@ -3,6 +3,8 @@ Imports SonyAlphaLibs.Services
 Public Class uc_admin_editalbum
     Inherits System.Web.UI.UserControl
     Dim myAlbum As New SonyAlphaLibs.Album
+    Dim myPhoto As New SonyAlphaLibs.Photo
+    Dim myListPhoto As List(Of SonyAlphaLibs.Photo)
     Dim bolUpdate As Boolean
     Sub LoadAlbum(ByVal id As String)
 
@@ -10,7 +12,8 @@ Public Class uc_admin_editalbum
         myAlbum = myAlbum.getById(CN.ConnectionString)
         txtName.Text = myAlbum.FullName
 
-        grvPhotos.DataSource = myAlbum.getPhotoOfAlbum(CN.ConnectionString)
+        myListPhoto = myAlbum.getPhotoOfAlbum(CN.ConnectionString)
+        grvPhotos.DataSource = myListPhoto
         grvPhotos.DataBind()
     End Sub
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
@@ -28,7 +31,32 @@ Public Class uc_admin_editalbum
         End If
     End Sub
 
-    Protected Sub grvPhotos_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles grvPhotos.SelectedIndexChanged
+    Private Sub grvPhotos_RowCommand(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewCommandEventArgs) Handles grvPhotos.RowCommand
+        Try
+            If e.CommandName = "DeleteRow" Then
+                Dim item As New SonyAlphaLibs.Photo
+                item.Id = CInt(e.CommandArgument)
+                item = item.getById(CN.ConnectionString)
+                For Each iPhoto In myListPhoto
+                    If iPhoto.Id = item.Id Then
+                        myListPhoto.Remove(iPhoto)
+                        Exit For
+                    End If
+                Next
 
+                myAlbum.setPhoto2Album(myListPhoto, CN.ConnectionString)
+
+                grvPhotos.DataSource = myListPhoto
+                grvPhotos.DataBind()
+            End If
+        Catch ex As Exception
+
+        End Try
+    End Sub
+
+    Protected Sub grvPhotos_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles grvPhotos.SelectedIndexChanged
+        Dim strURL As String
+        strURL = "?tpl=addphotos&aid=" & Request.QueryString("id") & "&id=" & grvPhotos.Rows(grvPhotos.SelectedIndex).Cells(0).Text
+        Response.Redirect(strURL)
     End Sub
 End Class

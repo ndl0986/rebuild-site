@@ -15,10 +15,16 @@
                 <asp:GridView EmptyDataText="Không có photo nào" ID="grvPhotos" runat="server" AllowPaging="True" AllowSorting="True" SkinID="Defaultgridview" AutoGenerateColumns="False" CssClass="datatable" GridLines="None">
                     <HeaderStyle CssClass="girdheader"/>
                     <Columns>
+                        <asp:BoundField DataField="Id" HeaderText="Id" SortExpression="Id" ReadOnly="true"/>
                         <asp:BoundField DataField="Title" HeaderText="Title" SortExpression="Title"/>
-                        <asp:BoundField DataField="FileName" HeaderText="FileName" SortExpression="FileName" />
-                        <asp:BoundField DataField="RedirectUrl" HeaderText="RedirectUrl" SortExpression="RedirectUrl" />
-                        <asp:CheckBoxField DataField="Status" HeaderText="Status" SortExpression="Status" />
+                        <asp:ImageField DataImageUrlField="FileName" HeaderText="Image" ItemStyle-CssClass="img_preview" />
+                        <asp:BoundField DataField="FileName" HeaderText="FileName" SortExpression="FileName"><HeaderStyle CssClass="hiddencol" /><ItemStyle CssClass="hiddencol" /></asp:BoundField>
+                        <asp:TemplateField HeaderText="Commands" ShowHeader="False" HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center">
+                            <ItemTemplate>
+                                <asp:LinkButton ID="lEdit" runat="server" CausesValidation="False" CommandName="Select" Text="Edit" CssClass="button"><span class="icon icon46"></span></asp:LinkButton>
+                                <asp:LinkButton ID="lDelete" runat="server" CausesValidation="False" CommandArgument='<%#Eval("Id") %>' CommandName="DeleteRow" Text="Delete" CssClass="actDel button" messdelete="Remove this photo ?"><span class="icon icon186"></span></asp:LinkButton>
+                            </ItemTemplate>
+                        </asp:TemplateField>
                     </Columns>
                     <FooterStyle Font-Bold="True" ForeColor="White" />
                     <PagerStyle CssClass="pagepad" HorizontalAlign="Right" />

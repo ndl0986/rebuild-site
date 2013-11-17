@@ -2333,7 +2333,7 @@ input[type=button]:disabled,input[type=submit]:disabled,button:disabled,input[ty
 }
 .datatable{border:none;margin-bottom:20px;width:100%}
 .datatable tr:hover{background:#E9EDFE}
-.datatable tr td{border-bottom:1px solid #CCC;color:#669;padding:6px 8px}
+.datatable tr td{border-bottom:1px solid #CCC;color:#669;padding:6px 8px; vertical-align: top;}
 .datatable tr th{border-bottom:2px solid #6678B1;color:#039;cursor:pointer;font-size:14px;font-weight:400;text-align:left;padding:10px 8px}
 .datatable tr:hover td,.datatable tr th a {
     color: #039;
@@ -3700,5 +3700,6 @@ span.icon200 {
 #ulPhotos img { width: auto; height: auto; max-width: 100%; vertical-align: middle;}
 #ulPhotos .title { font-size: 14px; color:#333;-webkit-backface-visibility: hidden;}
 .form .textbox.small { width: 30px; min-width: 0px; text-align: center; vertical-align: middle;}
-.hidden { visibility: hidden; display: none;}
+.hidden,.hiddencol { visibility: hidden; display: none;}
+.img_preview img { width: 100px; height: auto; max-height: 100px;}
 .row .thumbnail { width: 200px; height: auto; display: block; margin-bottom: 5px;}

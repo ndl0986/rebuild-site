@@ -7,11 +7,10 @@ Public Class uc_admin_addphoto
     Dim myAlbum As New SonyAlphaLibs.Album
     Dim myPhoto As New SonyAlphaLibs.Photo
     Dim bolUpdate As Boolean
-    Protected UploadFolderPath As String = ""
+    Dim UploadFolderPath As String = ""
     Sub LoadPhoto(ByVal id As String)
-
-
-
+        myPhoto.Id = CInt(id)
+        myPhoto = myPhoto.getById(CN.ConnectionString)
     End Sub
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         Dim id As String
@@ -39,6 +38,7 @@ Public Class uc_admin_addphoto
                     oFolder = Directory.CreateDirectory(NewsPath & "\" & filePath)
                 End If
                 UploadFolderPath = GetURL(Server.MapPath("~/upload/image/album/" & Request.QueryString("aid") & "/"))
+                urlPath.Value = UploadFolderPath
             Catch ex As Exception
 
             End Try
@@ -52,6 +52,7 @@ Public Class uc_admin_addphoto
     End Sub
 
     Private Sub btnSave_ServerClick(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnSave.ServerClick
+
         If Page.IsPostBack Then
             Try
                 myPhoto.FileName = txtFileName.Text

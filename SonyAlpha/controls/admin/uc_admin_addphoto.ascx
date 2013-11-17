@@ -18,9 +18,10 @@
             <li class="row clerafix">
                 <div class="caption" >Upload/Choose Photo :</div>
                 <div class="item">
+                    <asp:HiddenField runat="server" ID="urlPath" ClientIDMode="Static" />
                     <ajaxToolkit:AsyncFileUpload ID="fileUpload" ClientIDMode="Static" runat="server" ThrobberID="myThrobber" OnClientUploadError="uploadError" OnClientUploadComplete="uploadComplete" CssClass="btn button red"/>
                     <asp:Label runat="server" ID="myThrobber" style="display: none;"><img alt="" src="../../Img/ajax-loader.gif"/></asp:Label>
-                    <asp:TextBox runat="server" ID="txtFileName" CssClass="textbox detail hidden" required maxlength="500"></asp:TextBox>
+                    <asp:TextBox runat="server" ID="txtFileName" ClientIDMode="Static" CssClass="textbox detail hidden" required maxlength="500"></asp:TextBox>
                 </div>
             </li>
             <li class="row clerafix detail hidden">
@@ -77,7 +78,7 @@
             </li>
             <li class="row clerafix">
                 <div class="item textright" >
-                    <button class="action btnOk" runat="server" ID="btnSave" disabled="disabled" ><span class="label">Lưu</span></button>
+                    <button class="action btnOk detail hidden" runat="server" ID="btnSave" disabled="disabled" ><span class="label">Lưu</span></button>
                     <a href="javascript:void(0);" class="button action" id="btnCancel"><span class="label">Hủy</span></a>
                 </div>
             </li>
@@ -86,21 +87,21 @@
 </div>
 <script type = "text/javascript">
     function uploadComplete(sender,args) {
-        $get("<%=txtFileName.ClientID%>").value = "<%=ResolveUrl(UploadFolderPath) %>" + args.get_fileName();
+        $('#txtFileName').val($('#urlPath').val() + args.get_fileName());
         showDetail();
     }
 
     function uploadError(sender) {
-        $get("<%=txtFileName.ClientID%>").value = "File upload failed.";
+        $('#txtFileName').val("File upload failed.");
     }
 
     function showDetail() {
-        var img = new Image();
-        img.src = $get("<%=txtFileName.ClientID%>").value;
-        $(img).addClass("thumbnail");
-        img.onload = function () {
-            $('#fileUpload').after(img).addClass('hidden');
-        }
+        //var img = new Image();
+       //img.src = $('#txtFileName').val();
+        //$(img).addClass("thumbnail");
+        //img.onload = function () {
+        //    $('#fileUpload').after(img).addClass('hidden');
+        //}
         $('.detail').removeClass("hidden");
     }
 </script>

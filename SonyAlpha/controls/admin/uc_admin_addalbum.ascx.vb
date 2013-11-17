@@ -19,7 +19,7 @@ Public Class uc_admin_addalbum
             'ScriptManager.RegisterStartupScript(Me, GetType(String), "Message", "alert('Lưu album thành công !!!');", True)
             If result = True Then
                 'ScriptManager.RegisterStartupScript(Me, GetType(String), "Message", "alert('Lưu album thành công !!!');", True)
-                Response.Redirect("?tpl=addphotos&id=" & myAlbum.getCurrentMaxId(CN.ConnectionString).ToString)
+                Response.Redirect("?tpl=addphotos&aid=" & myAlbum.getCurrentMaxId(CN.ConnectionString).ToString)
             Else
                 'ScriptManager.RegisterStartupScript(Me, GetType(String), "Message", "alert('lưu album không thành công !!!');", False)
             End If
