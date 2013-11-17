@@ -65,8 +65,14 @@
                             <li><a href="?tpl=photocomments">Comments</a></li>
                         </ul>
                         </li>
-                        <li><a href="#">Hệ thống - Giao diện</a>
+                        <li><a href="#">Trung tâm Sony</a>
                         <ul>
+                            <li><a href="?tpl=sonycenters">Danh sách Trung tâm</a></li>
+                            <li><a href="?tpl=provinces">Danh sách tỉnh thành</a></li>
+                        </ul>    
+                        </li>
+                        <li><a href="#">Hệ thống - Giao diện</a>
+                        <ul>                            
                             <li><a href="?tpl=pages">Quản lý trang</a></li>
                             <li><a href="?tpl=setting">Điều chỉnh</a></li>
                             <li><a href="?tpl=files" target="_blank">Quản lý files</a></li>

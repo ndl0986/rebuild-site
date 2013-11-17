@@ -61,6 +61,10 @@
                         tpl = Page.LoadControl("../controls/admin/uc_admin_editalbum.ascx")
                     Case "photocomments"
                         tpl = Page.LoadControl("../controls/admin/uc_admin_photocomments.ascx")
+                    Case "sonycenters"
+                        tpl = Page.LoadControl("../controls/admin/uc_admin_sonycenters.ascx")
+                    Case "addsonycenter"
+                        tpl = Page.LoadControl("../controls/admin/uc_admin_addsonycenter.ascx")
                     Case "files"
                         Response.Redirect("FileManager.aspx")
                     Case "logout"
