@@ -55,6 +55,7 @@
     <Compile Include="Classes\BannerPhoto.cs" />
     <Compile Include="Classes\BaseModel.cs" />
     <Compile Include="Classes\Menu.cs" />
+    <Compile Include="Classes\News.cs" />
     <Compile Include="Classes\Page.cs" />
     <Compile Include="Classes\PageBanner.cs" />
     <Compile Include="Classes\Permission.cs" />
@@ -71,6 +72,7 @@
     <Compile Include="Services\BannerServices.cs" />
     <Compile Include="Services\BaseService.cs" />
     <Compile Include="Services\MenuServices.cs" />
+    <Compile Include="Services\NewsServices.cs" />
     <Compile Include="Services\PageServices.cs" />
     <Compile Include="Services\PermissionGroupServices.cs" />
     <Compile Include="Services\PermissionServices.cs" />
