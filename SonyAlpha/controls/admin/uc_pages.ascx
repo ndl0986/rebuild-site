@@ -26,7 +26,7 @@
                 <asp:TemplateField HeaderText="Commands" ShowHeader="False" HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign=Center>
                     <ItemTemplate>
                         <asp:LinkButton ID="lEdit" runat="server" CausesValidation="False" CommandName="Select" Text="Edit" CssClass="button"><span class="icon icon46"></span></asp:LinkButton>
-                        <asp:LinkButton ID="lDelete" runat="server" CausesValidation="False" CommandName="Delete" Text="Delete" CssClass="actDel button" messdelete="Delete this post ?"><span class="icon icon186"></span></asp:LinkButton>
+                        <asp:LinkButton ID="lDelete" runat="server" CausesValidation="False" CommandName="DeleteRow" CommandArgument='<%#Eval("Id") %>'  Text="Delete" CssClass="actDel button" messdelete="Delete this page ?"><span class="icon icon186"></span></asp:LinkButton>
                     </ItemTemplate>
                 </asp:TemplateField>
             </Columns>

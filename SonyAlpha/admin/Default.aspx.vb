@@ -26,7 +26,9 @@
                     Case "accountsgroup"
                         tpl = Page.LoadControl("../controls/admin/uc_accountgroup.ascx")
                     Case "newscategory"
-                        tpl = Page.LoadControl("../controls/admin/uc_newscategory.ascx")
+                        tpl = Page.LoadControl("../controls/admin/uc_admin_newscategory.ascx")
+                    Case "addnewscategory"
+                        tpl = Page.LoadControl("../controls/admin/uc_addnewscategory.ascx")
                     Case "news"
                         tpl = Page.LoadControl("../controls/admin/uc_newslist.ascx")
                     Case "addnews", "editnews"

@@ -59,15 +59,6 @@ Partial Public Class _Default1
     Protected WithEvents lblClientIP As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''uc_adminmenu control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents uc_adminmenu As Global.SonyAlpha.uc_adminmenu
-
-    '''<summary>
     '''UpdatePanelMain control.
     '''</summary>
     '''<remarks>

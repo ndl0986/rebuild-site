@@ -1,6 +1,5 @@
 ﻿<%@ Page Language="vb" AutoEventWireup="false" CodeBehind="Default.aspx.vb" Inherits="SonyAlpha._Default1" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
-<%@ Register src="../controls/admin/uc_adminmenu.ascx" tagname="uc_adminmenu" tagprefix="uc1" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" >
 <head id="Head1" runat="server">
@@ -30,7 +29,6 @@
         <div class="container clearfix">
             <div class="colLeft">
                 <div class="menuborder">
-                    <!--<uc1:uc_adminmenu ID="uc_adminmenu" runat="server" />-->
                     <ul id="nav">
                         <li><a href="#">Tài khoản - phân quyền</a>
                         <ul>
@@ -145,6 +143,16 @@
                 $('body').toggleClass('showmenu');
             });
         });
+
+        function FCKUpdateLinkedField(id) {
+            try {
+                if (typeof (FCKeditorAPI) == "object") {
+                    FCKeditorAPI.GetInstance(id).UpdateLinkedField();
+                }
+            }
+            catch (err) {
+            }
+        }
     </script>
 </body>
 </html>

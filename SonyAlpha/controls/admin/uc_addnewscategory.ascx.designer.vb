@@ -11,16 +11,16 @@ Option Strict On
 Option Explicit On
 
 
-Partial Public Class uc_newsdetail1
+Partial Public Class uc_addnewscategory
 
     '''<summary>
-    '''txtTitle control.
+    '''txtName control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtTitle As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents txtName As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
     '''ddlGroup control.
@@ -32,33 +32,6 @@ Partial Public Class uc_newsdetail1
     Protected WithEvents ddlGroup As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
-    '''chkPublished control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents chkPublished As Global.System.Web.UI.WebControls.CheckBox
-
-    '''<summary>
-    '''txtDescription control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents txtDescription As Global.System.Web.UI.WebControls.TextBox
-
-    '''<summary>
-    '''fckEditor control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents fckEditor As Global.FredCK.FCKeditorV2.FCKeditor
-
-    '''<summary>
     '''btnSave control.
     '''</summary>
     '''<remarks>
@@ -68,11 +41,11 @@ Partial Public Class uc_newsdetail1
     Protected WithEvents btnSave As Global.System.Web.UI.HtmlControls.HtmlButton
 
     '''<summary>
-    '''objNewsCategory control.
+    '''objGroup control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents objNewsCategory As Global.System.Web.UI.WebControls.ObjectDataSource
+    Protected WithEvents objGroup As Global.System.Web.UI.WebControls.ObjectDataSource
 End Class

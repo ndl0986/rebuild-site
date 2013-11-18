@@ -29,6 +29,7 @@ Public Class uc_pagedetail
     End Sub
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+        Page.ClientScript.RegisterOnSubmitStatement(fckEditor.GetType(), "txtMessage", "FCKUpdateLinkedField('" + fckEditor.ClientID + "');")
         Dim id As String
         id = Request.QueryString("id")
         If id = "" Then
@@ -53,7 +54,7 @@ Public Class uc_pagedetail
             End If
 
             myPage.PageContent = fckEditor.Value
-            Dim result
+            Dim result As Boolean
             If bolUpdate = False Then
                 myPage.SeoUrl = PageSeUrl(myPage.getCurrentMaxId(CN.ConnectionString) + 1, myPage.Title)
                 result = myPage.add(CN.ConnectionString)

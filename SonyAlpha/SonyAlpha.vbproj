@@ -107,6 +107,7 @@
     <Content Include="admin\TestPage.aspx" />
     <Content Include="controls\admin\uc_account.ascx" />
     <Content Include="controls\admin\uc_accountgroup.ascx" />
+    <Content Include="controls\admin\uc_addnewscategory.ascx" />
     <Content Include="controls\admin\uc_adminmenu.ascx" />
     <Content Include="controls\admin\uc_admin_addalbum.ascx" />
     <Content Include="controls\admin\uc_admin_addphoto.ascx" />
@@ -119,7 +120,7 @@
     <Content Include="controls\admin\uc_banneraddphoto.ascx" />
     <Content Include="controls\admin\uc_banners.ascx" />
     <Content Include="controls\admin\uc_editaccount.ascx" />
-    <Content Include="controls\admin\uc_newscategory.ascx" />
+    <Content Include="controls\admin\uc_admin_newscategory.ascx" />
     <Content Include="controls\admin\uc_newsdetail.ascx" />
     <Content Include="controls\admin\uc_newslist.ascx" />
     <Content Include="controls\admin\uc_pagebanner.ascx" />
@@ -728,6 +729,13 @@
       <DependentUpon>uc_accountgroup.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="controls\admin\uc_addnewscategory.ascx.designer.vb">
+      <DependentUpon>uc_addnewscategory.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\admin\uc_addnewscategory.ascx.vb">
+      <DependentUpon>uc_addnewscategory.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="controls\admin\uc_adminmenu.ascx.designer.vb">
       <DependentUpon>uc_adminmenu.ascx</DependentUpon>
     </Compile>
@@ -812,11 +820,11 @@
       <DependentUpon>uc_editaccount.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="controls\admin\uc_newscategory.ascx.designer.vb">
-      <DependentUpon>uc_newscategory.ascx</DependentUpon>
+    <Compile Include="controls\admin\uc_admin_newscategory.ascx.designer.vb">
+      <DependentUpon>uc_admin_newscategory.ascx</DependentUpon>
     </Compile>
-    <Compile Include="controls\admin\uc_newscategory.ascx.vb">
-      <DependentUpon>uc_newscategory.ascx</DependentUpon>
+    <Compile Include="controls\admin\uc_admin_newscategory.ascx.vb">
+      <DependentUpon>uc_admin_newscategory.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="controls\admin\uc_newsdetail.ascx.designer.vb">

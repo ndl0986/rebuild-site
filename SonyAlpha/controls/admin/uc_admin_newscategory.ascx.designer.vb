@@ -11,7 +11,7 @@ Option Strict On
 Option Explicit On
 
 
-Partial Public Class uc_newslist
+Partial Public Class uc_admin_newscategory
 
     '''<summary>
     '''lblMessage control.
@@ -23,11 +23,20 @@ Partial Public Class uc_newslist
     Protected WithEvents lblMessage As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''grvPages control.
+    '''grvNewsCategory control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents grvPages As Global.System.Web.UI.WebControls.GridView
+    Protected WithEvents grvNewsCategory As Global.System.Web.UI.WebControls.GridView
+
+    '''<summary>
+    '''objNewsCategory control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents objNewsCategory As Global.System.Web.UI.WebControls.ObjectDataSource
 End Class

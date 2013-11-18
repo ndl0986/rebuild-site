@@ -2175,6 +2175,7 @@ input.dateinput {
     margin-left: 160px;
     vertical-align: top;
     font-size: 0;
+    position: relative;
 }
 
 .form .fullitem {
@@ -2247,6 +2248,9 @@ label.error {
     height: 18px;
     line-height: 18px;
     margin-left: 5px;
+    position: absolute;
+    right: 5px;
+    top: 6px;    
 }
 
 label.error::before {
