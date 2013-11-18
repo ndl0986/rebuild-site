@@ -277,14 +277,29 @@ Public Module Db
         result = result & ".aspx"
         Return result
     End Function
-    Public Function NewsCategorySeUrl(ByVal id As Integer, ByVal Title As String, ByVal type As Integer, Optional ByVal page As Integer = 1) As String
+    Public Function NewsCategorySeUrl(ByVal id As Integer, ByVal Title As String, Optional ByVal page As Integer = 1) As String
         Dim result As String
-
+        Title = CleanURL(Title)
+        If ConfigurationManager.AppSettings("vird") <> "" Then
+            result = "/" & ConfigurationManager.AppSettings("vird") & "/news/category/" & id & "_" & Title
+        Else
+            result = "/news/category/" & id & "_" & Title
+        End If
+        If page <> vbNull And page > 1 Then
+            result = result & "_page" & page
+        End If
+        result = result & ".aspx"
         Return result
     End Function
-    Public Function NewsSeUrl(ByVal Category As Integer, ByVal id As Integer, ByVal Title As String, ByVal type As Integer) As String
+    Public Function NewsSeUrl(ByVal id As Integer, ByVal Title As String) As String
         Dim result As String
-
+        Title = CleanURL(Title)
+        If ConfigurationManager.AppSettings("vird") <> "" Then
+            result = "/" & ConfigurationManager.AppSettings("vird") & "/news/detail/" & id & "_" & Title
+        Else
+            result = "/news/detail/" & id & "_" & Title
+        End If
+        result = result & ".aspx"
         Return result
     End Function
     Public Function PageSeUrl(ByVal id As Integer, ByVal Title As String) As String
