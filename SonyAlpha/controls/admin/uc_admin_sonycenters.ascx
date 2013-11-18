@@ -31,8 +31,11 @@
         </asp:GridView>
     </div>
 </div>
-<asp:ObjectDataSource ID="objSonyCenters" runat="server" SelectMethod="getListAll" TypeName="SonyAlphaLibs.SonyCenter">
+<asp:ObjectDataSource ID="objSonyCenters" runat="server" DeleteMethod="removeById" SelectMethod="getListAll" TypeName="SonyAlphaLibs.SonyCenter">
     <SelectParameters>
         <asp:Parameter Name="connString" Type="String" />
     </SelectParameters>
+    <DeleteParameters>
+        <asp:Parameter Name="connString" Type="String" />
+    </DeleteParameters>
 </asp:ObjectDataSource>
