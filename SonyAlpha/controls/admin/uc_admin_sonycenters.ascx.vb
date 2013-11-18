@@ -8,5 +8,8 @@ Public Class uc_admin_sonycenters
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
 
     End Sub
-
+    Private Sub grvSonyCenters_SelectedIndexChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles grvSonyCenters.SelectedIndexChanged
+        Dim strURL As String = "?tpl=editsonycenter&id=" & grvSonyCenters.Rows(grvSonyCenters.SelectedIndex).Cells(0).Text
+        Response.Redirect(strURL)
+    End Sub
 End Class

@@ -11,7 +11,7 @@ Option Strict On
 Option Explicit On
 
 
-Partial Public Class uc_admin_addsonycenter
+Partial Public Class uc_admin_editsonycenter
 
     '''<summary>
     '''txtName control.

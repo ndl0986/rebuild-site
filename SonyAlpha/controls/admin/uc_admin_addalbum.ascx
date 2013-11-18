@@ -12,6 +12,10 @@
                 <div class="item"><asp:TextBox runat="server" ID="txtName" CssClass="textbox" required maxlength="500"></asp:TextBox></div>
             </li>
             <li class="row clerafix">
+                <div class="caption" >Dùng cho Trung Tâm Sony :</div>
+                <div class="item"><asp:CheckBox runat="server" ID="chkIsForCenter" required ></asp:CheckBox></div>
+            </li>
+            <li class="row clerafix">
                 <div class="item textright" >
                     <button class="action btnOk" runat="server" ID="btnSave" disabled="disabled" ><span class="label">Lưu</span></button>
                     <a href="javascript:void(0);" class="button action" id="btnCancel"><span class="label">Hủy</span></a>

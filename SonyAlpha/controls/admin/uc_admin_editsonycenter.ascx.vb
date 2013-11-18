@@ -1,11 +1,10 @@
 ﻿Imports SonyAlphaLibs
 Imports SonyAlphaLibs.Services
-Public Class uc_admin_addsonycenter
+Public Class uc_admin_editsonycenter
     Inherits System.Web.UI.UserControl
-    Public bolUpdate As Boolean
-    Dim filePath As String
     Public listProvince As New List(Of Province)
     Public listAlbums As New List(Of Album)
+    Public id As String = "0"
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         If Not Page.IsPostBack Then
@@ -23,36 +22,12 @@ Public Class uc_admin_addsonycenter
             ddlAlbumList.DataTextField = "FullName"
             ddlAlbumList.DataValueField = "Id"
             ddlAlbumList.DataBind()
-        End If
-
-    End Sub
-
-    Private Sub btnSave_ServerClick(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnSave.ServerClick
-        If Page.IsPostBack Then
-            Try
-                Dim sonyCenter As New SonyCenter
-                sonyCenter.Name = txtName.Text
-                sonyCenter.Address = txtAddress.Text
-                sonyCenter.Phone = txtPhone.Text
-                sonyCenter.Fax = txtFax.Text
-                sonyCenter.Province = ddlProvince.SelectedValue
-                sonyCenter.Description = txtDescription.Value
-                sonyCenter.RetailLevel = ddlRetailLevel.SelectedValue
-                sonyCenter.CenterImage = ddlAlbumList.SelectedValue
-                sonyCenter.OpenTime = txtOpenTime.Text
-                sonyCenter.CloseTime = txtCloseTime.Text
-                sonyCenter.Longitude = txtLongitude.Text
-                sonyCenter.Latitude = txtLatitude.Text
-                If sonyCenter.add(CN.ConnectionString) Then
-                    Dim newId As Integer = SonyCenterServices.getCurrentMaxId("sony_center", CN.ConnectionString)
-                    Response.Redirect("?tpl=editsonycenter&id=" & CStr(newId))
-                End If
-            Catch ex As Exception
-                SonyCenterServices.writeLog("", "Add/Update Sony Center fail: " + ex.Message, CN.ConnectionString)
-            End Try
+            id = Request.QueryString("id")
+            If Not String.IsNullOrEmpty(id) Then
+                LoadCenterToForm(id)
+            End If
         End If
     End Sub
-
     Private Sub LoadCenterToForm(ByVal id)
         Dim sonyCenter As New SonyCenter
         sonyCenter.Id = id
@@ -72,5 +47,32 @@ Public Class uc_admin_addsonycenter
             txtLatitude.Text = sonyCenter.Latitude
         End If
     End Sub
-
+    Private Sub btnSave_ServerClick(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnSave.ServerClick
+        If Page.IsPostBack Then
+            Try
+                Dim sonyCenter As New SonyCenter
+                id = Request.QueryString("id")
+                sonyCenter.Id = id
+                sonyCenter.Name = txtName.Text
+                sonyCenter.Address = txtAddress.Text
+                sonyCenter.Phone = txtPhone.Text
+                sonyCenter.Fax = txtFax.Text
+                sonyCenter.Province = CInt(ddlProvince.SelectedValue)
+                sonyCenter.Description = txtDescription.Value
+                sonyCenter.RetailLevel = CInt(ddlRetailLevel.SelectedValue)
+                sonyCenter.CenterImage = ddlAlbumList.SelectedValue
+                sonyCenter.OpenTime = txtOpenTime.Text
+                sonyCenter.CloseTime = txtCloseTime.Text
+                sonyCenter.Longitude = txtLongitude.Text
+                sonyCenter.Latitude = txtLatitude.Text
+                If sonyCenter.update(CN.ConnectionString) Then
+                    ScriptManager.RegisterStartupScript(Me, GetType(String), "Message", "alert('Lưu Trung tâm thành công !!!');", True)
+                Else
+                    ScriptManager.RegisterStartupScript(Me, GetType(String), "Message", "alert('Lưu Trung tâm không thành công !!!');", True)
+                End If
+            Catch ex As Exception
+                SonyCenterServices.writeLog("", "Add/Update Sony Center fail: " + ex.Message, CN.ConnectionString)
+            End Try
+        End If
+    End Sub
 End Class

@@ -11,6 +11,7 @@ Public Class uc_admin_editalbum
         myAlbum = myAlbum.getById(CN.ConnectionString)
         txtName.Text = myAlbum.FullName
         myListPhoto = myAlbum.getPhotoOfAlbum(CN.ConnectionString)
+        chkIsForCenter.Checked = myAlbum.IsForCenter
         grvPhotos.DataSource = myListPhoto
         grvPhotos.DataBind()
     End Sub
@@ -59,6 +60,7 @@ Public Class uc_admin_editalbum
     Private Sub btnSave_ServerClick(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnSave.ServerClick
         If Page.IsPostBack Then
             myAlbum.FullName = txtName.Text
+            myAlbum.IsForCenter = chkIsForCenter.Checked
             myAlbum.update(CN.ConnectionString)
         End If
     End Sub

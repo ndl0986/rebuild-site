@@ -113,6 +113,7 @@
     <Content Include="controls\admin\uc_admin_addsonycenter.ascx" />
     <Content Include="controls\admin\uc_admin_album.ascx" />
     <Content Include="controls\admin\uc_admin_editalbum.ascx" />
+    <Content Include="controls\admin\uc_admin_editsonycenter.ascx" />
     <Content Include="controls\admin\uc_admin_sonycenters.ascx" />
     <Content Include="controls\admin\uc_banneradd.ascx" />
     <Content Include="controls\admin\uc_banneraddphoto.ascx" />
@@ -767,6 +768,13 @@
     </Compile>
     <Compile Include="controls\admin\uc_admin_editalbum.ascx.vb">
       <DependentUpon>uc_admin_editalbum.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\admin\uc_admin_editsonycenter.ascx.designer.vb">
+      <DependentUpon>uc_admin_editsonycenter.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\admin\uc_admin_editsonycenter.ascx.vb">
+      <DependentUpon>uc_admin_editsonycenter.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="controls\admin\uc_admin_sonycenters.ascx.designer.vb">

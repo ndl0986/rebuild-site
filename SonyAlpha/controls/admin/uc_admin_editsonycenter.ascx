@@ -1,4 +1,4 @@
-﻿<%@ Control Language="vb" AutoEventWireup="false" CodeBehind="uc_admin_addsonycenter.ascx.vb" Inherits="SonyAlpha.uc_admin_addsonycenter" %>
+﻿<%@ Control Language="vb" AutoEventWireup="false" CodeBehind="uc_admin_editsonycenter.ascx.vb" Inherits="SonyAlpha.uc_admin_editsonycenter" %>
 <%@ Register assembly="FredCK.FCKeditorV2" namespace="FredCK.FCKeditorV2" tagprefix="FCKeditorV2" %>
 <div class="navigations">
     <div class="breakcurm clearfix">

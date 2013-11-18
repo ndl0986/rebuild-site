@@ -11,6 +11,10 @@
                 <div class="caption" >Album's name :</div>
                 <div class="item"><asp:TextBox runat="server" ID="txtName" CssClass="textbox" required maxlength="500"></asp:TextBox><a href="?tpl=addphotos&aid=<%=Request.QueryString("id") %>" class="floatright button action"><span class="icon icon68"></span></a></div>
             </li>
+            <li class="row clerafix">
+                <div class="caption" >Dùng cho Trung Tâm Sony :</div>
+                <div class="item"><asp:CheckBox runat="server" ID="chkIsForCenter" required ></asp:CheckBox></div>
+            </li>
             <li>
                 <asp:GridView EmptyDataText="Không có photo nào" ID="grvPhotos" runat="server" AllowPaging="True" AllowSorting="True" SkinID="Defaultgridview" AutoGenerateColumns="False" CssClass="datatable" GridLines="None">
                     <HeaderStyle CssClass="girdheader"/>
