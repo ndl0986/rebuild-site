@@ -8,8 +8,8 @@
     <div class="section">
         <asp:Label runat="server" ID="lblMessage"></asp:Label>
         <h4 class="heading">Danh sách tin tức<a href="?tpl=addnews" class="floatright button action"><span class="icon icon68"></span></a></h4>
-        <asp:GridView EmptyDataText="Không có trang nào" ID="grvPages" 
-            runat="server" AllowPaging="True" AllowSorting="True" DataSourceID=""  
+        <asp:GridView EmptyDataText="Không có trang nào" ID="grvNews" 
+            runat="server" AllowPaging="True" AllowSorting="True" DataSourceID="objNews"  
             SkinID="Defaultgridview" AutoGenerateColumns="False" CssClass="datatable" 
             GridLines="None">
             <HeaderStyle CssClass="girdheader"/>
@@ -30,3 +30,9 @@
         </asp:GridView>
     </div>
 </div>
+<asp:ObjectDataSource ID="objNews" runat="server" 
+SelectMethod="getListAll" TypeName="SonyAlphaLibs.News">
+    <SelectParameters>
+        <asp:Parameter Name="connString" Type="String" />
+    </SelectParameters>
+</asp:ObjectDataSource>

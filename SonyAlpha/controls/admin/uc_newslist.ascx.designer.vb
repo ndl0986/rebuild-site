@@ -23,11 +23,20 @@ Partial Public Class uc_newslist
     Protected WithEvents lblMessage As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''grvPages control.
+    '''grvNews control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents grvPages As Global.System.Web.UI.WebControls.GridView
+    Protected WithEvents grvNews As Global.System.Web.UI.WebControls.GridView
+
+    '''<summary>
+    '''objNews control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents objNews As Global.System.Web.UI.WebControls.ObjectDataSource
 End Class
