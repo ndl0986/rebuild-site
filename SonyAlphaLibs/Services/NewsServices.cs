@@ -462,6 +462,65 @@ namespace SonyAlphaLibs.Services
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.CommandText = "sony_sp_get_all_news_by_category_id";
+                        cmd.Parameters.AddWithValue("@categoryId", categoryId);
+
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                News news = new News();
+                                news.Id = (int)reader["id"];
+                                news.Title = reader["title"].ToString();
+                                news.SeoUrl = reader["seoUrl"].ToString();
+                                news.Detail = reader["detail"].ToString();
+                                news.Description = reader["description"].ToString();
+                                news.CategoryId = (int)reader["categoryId"];
+                                news.Published = reader["published"].ToString().Equals("1") || reader["published"].ToString().Equals("True");
+                                news.MetaTag = reader["metaTag"].ToString();
+                                news.MetaTitle = reader["metaTitle"].ToString();
+                                news.MetaKeyWord = reader["metaKeyword"].ToString();
+                                news.ViewCount = (int)reader["viewCount"];
+                                news.LikeCount = (int)reader["likeCount"];
+                                news.NewsImage = reader["newsImage"].ToString();
+                                news.RelatedNewsIds = reader["relatedNewsIds"].ToString();
+                                news.Created = (DateTime)reader["created"];
+                                news.Updated = (DateTime)reader["updated"];
+                                lists.Add(news);
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    return new List<News>();
+                }
+            }
+            return lists;
+            #endregion
+        }
+
+        /// <summary>
+        /// function to get list new with paging
+        /// </summary>
+        /// <param name="pageNum"></param>
+        /// <param name="pageSize"></param>
+        /// <param name="connString"></param>
+        /// <returns></returns>
+        public static List<News> getListNewsWithPaging(int pageNum, int pageSize, string connString)
+        {
+            #region code
+            List<News> lists = new List<News>();
+            using (SqlConnection conn = new SqlConnection(connString))
+            {
+                try
+                {
+                    conn.Open();
+                    using (SqlCommand cmd = conn.CreateCommand())
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.CommandText = "sony_sp_get_all_news_with_pagenum_pagesize";
+                        cmd.Parameters.AddWithValue("@pageNum", pageNum);
+                        cmd.Parameters.AddWithValue("@pageSize", pageSize);
 
                         using (SqlDataReader reader = cmd.ExecuteReader())
                         {
