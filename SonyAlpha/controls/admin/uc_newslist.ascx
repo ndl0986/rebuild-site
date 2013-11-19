@@ -5,7 +5,7 @@
     </div>
 </div>
 <div class="content">
-    <div class="section">
+    <div class="section clearfix">
         <asp:Label runat="server" ID="lblMessage"></asp:Label>
         <h4 class="heading">Danh sách tin tức<a href="?tpl=addnews" class="floatright button action"><span class="icon icon68"></span></a></h4>
         <asp:GridView EmptyDataText="Không có trang nào" ID="grvNews" 

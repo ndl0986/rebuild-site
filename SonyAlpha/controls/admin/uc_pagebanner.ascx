@@ -5,7 +5,7 @@
     </div>
 </div>
 <div class="content">
-    <div class="section">
+    <div class="section clearfix">
         <asp:Label runat="server" ID="lblMessage"></asp:Label>
         <h4 class="heading">1. Danh sách page - banners</h4>
         <asp:GridView EmptyDataText="Không có liên kết giữa page và banner" 
@@ -39,9 +39,9 @@
             <PagerStyle CssClass="pagepad" HorizontalAlign="Right" />
         </asp:GridView>
     </div>
-    <div class="section">
+    <div class="section clearfix">
         <h4 class="heading">2. Tạo nhóm liên kết Page - Banner</h4>
-        <div class="clearfix"></div>
+        <div>
         <ul class="form">
             <li class="row clerafix">
                 <div class="caption">Tab Menu :</div>
@@ -59,6 +59,7 @@
                 </div>
             </li>
         </ul>
+        </div>
     </div>
 </div>
 <asp:ObjectDataSource ID="objPageBanner" runat="server" SelectMethod="getAllMenuBanner" TypeName="SonyAlphaLibs.PageBanner">

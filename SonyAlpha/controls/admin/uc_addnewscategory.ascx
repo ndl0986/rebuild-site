@@ -5,7 +5,7 @@
     </div
 </div>
 <div class="content">
-    <div class="section">
+    <div class="section clearfix">
         <ul class="form">
             <li class="row clerafix">
                 <div class="caption" >Nhóm tin :</div>

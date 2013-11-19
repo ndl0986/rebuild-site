@@ -2224,6 +2224,11 @@ input.dateinput {
     content: '';
 }
 
+.section .heading + div {
+    float: left;
+    width: 100%;
+}
+
 .breakcurm {
     padding-left: 5px;
 }
