@@ -91,7 +91,23 @@ namespace SonyAlphaLibs
         public Menu getById(String connString)
         {
             return MenuServices.getById(this.Id, connString);
-        } 
+        }
+
+        public int getBannerId(String connString)
+        {
+            return MenuServices.getBannerId(base.Id, connString);
+        }
+
+        public bool setBanner2Page(int bannerId, String connString)
+        {
+            return MenuServices.setBanner2Menu(base.Id, bannerId, connString);
+        }
+
+        public List<int> getListBannerId(String connString)
+        {
+            return MenuServices.getListBannerId(base.Id, connString);
+        }
+
         #endregion
 
        #region constructor

@@ -51,12 +51,6 @@
                             <li><a href="?tpl=addnews">Viết bài</a></li>
                         </ul>
                         </li>
-                        <li><a href="#">Banner</a>
-                        <ul>
-                            <li><a href="?tpl=banners">Quản lý banner</a></li>
-                            <li><a href="?tpl=banerpage">Banner - Page</a></li>
-                        </ul>
-                        </li>
                         <li><a href="#">Hình ảnh</a>
                         <ul>
                             <li><a href="?tpl=albums">Albums</a></li>
@@ -70,8 +64,11 @@
                         </ul>    
                         </li>
                         <li><a href="#">Hệ thống - Giao diện</a>
-                        <ul>                            
+                        <ul>
                             <li><a href="?tpl=pages">Quản lý trang</a></li>
+                            <li><a href="?tpl=banners">Quản lý banner</a></li>
+                            <li><a href="?tpl=menus">Quản lý menu</a></li>
+                            <li><a href="?tpl=banerpage">Banner - Page</a></li>
                             <li><a href="?tpl=setting">Điều chỉnh</a></li>
                             <li><a href="?tpl=files" target="_blank">Quản lý files</a></li>
                         </ul>

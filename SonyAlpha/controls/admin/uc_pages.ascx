@@ -8,13 +8,10 @@
     <div class="section">
         <asp:Label runat="server" ID="lblMessage"></asp:Label>
         <h4 class="heading">Danh sách trang nội dung<a href="?tpl=addpage" class="floatright button action"><span class="icon icon68"></span></a></h4>
-        <asp:GridView EmptyDataText="Không có trang nào" ID="grvPages" 
-            runat="server" AllowPaging="True" AllowSorting="True" DataSourceID="objPage"  
-            SkinID="Defaultgridview" AutoGenerateColumns="False" CssClass="datatable" 
-            GridLines="None" DataKeyNames="Id">
+        <asp:GridView EmptyDataText="Không có trang nào" ID="grvPages" runat="server" AllowPaging="True" AllowSorting="True" DataSourceID="objPage"  SkinID="Defaultgridview" AutoGenerateColumns="False" CssClass="datatable" GridLines="None">
             <HeaderStyle CssClass="girdheader"/>
             <Columns>
-                <asp:BoundField DataField="Id" HeaderText="Id" SortExpression="Id" ReadOnly=true />
+                <asp:BoundField DataField="Id" HeaderText="Id" SortExpression="Id" ReadOnly="true" />
                 <asp:BoundField DataField="Title" HeaderText="Tên page" SortExpression="Title" />
                 <asp:BoundField DataField="LongTitle" HeaderText="Tiêu đề trang" SortExpression="LongTitle" />
                 <asp:BoundField DataField="SeoUrl" HeaderText="URL cho SEO" SortExpression="SeoUrl" />
@@ -35,16 +32,8 @@
         </asp:GridView>
     </div>
 </div>
-<asp:ObjectDataSource ID="objPage" runat="server" DeleteMethod="removeById" 
-SelectMethod="getListAll" TypeName="SonyAlphaLibs.Page" 
-UpdateMethod="update">
-    <DeleteParameters>
-        <asp:Parameter Name="connString" Type="String" />
-    </DeleteParameters>
+<asp:ObjectDataSource ID="objPage" runat="server" SelectMethod="getListAll" TypeName="SonyAlphaLibs.Page" >
     <SelectParameters>
         <asp:Parameter Name="connString" Type="String" />
     </SelectParameters>
-    <UpdateParameters>
-        <asp:Parameter Name="connString" Type="String" />
-    </UpdateParameters>
 </asp:ObjectDataSource>

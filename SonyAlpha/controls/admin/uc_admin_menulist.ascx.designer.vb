@@ -11,50 +11,32 @@ Option Strict On
 Option Explicit On
 
 
-Partial Public Class uc_pagedetail
+Partial Public Class uc_admin_menulist
 
     '''<summary>
-    '''txtTitle control.
+    '''lblMessage control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtTitle As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents lblMessage As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''txtLongTitle control.
+    '''grvMenus control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtLongTitle As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents grvMenus As Global.System.Web.UI.WebControls.GridView
 
     '''<summary>
-    '''txtUrl control.
+    '''objMenu control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtUrl As Global.System.Web.UI.WebControls.TextBox
-
-    '''<summary>
-    '''fckEditor control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents fckEditor As Global.FredCK.FCKeditorV2.FCKeditor
-
-    '''<summary>
-    '''btnSave control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents btnSave As Global.System.Web.UI.HtmlControls.HtmlButton
+    Protected WithEvents objMenu As Global.System.Web.UI.WebControls.ObjectDataSource
 End Class

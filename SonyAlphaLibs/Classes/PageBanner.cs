@@ -9,14 +9,29 @@ namespace SonyAlphaLibs
     public class PageBanner : BaseModel
     {
         #region fields
-        public Page Page { get; set; }
+        public Menu Page { get; set; }
         public List<Banner> ListBanner { get; set; }
+        private int intPageId;
+
+        public int PageId
+        {
+            get { return intPageId; }
+            set { intPageId = value; }
+        }
+
+        private int intBannerId;
+
+        public int BannerId
+        {
+            get { return intBannerId; }
+            set { intBannerId = value; }
+        }
         #endregion
 
         #region constructor
         public PageBanner()
         {
-            this.Page = new Page();
+            this.Page = new Menu();
             this.ListBanner = new List<Banner>();
         }
 
@@ -24,13 +39,28 @@ namespace SonyAlphaLibs
         {
             Page.Id = pageId;
             base.ConnString = connString;
-            Page = PageServices.getById(pageId, connString);
-            ListBanner = PageServices.getListBanner(pageId, connString);
+            Page = MenuServices.getById(pageId, connString);
+            ListBanner = MenuServices.getListBanner(pageId, connString);
         }
 
         public PageBanner(string connString)
         {
             base.ConnString = connString;
+        }
+
+        public PageBanner getById(String connString)
+        {
+            return MenuServices.getPageBannerById(base.Id, connString);
+        }
+
+        public bool removeById(String connString)
+        {
+            return MenuServices.removePageBannerById(base.Id, connString);
+        }
+
+        public List<PageBanner> getAllMenuBanner(String connString)
+        {
+            return MenuServices.getAllListMenuBanner(connString);
         }
         #endregion
     }

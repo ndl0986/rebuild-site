@@ -37,35 +37,37 @@ Public Class uc_banneraddphoto
     End Sub
 
     Private Sub btnSave_ServerClick(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnSave.ServerClick
-        myBanner.Name = txtName.Text.Trim
-        myBanner.BannerType = ddlBannerType.SelectedValue
+        If Page.IsPostBack Then
+            myBanner.Name = txtName.Text.Trim
+            myBanner.BannerType = ddlBannerType.SelectedValue
 
-        Dim str As String = hdfPhotos.Value
+            Dim str As String = hdfPhotos.Value
 
-        Dim arr As Array
-        arr = str.Split("|")
+            Dim arr As Array
+            arr = str.Split("|")
 
-        myPhotos.Clear()
-        For Each item As String In arr
-            Dim arrItem As Array
-            arrItem = item.Split("*")
-            Dim bannerPhoto As New SonyAlphaLibs.BannerPhoto
-            bannerPhoto.BannerId = myBanner.Id
-            bannerPhoto.ImageUrl = arrItem(1).ToString
-            bannerPhoto.SortOrder = CInt(arrItem(0))
-            bannerPhoto.Link2 = arrItem(2).ToString
-            myPhotos.Add(bannerPhoto)
-        Next
-        myBanner.ListPhotos = myPhotos
+            myPhotos.Clear()
+            For Each item As String In arr
+                Dim arrItem As Array
+                arrItem = item.Split("*")
+                Dim bannerPhoto As New SonyAlphaLibs.BannerPhoto
+                bannerPhoto.BannerId = myBanner.Id
+                bannerPhoto.ImageUrl = arrItem(1).ToString
+                bannerPhoto.SortOrder = CInt(arrItem(0))
+                bannerPhoto.Link2 = arrItem(2).ToString
+                myPhotos.Add(bannerPhoto)
+            Next
+            myBanner.ListPhotos = myPhotos
 
-        Dim result
-        result = myBanner.update(CN.ConnectionString)
-        myBanner.setPhoto2Banner(CN.ConnectionString)
+            Dim result
+            result = myBanner.update(CN.ConnectionString)
+            myBanner.setPhoto2Banner(CN.ConnectionString)
 
-        If result Then
-            ScriptManager.RegisterStartupScript(Me, GetType(String), "Message", "alert('Lưu banner thành công !!!');", True)
-        Else
-            ScriptManager.RegisterStartupScript(Me, GetType(String), "Message", "alert('lưu banner không thành công !!!');", True)
+            If result Then
+                ScriptManager.RegisterStartupScript(Me, GetType(String), "Message", "alert('Lưu banner thành công !!!');", True)
+            Else
+                ScriptManager.RegisterStartupScript(Me, GetType(String), "Message", "alert('lưu banner không thành công !!!');", True)
+            End If
         End If
     End Sub
 End Class

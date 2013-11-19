@@ -11,43 +11,52 @@ Option Strict On
 Option Explicit On
 
 
-Partial Public Class uc_pagebanner
+Partial Public Class uc_admin_addmenu
 
     '''<summary>
-    '''lblMessage control.
+    '''txtName control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents lblMessage As Global.System.Web.UI.WebControls.Label
+    Protected WithEvents txtName As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
-    '''grvPageBanner control.
+    '''txtSeoURL control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents grvPageBanner As Global.System.Web.UI.WebControls.GridView
+    Protected WithEvents txtSeoURL As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
-    '''ddlPage control.
+    '''txtSortOrder control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents ddlPage As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents txtSortOrder As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
-    '''ddlBanner control.
+    '''ddlMenu control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents ddlBanner As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents ddlMenu As Global.System.Web.UI.WebControls.DropDownList
+
+    '''<summary>
+    '''rptListBanner control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents rptListBanner As Global.System.Web.UI.WebControls.Repeater
 
     '''<summary>
     '''btnSave control.
@@ -57,13 +66,4 @@ Partial Public Class uc_pagebanner
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents btnSave As Global.System.Web.UI.HtmlControls.HtmlButton
-
-    '''<summary>
-    '''objPageBanner control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents objPageBanner As Global.System.Web.UI.WebControls.ObjectDataSource
 End Class

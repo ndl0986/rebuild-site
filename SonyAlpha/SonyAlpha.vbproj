@@ -110,6 +110,7 @@
     <Content Include="controls\admin\uc_addnewscategory.ascx" />
     <Content Include="controls\admin\uc_adminmenu.ascx" />
     <Content Include="controls\admin\uc_admin_addalbum.ascx" />
+    <Content Include="controls\admin\uc_admin_addmenu.ascx" />
     <Content Include="controls\admin\uc_admin_addphoto.ascx" />
     <Content Include="controls\admin\uc_admin_addproduct.ascx" />
     <Content Include="controls\admin\uc_admin_addproductcategory.ascx" />
@@ -119,6 +120,7 @@
     <Content Include="controls\admin\uc_admin_editproduct.ascx" />
     <Content Include="controls\admin\uc_admin_editproductcategory.ascx" />
     <Content Include="controls\admin\uc_admin_editsonycenter.ascx" />
+    <Content Include="controls\admin\uc_admin_menulist.ascx" />
     <Content Include="controls\admin\uc_admin_photocomments.ascx" />
     <Content Include="controls\admin\uc_admin_sonycenters.ascx" />
     <Content Include="controls\admin\uc_banneradd.ascx" />
@@ -755,6 +757,13 @@
       <DependentUpon>uc_admin_addalbum.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="controls\admin\uc_admin_addmenu.ascx.designer.vb">
+      <DependentUpon>uc_admin_addmenu.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\admin\uc_admin_addmenu.ascx.vb">
+      <DependentUpon>uc_admin_addmenu.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="controls\admin\uc_admin_addphoto.ascx.designer.vb">
       <DependentUpon>uc_admin_addphoto.ascx</DependentUpon>
     </Compile>
@@ -816,6 +825,13 @@
     </Compile>
     <Compile Include="controls\admin\uc_admin_editsonycenter.ascx.vb">
       <DependentUpon>uc_admin_editsonycenter.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\admin\uc_admin_menulist.ascx.designer.vb">
+      <DependentUpon>uc_admin_menulist.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\admin\uc_admin_menulist.ascx.vb">
+      <DependentUpon>uc_admin_menulist.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="controls\admin\uc_admin_photocomments.ascx.designer.vb">

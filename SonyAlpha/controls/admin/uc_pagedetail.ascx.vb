@@ -13,18 +13,18 @@ Public Class uc_pagedetail
         fckEditor.Value = myPage.PageContent
         txtUrl.Text = myPage.SeoUrl
 
-        Dim str As List(Of Integer)
-        Dim listBanner As New List(Of SonyAlphaLibs.Banner)
-        str = myPage.getListBannerId(CN.ConnectionString)
+        'Dim str As List(Of Integer)
+        'Dim listBanner As New List(Of SonyAlphaLibs.Banner)
+        'str = myPage.getListBannerId(CN.ConnectionString)
 
-        For Each bId As Integer In str
-            Dim pBanner As New SonyAlphaLibs.Banner
-            pBanner = pBanner.getById(bId)
-            listBanner.Add(pBanner)
-        Next
+        'For Each bId As Integer In str
+        'Dim pBanner As New SonyAlphaLibs.Banner
+        'pBanner = pBanner.getById(bId)
+        'listBanner.Add(pBanner)
+        'Next
 
-        rptListBanner.DataSource = listBanner
-        rptListBanner.DataBind()
+        'rptListBanner.DataSource = listBanner
+        'rptListBanner.DataBind()
 
     End Sub
 

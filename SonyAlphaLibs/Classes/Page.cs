@@ -122,20 +122,6 @@ namespace SonyAlphaLibs
             return PageServices.getCurrentMaxId("sony_page", connString);
         }
 
-        public int getBannerId(String connString)
-        {
-            return PageServices.getBannerId(base.Id, connString);
-        }
-
-        public bool setBanner2Page(int bannerId, String connString)
-        {
-            return PageServices.setBanner2Page(base.Id, bannerId, connString);
-        }
-
-        public List<int> getListBannerId(String connString)
-        {
-            return PageServices.getListBannerId(base.Id, connString);
-        }
         #endregion
 
         #region constructor
