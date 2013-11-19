@@ -41,12 +41,12 @@ namespace SonyAlphaLibs
             set { viewCound = value; }
         }
 
-        private bool isForCenter;
+        private int albumType;
 
-        public bool IsForCenter
+        public int AlbumType
         {
-            get { return isForCenter; }
-            set { isForCenter = value; }
+            get { return albumType; }
+            set { albumType = value; }
         }
         
         private List<Photo> listPhotos;
