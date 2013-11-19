@@ -32,6 +32,33 @@ Partial Public Class _Default
     Protected WithEvents ScriptManager As Global.System.Web.UI.ScriptManager
 
     '''<summary>
+    '''page_header control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents page_header As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+
+    '''<summary>
+    '''lblUser control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents lblUser As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''topmenu control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents topmenu As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+
+    '''<summary>
     '''UpdatePanelMain control.
     '''</summary>
     '''<remarks>
@@ -48,4 +75,31 @@ Partial Public Class _Default
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents plhMain As Global.System.Web.UI.WebControls.PlaceHolder
+
+    '''<summary>
+    '''isLoged control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents isLoged As Global.System.Web.UI.WebControls.HiddenField
+
+    '''<summary>
+    '''hdfPage control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents hdfPage As Global.System.Web.UI.WebControls.HiddenField
+
+    '''<summary>
+    '''hdfMenu control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents hdfMenu As Global.System.Web.UI.WebControls.HiddenField
 End Class

@@ -157,6 +157,93 @@ namespace SonyAlphaLibs.Services
             #endregion
         }
 
+        public static List<Menu> getListMenuByParent(int parentId, string connString)
+        {
+            #region code
+            List<Menu> lists = new List<Menu>();
+            using (SqlConnection conn = new SqlConnection(connString))
+            {
+                try
+                {
+                    conn.Open();
+                    using (SqlCommand cmd = conn.CreateCommand())
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.CommandText = "sony_sp_get_all_menu_by_parent";
+                        cmd.Parameters.AddWithValue("@parentId", parentId);
+
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                Menu menu = new Menu();
+                                menu.Id = (int)reader["id"];
+                                menu.Name = reader["name"].ToString();
+                                menu.IsParent = reader["isparent"].ToString().Equals("1") || reader["isparent"].ToString().Equals("True") ? true : false;
+                                menu.ParentId = (int)reader["parentId"];
+                                menu.SeoUrl = reader["seoUrl"].ToString();
+                                menu.IsAdmin = reader["isadmin"].ToString().Equals("1") || reader["isadmin"].ToString().Equals("True") ? true : false;
+                                menu.Visible = reader["visible"].ToString().Equals("1") || reader["visible"].ToString().Equals("True") ? true : false;
+                                menu.Order = (int)reader["order"];
+                                menu.Created = (DateTime)reader["created"];
+                                menu.Updated = (DateTime)reader["updated"];
+                                lists.Add(menu);
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    return new List<Menu>();
+                }
+            }
+            return lists;
+            #endregion
+        }
+
+        public static List<Menu> getListRootMenu(string connString)
+        {
+            #region code
+            List<Menu> lists = new List<Menu>();
+            using (SqlConnection conn = new SqlConnection(connString))
+            {
+                try
+                {
+                    conn.Open();
+                    using (SqlCommand cmd = conn.CreateCommand())
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.CommandText = "sony_sp_get_all_root_menu";
+
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                Menu menu = new Menu();
+                                menu.Id = (int)reader["id"];
+                                menu.Name = reader["name"].ToString();
+                                menu.IsParent = reader["isparent"].ToString().Equals("1") || reader["isparent"].ToString().Equals("True") ? true : false;
+                                menu.ParentId = (int)reader["parentId"];
+                                menu.SeoUrl = reader["seoUrl"].ToString();
+                                menu.IsAdmin = reader["isadmin"].ToString().Equals("1") || reader["isadmin"].ToString().Equals("True") ? true : false;
+                                menu.Visible = reader["visible"].ToString().Equals("1") || reader["visible"].ToString().Equals("True") ? true : false;
+                                menu.Order = (int)reader["order"];
+                                menu.Created = (DateTime)reader["created"];
+                                menu.Updated = (DateTime)reader["updated"];
+                                lists.Add(menu);
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    return new List<Menu>();
+                }
+            }
+            return lists;
+            #endregion
+        }
+
         public static Menu getById(int id, string connString)
         {
             Menu rs = new Menu();

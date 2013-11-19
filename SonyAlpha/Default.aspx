@@ -22,7 +22,14 @@
 <body>
     <form id="form1" runat="server">
     <asp:ScriptManager ID="ScriptManager" runat="server" ScriptMode="Release"/>
-    <div id="header"></div>
+    <div id="header" class="clearfix">
+        <div runat="server" id="page_header" class="header_content"></div>
+        <div id="userStatus" class="clearfix">
+            <div class="logined"><asp:Label runat="server" ClientIDMode="Static" ID="lblUser" class="text username"></asp:Label></div>
+            <div class="not_logined"><a href="javascript:void(0);">Đăng ký</a><a href="javascript:void(0);">Đăng nhập</a></div>
+        </div>
+        <div id="topmenu" runat="server"></div>
+    </div>
     <div id="wrapper">
         <div id="container">
             <asp:UpdatePanel ID="UpdatePanelMain" runat="server">
@@ -32,6 +39,7 @@
             </asp:UpdatePanel>
         </div>
     </div>
+    <asp:HiddenField ID="isLoged" Value="0" runat="server" /><asp:HiddenField ID="hdfPage" Value="" runat="server" /><asp:HiddenField ID="hdfMenu" Value="" runat="server" />
     <div id="footer"></div>
     </form>
     <script type="text/javascript" src="js/libs/jquery-2.0.3.min.js"></script>
@@ -40,5 +48,13 @@
       <script src="js/libs/respond.min.js"></script>
     <![endif]-->
     <script type="text/javascript" src="js/plugins/jquery.bxslider.min.js"></script>
+    <script type="text/javascript">
+        function checkLoged(id) { if ($('#' + id).val() == 1) { $('.logined').show(); $('.notlogin').hide(); } else { $('.logined').hide(); $('.notlogin').show(); } }
+        function togglePopup() { $('html').toggleClass('popupmode'); }
+        function isPopupmode() { if ($('html').hasClass('popupmode')) { return true; } else { return false; } }
+        $(document).ready(function () {
+            checkLoged('isLoged');
+        });    
+    </script>
 </body>
 </html>
