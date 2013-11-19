@@ -13,12 +13,12 @@
             </li>
             <li class="row clerafix">
                 <div class="caption" >Loại Album :</div>
-                <div class="item">
+                <div class="item"><label class="selectfake">
                     <asp:DropDownList runat="server" ID="ddlAlbumType">
                         <asp:ListItem Value="0">Thường</asp:ListItem>
                         <asp:ListItem Value="1">Dành cho Trung tâm Sony</asp:ListItem>
                         <asp:ListItem Value="2">Dành cho Nhóm sản phẩm</asp:ListItem>
-                    </asp:DropDownList>
+                    </asp:DropDownList></label>
                 </div>
             </li>
             <li class="row clerafix">

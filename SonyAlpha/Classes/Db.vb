@@ -263,7 +263,13 @@ Public Module Db
 
     Public Function ProductCategorySeUrl(ByVal id As Integer, ByVal Title As String, Optional ByVal page As Integer = 1) As String
         Dim result As String
-
+        Title = CleanURL(Title)
+        If ConfigurationManager.AppSettings("vird") <> "" Then
+            result = "/" & ConfigurationManager.AppSettings("vird") & "/prodcate/" & id & "_" & Title
+        Else
+            result = "/prodcate/" & id & "_" & Title
+        End If
+        result = result & ".aspx"
         Return result
     End Function
     Public Function ProductSeUrl(ByVal id As Integer, ByVal CatId As Integer, ByVal Title As String) As String

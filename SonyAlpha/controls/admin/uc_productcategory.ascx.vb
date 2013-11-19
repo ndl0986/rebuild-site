@@ -15,9 +15,9 @@ Public Class uc_productcategory
     Private Sub grvProductCategorys_RowCommand(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewCommandEventArgs) Handles grvProductCategorys.RowCommand
         Try
             If e.CommandName = "DeleteRow" Then
-                Dim sonyCenter As New SonyCenter
-                sonyCenter.Id = CInt(e.CommandArgument)
-                sonyCenter.removeById(CN.ConnectionString)
+                Dim productCategory As New ProductCategory
+                productCategory.Id = CInt(e.CommandArgument)
+                productCategory.removeById(CN.ConnectionString)
 
                 grvProductCategorys.DataSourceID = ""
                 grvProductCategorys.DataSourceID = "objProductCategorys"

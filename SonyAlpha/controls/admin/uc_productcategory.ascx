@@ -16,7 +16,7 @@
             <Columns>
                 <asp:BoundField DataField="Id" HeaderText="Id" SortExpression="Id" ReadOnly="true"/>
                 <asp:BoundField DataField="Name" HeaderText="Name" SortExpression="Name" />
-                <asp:BoundField DataField="ImageUrl" HeaderText="ImageUrl" SortExpression="ImageUrl" />
+                <asp:BoundField DataField="AlbumId" HeaderText="AlbumId" SortExpression="AlbumId" />
                 <asp:BoundField DataField="ParentId" HeaderText="ParentId" SortExpression="ParentId" />
                 <asp:BoundField DataField="SeoUrl" HeaderText="SeoUrl" SortExpression="SeoUrl" />
                 <asp:TemplateField HeaderText="Commands" ShowHeader="False" HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center">
