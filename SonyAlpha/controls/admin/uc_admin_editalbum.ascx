@@ -12,8 +12,14 @@
                 <div class="item"><asp:TextBox runat="server" ID="txtName" CssClass="textbox" required maxlength="500"></asp:TextBox><a href="?tpl=addphotos&aid=<%=Request.QueryString("id") %>" class="floatright button action"><span class="icon icon68"></span></a></div>
             </li>
             <li class="row clerafix">
-                <div class="caption" >Dùng cho Trung Tâm Sony :</div>
-                <div class="item"><asp:CheckBox runat="server" ID="chkIsForCenter" required ></asp:CheckBox></div>
+                <div class="caption" >Loại Album :</div>
+                <div class="item">
+                    <asp:DropDownList runat="server" ID="ddlAlbumType">
+                        <asp:ListItem Value="0">Thường</asp:ListItem>
+                        <asp:ListItem Value="1">Dành cho Trung tâm Sony</asp:ListItem>
+                        <asp:ListItem Value="2">Dành cho Nhóm sản phẩm</asp:ListItem>
+                    </asp:DropDownList>
+                </div>
             </li>
             <li>
                 <asp:GridView EmptyDataText="Không có photo nào" ID="grvPhotos" runat="server" AllowPaging="True" AllowSorting="True" SkinID="Defaultgridview" AutoGenerateColumns="False" CssClass="datatable" GridLines="None">

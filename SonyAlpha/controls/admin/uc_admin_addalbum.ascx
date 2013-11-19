@@ -12,8 +12,14 @@
                 <div class="item"><asp:TextBox runat="server" ID="txtName" CssClass="textbox" required maxlength="500"></asp:TextBox></div>
             </li>
             <li class="row clerafix">
-                <div class="caption" >Dùng cho Trung Tâm Sony :</div>
-                <div class="item"><asp:CheckBox runat="server" ID="chkIsForCenter" required ></asp:CheckBox></div>
+                <div class="caption" >Loại Album :</div>
+                <div class="item">
+                    <asp:DropDownList runat="server" ID="ddlAlbumType">
+                        <asp:ListItem Value="0">Thường</asp:ListItem>
+                        <asp:ListItem Value="1">Dành cho Trung tâm Sony</asp:ListItem>
+                        <asp:ListItem Value="2">Dành cho Nhóm sản phẩm</asp:ListItem>
+                    </asp:DropDownList>
+                </div>
             </li>
             <li class="row clerafix">
                 <div class="item textright" >

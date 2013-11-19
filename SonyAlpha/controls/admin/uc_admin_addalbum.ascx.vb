@@ -14,7 +14,7 @@ Public Class uc_admin_addalbum
             myAlbum.AlbumCreator = Session("accountname")
             myAlbum.AlbumImage = ""
             myAlbum.ViewCount = 0
-            myAlbum.IsForCenter = chkIsForCenter.Checked
+            myAlbum.AlbumType = ddlAlbumType.SelectedValue
             Dim result
             result = myAlbum.add(CN.ConnectionString)
             'ScriptManager.RegisterStartupScript(Me, GetType(String), "Message", "alert('Lưu album thành công !!!');", True)

@@ -23,13 +23,13 @@ Partial Public Class uc_admin_addalbum
     Protected WithEvents txtName As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
-    '''chkIsForCenter control.
+    '''ddlAlbumType control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents chkIsForCenter As Global.System.Web.UI.WebControls.CheckBox
+    Protected WithEvents ddlAlbumType As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
     '''btnSave control.

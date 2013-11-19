@@ -41,6 +41,10 @@
                         tpl = Page.LoadControl("../controls/admin/uc_permission.ascx")
                     Case "productcategory"
                         tpl = Page.LoadControl("../controls/admin/uc_productcategory.ascx")
+                    Case "addproductcategory"
+                        tpl = Page.LoadControl("../controls/admin/uc_admin_addproductcategory.ascx")
+                    Case "editproductcategory"
+                        tpl = Page.LoadControl("../controls/admin/uc_admin_editproductcategory.ascx")
                     Case "products"
                         tpl = Page.LoadControl("../controls/admin/uc_products.ascx")
                     Case "addproduct"
