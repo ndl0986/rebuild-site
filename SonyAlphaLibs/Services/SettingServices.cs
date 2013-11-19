@@ -55,6 +55,7 @@ namespace SonyAlphaLibs.Services
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.CommandText = "sony_sp_update_setting";
+                        cmd.Parameters.AddWithValue("@id", setting.Id);
                         cmd.Parameters.AddWithValue("@name", setting.Name);
                         cmd.Parameters.AddWithValue("@value", setting.Value);
                         SqlParameter returnVal = new SqlParameter("@returnVal", SqlDbType.Int);
