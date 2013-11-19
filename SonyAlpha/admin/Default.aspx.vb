@@ -79,6 +79,12 @@
                         tpl = Page.LoadControl("../controls/admin/uc_admin_menulist.ascx")
                     Case "addmenu", "editmenu"
                         tpl = Page.LoadControl("../controls/admin/uc_admin_addmenu.ascx")
+                    Case "settings"
+                        tpl = Page.LoadControl("../controls/admin/uc_admin_settings.ascx")
+                    Case "addsetting"
+                        tpl = Page.LoadControl("../controls/admin/uc_admin_addsetting.ascx")
+                    Case "editsetting"
+                        tpl = Page.LoadControl("../controls/admin/uc_admin_editsetting.ascx")
                     Case "files"
                         Response.Redirect("FileManager.aspx")
                     Case "logout"

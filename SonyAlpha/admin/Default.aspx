@@ -69,7 +69,7 @@
                             <li><a href="?tpl=banners">Quản lý banner</a></li>
                             <li><a href="?tpl=menus">Quản lý menu</a></li>
                             <li><a href="?tpl=banerpage">Banner - Page</a></li>
-                            <li><a href="?tpl=setting">Điều chỉnh</a></li>
+                            <li><a href="?tpl=settings">Cấu hình</a></li>
                             <li><a href="?tpl=files" target="_blank">Quản lý files</a></li>
                         </ul>
                         </li>
