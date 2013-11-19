@@ -17,12 +17,12 @@ namespace SonyAlphaLibs
             set { name = value; }
         }
 
-        private string imageUrl;
+        private int albumId;
 
-        public string ImageUrl
+        public int AlbumId
         {
-            get { return imageUrl; }
-            set { imageUrl = value; }
+            get { return albumId; }
+            set { albumId = value; }
         }
 
         private int parentId;

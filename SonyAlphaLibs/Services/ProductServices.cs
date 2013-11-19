@@ -251,7 +251,7 @@ namespace SonyAlphaLibs.Services
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.CommandText = "sony_sp_add_product_category";
                         cmd.Parameters.AddWithValue("@name", productCategory.Name);
-                        cmd.Parameters.AddWithValue("@imageUrl", productCategory.ImageUrl);
+                        cmd.Parameters.AddWithValue("@albumId", productCategory.AlbumId);
                         cmd.Parameters.AddWithValue("@parentId", productCategory.ParentId);
                         cmd.Parameters.AddWithValue("@description", productCategory.Description);
                         cmd.Parameters.AddWithValue("@seoUrl", productCategory.SeoUrl);
@@ -288,7 +288,7 @@ namespace SonyAlphaLibs.Services
                         cmd.CommandText = "sony_sp_update_product_category";
                         cmd.Parameters.AddWithValue("@id", productCategory.Id);
                         cmd.Parameters.AddWithValue("@name", productCategory.Name);
-                        cmd.Parameters.AddWithValue("@imageUrl", productCategory.ImageUrl);
+                        cmd.Parameters.AddWithValue("@albumId", productCategory.AlbumId);
                         cmd.Parameters.AddWithValue("@parentId", productCategory.ParentId);
                         cmd.Parameters.AddWithValue("@description", productCategory.Description);
                         cmd.Parameters.AddWithValue("@seoUrl", productCategory.SeoUrl);
@@ -363,7 +363,7 @@ namespace SonyAlphaLibs.Services
                                 ProductCategory productCategory = new ProductCategory();
                                 productCategory.Id = (int)reader["id"];
                                 productCategory.Name = reader["name"].ToString();
-                                productCategory.ImageUrl = reader["imageUrl"].ToString();
+                                productCategory.AlbumId = String.IsNullOrEmpty(reader["albumId"].ToString()) ? 0 : (int)reader["albumId"];
                                 productCategory.ParentId = (int)reader["parentId"];
                                 productCategory.Description = reader["description"].ToString();
                                 productCategory.SeoUrl = reader["seoUrl"].ToString();
@@ -397,6 +397,7 @@ namespace SonyAlphaLibs.Services
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.CommandText = "sony_sp_get_product_category_by_id";
+                        cmd.Parameters.AddWithValue("@id", p);
 
                         using (SqlDataReader reader = cmd.ExecuteReader())
                         {
@@ -404,7 +405,7 @@ namespace SonyAlphaLibs.Services
                             {                                
                                 productCategory.Id = (int)reader["id"];
                                 productCategory.Name = reader["name"].ToString();
-                                productCategory.ImageUrl = reader["imageUrl"].ToString();
+                                productCategory.AlbumId = String.IsNullOrEmpty(reader["albumId"].ToString()) ? 0 : (int)reader["albumId"];
                                 productCategory.ParentId = (int)reader["parentId"];
                                 productCategory.Description = reader["description"].ToString();
                                 productCategory.SeoUrl = reader["seoUrl"].ToString();

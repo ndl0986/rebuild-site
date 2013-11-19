@@ -531,5 +531,47 @@ namespace SonyAlphaLibs.Services
             return lists;
             #endregion
         }
+
+        public static List<Album> getListAllAlbumForProductCategory(string connString)
+        {
+            #region code
+            List<Album> lists = new List<Album>();
+            using (SqlConnection conn = new SqlConnection(connString))
+            {
+                try
+                {
+                    conn.Open();
+                    using (SqlCommand cmd = conn.CreateCommand())
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.CommandText = "sony_sp_get_all_album_for_product_category";
+
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                Album album = new Album();
+                                album.Id = (int)reader["id"];
+                                album.FullName = reader["fullname"].ToString();
+                                album.AlbumCreator = reader["albumCreator"].ToString();
+                                album.AlbumImage = reader["albumImage"].ToString();
+                                album.ViewCount = (int)reader["viewCount"];
+                                album.AlbumType = (int)reader["albumType"];
+                                album.Created = (DateTime)reader["created"];
+                                album.Updated = (DateTime)reader["updated"];
+                                lists.Add(album);
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    writeLog("", "Get All Album Error: " + ex.Message, connString);
+                    return new List<Album>();
+                }
+            }
+            return lists;
+            #endregion
+        }
     }
 }
