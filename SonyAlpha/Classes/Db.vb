@@ -265,9 +265,9 @@ Public Module Db
         Dim result As String
         Title = CleanURL(Title)
         If ConfigurationManager.AppSettings("vird") <> "" Then
-            result = "/" & ConfigurationManager.AppSettings("vird") & "/prodcate/" & id & "_" & Title
+            result = "/" & ConfigurationManager.AppSettings("vird") & "/product/category/" & id & "_" & Title
         Else
-            result = "/prodcate/" & id & "_" & Title
+            result = "/product/category/" & id & "_" & Title
         End If
         result = result & ".aspx"
         Return result
