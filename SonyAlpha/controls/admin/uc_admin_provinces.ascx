@@ -1,0 +1,39 @@
+﻿<%@ Control Language="vb" AutoEventWireup="false" CodeBehind="uc_admin_provinces.ascx.vb" Inherits="SonyAlpha.uc_admin_provinces" %>
+<div class="navigations">
+    <div class="breakcurm clearfix">
+        <a class="button"><span class="icon icon4"></span></a><span class="heading">Hệ thống > Danh sách Tỉnh thành : <a class="button floatright" href="javascript:history.go(-1);"><span class="icon icon8"></span></a></span>
+    </div>
+</div>
+<div class="content">
+    <div class="section">
+        <asp:Label runat="server" ID="lblMessage"></asp:Label>
+        <h4 class="heading">Danh sách Tỉnh thành<a href="?tpl=addprovince" class="floatright button action"><span class="icon icon68"></span></a></h4>
+        <asp:GridView EmptyDataText="Không có trung tâm nào" ID="grvProvinces" runat="server" 
+            AllowPaging="True" AllowSorting="True" DataSourceID="objProvinces"
+            SkinID="Defaultgridview" AutoGenerateColumns="False" CssClass="datatable" 
+            GridLines="None">
+            <HeaderStyle CssClass="girdheader"/>
+            <Columns>
+                <asp:BoundField DataField="Id" HeaderText="Id" SortExpression="Id" ReadOnly="true"/>
+                <asp:BoundField DataField="SProvince" HeaderText="SProvince" SortExpression="SProvince" />
+                <asp:BoundField DataField="ProvinceOrder" HeaderText="ProvinceOrder" SortExpression="ProvinceOrder" />
+                <asp:TemplateField HeaderText="Commands" ShowHeader="False" HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center">
+                    <ItemTemplate>
+                        <asp:LinkButton ID="lEdit" runat="server" CausesValidation="False" CommandName="Select" Text="Edit" CssClass="button"><span class="icon icon46"></span></asp:LinkButton>
+                        <asp:LinkButton ID="lDelete" runat="server" CausesValidation="False" CommandArgument='<%#Eval("Id") %>' CommandName="DeleteRow" Text="Delete" CssClass="actDel button" messdelete="Delete this Province ?"><span class="icon icon186"></span></asp:LinkButton>
+                    </ItemTemplate>
+                </asp:TemplateField>
+            </Columns>
+            <FooterStyle Font-Bold="True" ForeColor="White" />
+            <PagerStyle CssClass="pagepad" HorizontalAlign="Right" />
+        </asp:GridView>
+    </div>
+</div>
+<asp:ObjectDataSource ID="objProvinces" runat="server" DeleteMethod="removeById" SelectMethod="getListAll" TypeName="SonyAlphaLibs.Province">
+    <SelectParameters>
+        <asp:Parameter Name="connString" Type="String" />
+    </SelectParameters>
+    <DeleteParameters>
+        <asp:Parameter Name="connString" Type="String" />
+    </DeleteParameters>
+</asp:ObjectDataSource>
