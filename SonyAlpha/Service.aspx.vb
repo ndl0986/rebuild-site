@@ -42,6 +42,8 @@ Public Class Service
                 Select Case name
                     Case "getuserinfo"
                         GetUserInfo()
+                    Case "getpage"
+                        GetPage()
                 End Select
             Else
                 GetMyResponse("500", "Nothing todo!")
@@ -108,6 +110,20 @@ Public Class Service
             GetMyResponse("500", "fail: " + ex.Message)
         End Try
         
+    End Sub
+
+    Private Sub GetPage()
+        Try
+            Dim pageId As Integer = CInt(Request.QueryString("pageid"))
+            Dim page As Page = PageServices.getById(pageId, CN.ConnectionString)
+            If Not page.Id = 0 Then
+                GetMyResponse("200", New JavaScriptSerializer().Serialize(page))
+            Else
+                GetMyResponse("400", "fail")
+            End If
+        Catch ex As Exception
+            GetMyResponse("500", "fail: " + ex.Message)
+        End Try
     End Sub
 
 End Class
