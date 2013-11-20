@@ -8,7 +8,7 @@
     <div class="section">
         <asp:Label runat="server" ID="lblMessage"></asp:Label>
         <h4 class="heading">Danh sách Tỉnh thành<a href="?tpl=addprovince" class="floatright button action"><span class="icon icon68"></span></a></h4>
-        <asp:GridView EmptyDataText="Không có trung tâm nào" ID="grvProvinces" runat="server" 
+        <asp:GridView EmptyDataText="Không có tỉnh thành nào" ID="grvProvinces" runat="server" 
             AllowPaging="True" AllowSorting="True" DataSourceID="objProvinces"
             SkinID="Defaultgridview" AutoGenerateColumns="False" CssClass="datatable" 
             GridLines="None">
