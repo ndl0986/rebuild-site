@@ -76,6 +76,7 @@ namespace SonyAlphaLibs.Services
                                 user.GroupId = (int)reader["groupId"];
                                 user.Registered = (DateTime)reader["registered"];
                                 user.Updated = (DateTime)reader["updated"];
+                                user.GroupName = reader["groupname"].ToString();
                                 lists.Add(user);
                             }
                         }

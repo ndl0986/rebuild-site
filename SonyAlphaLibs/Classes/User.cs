@@ -53,7 +53,9 @@ namespace SonyAlphaLibs
         {
             get { return base.Created; }
             set { base.Created = value; }
-        } 
+        }
+
+        public string GroupName { get; set; }
         #endregion
 
         #region base method
@@ -74,7 +76,7 @@ namespace SonyAlphaLibs
 
         public List<User> getListAll(String connString)
         {
-            return new List<User>();
+            return UserServices.getListAll(connString);
         }
 
         public User getById(String connString)
