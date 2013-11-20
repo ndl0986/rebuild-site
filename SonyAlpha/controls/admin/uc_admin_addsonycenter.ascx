@@ -5,7 +5,7 @@
         <a class="button"><span class="icon icon4"></span></a>
         <span class="heading">Hệ thống > Trung tâm Sony > Thêm trung tâm :<a class="button floatright" href="javascript:history.go(-1);"><span class="icon icon8"></span></a></span>
     </div>
-</div
+</div>
 <div class="content">
     <div class="section">
         <ul class="form">

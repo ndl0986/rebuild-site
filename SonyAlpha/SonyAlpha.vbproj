@@ -112,6 +112,7 @@
     <Content Include="controls\admin\uc_accountgroup.ascx" />
     <Content Include="controls\admin\uc_addnewscategory.ascx" />
     <Content Include="controls\admin\uc_adminmenu.ascx" />
+    <Content Include="controls\admin\uc_admin_addaccount.ascx" />
     <Content Include="controls\admin\uc_admin_addalbum.ascx" />
     <Content Include="controls\admin\uc_admin_addmenu.ascx" />
     <Content Include="controls\admin\uc_admin_addphoto.ascx" />
@@ -149,6 +150,7 @@
     <Content Include="controls\views\uc_album.ascx" />
     <Content Include="controls\views\uc_albumdetail.ascx" />
     <Content Include="controls\views\uc_banner.ascx" />
+    <Content Include="controls\views\uc_email_faq.ascx" />
     <Content Include="controls\views\uc_footer.ascx" />
     <Content Include="controls\views\uc_header.ascx" />
     <Content Include="controls\views\uc_menu.ascx" />
@@ -735,6 +737,13 @@
       <DependentUpon>uc_adminmenu.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="controls\admin\uc_admin_addaccount.ascx.designer.vb">
+      <DependentUpon>uc_admin_addaccount.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\admin\uc_admin_addaccount.ascx.vb">
+      <DependentUpon>uc_admin_addaccount.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="controls\admin\uc_admin_addalbum.ascx.designer.vb">
       <DependentUpon>uc_admin_addalbum.ascx</DependentUpon>
     </Compile>
@@ -992,6 +1001,13 @@
     </Compile>
     <Compile Include="controls\views\uc_banner.ascx.vb">
       <DependentUpon>uc_banner.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\views\uc_email_faq.ascx.designer.vb">
+      <DependentUpon>uc_email_faq.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\views\uc_email_faq.ascx.vb">
+      <DependentUpon>uc_email_faq.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="controls\views\uc_footer.ascx.designer.vb">
