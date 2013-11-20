@@ -1313,7 +1313,7 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>15058</DevelopmentServerPort>
+          <DevelopmentServerPort>63703</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost:15058/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>

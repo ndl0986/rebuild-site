@@ -17,7 +17,8 @@ Public Class uc_admin_addmenu
 
         For Each bId As Integer In str
             Dim pBanner As New SonyAlphaLibs.Banner
-            pBanner = pBanner.getById(bId)
+            pBanner.Id = bId
+            pBanner = pBanner.getById(CN.ConnectionString)
             listBanner.Add(pBanner)
         Next
 
