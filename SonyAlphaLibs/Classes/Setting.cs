@@ -55,7 +55,7 @@ namespace SonyAlphaLibs
         #endregion
 
         #region ext method
-        public Setting getByName(String connString)
+        public string getByName(String connString)
         {
             return SettingServices.getByName(this.Name, connString);
         }

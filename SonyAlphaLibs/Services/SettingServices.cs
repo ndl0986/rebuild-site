@@ -182,10 +182,11 @@ namespace SonyAlphaLibs.Services
             #endregion
         }
 
-        public static Setting getByName(string name, string connString)
+        public static string getByName(string name, string connString)
         {
             #region code
-            Setting setting = new Setting();
+            //Setting setting = new Setting();
+            string rs = String.Empty;
             using (SqlConnection conn = new SqlConnection(connString))
             {
                 try
@@ -201,21 +202,17 @@ namespace SonyAlphaLibs.Services
                         {
                             while (reader.Read())
                             {
-                                setting.Id = (int)reader["id"];
-                                setting.Name = reader["name"].ToString();
-                                setting.Value = reader["value"].ToString();
-                                setting.Created = (DateTime)reader["created"];
-                                setting.Updated = (DateTime)reader["updated"];
+                                rs = reader[0].ToString();
                             }
                         }
                     }
                 }
                 catch (Exception ex)
                 {
-                    return new Setting();
+                    return rs;
                 }
             }
-            return setting;
+            return rs;
             #endregion
         }
     }
