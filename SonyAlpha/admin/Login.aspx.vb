@@ -21,7 +21,7 @@ Public Class Login
         Dim userGroup As New UserGroup
 
         user.UserName = txtAccount.Text.Trim
-        user.PassWord = txtPassword.Text.Trim
+        user.PassWord = base64Encode(txtPassword.Text.Trim)
 
         If (user.login(CN.ConnectionString)) Then
             user = user.getByUserName(CN.ConnectionString)

@@ -8,6 +8,8 @@ Imports System.Security.Cryptography
 Public Module Db
     Public _DataSet As DataSet
     Public CN As New SqlConnection
+    Public Const DEFAULT_PASS As String = "abc123!"
+
     Public Function InitDatabase() As Boolean
         Try
             CN.ConnectionString = ConfigurationManager.ConnectionStrings("ApplicationServices").ConnectionString

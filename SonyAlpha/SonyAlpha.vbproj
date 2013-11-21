@@ -122,6 +122,7 @@
     <Content Include="controls\admin\uc_admin_addsetting.ascx" />
     <Content Include="controls\admin\uc_admin_addsonycenter.ascx" />
     <Content Include="controls\admin\uc_admin_album.ascx" />
+    <Content Include="controls\admin\uc_admin_editaccount.ascx" />
     <Content Include="controls\admin\uc_admin_editalbum.ascx" />
     <Content Include="controls\admin\uc_admin_editproduct.ascx" />
     <Content Include="controls\admin\uc_admin_editproductcategory.ascx" />
@@ -805,6 +806,13 @@
     </Compile>
     <Compile Include="controls\admin\uc_admin_album.ascx.vb">
       <DependentUpon>uc_admin_album.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\admin\uc_admin_editaccount.ascx.designer.vb">
+      <DependentUpon>uc_admin_editaccount.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\admin\uc_admin_editaccount.ascx.vb">
+      <DependentUpon>uc_admin_editaccount.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="controls\admin\uc_admin_editalbum.ascx.designer.vb">

@@ -22,7 +22,9 @@
                     Case "accounts"
                         tpl = Page.LoadControl("../controls/admin/uc_account.ascx")
                     Case "editaccount", "profile"
-                        tpl = Page.LoadControl("../controls/admin/uc_editaccount.ascx")
+                        tpl = Page.LoadControl("../controls/admin/uc_admin_editaccount.ascx")
+                    Case "addaccount"
+                        tpl = Page.LoadControl("../controls/admin/uc_admin_addaccount.ascx")
                     Case "accountsgroup"
                         tpl = Page.LoadControl("../controls/admin/uc_accountgroup.ascx")
                     Case "newscategory"
