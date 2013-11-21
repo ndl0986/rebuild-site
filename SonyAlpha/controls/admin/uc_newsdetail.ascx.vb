@@ -59,7 +59,6 @@ Public Class uc_newsdetail1
             Else
                 ScriptManager.RegisterStartupScript(Me, GetType(String), "Message", "alert('lưu page không thành công !!!');", True)
             End If
-            Response.Redirect("?tpl=editnews&id=1")
         End If
     End Sub
 End Class
