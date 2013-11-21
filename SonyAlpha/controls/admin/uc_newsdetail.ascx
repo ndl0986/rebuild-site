@@ -41,7 +41,6 @@
                             <input id="txtPhotoURL" runat="server" clientidmode="Static" type="text" class="textbox" placeholder="URL photo ..." />
                         </div>
                         <a href="javascript:void(0);" class="browser btn button"><span class="label">...</span></a>
-                        <%--<a href="javascript:void(0);" id="btnAdd" class="button btn green"><span class="label">[ + ]</span></a>--%>
                     </div>
                     <asp:HiddenField runat="server" ID="hdfPhotos" clientidmode="Static"/>
                 </div>

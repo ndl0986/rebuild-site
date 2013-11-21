@@ -5,7 +5,16 @@ Public Class uc_newsdetail1
     Dim bolUpdate As Boolean
     Dim myNews As New SonyAlphaLibs.News
     Sub LoadNews(ByVal id As String)
-
+        Dim news As New News
+        news = NewsServices.getById(id, CN.ConnectionString)
+        If Not news.Id = 0 Then
+            txtTitle.Text = news.Title
+            ddlGroup.SelectedValue = news.CategoryId
+            chkPublished.Checked = news.Published
+            txtDescription.Text = news.Description
+            fckEditor.Value = news.Detail
+            news.NewsImage = news.NewsImage
+        End If
     End Sub
     Private Sub Page_Init(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Init
         objNewsCategory.SelectParameters.Item("connString").DefaultValue = CN.ConnectionString
@@ -46,9 +55,11 @@ Public Class uc_newsdetail1
             End If
             If result Then
                 ScriptManager.RegisterStartupScript(Me, GetType(String), "Message", "alert('Lưu page thành công !!!');", True)
+
             Else
                 ScriptManager.RegisterStartupScript(Me, GetType(String), "Message", "alert('lưu page không thành công !!!');", True)
             End If
+            Response.Redirect("?tpl=editnews&id=1")
         End If
     End Sub
 End Class
