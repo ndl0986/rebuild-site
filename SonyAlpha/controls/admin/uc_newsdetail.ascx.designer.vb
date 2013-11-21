@@ -59,6 +59,24 @@ Partial Public Class uc_newsdetail1
     Protected WithEvents fckEditor As Global.FredCK.FCKeditorV2.FCKeditor
 
     '''<summary>
+    '''txtPhotoURL control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtPhotoURL As Global.System.Web.UI.HtmlControls.HtmlInputText
+
+    '''<summary>
+    '''hdfPhotos control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents hdfPhotos As Global.System.Web.UI.WebControls.HiddenField
+
+    '''<summary>
     '''btnSave control.
     '''</summary>
     '''<remarks>

@@ -34,6 +34,8 @@ Public Class uc_newsdetail1
             myNews.Detail = fckEditor.Value
             myNews.CategoryId = ddlGroup.SelectedValue
             myNews.Published = CBool(chkPublished.Checked)
+            myNews.NewsImage = txtPhotoURL.Value
+
             Dim result As Boolean
             If bolUpdate = False Then
                 myNews.SeoUrl = NewsSeUrl(myNews.getCurrentMaxId(CN.ConnectionString) + 1, myNews.Title)
@@ -43,9 +45,9 @@ Public Class uc_newsdetail1
                 result = myNews.update(CN.ConnectionString)
             End If
             If result Then
-                'ScriptManager.RegisterStartupScript(Me, GetType(String), "Message", "alert('Lưu page thành công !!!');", True)
+                ScriptManager.RegisterStartupScript(Me, GetType(String), "Message", "alert('Lưu page thành công !!!');", True)
             Else
-                'ScriptManager.RegisterStartupScript(Me, GetType(String), "Message", "alert('lưu page không thành công !!!');", True)
+                ScriptManager.RegisterStartupScript(Me, GetType(String), "Message", "alert('lưu page không thành công !!!');", True)
             End If
         End If
     End Sub

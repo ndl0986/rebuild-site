@@ -33,6 +33,20 @@
                 </div>
             </li>
             <li class="row clerafix">
+                <div class="caption" >Photo :</div>
+                <div id="lstPhotos" class="item">
+                    <ul id="ulPhotos" class="clearfix"></ul>
+                    <div class="banner_photo clearfix">
+                        <div class="floatleft">
+                            <input id="txtPhotoURL" runat="server" clientidmode="Static" type="text" class="textbox" placeholder="URL photo ..." />
+                        </div>
+                        <a href="javascript:void(0);" class="browser btn button"><span class="label">...</span></a>
+                        <%--<a href="javascript:void(0);" id="btnAdd" class="button btn green"><span class="label">[ + ]</span></a>--%>
+                    </div>
+                    <asp:HiddenField runat="server" ID="hdfPhotos" clientidmode="Static"/>
+                </div>
+            </li>
+            <li class="row clerafix">
                 <div class="item textright" >
                     <button class="action btnOk" runat="server" ID="btnSave" disabled="disabled" ><span class="label">Lưu</span></button>
                     <a href="javascript:void(0);" class="button action" id="btnCancel"><span class="label">Hủy</span></a>
@@ -51,6 +65,39 @@
     $(document).ready(function () {
         if ($('#txtTitle').val() != '') {
             $('.btnOk').removeAttr('disabled').addClass('blue');
+        }
+
+        var urlPhoto = $('#txtPhotoURL'), listPhotos = $('#ulPhotos'), txtLink = $('#txtLinkTo'), hdf = $('#hdfPhotos');
+        listItems = [];
+        objItem = "";
+
+        if (hdf.val() != "") {
+            listItems = hdf.val().split('|');
+            for (var i = 0; i < listItems.length; i++) {
+                var arr = listItems[i].split('*');
+                var li = $('<li></li>');
+                var a = $('<a class="thumb"></a>').attr('href', arr[1]);
+                var btn = $('<a class="button red del" href="javascript:void(0);">-</a>')
+                var img = $('<img alt="" src=' + arr[2] + '/>');
+                var txt = $('<input type="nummber" class="textbox small" value="' + arr[0] + '" />')
+                btn.attr('value', listItems[i]);
+                btn.click(function () {
+                    removeItem($(this).parent(), $(this).attr('value'));
+                });
+                li.append(a.append(img)).append(txt).append(btn);
+                listPhotos.append(li);
+            }
+        }
+
+        $('.browser').click(function () {
+            window.open('FileManager.aspx?bannerphoto', 'File Management', 'width=800,height=600');
+        });
+        
+        function updateValue() {
+            hdf.val(listItems.join('|'));
+            if (!$('.btnOk').hasClass('blue')) {
+                $('.btnOk').removeAttr('disabled').addClass('blue');
+            }
         }
     });
 </script>
