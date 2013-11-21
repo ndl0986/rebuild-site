@@ -68,6 +68,7 @@ namespace SonyAlphaLibs
         {
             return NewsServices.getNewsCategoryById(base.Id, connString);
         }
+        #endregion
 
         public int getCurrentMaxId(String connString)
         {
@@ -78,6 +79,10 @@ namespace SonyAlphaLibs
         {
             return NewsServices.getListNewSameParent(this.ParentId, connString);
         }
-        #endregion
+
+        public List<NewsCategory> getListChild(String connString)
+        {
+            return NewsServices.getListCategoryChild(base.Id, connString);
+        }
     }
 }

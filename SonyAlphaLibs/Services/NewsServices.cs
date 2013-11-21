@@ -556,5 +556,46 @@ namespace SonyAlphaLibs.Services
             return lists;
             #endregion
         }
+
+        public static List<NewsCategory> getListCategoryChild(int categoryId, string connString)
+        {
+            #region code
+            List<NewsCategory> lists = new List<NewsCategory>();
+            using (SqlConnection conn = new SqlConnection(connString))
+            {
+                try
+                {
+                    conn.Open();
+                    using (SqlCommand cmd = conn.CreateCommand())
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.CommandText = "sony_sp_get_category_child";
+                        cmd.Parameters.AddWithValue("@categoryId", categoryId);
+
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                NewsCategory newsCategory = new NewsCategory();
+                                newsCategory.Id = (int)reader["id"];
+                                newsCategory.Name = reader["name"].ToString();
+                                newsCategory.SeoUrl = reader["seoUrl"].ToString();
+                                newsCategory.ImageUrl = reader["imageUrl"].ToString();
+                                newsCategory.ParentId = (int)reader["parentId"];
+                                newsCategory.Created = (DateTime)reader["created"];
+                                newsCategory.Updated = (DateTime)reader["updated"];
+                                lists.Add(newsCategory);
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    return new List<NewsCategory>();
+                }
+            }
+            return lists;
+            #endregion
+        }
     }
 }
