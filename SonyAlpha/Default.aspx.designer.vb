@@ -32,15 +32,6 @@ Partial Public Class _Default
     Protected WithEvents ScriptManager As Global.System.Web.UI.ScriptManager
 
     '''<summary>
-    '''page_header control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents page_header As Global.System.Web.UI.HtmlControls.HtmlGenericControl
-
-    '''<summary>
     '''lblUser control.
     '''</summary>
     '''<remarks>
@@ -57,6 +48,15 @@ Partial Public Class _Default
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents topmenu As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+
+    '''<summary>
+    '''banner control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents banner As Global.System.Web.UI.HtmlControls.HtmlGenericControl
 
     '''<summary>
     '''UpdatePanelMain control.
@@ -102,4 +102,13 @@ Partial Public Class _Default
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents hdfMenu As Global.System.Web.UI.WebControls.HiddenField
+
+    '''<summary>
+    '''footer control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents footer As Global.System.Web.UI.HtmlControls.HtmlGenericControl
 End Class
