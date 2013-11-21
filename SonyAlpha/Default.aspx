@@ -39,9 +39,8 @@
         <div id="topmenu" runat="server"></div>
     </div>
     <div id="container">
-        <div id="banner" runat="server" class="clearfix">
-            
-        </div>
+        <div id="breadcum" class="breadcum clearfix"></div>
+        <div id="banner" runat="server" class="clearfix"></div>
         <asp:UpdatePanel ID="UpdatePanelMain" runat="server">
             <ContentTemplate>
                 <asp:PlaceHolder runat="server" ID="plhMain"></asp:PlaceHolder>
@@ -63,8 +62,17 @@
         function checkLoged(id) { if ($('#' + id).val() == 1) { $('.logined').show(); $('.notlogin').hide(); } else { $('.logined').hide(); $('.notlogin').show(); } }
         function togglePopup() { $('html').toggleClass('popupmode'); }
         function isPopupmode() { if ($('html').hasClass('popupmode')) { return true; } else { return false; } }
+        function addBreadcum() {
+            var breadcum = $('#breadcum');
+            var li = $('#menu_' + $('#hdfMenu').val());
+            if (li.length) li.addClass('active');
+            var html = '<a href="https://alpha.sony.com.vn/">Trang chủ </a>' + li.html();
+            breadcum.append(html);
+            breadcum.append('<div class="main_title">'+li.text()+'</div>');
+        }
         $(document).ready(function () {
             checkLoged('isLoged');
+            addBreadcum();
             var mainBanner = $('.banner_container');
             var fluidBanner = $('.banner_container.type0'), leftBanner = $('.banner_container.type_1'), rightBanner = $('.banner_container.type_2');
             if (mainBanner.hasClass('type_0') || mainBanner.hasClass('type_1')) {

@@ -180,7 +180,7 @@ border-bottom: 2px solid #f04202;
     display: block;
     padding: 0px 18px;
 }
-#topmenu ul li .active{
+#topmenu ul li.active a{
     color:#f4602e;
 }
 
@@ -420,6 +420,22 @@ Author URI: http://dev7studios.com
 .nivo-controlNav a.active {
     font-weight:bold;
 }
+
+.main_title{
+    font-family:Tahoma;
+    font-size:23px;
+    color:#fe3500;
+    margin-top:10px;
+}
+.breadcum{
+    width: 900px;
+    margin-left: 0px;
+    padding: 10px 0 0px 17px;
+    font-family:Tahoma;
+    font-size:0px;
+}
+.breadcum a { color: #000; font-size: 11px; display: inline-block; vertical-align: top;}
+.breadcum a + a {background:url(../img/bullet_breadcum.png) no-repeat 6px 3px; padding-left: 15px;font-weight: bold;}
 
 .gr_border_content {font-size: 0; text-align: center; width: 98%; margin: 20px auto 0px auto;}
 .banner_content_home {display: inline-block; vertical-align: top; width: 18%; margin: 0px 1%; cursor: pointer;}

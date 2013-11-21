@@ -16,7 +16,7 @@ Public Class _Default
 
         GenMenu()
         LoadMyTemplate()
-        hdfMenu.Value = Request.Url.AbsoluteUri
+        hdfMenu.Value = intMenu
 
         Dim tpl As New System.Web.UI.UserControl
         If Request.Browser.Cookies Then
