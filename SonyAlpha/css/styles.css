@@ -205,7 +205,7 @@ border-bottom: 2px solid #f04202;
 .main-slider .bx-controls .bx-next {width: 90px; height: 90px;border-radius: 45px;-webkit-border-radius: 45px;-moz-border-radius: 45px;top: 40%;margin-top: -45px;}
 .main-slider .bx-controls .bx-prev { left: 30px;}
 .main-slider .bx-controls .bx-next { right: 30px;}
-
+.banner_container.type_0{ margin-top: -54px;}
 .banner_container.type_1{
     width: 698px;
     height:360px;
@@ -467,6 +467,38 @@ Author URI: http://dev7studios.com
     margin-left: 26px;
     padding-top: 50px;
 }
+#section_collection,.news_cat_content { width: 900px; margin: 20px auto;}
+.list_collection,.list_news { font-size: 0; width: 100%; position: relative;}
+.list_collection li { display: inline-block; width: 50%; height: 200px; overflow: hidden; position: relative; z-index: 1; font-size: 13px;}
+.list_collection li img { width: 100%; max-width: none; margin: auto;}
+.list_collection .title_banner_text { position: absolute; bottom: 0px; left: 0; right: 0; background: rgba(0,0,0,0.7); height: 40px; overflow: hidden;}
+.title_banner_text a { font-size: 14px; display: block; margin: 0px 15px; line-height: 40px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;}
+.list_news li { min-height: 260px; width: 48%; vertical-align: top; display: inline-block; margin-bottom: 20px;margin-right: 2%; border-bottom: dashed 1px #000;}
+.list_news .detail_item { padding-right: 10px;}
+.thumb_news {
+width: 224px;
+padding: 5px;
+background-color: #fbf9f6;
+float: left;
+border: 1px solid #dbdbdb;
+overflow: hidden;
+position: relative;
+}
+.wap_img {width: 100%;overflow: hidden;height: 180px;line-height: 180px;}
+.wap_img img { max-width: none; width: 100%;display: inline-block;vertical-align: middle;}
+.des_news {font-size: 13px;line-height: 20px;padding-right: 14px; margin-left: 246px; height: 164px; overflow: hidden;}
+.news_view{position: absolute;bottom: 0px;font-size: 13px;height: 24px;line-height: 24px;background: #666;color: #fff;width: 100%;left: 0px;padding-left: 5px;}
+.title_news a{
+    color:#fe3500;
+    font-size:15px;
+    line-height: 20px;
+    font-weight:bold;
+    text-decoration:none;
+    margin-bottom: 10px;
+    display: block;
+}
+.chitiet{text-decoration:underline; margin: 15px 0px 0px 246px;}
+.chitiet a{color:#000000; font-size: 13px; font-style: italic;}
 /* Mobile style */
 @media screen and (max-width: 719px) {
     .container { width: auto; margin: auto 10px;}

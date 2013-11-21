@@ -5,6 +5,7 @@ Public Class _Default
     Inherits System.Web.UI.Page
     Dim intMenu As Integer
     Public absoluteURL As String
+    Public hasBanner As Boolean = False
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         If Not Page.IsPostBack Then
             InitDatabase()
@@ -70,7 +71,11 @@ Public Class _Default
 
         Dim topBanner As New List(Of SonyAlphaLibs.Banner)
         topBanner = SonyAlphaLibs.Services.MenuServices.getListBanner(intMenu, CN.ConnectionString)
-
+        If topBanner.Count > 0 Then
+            hasBanner = True
+        Else
+            hasBanner = False
+        End If
         Dim html As String = ""
         For Each oBanner As SonyAlphaLibs.Banner In topBanner
             oBanner = oBanner.getById(CN.ConnectionString)

@@ -21,4 +21,10 @@ Public Class uc_newslist
             grvNews.DataSourceID = "objNews"
         End If
     End Sub
+
+    Private Sub grvNews_SelectedIndexChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles grvNews.SelectedIndexChanged
+        Dim strURL As String
+        strURL = "?tpl=editnews&id=" & grvNews.Rows(grvNews.SelectedIndex).Cells(0).Text
+        Response.Redirect(strURL)
+    End Sub
 End Class
