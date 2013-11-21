@@ -95,7 +95,7 @@
             var li = $('<li></li>');
             var a = $('<a class="thumb"></a>').attr('href', link);
             var btn = $('<a class="button red del" href="javascript:void(0);">-</a>')
-            var img = $('<img alt="" src=' + src + '/>');
+            var img = $('<img alt="" src="' + src + '" />');
             var txt = $('<input type="nummber" class="textbox small" value="' + listPhotos.children().length + '" />')
             objItem = txt.val() + '*' + src + '*' + link;
             btn.attr('value', objItem);

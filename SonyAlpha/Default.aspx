@@ -39,7 +39,7 @@
         <div id="topmenu" runat="server"></div>
     </div>
     <div id="container">
-        <div id="banner" runat="server">
+        <div id="banner" runat="server" class="clearfix">
             
         </div>
         <asp:UpdatePanel ID="UpdatePanelMain" runat="server">
@@ -58,6 +58,7 @@
       <script src="../js/libs/respond.min.js"></script>
     <![endif]-->
     <script type="text/javascript" src="../js/plugins/jquery.bxslider.min.js"></script>
+    <script type="text/javascript" src="../js/plugins/jquery.nivo.slider.pack.js"></script>
     <script type="text/javascript">
         function checkLoged(id) { if ($('#' + id).val() == 1) { $('.logined').show(); $('.notlogin').hide(); } else { $('.logined').hide(); $('.notlogin').show(); } }
         function togglePopup() { $('html').toggleClass('popupmode'); }
@@ -65,6 +66,7 @@
         $(document).ready(function () {
             checkLoged('isLoged');
             var mainBanner = $('.banner_container');
+            var fluidBanner = $('.banner_container.type0'), leftBanner = $('.banner_container.type_1'), rightBanner = $('.banner_container.type_2');
             if (mainBanner.hasClass('type_0') || mainBanner.hasClass('type_1')) {
                 var items = mainBanner.find('.item');
                 for (var i = 0; i < items.length; i++) {
@@ -73,15 +75,39 @@
                         ifrm.attr("src", $(items[i]).attr('src') + '?wmode=transparent').width('100%');
                         $(items[i]).replaceWith(ifrm);
                     }
-                }
-                if (mainBanner.hasClass('type_0')) {
-                    mainBanner.addClass('main-slider');
-                    mainBanner.children().addClass("fluid-slider");
-                }
-                mainBanner.children().bxSlider({
+                };
+            }
+            if (fluidBanner.length) {
+                fluidBanner.addClass('main-slider');
+                fluidBanner.children().addClass("fluid-slider").bxSlider({
+                    slideWidth: 930,
+                    minSlides: 1,
+                    maxSlides: 1,
                     controls: true,
                     pager: false,
-                    auto: true
+                    auto: true,
+                    speed: 600,
+                    useCSS: true
+                });
+            }
+            if (leftBanner.length) {
+                leftBanner.addClass('theme-default').children().nivoSlider({
+                    effect: "random",
+                    slices: 15,
+                    boxCols: 8,
+                    boxRows: 4,
+                    animSpeed: 500,
+                    pauseTime: 3000,
+                    startSlide: 0,
+                    directionNav: false,
+                    directionNavHide: true,
+                    controlNav: true,
+                    controlNavThumbs: false,
+                    controlNavThumbsFromRel: false,
+                    keyboardNav: true,
+                    pauseOnHover: true,
+                    captionOpacity: 0.5,
+                    manualAdvance: false
                 });
             }
         });    

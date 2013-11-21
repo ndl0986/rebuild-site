@@ -17,16 +17,26 @@ Public Class uc_pagebanner
     End Sub
 
     Private Sub btnSave_ServerClick(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnSave.ServerClick
-        Dim chosenPage As New SonyAlphaLibs.Menu
-        chosenPage.Id = ddlPage.SelectedValue
-        chosenPage = chosenPage.getById(CN.ConnectionString)
-        Dim result As Boolean
-        result = chosenPage.setBanner2Page(ddlBanner.SelectedValue, CN.ConnectionString)
-        If result Then
-            ScriptManager.RegisterStartupScript(Me, GetType(String), "Message", "alert('Lưu liên kết menu banner thành công !!!');", True)
-        Else
-            ScriptManager.RegisterStartupScript(Me, GetType(String), "Message", "alert('lưu liên kết menu banner không thành công !!!');", True)
-        End If
+        Try
+            If Page.IsPostBack Then
+                Dim chosenPage As New SonyAlphaLibs.Menu
+                chosenPage.Id = ddlPage.SelectedValue
+                chosenPage = chosenPage.getById(CN.ConnectionString)
+                Dim result As Boolean
+                result = chosenPage.setBanner2Page(ddlBanner.SelectedValue, CN.ConnectionString)
+                If result = True Then
+                    grvPageBanner.DataSourceID = ""
+                    grvPageBanner.DataSourceID = "objPageBanner"
+                    ScriptManager.RegisterStartupScript(Me, GetType(String), "Message", "alert('Lưu liên kết menu banner thành công !!!');", True)
+                Else
+                    ScriptManager.RegisterStartupScript(Me, GetType(String), "Message", "alert('lưu liên kết menu banner không thành công !!!');", True)
+                End If
+            End If
+
+        Catch ex As Exception
+
+        End Try
+
     End Sub
 
     Private Sub grvPageBanner_RowCommand(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewCommandEventArgs) Handles grvPageBanner.RowCommand

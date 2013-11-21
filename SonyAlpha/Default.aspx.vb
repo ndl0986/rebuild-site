@@ -2,15 +2,21 @@
 Imports SonyAlphaLibs.Services
 Public Class _Default
     Inherits System.Web.UI.Page
-
+    Dim intMenu As Integer
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         If Not Page.IsPostBack Then
             InitDatabase()
         End If
 
+        If Request.QueryString("mId") = "" Then
+            intMenu = 0
+        Else
+            intMenu = CInt(Request.QueryString("mId"))
+        End If
+
         GenMenu()
         LoadMyTemplate()
-        LoadBanner()
+        hdfMenu.Value = Request.Url.AbsoluteUri
 
         Dim tpl As New System.Web.UI.UserControl
         If Request.Browser.Cookies Then
@@ -40,10 +46,12 @@ Public Class _Default
                 Case "seller"
                     tpl = Page.LoadControl("controls/views/uc_seller.ascx")
                 Case "page"
-                    tpl = Page.LoadControl("controls/views/uc_seller.ascx")
+                    tpl = Page.LoadControl("controls/views/uc_page.ascx")
                 Case Else
+                    intMenu = 1
                     tpl = Page.LoadControl("controls/views/uc_page.ascx")
             End Select
+            LoadBanner(intMenu)
             plhMain.Controls.Add(tpl)
 
 
@@ -52,13 +60,8 @@ Public Class _Default
             Response.Redirect("Error.aspx")
         End Try
     End Sub
-    Sub LoadBanner()
-        Dim intMenu As Integer
-        If Request.QueryString("mId") = "" Then
-            intMenu = 1
-        Else
-            intMenu = CInt(Request.QueryString("mId"))
-        End If
+    Sub LoadBanner(ByVal intMenu As Integer)
+
 
         Dim topBanner As New List(Of SonyAlphaLibs.Banner)
         topBanner = SonyAlphaLibs.Services.MenuServices.getListBanner(intMenu, CN.ConnectionString)

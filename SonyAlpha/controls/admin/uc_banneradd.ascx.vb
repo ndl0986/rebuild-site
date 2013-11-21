@@ -16,7 +16,7 @@ Public Class uc_banneradd
             result = myBanner.add(CN.ConnectionString)
             If result Then
                 ScriptManager.RegisterStartupScript(Me, GetType(String), "Message", "alert('Lưu banner thành công !!!');", True)
-                Response.Redirect("?tpl=editbanner&id=" + myBanner.getCurrentMaxId(CN.ConnectionString))
+                Response.Redirect("?tpl=editbanner&id=" + myBanner.getCurrentMaxId(CN.ConnectionString).ToString)
             Else
                 ScriptManager.RegisterStartupScript(Me, GetType(String), "Message", "alert('lưu banner không thành công !!!');", True)
             End If
