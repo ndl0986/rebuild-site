@@ -50,6 +50,8 @@ Public Class _Default
                     tpl = Page.LoadControl("controls/views/uc_seller.ascx")
                 Case "page"
                     tpl = Page.LoadControl("controls/views/uc_page.ascx")
+                Case "register"
+                    tpl = Page.LoadControl("controls/views/uc_register.ascx")
                 Case Else
                     intMenu = 1
                     tpl = Page.LoadControl("controls/views/uc_page.ascx")
