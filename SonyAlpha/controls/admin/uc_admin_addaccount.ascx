@@ -38,7 +38,7 @@
             </li>
             <li class="row clerafix">
                 <div class="item textright" >
-                    <button class="action btnOk" runat="server" ID="btnSave" disabled="disabled" ><span class="label">Lưu</span></button>
+                    <button class="action btnOk blue" runat="server" ID="btnSave" ><span class="label">Lưu</span></button>
                     <a href="javascript:void(0);" class="button action" id="btnCancel"><span class="label">Hủy</span></a>
                 </div>
             </li>
@@ -46,7 +46,7 @@
     </div>
 </div>
 <script type = "text/javascript">
-    $(document).ready(function () {
-        $('.btnOk').removeAttr('disabled').addClass('blue');
-    });
+//    $(document).ready(function () {
+//        $('.btnOk').removeAttr('disabled').addClass('blue');
+//    });
 </script>
