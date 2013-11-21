@@ -56,6 +56,7 @@ namespace SonyAlphaLibs
         }
 
         public string GroupName { get; set; }
+        public string DefaultPass { get; set; }
         #endregion
 
         #region base method
@@ -71,7 +72,7 @@ namespace SonyAlphaLibs
 
         public bool removeById(String connString)
         {
-            return false;
+            return UserServices.removeById(base.Id, connString);
         }
 
         public List<User> getListAll(String connString)
@@ -94,7 +95,17 @@ namespace SonyAlphaLibs
         public User getByUserName(String connString)
         {
             return UserServices.getByUserName(this.UserName, connString);
-        } 
+        }
+
+        public bool updateFullNameStatusGroup(String connString)
+        {
+            return UserServices.updateFullNameStatus(this, connString);
+        }
+
+        public bool resetPasswordToDefault(String connString)
+        {
+            return UserServices.resetPasswordToDefault(this.UserName, this.DefaultPass , connString);
+        }
         #endregion
 
         #region constructor

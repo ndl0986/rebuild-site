@@ -8,7 +8,8 @@ using System.Data;
 namespace SonyAlphaLibs.Services
 {
     public class UserServices : BaseService
-    {
+    {       
+
         public static bool addUser(User user, String connString)
         {
             #region code
@@ -47,7 +48,40 @@ namespace SonyAlphaLibs.Services
 
         public static User getById(int id, String connString)
         {
-            return new User();
+            User user = new User();
+            using (SqlConnection conn = new SqlConnection(connString))
+            {
+                try
+                {
+                    conn.Open();
+                    using (SqlCommand cmd = conn.CreateCommand())
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.CommandText = "sony_sp_get_user_by_id";
+                        cmd.Parameters.AddWithValue("@id", id);
+
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                user.Id = (int)reader["id"];
+                                user.UserName = reader["username"].ToString();
+                                user.FullName = reader["fullname"].ToString();
+                                user.Created = (DateTime)reader["registered"];
+                                user.Updated = (DateTime)reader["updated"];
+                                user.GroupId = (int)reader["groupId"];
+                                user.Status = reader["status"].ToString().Equals("1") ||
+                                    reader["status"].ToString().Equals("True");
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    return new User();
+                }
+            }
+            return user;
         }
 
         public static List<User> getListAll(String connString)
@@ -196,6 +230,97 @@ namespace SonyAlphaLibs.Services
                 catch (Exception ex)
                 {
                     return rs;
+                }
+            }
+            return rs;
+        }
+
+        public static bool updateFullNameStatus(User user, string connString)
+        {
+            bool rs = false;
+            using (SqlConnection conn = new SqlConnection(connString))
+            {
+                try
+                {
+                    conn.Open();
+                    using (SqlCommand cmd = conn.CreateCommand())
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.CommandText = "sony_sp_update_user_fullname_status";
+                        cmd.Parameters.AddWithValue("@username", user.UserName);
+                        cmd.Parameters.AddWithValue("@fullname", user.FullName);
+                        cmd.Parameters.AddWithValue("@status", user.Status ? 1 : 0);
+                        cmd.Parameters.AddWithValue("@groupId", user.GroupId);
+                        SqlParameter returnVal = new SqlParameter("@returnVal", SqlDbType.Int);
+                        returnVal.Direction = ParameterDirection.Output;
+                        cmd.Parameters.Add(returnVal);
+
+                        cmd.ExecuteNonQuery();
+                        rs = ((int)cmd.Parameters["@returnVal"].Value != 0);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    return false;
+                }
+            }
+            return rs;
+        }
+
+        public static bool resetPasswordToDefault(string userName, string defaultpass, string connString)
+        {
+            bool rs = false;
+            using (SqlConnection conn = new SqlConnection(connString))
+            {
+                try
+                {
+                    conn.Open();
+                    using (SqlCommand cmd = conn.CreateCommand())
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.CommandText = "sony_sp_update_user_password_to_default";
+                        cmd.Parameters.AddWithValue("@username", userName);
+                        cmd.Parameters.AddWithValue("@defaultpass", defaultpass);
+                        SqlParameter returnVal = new SqlParameter("@returnVal", SqlDbType.Int);
+                        returnVal.Direction = ParameterDirection.Output;
+                        cmd.Parameters.Add(returnVal);
+
+                        cmd.ExecuteNonQuery();
+                        rs = ((int)cmd.Parameters["@returnVal"].Value != 0);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    return false;
+                }
+            }
+            return rs;
+        }
+
+        public static bool removeById(int id, string connString)
+        {
+            bool rs = false;
+            using (SqlConnection conn = new SqlConnection(connString))
+            {
+                try
+                {
+                    conn.Open();
+                    using (SqlCommand cmd = conn.CreateCommand())
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.CommandText = "sony_sp_delete_user_by_id";
+                        cmd.Parameters.AddWithValue("@id", id);
+                        SqlParameter returnVal = new SqlParameter("@returnVal", SqlDbType.Int);
+                        returnVal.Direction = ParameterDirection.Output;
+                        cmd.Parameters.Add(returnVal);
+
+                        cmd.ExecuteNonQuery();
+                        rs = ((int)cmd.Parameters["@returnVal"].Value != 0);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    return false;
                 }
             }
             return rs;
