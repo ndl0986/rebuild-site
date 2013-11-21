@@ -43,9 +43,9 @@ Public Class uc_newsdetail1
                 result = myNews.update(CN.ConnectionString)
             End If
             If result Then
-                ScriptManager.RegisterStartupScript(Me, GetType(String), "Message", "alert('Lưu page thành công !!!');", True)
+                'ScriptManager.RegisterStartupScript(Me, GetType(String), "Message", "alert('Lưu page thành công !!!');", True)
             Else
-                ScriptManager.RegisterStartupScript(Me, GetType(String), "Message", "alert('lưu page không thành công !!!');", True)
+                'ScriptManager.RegisterStartupScript(Me, GetType(String), "Message", "alert('lưu page không thành công !!!');", True)
             End If
         End If
     End Sub

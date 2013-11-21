@@ -1,8 +1,10 @@
 ﻿Imports SonyAlphaLibs
 Imports SonyAlphaLibs.Services
+Imports System.Configuration
 Public Class _Default
     Inherits System.Web.UI.Page
     Dim intMenu As Integer
+    Public absoluteURL As String
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         If Not Page.IsPostBack Then
             InitDatabase()
@@ -17,6 +19,7 @@ Public Class _Default
         GenMenu()
         LoadMyTemplate()
         hdfMenu.Value = intMenu
+        absoluteURL = ConfigurationManager.AppSettings("URL")
 
         Dim tpl As New System.Web.UI.UserControl
         If Request.Browser.Cookies Then

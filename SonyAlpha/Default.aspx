@@ -18,7 +18,7 @@
     <meta content="" name="author"/>
     <link rel="stylesheet" type="text/css" href="css/reset.css"/>
     <link rel="stylesheet" type="text/css" href="css/styles.css"/>
-    <script type="text/javascript" src="../js/libs/modernizr-2.5.3.min.js"></script>
+    <script type="text/javascript" src="<%=absoluteURL%>/js/libs/modernizr-2.5.3.min.js"></script>
 </head>
 <body>
     <div id="wrapper">
@@ -51,13 +51,13 @@
     <div id="footer" runat="server" class="clearfix"></div>
     </form>
     </div>
-    <script type="text/javascript" src="../js/libs/jquery-2.0.3.min.js"></script>
-    <script type="text/javascript" src="../js/libs/bootstrap.min.js"></script>
+    <script type="text/javascript" src="<%=absoluteURL%>/js/libs/jquery-2.0.3.min.js"></script>
+    <script type="text/javascript" src="<%=absoluteURL%>/js/libs/bootstrap.min.js"></script>
     <!--[if IE 8]>    
       <script src="../js/libs/respond.min.js"></script>
     <![endif]-->
-    <script type="text/javascript" src="../js/plugins/jquery.bxslider.min.js"></script>
-    <script type="text/javascript" src="../js/plugins/jquery.nivo.slider.pack.js"></script>
+    <script type="text/javascript" src="<%=absoluteURL%>/js/plugins/jquery.bxslider.min.js"></script>
+    <script type="text/javascript" src="<%=absoluteURL%>/js/plugins/jquery.nivo.slider.pack.js"></script>
     <script type="text/javascript">
         function checkLoged(id) { if ($('#' + id).val() == 1) { $('.logined').show(); $('.notlogin').hide(); } else { $('.logined').hide(); $('.notlogin').show(); } }
         function togglePopup() { $('html').toggleClass('popupmode'); }
@@ -74,7 +74,7 @@
             checkLoged('isLoged');
             addBreadcum();
             var mainBanner = $('.banner_container');
-            var fluidBanner = $('.banner_container.type0'), leftBanner = $('.banner_container.type_1'), rightBanner = $('.banner_container.type_2');
+            var fluidBanner = $('.banner_container.type_0'), leftBanner = $('.banner_container.type_1'), rightBanner = $('.banner_container.type_2');
             if (mainBanner.hasClass('type_0') || mainBanner.hasClass('type_1')) {
                 var items = mainBanner.find('.item');
                 for (var i = 0; i < items.length; i++) {
