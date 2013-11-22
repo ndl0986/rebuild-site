@@ -49,6 +49,8 @@ Public Class _Default
                     tpl = Page.LoadControl("controls/views/uc_newscategory.ascx")
                 Case "seller"
                     tpl = Page.LoadControl("controls/views/uc_seller.ascx")
+                Case "productcate"
+                    tpl = Page.LoadControl("controls/views/uc_product.ascx")
                 Case "page"
                     tpl = Page.LoadControl("controls/views/uc_page.ascx")
                 Case "register"
@@ -63,7 +65,7 @@ Public Class _Default
 
         Catch ex As Exception
             'ScriptManager.RegisterStartupScript(Me, GetType(String), "Message", "openAlert('" & ex.Message & "');", True)
-            Response.Redirect("Error.aspx")
+            'Response.Redirect("Error.aspx")
         End Try
     End Sub
     Sub LoadBanner(ByVal intMenu As Integer)

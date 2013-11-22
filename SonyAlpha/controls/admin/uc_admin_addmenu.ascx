@@ -34,7 +34,7 @@
                 <div class="item">
                     <asp:Repeater ID="rptListBanner" runat="server">
                         <ItemTemplate>
-                            <label><%#Container.DataItem("Name")%></label>
+                            <asp:Label runat="server" ID="bannername"></asp:Label>
                         </ItemTemplate>
                     </asp:Repeater>
                 </div>

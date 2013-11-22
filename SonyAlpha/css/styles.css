@@ -499,6 +499,31 @@ position: relative;
 }
 .chitiet{text-decoration:underline; margin: 15px 0px 0px 246px;}
 .chitiet a{color:#000000; font-size: 13px; font-style: italic;}
+.news_cat_content.single{
+border-left: 1px solid #D6D6D6;
+border-radius: 0px 0px 5px 5px;
+border-right: 1px solid #D6D6D6;
+margin: 0px 0px 0px 20px;
+width: 656px;
+float: left;
+background: url(../images/bg_wap_tintuc.png) repeat-x;
+background-position: center bottom;
+padding: 0px 20px 20px 20px;
+}
+.single .list_news li { width: 100%; margin-right: 0; min-height: 0px; padding-bottom: 20px;}
+.single .thumb_news{
+width: 115px;
+height: 107px;
+border: 1px solid #D6D6D6;
+background-color: #f2f2e8;
+padding: 4px;    
+}
+.single .wap_img { height: 107px; line-height: 107px;}
+.single .des_news { margin-left: 146px; height: auto;}
+.single .chitiet { margin-left: 146px;}
+.single .title_news { margin-left: 146px;}
+.single .title_news a { margin-bottom: 2px;}
+.single .news_view {position: static; background: none; margin-left: 146px; color: #000; font-style: italic; padding-left: 0px;}
 /* Mobile style */
 @media screen and (max-width: 719px) {
     .container { width: auto; margin: auto 10px;}

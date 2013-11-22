@@ -6,7 +6,7 @@ Public Class uc_newscategory
     Dim bllNews As New SonyAlphaLibs.News
     Public listNewsInCat As New List(Of SonyAlphaLibs.News)
     Public listTop As New List(Of SonyAlphaLibs.News)
-
+    Public bolType As Boolean = False
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         Try
             Dim catId As Integer
@@ -14,15 +14,21 @@ Public Class uc_newscategory
             bllNewsCategory.Id = CInt(catId)
             Dim lstCats As New List(Of SonyAlphaLibs.NewsCategory)
             lstCats = bllNewsCategory.getListChild(CN.ConnectionString)
+            If lstCats.Count > 0 Then
+                bolType = True
+                For Each bllItem As SonyAlphaLibs.NewsCategory In lstCats
+                    Dim bllItemNews As List(Of SonyAlphaLibs.News)
+                    bllItemNews = SonyAlphaLibs.Services.NewsServices.getListNewsByCategory(bllItem.Id, CN.ConnectionString)
+                    listNewsInCat.AddRange(bllItemNews)
+                    If bllItemNews.Count > 0 Then
+                        listTop.Add(bllItemNews.Item(bllItemNews.Count - 1))
+                    End If
+                Next
+            Else
+                bolType = False
+                listNewsInCat = SonyAlphaLibs.Services.NewsServices.getListNewsByCategory(catId, CN.ConnectionString)
+            End If
 
-            For Each bllItem As SonyAlphaLibs.NewsCategory In lstCats
-                Dim bllItemNews As List(Of SonyAlphaLibs.News)
-                bllItemNews = SonyAlphaLibs.Services.NewsServices.getListNewsByCategory(bllItem.Id, CN.ConnectionString)
-                listNewsInCat.AddRange(bllItemNews)
-                If bllItemNews.Count > 0 Then
-                    listTop.Add(bllItemNews.Item(bllItemNews.Count - 1))
-                End If
-            Next
 
         Catch ex As Exception
 

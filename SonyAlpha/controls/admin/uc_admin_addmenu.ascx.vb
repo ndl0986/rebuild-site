@@ -9,18 +9,20 @@ Public Class uc_admin_addmenu
         myMenu = myMenu.getById(CN.ConnectionString)
         txtName.Text = myMenu.Name
         txtSeoURL.Text = myMenu.SeoUrl
+        txtSortOrder.Text = myMenu.Order
         ddlMenu.SelectedValue = myMenu.ParentId
 
         Dim str As List(Of Integer)
         Dim listBanner As New List(Of SonyAlphaLibs.Banner)
         str = myMenu.getListBannerId(CN.ConnectionString)
 
-        For Each bId As Integer In str
-            Dim pBanner As New SonyAlphaLibs.Banner
-            pBanner.Id = bId
-            pBanner = pBanner.getById(CN.ConnectionString)
-            listBanner.Add(pBanner)
-        Next
+        'For Each bId As Integer In str
+        'Dim pBanner As New SonyAlphaLibs.Banner
+        'pBanner.Id = bId
+        'pBanner = pBanner.getById(CN.ConnectionString)
+        'listBanner.Add(pBanner)
+        'Next
+        listBanner = SonyAlphaLibs.Services.MenuServices.getListBanner(myMenu.Id, CN.ConnectionString)
 
         rptListBanner.DataSource = listBanner
         rptListBanner.DataBind()
@@ -79,5 +81,11 @@ Public Class uc_admin_addmenu
                 ScriptManager.RegisterStartupScript(Me, GetType(String), "Message", "alert('lưu menu không thành công !!!');", True)
             End If
         End If
+    End Sub
+
+    Private Sub rptListBanner_ItemDataBound(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.RepeaterItemEventArgs) Handles rptListBanner.ItemDataBound
+        Dim lbl As Label
+        lbl = DirectCast(e.Item.FindControl("bannername"), Label)
+        'lbl.Text = e.Item.DataItem("name")
     End Sub
 End Class
