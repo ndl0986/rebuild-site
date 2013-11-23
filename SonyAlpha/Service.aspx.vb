@@ -57,6 +57,8 @@ Public Class Service
                         GetListComment()
                     Case "getlistproductbycategoryid"
                         GetListProductByCategory()
+                    Case "getproductbyid"
+                        GetProductById()
                 End Select
             Else
                 GetMyResponse("500", "Nothing todo!")
@@ -254,6 +256,17 @@ Public Class Service
             Dim listProducts As New List(Of Product)
             listProducts = ProductServices.getListProductByCategoryId(categoryId, CN.ConnectionString)
             GetMyResponse("200", New JavaScriptSerializer().Serialize(listProducts))
+        Catch ex As Exception
+            GetMyResponse("500", "fail: " + ex.Message)
+        End Try
+    End Sub
+
+    Private Sub GetProductById()
+        Try
+            Dim productId As Integer = CInt(Request.QueryString("productid"))
+            Dim product As New Product
+            product = ProductServices.getById(productId, CN.ConnectionString)
+            GetMyResponse("200", New JavaScriptSerializer().Serialize(product))
         Catch ex As Exception
             GetMyResponse("500", "fail: " + ex.Message)
         End Try

@@ -244,8 +244,26 @@ function getProductByCategoryId() {
     $.ajax({
         type: 'GET',
         timeout: 5000,
-        url: '/service.aspx?name=getlistproductbycategoryid',
-        data: { "categoryid": categoryId },
+        url: '/service.aspx?name=getlistproductbycategoryid&categoryid=' + categoryId,
+        //data: { "categoryid": categoryId },
+        success: function (response) {
+            response = jQuery.parseJSON(response);
+            // do some thing
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log('error');
+        }
+    });
+}
+
+function getProductById() {
+    var productId = 0;
+
+    $.ajax({
+        type: 'GET',
+        timeout: 5000,
+        url: '/service.aspx?name=getproductbyid&productid=' + productId,
+        //data: { "productd": productId },
         success: function (response) {
             response = jQuery.parseJSON(response);
             // do some thing
