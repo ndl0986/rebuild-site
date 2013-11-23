@@ -24,8 +24,8 @@ Public Class Service
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         ' get params
         InitDatabase()
+        name = Request.QueryString("name")
         If Request.RequestType = "POST" Then
-            name = Request.Params.Get("name")
             If Not String.IsNullOrEmpty(name) Then
                 Select Case name
                     Case "register"
@@ -37,7 +37,6 @@ Public Class Service
                 GetMyResponse("500", "Nothing todo!")
             End If
         Else
-            name = Request.QueryString("name")
             If Not String.IsNullOrEmpty(name) Then
                 Select Case name
                     Case "getuserinfo"

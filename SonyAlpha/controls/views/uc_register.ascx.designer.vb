@@ -12,31 +12,4 @@ Option Explicit On
 
 
 Partial Public Class uc_register
-
-    '''<summary>
-    '''txtUserName control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents txtUserName As Global.System.Web.UI.WebControls.TextBox
-
-    '''<summary>
-    '''txtPWD control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents txtPWD As Global.System.Web.UI.WebControls.TextBox
-
-    '''<summary>
-    '''txtPWD1 control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents txtPWD1 As Global.System.Web.UI.WebControls.TextBox
 End Class

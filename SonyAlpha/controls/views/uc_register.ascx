@@ -5,35 +5,33 @@
             <li class="row clerafix">
                 <div class="caption">Tên đăng nhập :</div>
                 <div class="item">
-                    <asp:TextBox runat="server" ID="txtUserName" CssClass="textbox" required MaxLength="50" autocomplete="off" ></asp:TextBox>
+                    <input id="uc_register_txtUserName" class="textbox" required maxlength="50"/>
                 </div>
             </li>
             <li class="row clerafix">
                 <div class="caption">Mật khẩu :</div>
                 <div class="item">
-                    <asp:TextBox runat="server" ID="txtPWD" CssClass="textbox" TextMode="Password" required MaxLength="50" autocomplete="off"></asp:TextBox>
+                    <input id="uc_register_txtPWD" class="textbox" required maxlength="100" type="password"/>
                 </div>
             </li>
             <li class="row clerafix">
                 <div class="caption">Xác nhận mật khẩu :</div>
                 <div class="item">
-                    <asp:TextBox runat="server" ID="txtPWD1" CssClass="textbox" TextMode="Password" required MaxLength="50" autocomplete="off"></asp:TextBox>
+                    <input id="uc_register_txtPWD1" class="textbox" required maxlength="100"  type="password"/>
                 </div>
             </li>
             <li class="row clerafix">
-                <div class="item textright" >
-                    <%--<button class="action btnOk" runat="server" ID="btnSave" ><span class="label">Đăng ký</span></button>--%>
-                    <a href="#" id="btnOk" class="button action" onclick="doLogin();" >Đăng ký</a>
-                    <a href="javascript:void(0);" class="button action" id="btnCancel"><span class="label">Hủy</span></a>
+                <div class="caption">Tên đầy đủ :</div>
+                <div class="item">
+                    <input id="uc_register_txtFullName" class="textbox" required maxlength="100"/>
+                </div>
+            </li>
+            <li class="row clerafix">
+                <div class="logined">
+                    <a href="javascript:void(0);" class="button action" id="uc_register_btnOk" style="width:150px;color:Black;">Đăng ký</a>
+                    <a href="javascript:void(0);" class="button action" style="width:150px;color:Black;" id="uc_register_btnCancel"><span class="label">Hủy</span></a>
                 </div>
             </li>
         </ul>
     </div>
 </div>
-<script type="text/javascript">
-    $(document).ready(function () {
-
-    });
-
-    
-</script>

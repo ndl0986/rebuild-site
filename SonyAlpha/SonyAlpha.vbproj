@@ -655,6 +655,7 @@
     <Content Include="Img\google+-ui-sprite-gray.png" />
     <Content Include="Img\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Img\ui-icons_222222_256x240.png" />
+    <Content Include="Js\controllers\main.js" />
     <Content Include="Js\libs\bootstrap.min.js" />
     <Content Include="Js\libs\jquery-2.0.3.min.js" />
     <Content Include="Js\libs\modernizr-2.5.3.min.js" />
@@ -1328,7 +1329,6 @@
     <Folder Include="fckeditor\skins\office2003\images\" />
     <Folder Include="fckeditor\skins\v2\images\" />
     <Folder Include="fckeditor\themes\default\" />
-    <Folder Include="Js\controllers\" />
     <Folder Include="upload\" />
   </ItemGroup>
   <ItemGroup>
