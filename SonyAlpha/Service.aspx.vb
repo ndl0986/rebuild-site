@@ -237,9 +237,12 @@ Public Class Service
 
     Private Sub GetListComment()
         Try
-
+            Dim photoId As Integer = CInt(Request.QueryString("photoid"))
+            Dim listComments As New List(Of AlbumComment)
+            listComments = AlbumServices.getListCommentOfAlbum(photoId, CN.ConnectionString)
+            GetMyResponse("200", New JavaScriptSerializer().Serialize(listComments))
         Catch ex As Exception
-
+            GetMyResponse("500", "fail: " + ex.Message)
         End Try
     End Sub
 
