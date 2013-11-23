@@ -28,6 +28,7 @@ namespace SonyAlphaLibs.Services
                         cmd.Parameters.AddWithValue("@albumImage", String.IsNullOrEmpty(album.AlbumImage) ? "" : album.AlbumImage);
                         cmd.Parameters.AddWithValue("@viewCount", album.ViewCount);
                         cmd.Parameters.AddWithValue("@albumType", album.AlbumType);
+                        cmd.Parameters.AddWithValue("@albumCover", album.AlbumCover);
                         SqlParameter returnVal = new SqlParameter("@returnVal", SqlDbType.Int);
                         returnVal.Direction = ParameterDirection.Output;
                         cmd.Parameters.Add(returnVal);
@@ -65,6 +66,7 @@ namespace SonyAlphaLibs.Services
                         cmd.Parameters.AddWithValue("@albumImage", String.IsNullOrEmpty(album.AlbumImage) ? "" : album.AlbumImage);
                         cmd.Parameters.AddWithValue("@viewCount", album.ViewCount);
                         cmd.Parameters.AddWithValue("@albumType", album.AlbumType);
+                        cmd.Parameters.AddWithValue("@albumCover", album.AlbumCover);
                         SqlParameter returnVal = new SqlParameter("@returnVal", SqlDbType.Int);
                         returnVal.Direction = ParameterDirection.Output;
                         cmd.Parameters.Add(returnVal);
@@ -140,6 +142,7 @@ namespace SonyAlphaLibs.Services
                                 album.AlbumImage = reader["albumImage"].ToString();
                                 album.ViewCount = (int)reader["viewCount"];
                                 album.AlbumType = String.IsNullOrEmpty(reader["albumType"].ToString()) ? 0 : (int)reader["albumType"];
+                                album.AlbumCover = reader["albumCover"].ToString();
                                 album.Created = (DateTime)reader["created"];
                                 album.Updated = (DateTime)reader["updated"];
                                 lists.Add(album);
@@ -182,6 +185,7 @@ namespace SonyAlphaLibs.Services
                                 album.AlbumImage = reader["albumImage"].ToString();
                                 album.ViewCount = (int)reader["viewCount"];
                                 album.AlbumType = String.IsNullOrEmpty(reader["albumType"].ToString()) ? 0 : (int)reader["albumType"];
+                                album.AlbumCover = reader["albumCover"].ToString();
                                 album.Created = (DateTime)reader["created"];
                                 album.Updated = (DateTime)reader["updated"];
                             }
@@ -515,6 +519,7 @@ namespace SonyAlphaLibs.Services
                                 album.AlbumImage = reader["albumImage"].ToString();
                                 album.ViewCount = (int)reader["viewCount"];
                                 album.AlbumType = (int)reader["albumType"];
+                                album.AlbumCover = reader["albumCover"].ToString();
                                 album.Created = (DateTime)reader["created"];
                                 album.Updated = (DateTime)reader["updated"];
                                 lists.Add(album);
@@ -557,6 +562,7 @@ namespace SonyAlphaLibs.Services
                                 album.AlbumImage = reader["albumImage"].ToString();
                                 album.ViewCount = (int)reader["viewCount"];
                                 album.AlbumType = (int)reader["albumType"];
+                                album.AlbumCover = reader["albumCover"].ToString();
                                 album.Created = (DateTime)reader["created"];
                                 album.Updated = (DateTime)reader["updated"];
                                 lists.Add(album);

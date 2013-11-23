@@ -48,6 +48,15 @@ namespace SonyAlphaLibs
             get { return albumType; }
             set { albumType = value; }
         }
+
+        private string albumCover;
+
+        public string AlbumCover
+        {
+            get { return albumCover; }
+            set { albumCover = value; }
+        }
+        
         
         private List<Photo> listPhotos;
 
