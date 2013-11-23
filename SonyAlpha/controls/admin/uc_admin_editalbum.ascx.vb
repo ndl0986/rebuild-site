@@ -12,6 +12,7 @@ Public Class uc_admin_editalbum
         txtName.Text = myAlbum.FullName
         myListPhoto = myAlbum.getPhotoOfAlbum(CN.ConnectionString)
         ddlAlbumType.SelectedValue = myAlbum.AlbumType
+        txtPhotoURL.Value = myAlbum.AlbumCover
         grvPhotos.DataSource = myListPhoto
         grvPhotos.DataBind()
     End Sub
@@ -61,7 +62,12 @@ Public Class uc_admin_editalbum
         If Page.IsPostBack Then
             myAlbum.FullName = txtName.Text
             myAlbum.AlbumType = ddlAlbumType.SelectedValue
-            myAlbum.update(CN.ConnectionString)
+            myAlbum.AlbumCover = txtPhotoURL.Value
+            If myAlbum.update(CN.ConnectionString) Then
+                ScriptManager.RegisterStartupScript(Me, GetType(String), "Message", "alert('Lưu Album thành công !!!');", True)
+            Else
+                ScriptManager.RegisterStartupScript(Me, GetType(String), "Message", "alert('Lưu Album không thành công !!!');", True)
+            End If
         End If
     End Sub
 End Class

@@ -32,6 +32,24 @@ Partial Public Class uc_admin_editalbum
     Protected WithEvents ddlAlbumType As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
+    '''txtPhotoURL control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtPhotoURL As Global.System.Web.UI.HtmlControls.HtmlInputText
+
+    '''<summary>
+    '''hdfPhotos control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents hdfPhotos As Global.System.Web.UI.WebControls.HiddenField
+
+    '''<summary>
     '''grvPhotos control.
     '''</summary>
     '''<remarks>

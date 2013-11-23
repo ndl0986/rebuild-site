@@ -15,14 +15,14 @@ Public Class uc_admin_addalbum
             myAlbum.AlbumImage = ""
             myAlbum.ViewCount = 0
             myAlbum.AlbumType = ddlAlbumType.SelectedValue
+            myAlbum.AlbumCover = txtPhotoURL.Value
             Dim result
             result = myAlbum.add(CN.ConnectionString)
-            'ScriptManager.RegisterStartupScript(Me, GetType(String), "Message", "alert('Lưu album thành công !!!');", True)
             If result = True Then
                 'ScriptManager.RegisterStartupScript(Me, GetType(String), "Message", "alert('Lưu album thành công !!!');", True)
                 Response.Redirect("?tpl=addphotos&aid=" & myAlbum.getCurrentMaxId(CN.ConnectionString).ToString)
             Else
-                'ScriptManager.RegisterStartupScript(Me, GetType(String), "Message", "alert('lưu album không thành công !!!');", False)
+                ScriptManager.RegisterStartupScript(Me, GetType(String), "Message", "alert('Lưu album không thành công !!!');", False)
             End If
         End If
     End Sub
