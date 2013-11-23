@@ -7,6 +7,7 @@ Public Class uc_admin_editsonycenter
     Public id As String = "0"
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+        Page.ClientScript.RegisterOnSubmitStatement(txtDescription.GetType(), "txtMessage", "FCKUpdateLinkedField('" + txtDescription.ClientID + "');")
         If Not Page.IsPostBack Then
             If listProvince.Count = 0 Then
                 listProvince = ProvinceServices.getListAllProvince(CN.ConnectionString)

@@ -12,8 +12,8 @@ Public Class uc_admin_addprovince
             province.SProvince = txtName.Text
             province.ProvinceOrder = txtOrder.Text
             If province.add(CN.ConnectionString) Then
-                Dim newId As String = CStr(ProvinceServices.getCurrentMaxId("sony_province", CN.ConnectionString))
-                Response.Redirect("?tpl=editprovince&id=" & newId)
+                'Dim newId As String = CStr(ProvinceServices.getCurrentMaxId("sony_province", CN.ConnectionString))
+                Response.Redirect("?tpl=addprovince")
             End If
         End If
     End Sub

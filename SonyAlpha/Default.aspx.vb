@@ -1,4 +1,5 @@
-﻿Imports SonyAlphaLibs
+﻿
+Imports SonyAlphaLibs
 Imports SonyAlphaLibs.Services
 Imports System.Configuration
 Public Class _Default
@@ -49,6 +50,8 @@ Public Class _Default
                     tpl = Page.LoadControl("controls/views/uc_newscategory.ascx")
                 Case "seller"
                     tpl = Page.LoadControl("controls/views/uc_seller.ascx")
+                Case "sellerdetail"
+                    tpl = Page.LoadControl("controls/views/uc_sellerdetail.ascx")
                 Case "productcate"
                     tpl = Page.LoadControl("controls/views/uc_product.ascx")
                 Case "page"
@@ -63,6 +66,7 @@ Public Class _Default
                     intMenu = 1
                     tpl = Page.LoadControl("controls/views/uc_page.ascx")
             End Select
+            hdfPage.Value = LCase(Request.QueryString("tpl"))
             LoadBanner(intMenu)
             plhMain.Controls.Add(tpl)
 

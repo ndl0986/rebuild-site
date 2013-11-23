@@ -163,6 +163,7 @@
     <Content Include="controls\views\uc_product.ascx" />
     <Content Include="controls\views\uc_register.ascx" />
     <Content Include="controls\views\uc_seller.ascx" />
+    <Content Include="controls\views\uc_sellerdetail.ascx" />
     <Content Include="Css\admin.css" />
     <Content Include="Css\bootstrap-select.css" />
     <Content Include="Css\bootstrap.min.css" />
@@ -1096,6 +1097,13 @@
     </Compile>
     <Compile Include="controls\views\uc_seller.ascx.vb">
       <DependentUpon>uc_seller.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\views\uc_sellerdetail.ascx.designer.vb">
+      <DependentUpon>uc_sellerdetail.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\views\uc_sellerdetail.ascx.vb">
+      <DependentUpon>uc_sellerdetail.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Default.aspx.designer.vb">

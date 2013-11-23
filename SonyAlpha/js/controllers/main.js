@@ -10,7 +10,56 @@ function addBreadcum() {
     breadcum.append(html);
     breadcum.append('<div class="main_title">' + li.text() + '</div>');
 }
+function parseShopCenter() {
+    var ul = $('.template');
+    if (!ul.length) {
+        return false;
+    } else {
+        var listAlphaShop = $('.ul_list_center.template').children();
+        var listShop = $('.ul_list_shop.template').children();
+        var listHCM = '', listHN = '', listOrthers = '', listShopHCM = '', listShopHN = '', listShopOrthers = '';
+        for (var i = 0; i < listAlphaShop.length; i++) {
+            if ($(listAlphaShop[i]).attr('data-provinces') == 'TP. Hồ Chí Minh') {
+                listHCM +='<li class="sonycenter_info">'+ listAlphaShop[i].innerHTML + '</li>';
+            } else if ($(listAlphaShop[i]).attr('data-provinces') == 'Hà Nội') {
+                listHN +='<li class="sonycenter_info">'+ listAlphaShop[i].innerHTML + '</li>';
+            }else{
+                listOrthers += '<li class="sonycenter_info">' + listAlphaShop[i].innerHTML + '</li>';
+            }
+        }
+        var cHCM=0, cHN=0, cOthers=0;
+        for (var i = 0; i < listShop.length; i++) {
+            if ($(listShop[i]).attr('data-provinces') == 'TP. Hồ Chí Minh') {
+                listShopHCM += '<li class="table_row row_' + cHCM % 2 + '">' + listShop[i].innerHTML + '</li>'; cHCM += 1;
+            } else if ($(listAlphaShop[i]).attr('data-provinces') == 'Hà Nội') {
+                listShopHN += '<li class="table_row row_' + cHN % 2 + '">' + listShop[i].innerHTML + '</li>'; cHN += 1;
+            } else {
+                listShopOrthers += '<li class="table_row row_' + cOthers % 2 + '">' + listShop[i].innerHTML + '</li>'; cOthers += 1;
+            }
+        }
+        var html = '<div class="sony_center_city">TP. Hồ Chí Minh</div>';
+        html += '<ul class="ul_list_center clearfix">' + listHCM + '</ul>';
+        html += '<div class="button_viewmore ico ico-arr-down">Xem đại lý khác<em></em></div><ul class="ul_table">';
+        html += '<li class="table_header"><div>Đại lý</div><div>Địa chỉ</div><div>Giờ mở cửa</div><div>Điện thoại</div><div>Bản đồ</div></li>';
+        html += listShopHCM + '</ul>';
+        html += '<div class="sony_center_city">Hà Nội</div>';
+        html += '<ul class="ul_list_center clearfix">' + listHN + '</ul>';
+        html += '<div class="button_viewmore ico ico-arr-down">Xem đại lý khác<em></em></div><ul class="ul_table">';
+        html += '<li class="table_header"><div>Đại lý</div><div>Địa chỉ</div><div>Giờ mở cửa</div><div>Điện thoại</div><div>Bản đồ</div></li>';
+        html += listShopHN + '</ul>';
+        html += '<div class="sony_center_city">Tỉnh thành khác</div>';
+        html += '<ul class="ul_list_center clearfix">' + listOrthers + '</ul>';
+        html += '<div class="button_viewmore ico ico-arr-down">Xem đại lý khác<em></em></div><ul class="ul_table">';
+        html += '<li class="table_header"><div>Đại lý</div><div>Địa chỉ</div><div>Giờ mở cửa</div><div>Điện thoại</div><div>Bản đồ</div></li>';
+        html += listShopOrthers + '</ul>';
+        $('#uc_shop_template').append(html);
+
+        
+    }
+     
+}
 $(document).ready(function () {
+    var aspx = $('#hdfPage').val();
     checkLoged('isLoged');
     addBreadcum();
     var mainBanner = $('.banner_container');
@@ -22,6 +71,10 @@ $(document).ready(function () {
                 var ifrm = $('<iframe></iframe>');
                 ifrm.attr("src", $(items[i]).attr('src') + '?wmode=transparent').width('100%');
                 $(items[i]).replaceWith(ifrm);
+            }
+            if ($(items[i]).attr('src').indexOf('.swf') != -1) {
+                var ifrm = '<embed height="360" width="698" src="' + $(items[i]).attr('src') + '" name="flashBanner" quality="high" scale="noborder" wmode="transparent" allowscriptaccess="sameDomain">';
+                $(items[i]).parent().html(ifrm);
             }
         };
     }
@@ -38,7 +91,7 @@ $(document).ready(function () {
             useCSS: true
         });
     }
-    if (leftBanner.length) {
+    if (leftBanner.length && leftBanner.find('li').length > 1) {
         leftBanner.addClass('theme-default').children().nivoSlider({
             effect: "random",
             slices: 15,
@@ -57,6 +110,14 @@ $(document).ready(function () {
             captionOpacity: 0.5,
             manualAdvance: false
         });
+    }
+
+    switch (aspx) {
+        case 'seller':
+            parseShopCenter();
+            break;
+        default:
+            break;
     }
 });
 

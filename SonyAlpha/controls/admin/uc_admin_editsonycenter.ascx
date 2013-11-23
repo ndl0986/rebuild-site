@@ -39,12 +39,9 @@
                 <div class="caption" >Cấp đại lý :</div>
                 <div class="item"><label class="selectfake">
                     <asp:DropDownList runat="server" ID="ddlRetailLevel">
-                        <asp:ListItem Value="0">0</asp:ListItem>
-                        <asp:ListItem Value="1">1</asp:ListItem>
-                        <asp:ListItem Value="2">2</asp:ListItem>
-                        <asp:ListItem Value="3">3</asp:ListItem>
-                        <asp:ListItem Value="4">4</asp:ListItem>
-                        <asp:ListItem Value="5">5</asp:ListItem>
+                        <asp:ListItem Value="0">Pro Shop</asp:ListItem>
+                        <asp:ListItem Value="1">Alpha Shop</asp:ListItem>
+                        <asp:ListItem Value="2">Shop</asp:ListItem>
                     </asp:DropDownList></label></div>
             </li>
             <li class="row clerafix">
