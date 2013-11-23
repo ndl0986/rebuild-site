@@ -424,7 +424,47 @@ namespace SonyAlphaLibs.Services
             return lists;
             #endregion
         }
+        public static List<AlbumComment> getListCommentOfAlbum(int photoId, string connString)
+        {
+            #region code
+            List<AlbumComment> lists = new List<AlbumComment>();
+            using (SqlConnection conn = new SqlConnection(connString))
+            {
+                try
+                {
+                    conn.Open();
+                    using (SqlCommand cmd = conn.CreateCommand())
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.CommandText = "sony_sp_get_all_album_photo_comment_by_photo_id";
+                        cmd.Parameters.AddWithValue("@photoId", photoId);
 
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                AlbumComment albumComment = new AlbumComment();
+                                albumComment.Id = (int)reader["id"];
+                                albumComment.UserName = reader["username"].ToString();
+                                albumComment.AlbumId = (int)reader["albumId"];
+                                albumComment.PhotoId = (int)reader["photoId"];
+                                albumComment.Status = reader["status"].ToString().Equals("1") || reader["status"].ToString().Equals("True");
+                                albumComment.Created = (DateTime)reader["created"];
+                                albumComment.Comment = reader["comment"].ToString();
+                                lists.Add(albumComment);
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    writeLog("", String.Format("Get Album Comment Error: photoId={1}, CauseBy:{2}", photoId, ex.Message), connString);
+                    return new List<AlbumComment>();
+                }
+            }
+            return lists;
+            #endregion
+        }
         public static int getViewCount(int albumId, string connString)
         {
             #region code
