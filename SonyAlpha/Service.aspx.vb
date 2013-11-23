@@ -43,6 +43,8 @@ Public Class Service
                         GetUserInfo()
                     Case "getpage"
                         GetPage()
+                    Case "getLastestNews"
+                        GetLastestNews()
                 End Select
             Else
                 GetMyResponse("500", "Nothing todo!")
@@ -121,6 +123,16 @@ Public Class Service
             Else
                 GetMyResponse("400", "fail")
             End If
+        Catch ex As Exception
+            GetMyResponse("500", "fail: " + ex.Message)
+        End Try
+    End Sub
+
+    Private Sub GetLastestNews()
+        Try
+            Dim num As Integer = CInt(Request.QueryString("num"))
+            Dim listNews As New List(Of News)
+            listNews = NewsServices.getListLastestNews(num, CN.ConnectionString)
         Catch ex As Exception
             GetMyResponse("500", "fail: " + ex.Message)
         End Try
