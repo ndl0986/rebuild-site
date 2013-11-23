@@ -359,7 +359,7 @@ namespace SonyAlphaLibs.Services
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.CommandText = "sony_sp_add_album_comment";
-                        cmd.Parameters.AddWithValue("@username", albumComment.UserName);
+                        cmd.Parameters.AddWithValue("@username", String.IsNullOrEmpty(albumComment.UserName) ? "admin" : albumComment.UserName);
                         cmd.Parameters.AddWithValue("@albumId", albumComment.AlbumId);
                         cmd.Parameters.AddWithValue("@photoId", albumComment.PhotoId);
                         cmd.Parameters.AddWithValue("@status", albumComment.Status ? 1 : 0);
@@ -409,6 +409,7 @@ namespace SonyAlphaLibs.Services
                                 albumComment.PhotoId = (int)reader["photoId"];
                                 albumComment.Status = reader["status"].ToString().Equals("1") || reader["status"].ToString().Equals("True");
                                 albumComment.Created = (DateTime)reader["created"];
+                                albumComment.Comment = reader["comment"].ToString();
                                 lists.Add(albumComment);
                             }
                         }
@@ -577,6 +578,71 @@ namespace SonyAlphaLibs.Services
                 }
             }
             return lists;
+            #endregion
+        }
+
+        public static bool removeCommentById(int id, string connString)
+        {
+            #region code
+            bool rs = false;
+            using (SqlConnection conn = new SqlConnection(connString))
+            {
+                try
+                {
+                    conn.Open();
+                    using (SqlCommand cmd = conn.CreateCommand())
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.CommandText = "sony_sp_delete_album_comment_by_id";
+                        cmd.Parameters.AddWithValue("@id", id);
+                        SqlParameter returnVal = new SqlParameter("@returnVal", SqlDbType.Int);
+                        returnVal.Direction = ParameterDirection.Output;
+                        cmd.Parameters.Add(returnVal);
+
+                        cmd.ExecuteNonQuery();
+                        rs = ((int)cmd.Parameters["@returnVal"].Value != 0);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    writeLog("", "Delete Album Comment Error: " + ex.Message, connString);
+                    return false;
+                }
+            }
+            return rs;
+            #endregion
+        }
+
+        public static bool updateAlbumComment(int id, string comment, string connString)
+        {
+            #region code
+            bool rs = false;
+            using (SqlConnection conn = new SqlConnection(connString))
+            {
+                try
+                {
+                    conn.Open();
+                    using (SqlCommand cmd = conn.CreateCommand())
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.CommandText = "sony_sp_update_album_comment";
+                        cmd.Parameters.AddWithValue("@id", id);
+                        cmd.Parameters.AddWithValue("@comment", comment);
+                        SqlParameter returnVal = new SqlParameter("@returnVal", SqlDbType.Int);
+                        returnVal.Direction = ParameterDirection.Output;
+                        cmd.Parameters.Add(returnVal);
+
+                        cmd.ExecuteNonQuery();
+                        rs = ((int)cmd.Parameters["@returnVal"].Value != 0);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    writeLog("", "Update Album Comment Error: " + ex.Message, connString);
+                    return false;
+                }
+            }
+            return rs;
             #endregion
         }
     }
