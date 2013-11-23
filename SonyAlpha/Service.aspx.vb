@@ -55,6 +55,8 @@ Public Class Service
                         GetLastestNews()
                     Case "getlistcomment"
                         GetListComment()
+                    Case "getlistproductbycategoryid"
+                        GetListProductByCategory()
                 End Select
             Else
                 GetMyResponse("500", "Nothing todo!")
@@ -241,6 +243,17 @@ Public Class Service
             Dim listComments As New List(Of AlbumComment)
             listComments = AlbumServices.getListCommentOfAlbum(photoId, CN.ConnectionString)
             GetMyResponse("200", New JavaScriptSerializer().Serialize(listComments))
+        Catch ex As Exception
+            GetMyResponse("500", "fail: " + ex.Message)
+        End Try
+    End Sub
+
+    Private Sub GetListProductByCategory()
+        Try
+            Dim categoryId As Integer = CInt(Request.QueryString("categoryid"))
+            Dim listProducts As New List(Of Product)
+            listProducts = ProductServices.getListProductByCategoryId(categoryId, CN.ConnectionString)
+            GetMyResponse("200", New JavaScriptSerializer().Serialize(listProducts))
         Catch ex As Exception
             GetMyResponse("500", "fail: " + ex.Message)
         End Try

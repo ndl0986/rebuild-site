@@ -237,3 +237,21 @@ function doPostComment() {
         }
     });
 }
+
+function getProductByCategoryId() {
+    var categoryId = 0;
+
+    $.ajax({
+        type: 'GET',
+        timeout: 5000,
+        url: '/service.aspx?name=getlistproductbycategoryid',
+        data: { "categoryid": categoryId },
+        success: function (response) {
+            response = jQuery.parseJSON(response);
+            // do some thing
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log('error');
+        }
+    });
+}
