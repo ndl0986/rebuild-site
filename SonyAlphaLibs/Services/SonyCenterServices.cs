@@ -160,6 +160,7 @@ namespace SonyAlphaLibs.Services
                                 sonyCenter.Latitude = reader["latitude"].ToString();
                                 sonyCenter.Created = (DateTime)reader["created"];
                                 sonyCenter.Updated = (DateTime)reader["updated"];
+                                sonyCenter.SonyCenterCover = reader["SonyCenterCover"].ToString();
                                 lists.Add(sonyCenter);
                             }
                         }
@@ -208,8 +209,10 @@ namespace SonyAlphaLibs.Services
                                 sonyCenter.Latitude = reader["latitude"].ToString();
                                 sonyCenter.Created = (DateTime)reader["created"];
                                 sonyCenter.Updated = (DateTime)reader["updated"];
+                                sonyCenter.SonyCenterCover = reader["SonyCenterCover"].ToString();
                             }
                         }
+
                     }
                 }
                 catch (Exception ex)

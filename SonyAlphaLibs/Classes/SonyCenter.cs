@@ -104,7 +104,8 @@ namespace SonyAlphaLibs
             get { return latitude; }
             set { latitude = value; }
         }
-        
+
+        public string SonyCenterCover { get; set; }
         #endregion
 
         #region base method
