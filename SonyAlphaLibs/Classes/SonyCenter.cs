@@ -106,6 +106,7 @@ namespace SonyAlphaLibs
         }
 
         public string SonyCenterCover { get; set; }
+        public string ProvinceName { get; set; }
         #endregion
 
         #region base method

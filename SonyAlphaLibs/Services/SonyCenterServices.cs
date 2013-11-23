@@ -161,6 +161,7 @@ namespace SonyAlphaLibs.Services
                                 sonyCenter.Created = (DateTime)reader["created"];
                                 sonyCenter.Updated = (DateTime)reader["updated"];
                                 sonyCenter.SonyCenterCover = reader["SonyCenterCover"].ToString();
+                                sonyCenter.ProvinceName = reader["ProvinceName"].ToString();
                                 lists.Add(sonyCenter);
                             }
                         }
@@ -210,6 +211,7 @@ namespace SonyAlphaLibs.Services
                                 sonyCenter.Created = (DateTime)reader["created"];
                                 sonyCenter.Updated = (DateTime)reader["updated"];
                                 sonyCenter.SonyCenterCover = reader["SonyCenterCover"].ToString();
+                                sonyCenter.ProvinceName = reader["ProvinceName"].ToString();
                             }
                         }
 
