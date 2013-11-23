@@ -535,6 +535,49 @@ namespace SonyAlphaLibs.Services
             #endregion
         }
 
+        public static List<Album> getListAllNormalAlbum(string connString)
+        {
+            #region code
+            List<Album> lists = new List<Album>();
+            using (SqlConnection conn = new SqlConnection(connString))
+            {
+                try
+                {
+                    conn.Open();
+                    using (SqlCommand cmd = conn.CreateCommand())
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.CommandText = "sony_sp_get_all_album_normal";
+
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                Album album = new Album();
+                                album.Id = (int)reader["id"];
+                                album.FullName = reader["fullname"].ToString();
+                                album.AlbumCreator = reader["albumCreator"].ToString();
+                                album.AlbumImage = reader["albumImage"].ToString();
+                                album.ViewCount = (int)reader["viewCount"];
+                                album.AlbumType = (int)reader["albumType"];
+                                album.AlbumCover = reader["albumCover"].ToString();
+                                album.Created = (DateTime)reader["created"];
+                                album.Updated = (DateTime)reader["updated"];
+                                lists.Add(album);
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    writeLog("", "Get All Album Error: " + ex.Message, connString);
+                    return new List<Album>();
+                }
+            }
+            return lists;
+            #endregion
+        }
+
         public static List<Album> getListAllAlbumForCenter(string connString)
         {
             #region code
