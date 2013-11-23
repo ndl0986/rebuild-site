@@ -486,7 +486,9 @@ Author URI: http://dev7studios.com
 .sony_center_contact span { display: table-cell; font-size: 12px; line-height: 16px;}
 .sony_center_contact .label { width: 80px;}
 
-.ul_table { display: table; width: 100%;}
+.ul_table { display: table; width: 100%; }
+.effect {display: block; max-height: 500px;transition:all 0.3s linear;-webkit-transition:all 0.3s linear;-moz-transition:all 0.3s linear;}
+.effect.collapse {max-height: 0px; overflow: hidden;}
 .table_header{display: table-row; background: #555; height: 40px; line-height: 40px;}
 .table_header > div { display: table-cell; color: #fff;max-width: 250px; padding: 0px 10px; font-weight: bold;}
 .table_row { display: table-row; }

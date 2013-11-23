@@ -4,11 +4,15 @@ function isPopupmode() { if ($('html').hasClass('popupmode')) { return true; } e
 function addBreadcum() {
     var breadcum = $('#breadcum');
     var li = $('#menu_' + $('#hdfMenu').val());
-    !li.length && (li = $($('#nav').children()[0]));
+    if(!li.length){
+        li = $('#nav').children().filter(function(index){ return $(this).text()==$('#hdfUcMenu').val();})
+    }else{
+        var html = '<a href="https://alpha.sony.com.vn/">Trang chủ </a>' + li.html();
+        breadcum.append(html);
+        breadcum.append('<div class="main_title">' + li.text() + '</div>');        
+    }
     li.addClass('active');
-    var html = '<a href="https://alpha.sony.com.vn/">Trang chủ </a>' + li.html();
-    breadcum.append(html);
-    breadcum.append('<div class="main_title">' + li.text() + '</div>');
+
 }
 function parseShopCenter() {
     var ul = $('.template');
@@ -39,21 +43,24 @@ function parseShopCenter() {
         }
         var html = '<div class="sony_center_city">TP. Hồ Chí Minh</div>';
         html += '<ul class="ul_list_center clearfix">' + listHCM + '</ul>';
-        html += '<div class="button_viewmore ico ico-arr-down">Xem đại lý khác<em></em></div><ul class="ul_table">';
+        html += '<div class="button_viewmore ico ico-arr-down">Xem đại lý khác<em></em></div><div class="effect collapse"><ul class="ul_table">';
         html += '<li class="table_header"><div>Đại lý</div><div>Địa chỉ</div><div>Giờ mở cửa</div><div>Điện thoại</div><div>Bản đồ</div></li>';
-        html += listShopHCM + '</ul>';
+        html += listShopHCM + '</ul></div>';
         html += '<div class="sony_center_city">Hà Nội</div>';
         html += '<ul class="ul_list_center clearfix">' + listHN + '</ul>';
-        html += '<div class="button_viewmore ico ico-arr-down">Xem đại lý khác<em></em></div><ul class="ul_table">';
+        html += '<div class="button_viewmore ico ico-arr-down">Xem đại lý khác<em></em></div><div class="effect collapse"><ul class="ul_table">';
         html += '<li class="table_header"><div>Đại lý</div><div>Địa chỉ</div><div>Giờ mở cửa</div><div>Điện thoại</div><div>Bản đồ</div></li>';
-        html += listShopHN + '</ul>';
+        html += listShopHN + '</ul></div>';
         html += '<div class="sony_center_city">Tỉnh thành khác</div>';
         html += '<ul class="ul_list_center clearfix">' + listOrthers + '</ul>';
-        html += '<div class="button_viewmore ico ico-arr-down">Xem đại lý khác<em></em></div><ul class="ul_table">';
+        html += '<div class="button_viewmore ico ico-arr-down">Xem đại lý khác<em></em></div><div class="effect collapse"><ul class="ul_table">';
         html += '<li class="table_header"><div>Đại lý</div><div>Địa chỉ</div><div>Giờ mở cửa</div><div>Điện thoại</div><div>Bản đồ</div></li>';
-        html += listShopOrthers + '</ul>';
+        html += listShopOrthers + '</ul></div>';
         $('#uc_shop_template').append(html);
 
+        $('#uc_shop_template .button_viewmore').click(function(){
+            $(this).next().toggleClass('collapse');
+        });
         
     }
      
