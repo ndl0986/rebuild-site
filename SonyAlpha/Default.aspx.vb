@@ -57,6 +57,8 @@ Public Class _Default
                     tpl = Page.LoadControl("controls/views/uc_register.ascx")
                 Case "login"
                     tpl = Page.LoadControl("controls/views/uc_login.ascx")
+                Case "emailfaq"
+                    tpl = Page.LoadControl("controls/views/uc_email_faq.ascx")
                 Case Else
                     intMenu = 1
                     tpl = Page.LoadControl("controls/views/uc_page.ascx")

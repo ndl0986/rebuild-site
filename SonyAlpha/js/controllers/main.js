@@ -67,6 +67,9 @@ jQuery(function () {
     $("#uc_login_btnOk").click(function () {
         doLogin();
     });
+    $("#uc_email_fag_btnOk").click(function () {
+        doSendMail();
+    });
 });
 
 function doRegister() {
@@ -113,6 +116,32 @@ function doLogin() {
                 alert('Đăng nhập thành công!!!!');
             } else {
                 alert('Đăng nhập không thành công!!!!');
+            }
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log('error');
+        }
+    });
+}
+
+function doSendMail() {
+    var email = $("#uc_email_fag_txtEmail").val();
+    var fullname = $("#uc_email_fag_txtFullName").val();
+    var phone = $("#uc_email_fag_txtPhone").val();
+    var productname = $("#uc_email_fag_txtProductName").val();
+    var mailcontent = $("#uc_email_fag_txtContent").val();
+
+    $.ajax({
+        type: 'POST',
+        timeout: 5000,
+        url: '/service.aspx?name=sendmailfaq',
+        data: { "email": email, "fullname": fullname, "phone": phone, "productname": productname, "mailcontent": mailcontent },
+        success: function (response) {
+            response = jQuery.parseJSON(response);
+            if (response.message == "ok") {
+                $("#uc_email_fag_message").text('Câu hỏi được gửi thành công!!!!');
+            } else {
+                $("#uc_email_fag_message").text('Câu hỏi được gửi không thành công!!!!');
             }
         },
         error: function (jqXHR, textStatus, errorThrown) {

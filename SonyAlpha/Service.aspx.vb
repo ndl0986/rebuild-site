@@ -32,6 +32,8 @@ Public Class Service
                         DoRegister()
                     Case "login"
                         DoLogin()
+                    Case "sendmailfaq"
+                        DoSendMailFaq()
                 End Select
             Else
                 GetMyResponse("500", "Nothing todo!")
@@ -138,4 +140,34 @@ Public Class Service
         End Try
     End Sub
 
+    Private Sub DoSendMailFaq()
+        Try
+            Dim email As String = Request.Params.Get("email")
+            Dim fullname As String = Request.Params.Get("fullname")
+            Dim phone As String = Request.Params.Get("phone")
+            Dim productName As String = Request.Params.Get("productname")
+            Dim content As String = Request.Params.Get("mailcontent")
+
+            Dim smtpClient As New Net.Mail.SmtpClient
+            Dim message As New Net.Mail.MailMessage
+            Dim toAddress As String = SettingServices.getByName("adminMailTo", CN.ConnectionString)
+            Dim mailFrom As String = SettingServices.getByName("adminMailFrom", CN.ConnectionString)
+            Dim fromAddress As New Net.Mail.MailAddress(SettingServices.getByName("adminMailFrom", CN.ConnectionString), toAddress)
+
+            smtpClient.Host = SettingServices.getByName("smtpHost", CN.ConnectionString)
+            smtpClient.Port = SettingServices.getByName("smtpPort", CN.ConnectionString)
+            smtpClient.Credentials = New Net.NetworkCredential(mailFrom, SettingServices.getByName("adminMailPass", CN.ConnectionString))
+            smtpClient.EnableSsl = True
+
+            message.From = fromAddress
+            message.To.Add(toAddress)
+            message.Subject = fullname + "_" + phone + "_" + productName
+            message.IsBodyHtml = False
+            message.Body = "From: " + email + " " + content
+            smtpClient.Send(message)
+            GetMyResponse("200", "ok")
+        Catch ex As Exception
+            GetMyResponse("500", "fail: " + ex.Message)
+        End Try
+    End Sub
 End Class
