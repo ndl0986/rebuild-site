@@ -217,3 +217,27 @@ function doSendMail() {
         }
     });
 }
+
+function doPostComment() {
+    var albumId = 0;
+    var photoId = 0;
+    var comment = '';
+
+    $.ajax({
+        type: 'POST',
+        timeout: 5000,
+        url: '/service.aspx?name=postcomment',
+        data: { "albumid": albumId, "photoid": photoId, "comment": comment },
+        success: function (response) {
+            response = jQuery.parseJSON(response);
+            if (response.message == "ok") {
+                // flow to show result ok
+            } else {
+                // flow to show result not ok
+            }
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log('error');
+        }
+    });
+}
