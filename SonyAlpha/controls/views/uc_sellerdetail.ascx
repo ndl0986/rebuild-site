@@ -7,6 +7,11 @@
 <div class="clearfix">
 <div class="shop-desc"></div>
 <%  If tblImages.Count > 0 Then%>
-<div class="slideshow"></div>
+<div class="slideshow">
+    <div class="main-item"></div>
+    <div class="thumbnail-items">
+    
+    </div>
+</div>
 <% End If%>
 </div>
