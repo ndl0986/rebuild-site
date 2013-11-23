@@ -424,5 +424,58 @@ namespace SonyAlphaLibs.Services
             return productCategory;
             #endregion
         }
+
+        public static List<Product> getListProductByCategoryId(int categoryId, string connString)
+        {
+            #region code
+            List<Product> lists = new List<Product>();
+            using (SqlConnection conn = new SqlConnection(connString))
+            {
+                try
+                {
+                    conn.Open();
+                    using (SqlCommand cmd = conn.CreateCommand())
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.CommandText = "sony_sp_get_all_product_by_category";
+                        cmd.Parameters.AddWithValue("@categoryId", categoryId);
+
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                Product product = new Product();
+                                product.Id = (int)reader["id"];
+                                product.Name = reader["name"].ToString();
+                                product.ProductType = (int)reader["productType"];
+                                product.CategoryId = (int)reader["categoryId"];
+                                product.ImageUrl = reader["imageUrl"].ToString();
+                                product.ShortDesc = reader["shortDesc"].ToString();
+                                product.Description = reader["description"].ToString();
+                                product.Status = reader["status"].ToString().Equals("1") || reader["status"].ToString().Equals("True");
+                                product.FStop = reader["fStop"].ToString();
+                                product.FMax = reader["fMax"].ToString();
+                                product.FMin = reader["fMin"].ToString();
+                                product.LensDetails = reader["lensDetails"].ToString();
+                                product.NumOfPiece = reader["numOfPiece"].ToString();
+                                product.MinDistance = reader["minDistance"].ToString();
+                                product.MaxDistance = reader["maxDistance"].ToString();
+                                product.LensDiameter = reader["lensDiameter"].ToString();
+                                product.Created = (DateTime)reader["Created"];
+                                product.Updated = (DateTime)reader["Updated"];
+                                lists.Add(product);
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    writeLog("", "Get All Product Error: " + ex.Message, connString);
+                    return new List<Product>();
+                }
+            }
+            return lists;
+            #endregion
+        }
     }
 }
