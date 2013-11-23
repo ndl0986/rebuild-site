@@ -5,7 +5,7 @@ function addBreadcum() {
     var breadcum = $('#breadcum');
     var li = $('#menu_' + $('#hdfMenu').val());
     if(!li.length){
-        li = $('#nav').children().filter(function(index){ return $(this).text()==$('#hdfUcMenu').val();})
+        li = $($('#nav').children()[0]);
     }else{
         var html = '<a href="https://alpha.sony.com.vn/">Trang chủ </a>' + li.html();
         breadcum.append(html);

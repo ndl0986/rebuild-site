@@ -5,9 +5,10 @@ Public Class uc_seller
     Public tblProShop As New List(Of SonyCenter)
     Public tblAlphaShop As New List(Of SonyCenter)
     Public tblShop As New List(Of SonyCenter)
-
+    Public intMenu As String
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         Try
+            intMenu = Request.QueryString("mId")
             Dim tblCenters As New List(Of SonyCenter)
             tblCenters = SonyCenterServices.getListAllCenter(CN.ConnectionString)
             For Each item As SonyCenter In tblCenters

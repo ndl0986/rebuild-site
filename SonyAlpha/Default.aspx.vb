@@ -77,8 +77,6 @@ Public Class _Default
         End Try
     End Sub
     Sub LoadBanner(ByVal intMenu As Integer)
-
-
         Dim topBanner As New List(Of SonyAlphaLibs.Banner)
         topBanner = SonyAlphaLibs.Services.MenuServices.getListBanner(intMenu, CN.ConnectionString)
         If topBanner.Count > 0 Then

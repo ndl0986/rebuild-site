@@ -9,8 +9,8 @@
         <%For Each shop In tblProShop%>
             <li class="sonycenter_info">
                 <div class="item">
-                    <a class="sony_center_title" href="<%="seller/" & shop.Id%>"><%= shop.Name%></a>
-                    <a class="sony_center_image" href="<%="seller/" & shop.Id%>"><%If String.IsNullOrEmpty(shop.SonyCenterCover) Then%><img class="lazyload" src="/upload/image/images.jpg" alt="<%= shop.Name %>"/></a><%Else%><img class="lazyload" src="<%=shop.SonyCenterCover%>" alt="<%= shop.Name %>"/></a><%End If%>
+                    <a class="sony_center_title" href="<%="seller/" & shop.Id & "?mId=" & intMenu %>"><%= shop.Name%></a>
+                    <a class="sony_center_image" href="<%="seller/" & shop.Id & "?mId=" & intMenu %>"><%If String.IsNullOrEmpty(shop.SonyCenterCover) Then%><img class="lazyload" src="/upload/image/images.jpg" alt="<%= shop.Name %>"/></a><%Else%><img class="lazyload" src="<%=shop.SonyCenterCover%>" alt="<%= shop.Name %>"/></a><%End If%>
                     <div class="sony_center_contact">
                         <div><span class="label">Địa chỉ :</span><span><%= shop.Address%></span></div>
                         <div><span class="label">Điện thoại :</span><span><%= shop.Phone%></span></div>
@@ -32,7 +32,7 @@
         <%If tblAlphaShop.Count > 0 Then%>
         <ul class="template ul_list_center clearfix">
         <%For Each shop In tblAlphaShop%>
-            <li class="sonycenter_info" data-province="<%=shop.Province%>" data-provinces="<%=shop.ProvinceName%>"><div class="item"><a class="sony_center_title" href="<%="seller/" & shop.Id%>"><%= shop.Name%></a><a href="<%="seller/" & shop.Id%>" class="sony_center_image"><%If String.IsNullOrEmpty(shop.SonyCenterCover) Then%><img class="lazyload" src="/upload/image/images.jpg" alt="<%= shop.Name %>"/></a><%Else%><img class="lazyload" src="<%=shop.SonyCenterCover%>" alt="<%= shop.Name %>"/></a><%End If%><div class="sony_center_contact"><div><span class="label">Địa chỉ :</span><span><%= shop.Address%></span></div><div><span class="label">Điện thoại :</span><span><%= shop.Phone%></span></div><div><span class="label">Giờ mở cửa :</span><span><%= shop.OpenTime%> : <%=shop.CloseTime %></span></div></div></div></li>
+            <li class="sonycenter_info" data-province="<%=shop.Province%>" data-provinces="<%=shop.ProvinceName%>"><div class="item"><a class="sony_center_title" href="<%="seller/" & shop.Id & "?mId=" & intMenu %>"><%= shop.Name%></a><a href="<%="seller/" & shop.Id & "?mId=" & intMenu %>" class="sony_center_image"><%If String.IsNullOrEmpty(shop.SonyCenterCover) Then%><img class="lazyload" src="/upload/image/images.jpg" alt="<%= shop.Name %>"/></a><%Else%><img class="lazyload" src="<%=shop.SonyCenterCover%>" alt="<%= shop.Name %>"/></a><%End If%><div class="sony_center_contact"><div><span class="label">Địa chỉ :</span><span><%= shop.Address%></span></div><div><span class="label">Điện thoại :</span><span><%= shop.Phone%></span></div><div><span class="label">Giờ mở cửa :</span><span><%= shop.OpenTime%> : <%=shop.CloseTime %></span></div></div></div></li>
         <%Next%>
         </ul>
         <%End If%>
