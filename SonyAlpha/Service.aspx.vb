@@ -34,6 +34,12 @@ Public Class Service
                         DoLogin()
                     Case "sendmailfaq"
                         DoSendMailFaq()
+                    Case "postcomment"
+                        DoPostComment()
+                    Case "deletecomment"
+                        DoDeleteComment()
+                    Case "updatecomment"
+                        DoUpdateComment()
                 End Select
             Else
                 GetMyResponse("500", "Nothing todo!")
@@ -45,8 +51,10 @@ Public Class Service
                         GetUserInfo()
                     Case "getpage"
                         GetPage()
-                    Case "getLastestNews"
+                    Case "getlastestnews"
                         GetLastestNews()
+                    Case "getlistcomment"
+                        GetListComment()
                 End Select
             Else
                 GetMyResponse("500", "Nothing todo!")
@@ -170,4 +178,69 @@ Public Class Service
             GetMyResponse("500", "fail: " + ex.Message)
         End Try
     End Sub
+
+    Private Sub DoPostComment()
+        Try
+            Dim albumId As Integer = CInt(Request.Params.Get("albumid"))
+            Dim photoId As Integer = CInt(Request.Params.Get("photoid"))
+            Dim comment As String = Request.Params.Get("comment")
+
+            Dim albumComment As New AlbumComment
+            albumComment.UserName = Session("accountname")
+            albumComment.AlbumId = albumId
+            albumComment.PhotoId = photoId
+            albumComment.Status = True
+            albumComment.Comment = comment
+
+            If AlbumServices.setComment2Album(albumComment, CN.ConnectionString) Then
+                Dim commentId As Integer = AlbumServices.getCurrentMaxId("sony_album_comment", CN.ConnectionString)
+                GetMyResponse("200", commentId)
+            Else
+                GetMyResponse("200", "-1")
+            End If
+        Catch ex As Exception
+            GetMyResponse("500", "fail: " + ex.Message)
+        End Try
+    End Sub
+
+    Private Sub DoDeleteComment()
+        Try
+            Dim commentId As Integer = CInt(Request.Params.Get("commentid"))
+
+            Dim albumComment As New AlbumComment
+            albumComment.Id = commentId
+
+            If AlbumServices.removeCommentById(commentId, CN.ConnectionString) Then
+                GetMyResponse("200", "ok")
+            Else
+                GetMyResponse("200", "fail")
+            End If
+        Catch ex As Exception
+            GetMyResponse("500", "fail: " + ex.Message)
+        End Try
+    End Sub
+
+    Private Sub DoUpdateComment()
+        Try
+            Dim commentId As Integer = CInt(Request.Params.Get("commentId"))
+            Dim comment As String = Request.Params.Get("comment")
+
+            If AlbumServices.updateAlbumComment(commentId, comment, CN.ConnectionString) Then
+                GetMyResponse("200", "ok")
+            Else
+                GetMyResponse("200", "fail")
+            End If
+        Catch ex As Exception
+            GetMyResponse("500", "fail: " + ex.Message)
+        End Try
+    End Sub
+
+    Private Sub GetListComment()
+        Try
+
+        Catch ex As Exception
+
+        End Try
+    End Sub
+
 End Class
