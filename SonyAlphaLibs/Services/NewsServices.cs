@@ -498,7 +498,82 @@ namespace SonyAlphaLibs.Services
             return lists;
             #endregion
         }
+        /// <summary>
+        /// get list news by list categoryIds 
+        /// </summary>
+        /// <param name="categoryIds"></param>
+        /// <param name="pageNum"></param>
+        /// <param name="pageSize"></param>
+        /// <param name="order"></param>
+        /// <param name="orderBy"></param>
+        /// <param name="connString"></param>
+        /// <returns></returns>
+        public static List<News> getListNewsByCategoryIds(List<int> categoryIds, int pageNum, int pageSize, 
+            int order, string orderBy, string connString)
+        {
+            #region code
+            List<News> lists = new List<News>();
+            String listCategoryIds = "";
+            if (categoryIds != null && categoryIds.Count > 0)
+            {
+                foreach (int id in categoryIds)
+                {
+                    listCategoryIds += id.ToString() + ",";
+                }
+                if (listCategoryIds.EndsWith(","))
+                {
+                    listCategoryIds = listCategoryIds.Substring(0, listCategoryIds.Length - 1);
+                }
+            }
+            using (SqlConnection conn = new SqlConnection(connString))
+            {
+                try
+                {
+                    conn.Open();
+                    using (SqlCommand cmd = conn.CreateCommand())
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.CommandText = "sony_sp_get_all_news_by_list_category_id";
+                        cmd.Parameters.AddWithValue("@categoryIds", categoryIds);
+                        cmd.Parameters.AddWithValue("@pageNum", pageNum);
+                        cmd.Parameters.AddWithValue("@pageSize", pageSize);
+                        cmd.Parameters.AddWithValue("@order", order);
+                        cmd.Parameters.AddWithValue("@orderBy", orderBy);
 
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                News news = new News();
+                                news.Id = (int)reader["id"];
+                                news.Title = reader["title"].ToString();
+                                news.SeoUrl = reader["seoUrl"].ToString();
+                                news.Detail = reader["detail"].ToString();
+                                news.Description = reader["description"].ToString();
+                                news.CategoryId = (int)reader["categoryId"];
+                                news.Published = reader["published"].ToString().Equals("1") || reader["published"].ToString().Equals("True");
+                                news.MetaTag = reader["metaTag"].ToString();
+                                news.MetaTitle = reader["metaTitle"].ToString();
+                                news.MetaKeyWord = reader["metaKeyword"].ToString();
+                                news.ViewCount = (int)reader["viewCount"];
+                                news.LikeCount = (int)reader["likeCount"];
+                                news.NewsImage = reader["newsImage"].ToString();
+                                news.RelatedNewsIds = reader["relatedNewsIds"].ToString();
+                                news.Created = (DateTime)reader["created"];
+                                news.Updated = (DateTime)reader["updated"];
+                                lists.Add(news);
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    return new List<News>();
+                }
+            }
+            return lists;
+            #endregion
+        }
         /// <summary>
         /// function to get list new with paging
         /// </summary>
