@@ -100,6 +100,7 @@ Public Class Service
             user.PassWord = password
             user.FullName = fullname
             user.Status = status
+
             If user.add(CN.ConnectionString) Then
                 GetMyResponse("200", "ok")
             Else

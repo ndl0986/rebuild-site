@@ -81,11 +81,15 @@ function doRegister() {
         timeout: 5000,
         url: '/service.aspx?name=register',
         data: { "username": usn, "password": pass, "fullname": fullname },
-        success: function (responseHtml) {
-            console.log(responseHtml);
+        success: function (response) {
+            response = jQuery.parseJSON(response);
+            if (response.message == "ok") {
+                alert('Đăng ký thành công!!!!');
+            } else {
+                alert('Đăng ký không thành công!!!!');
+            }
         },
         error: function (jqXHR, textStatus, errorThrown) {
-
             console.log('error');
         }
     });
