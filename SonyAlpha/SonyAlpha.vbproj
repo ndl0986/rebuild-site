@@ -154,6 +154,7 @@
     <Content Include="controls\views\uc_email_faq.ascx" />
     <Content Include="controls\views\uc_footer.ascx" />
     <Content Include="controls\views\uc_header.ascx" />
+    <Content Include="controls\views\uc_login.ascx" />
     <Content Include="controls\views\uc_menu.ascx" />
     <Content Include="controls\views\uc_newscategory.ascx" />
     <Content Include="controls\views\uc_newsdetail.ascx" />
@@ -1032,6 +1033,13 @@
     </Compile>
     <Compile Include="controls\views\uc_header.ascx.vb">
       <DependentUpon>uc_header.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\views\uc_login.ascx.designer.vb">
+      <DependentUpon>uc_login.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\views\uc_login.ascx.vb">
+      <DependentUpon>uc_login.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="controls\views\uc_menu.ascx.designer.vb">

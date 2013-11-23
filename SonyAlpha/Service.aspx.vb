@@ -53,12 +53,12 @@ Public Class Service
 
     Private Sub DoLogin()
         Try
-            Dim username As String = Request.QueryString("username")
-            Dim password As String = Request.QueryString("password")
+            Dim username As String = Request.Params.Get("username")
+            Dim password As String = Request.Params.Get("password")
             If Not String.IsNullOrEmpty(username) And Not String.IsNullOrEmpty(password) Then
                 Dim user As New User
                 user.UserName = username
-                user.PassWord = password
+                user.PassWord = base64Encode(password)
                 If user.login(CN.ConnectionString) Then
                     GetMyResponse("200", "ok")
                 Else
@@ -97,7 +97,7 @@ Public Class Service
 
             Dim user As New User
             user.UserName = username
-            user.PassWord = password
+            user.PassWord = base64Encode(password)
             user.FullName = fullname
             user.Status = status
 

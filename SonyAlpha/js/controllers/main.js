@@ -64,6 +64,9 @@ jQuery(function () {
     $("#uc_register_btnOk").click(function () {
         doRegister();
     });
+    $("#uc_login_btnOk").click(function () {
+        doLogin();
+    });
 });
 
 function doRegister() {
@@ -87,6 +90,29 @@ function doRegister() {
                 alert('Đăng ký thành công!!!!');
             } else {
                 alert('Đăng ký không thành công!!!!');
+            }
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log('error');
+        }
+    });
+}
+
+function doLogin() {
+    var usn = $("#uc_login_txtUserName").val();
+    var pass = $("#uc_login_txtPWD").val();
+
+    $.ajax({
+        type: 'POST',
+        timeout: 5000,
+        url: '/service.aspx?name=login',
+        data: { "username": usn, "password": pass },
+        success: function (response) {
+            response = jQuery.parseJSON(response);
+            if (response.message == "ok") {
+                alert('Đăng nhập thành công!!!!');
+            } else {
+                alert('Đăng nhập không thành công!!!!');
             }
         },
         error: function (jqXHR, textStatus, errorThrown) {
