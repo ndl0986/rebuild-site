@@ -131,6 +131,86 @@ function parseProductCategory(data){
     var catContent = $('#categoryContent');
     var html=$.parseJSON(data.message);
     catContent.html(html.Description);
+    $('#productContent').hide();
+}
+
+function parseProductsList(data){
+    //var targetContent = $('#loadContent');
+    var catContent = $('#listItems');
+    var items=$.parseJSON(data.message);
+    var html='<ul class="clearfix">';
+    for(var i=0;i<items.length;i++){
+        if((i+1)%3==0){
+            html+='<li class="third">';
+        }else{
+            html+='<li>';
+        }
+        html+='<div class="clearfix"><a href="javascript:void(0);" onClick="loadProduct('+items[i].Id+')" class="product_img_wrapper"><img class="product_img" src="/upload/image/product/'+items[i].ImageUrl+'" alt="" /></a>';
+        html+='<div class="text"><a href="javascript:void(0);" onClick="loadProduct('+items[i].Id+')">'+ items[i].Name +'</a><div class="price_title">Giá bán lẻ </div><div class="price">' + items[i].Price + ' VNĐ*</div></div>';
+        html+='<div class="cover"><a href="javascript:void(0);" onClick="loadProduct('+items[i].Id+')"><img src="'+ items[i].ProductCover +'" alt=""></a></div></li>';
+    }
+    html+='</ul>';
+    catContent.html(html).show();
+}
+
+function parseProductItem(data){
+    //var targetContent = $('#loadContent');
+    var catContent = $('#productContent');
+    var html=$.parseJSON(data.message);
+    $('#listItems').hide();
+    var divInfo = $('<div class="product_info"></div>');
+    var divSlide = $('<div class="product_slide"></div>');   
+    var item = $.parseJSON(data.message);
+    var str = '<div class="img_product"><img alt="" src="/upload/image/product/' + item.ImageUrl + '"/></div><div class="title_detail">'+ item.Name +'</div>';
+    str+='<table><tbody><tr><td class="td_left">Tiêu cự:</td><td class="td_right">'+item.FStop+'</td></tr>';
+    str+='<tr><td class="td_left">Khẩu độ mở tối đa:</td><td class="td_right">'+item.FMax+'</td></tr>';
+    str+='<tr><td class="td_left">Khẩu độ mở tối thiểu:</td><td class="td_right">'+item.FMin+'</td></tr>';
+    str+='<tr><td class="td_left">Cơ cấu kính:</td><td class="td_right">'+item.LensDetails+'</td></tr>';
+    str+='<tr><td class="td_left">Số lá khẩu:</td><td class="td_right">'+item.NumOfPiece+'</td></tr>';
+    str+='<tr><td class="td_left">Khoảng cách tối thiểu:</td><td class="td_right">'+item.MinDistance+'</td></tr>';
+    str+='<tr><td class="td_left">Đường kính ống kính:</td><td class="td_right">'+item.LensDiameter+'</td></tr>';
+    str+='</tbody></table>';
+    divInfo.html(str);
+
+    getListPhotos(item.AlbumId,function(data){
+        parseLoadPhotos(data,divSlide);
+    });
+
+    //divSlide.html(slide);
+    catContent.html(divSlide).append(divInfo).show();
+    
+}
+
+function parseLoadPhotos(data,target){
+    var items=$.parseJSON(data.message);
+    var html='',html2='';
+    html= '<ul class="bxslider">';
+    html2='<div id="bxpager">';
+    for(var i=0;i<items.length;i++){
+        html+='<li><img src="'+items[i].FileName+'" /></li>';
+        html2+='<a data-slide-index="'+i+'" href=""><img src="'+items[i].FileName+'" /></a>';
+    }
+    html+='</ul>';
+    html2+='</div>';
+    result = html + html2;
+
+    target.html(result);
+    $('.bxslider').bxSlider({pagerCustom: '#bxpager',auto:true});
+}
+
+function loadProduct (id){
+    getProductById(id,function(data){
+        parseProductItem(data);
+    });
+}
+
+function showLoading(target){
+    if(!$('#loading').length){target.prepend($('<div id="loading"><div class="loader"></div></div>'));}
+    $('#loading').show();
+}
+
+function hideLoading(){
+    $('#loading').hide();
 }
 
 $(document).ready(function () {
@@ -224,12 +304,13 @@ $(document).ready(function () {
                 return false;
             });
             $('#product_categories .category_item').click(function(e){
+                showLoading($('#loadContent'));
                 var productcateId = $(this).attr('data-id');
                 getCategoryById(productcateId,function(data){
                     parseProductCategory(data);
                 });
                 getProductByCategoryId(productcateId,function(data){
-                    console.log(data);
+                    parseProductsList(data);
                 });
             });
         default:
@@ -372,12 +453,14 @@ function getProductByCategoryId(categoryId,callback) {
         },
         error: function (jqXHR, textStatus, errorThrown) {
             console.log('error');
+        },
+        complete:function(){
+            hideLoading();
         }
     });
 }
 
-function getProductById() {
-    var productId = 0;
+function getProductById(productId,callback) {
 
     $.ajax({
         type: 'GET',
@@ -386,10 +469,14 @@ function getProductById() {
         //data: { "productd": productId },
         success: function (response) {
             response = jQuery.parseJSON(response);
+            if($.isFunction(callback))callback(response);
             // do some thing
         },
         error: function (jqXHR, textStatus, errorThrown) {
             console.log('error');
+        },
+        complete:function(){
+            hideLoading();
         }
     });
 }
@@ -445,4 +532,21 @@ function isPhonenumber(input)
 //  }
     //  return false;
     return true;
+}
+
+function getListPhotos(albumId,callback){
+    $.ajax({
+        type: 'GET',
+        timeout: 5000,
+        url: '/service.aspx?name=getlistphotobyalbum&albumid=' + albumId,
+        //data: { "productd": productId },
+        success: function (response) {
+            response = jQuery.parseJSON(response);
+            if($.isFunction(callback))callback(response);
+            // do some thing
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log('error' + textStatus);
+        }
+    });
 }

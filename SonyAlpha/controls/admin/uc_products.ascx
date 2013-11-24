@@ -31,10 +31,5 @@
     </div>
 </div>
 <asp:ObjectDataSource ID="objProducts" runat="server" DeleteMethod="removeById" SelectMethod="getListAll" TypeName="SonyAlphaLibs.Product">
-    <SelectParameters>
-        <asp:Parameter Name="connString" Type="String" />
-    </SelectParameters>
-    <DeleteParameters>
-        <asp:Parameter Name="connString" Type="String" />
-    </DeleteParameters>
+    <SelectParameters><asp:Parameter Name="connString" Type="String" /></SelectParameters>
 </asp:ObjectDataSource>

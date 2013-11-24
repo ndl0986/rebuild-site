@@ -6,6 +6,6 @@
 <div id="loadContent">
     <div id="categoryContent"></div>
     <div id="listItems"></div>
-    <div id="productContent"></div>
+    <div id="productContent" class="clearfix"></div>
 </div>
 </div>
