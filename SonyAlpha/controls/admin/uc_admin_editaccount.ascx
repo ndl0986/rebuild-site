@@ -28,8 +28,8 @@
             </li>
             <li class="row clerafix">
                 <div class="item textright" >
-                    <button class="action btnOk" runat="server" ID="btnSave" disabled="disabled" ><span class="label">Lưu</span></button>
-                    <button class="action btnOk" runat="server" ID="btnResetPass" disabled="disabled" ><span class="label">Reset mật khẩu</span></button>
+                    <button class="action btnOk" runat="server" ID="btnSave" ><span class="label">Lưu</span></button>
+                    <button class="action btnOk" runat="server" ID="btnResetPass"><span class="label">Reset mật khẩu</span></button>
                     <a href="javascript:void(0);" class="button action" id="btnCancel"><span class="label">Hủy</span></a>
                 </div>
             </li>
