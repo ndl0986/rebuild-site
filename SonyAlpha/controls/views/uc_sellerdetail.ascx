@@ -14,7 +14,7 @@
 <% End If%>
 </div>
 <div class="clearfix">
-    <div id="googleMap" class="google-map"></div>
+    <div id="map_canvas" class="google-map" ></div>   
     <div class="detail_thongtin">
         <div class="title">Thông tin liên lạc</div>
         <div><span class="label">Địa chỉ </span><span>:&nbsp;<%= tblDetail.Address%></span></div>
@@ -22,3 +22,16 @@
         <div><span class="label">Giờ mở cửa </span><span>:&nbsp;<%= tblDetail.OpenTime%> : <%=tblDetail.CloseTime %></span></div>       
     </div>
 </div>
+<script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+<script language="javascript" type="text/javascript">
+            function initialize(lat, long) {
+                var map_canvas = document.getElementById('map_canvas');
+                var map_options = {
+                    center: new google.maps.LatLng(lat, long),
+                    zoom: 8,
+                    mapTypeId: google.maps.MapTypeId.ROADMAP
+                }
+                var map = new google.maps.Map(map_canvas, map_options);
+            }
+            initialize(<%= tblDetail.Latitude%>, <%= tblDetail.Longitude%>);
+</script>  
