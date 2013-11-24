@@ -65,7 +65,8 @@ namespace SonyAlphaLibs
             get { return listPhotos; }
             set { listPhotos = value; }
         }
-        
+
+        public int TotalPhoto { get; set; }
         #endregion
 
         #region base method

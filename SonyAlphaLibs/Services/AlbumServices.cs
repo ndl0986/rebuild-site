@@ -143,6 +143,7 @@ namespace SonyAlphaLibs.Services
                                 album.ViewCount = (int)reader["viewCount"];
                                 album.AlbumType = String.IsNullOrEmpty(reader["albumType"].ToString()) ? 0 : (int)reader["albumType"];
                                 album.AlbumCover = reader["albumCover"].ToString();
+                                album.TotalPhoto = (int)reader["TotalPhoto"];
                                 album.Created = (DateTime)reader["created"];
                                 album.Updated = (DateTime)reader["updated"];
                                 lists.Add(album);
@@ -186,6 +187,7 @@ namespace SonyAlphaLibs.Services
                                 album.ViewCount = (int)reader["viewCount"];
                                 album.AlbumType = String.IsNullOrEmpty(reader["albumType"].ToString()) ? 0 : (int)reader["albumType"];
                                 album.AlbumCover = reader["albumCover"].ToString();
+                                album.TotalPhoto = (int)reader["TotalPhoto"];
                                 album.Created = (DateTime)reader["created"];
                                 album.Updated = (DateTime)reader["updated"];
                             }
@@ -723,6 +725,38 @@ namespace SonyAlphaLibs.Services
                 {
                     writeLog("", "Update Album Comment Error: " + ex.Message, connString);
                     return false;
+                }
+            }
+            return rs;
+            #endregion
+        }
+
+        public static int getTotalPhotoOfAlbum(int albumId, string connString)
+        {
+            #region code
+            int rs = 0;
+            using (SqlConnection conn = new SqlConnection(connString))
+            {
+                try
+                {
+                    conn.Open();
+                    using (SqlCommand cmd = conn.CreateCommand())
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.CommandText = "sony_sp_get_album_photo";
+                        cmd.Parameters.AddWithValue("@albumId", albumId);
+                        SqlParameter returnVal = new SqlParameter("@returnVal", SqlDbType.Int);
+                        returnVal.Direction = ParameterDirection.Output;
+                        cmd.Parameters.Add(returnVal);
+
+                        cmd.ExecuteNonQuery();
+                        rs = (int)cmd.Parameters["@returnVal"].Value;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    writeLog("", "Get Album Error: " + ex.Message, connString);
+                    return rs;
                 }
             }
             return rs;
