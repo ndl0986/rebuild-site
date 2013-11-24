@@ -159,6 +159,7 @@ $(document).ready(function () {
         });
     }
 
+
     switch (aspx) {
         case 'seller':
             parseShopCenter();
@@ -171,6 +172,9 @@ $(document).ready(function () {
             });
             break;
         case 'album':
+            parseAlbumSlide();
+            break;
+        case 'albumdetail':
             parseAlbumSlide();
             break;
         default:

@@ -32,15 +32,6 @@ Partial Public Class uc_photo
     Protected WithEvents hplNext As Global.System.Web.UI.WebControls.HyperLink
 
     '''<summary>
-    '''imgMain control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents imgMain As Global.System.Web.UI.WebControls.Image
-
-    '''<summary>
     '''hplUploader control.
     '''</summary>
     '''<remarks>
@@ -48,22 +39,4 @@ Partial Public Class uc_photo
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents hplUploader As Global.System.Web.UI.WebControls.HyperLink
-
-    '''<summary>
-    '''lblVote control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents lblVote As Global.System.Web.UI.WebControls.Label
-
-    '''<summary>
-    '''lblView control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents lblView As Global.System.Web.UI.WebControls.Label
 End Class

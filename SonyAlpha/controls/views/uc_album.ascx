@@ -10,8 +10,8 @@
     <%For Each album In bllAlbums%>
         <%If i = (bllAlbums.Count - 1) Then%><li class="last-child"><%Else%><li><%End If%>
             <div class="album">
-                <div class="cover"><a href="<%="album/" & album.Id & "?mId" & intMenu%>"><img alt="<%=album.AlbumCover %>" src="<%=album.AlbumCover%>" /></a></div>
-                <a class="album_title" href="<%="album/" & album.Id & "?mId" & intMenu%>"><%=album.FullName %></a>
+                <div class="cover"><a href="<%="album/" & album.Id & "?mId=" & intMenu%>"><img alt="<%=album.AlbumCover %>" src="<%=album.AlbumCover%>" /></a></div>
+                <a class="album_title" href="<%="album/" & album.Id & "?mId=" & intMenu%>"><%=album.FullName %></a>
                 <div class="info"><span><%=album.TotalPhoto%></span>&nbsp;ảnh<span>&nbsp;/&nbsp;<%= album.ViewCount%>&nbsp;lượt xem</span></div>
             </div>
         </li>

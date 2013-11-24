@@ -56,6 +56,7 @@
     <!--[if IE 8]>    
       <script src="../js/libs/respond.min.js"></script>
     <![endif]-->
+    <script type="text/javascript" src="<%=absoluteURL%>/js/plugins/jquery.lazyload.min.js"></script>
     <script type="text/javascript" src="<%=absoluteURL%>/js/plugins/jquery.bxslider.min.js"></script>
     <script type="text/javascript" src="<%=absoluteURL%>/js/plugins/jquery.nivo.slider.pack.js"></script>
     <script type="text/javascript" src="<%=absoluteURL%>/js/plugins/jquery.slimscroll.min.js"></script>

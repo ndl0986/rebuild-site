@@ -4,16 +4,16 @@
         <div class="photo-wrapper">
             <asp:HyperLink runat="server" ID="hplPrev" ClientIDMode="Static" CssClass="prev-photo"></asp:HyperLink>
             <asp:HyperLink runat="server" ID="hplNext" ClientIDMode="Static" CssClass="next-photo"></asp:HyperLink>
-            <asp:Image runat="server" ID="imgMain" ClientIDMode="Static" CssClass="img-main" AlternateText=""/>
+            <img id="imgMain" class="img-main" alt="" src="<%= bllDetail.FileName %>"/>
         </div>
         <div class="photo-info clearfix">
             <div class="photo-upload">Người gửi<asp:HyperLink runat="server" ID="hplUploader" ClientIDMode="Static"></asp:HyperLink></div>
-            <div class="photo-analysis"><asp:Label runat="server" ID="lblVote"></asp:Label>/<asp:Label runat="server" ID="lblView"></asp:Label></div>
+            <div class="photo-analysis"><span><%= bllDetail.VoteCount%></span>&nbsp;bình chọn&nbsp;/&nbsp;<span><%=bllDetail.ViewCount %></span>&nbsp;lượt xem</div>
         </div>
         <div class="photo-actions">
-            <a class="btn orange ico ico-zoom" href="javascript:void(0);">Phóng lớn<em></em></a>
-            <a class="btn orange ico ico-vote" href="javascript:void(0);">Bình chọn<em></em></a>
-            <a class="btn ico ico-fb" href="javascript:void(0);"></a>
+            <a class="btn orange" href="javascript:void(0);">Phóng lớn<span class="ico ico-zoom"></span></a>
+            <a class="btn orange" href="javascript:void(0);">Bình chọn<span class="ico ico-vote"></span></a>
+            <a class="btn share-fb" href="https://www.facebook.com/sharer/sharer.php?u=<%=bllDetail.FileName %>"></a>
         </div>
     </div>
     <div class="photo-comment">

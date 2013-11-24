@@ -77,7 +77,7 @@ body { min-width: 320px; font-family: 'Tahoma'; font-size: 13px; font-weight: no
 .button .ico { float: left; margin-right: 10px;}
 
 .ico { background: url('../img/icons.png') no-repeat left top scroll transparent; display: inline-block; width: 32px; height: 32px;}
-
+.hidden { display: none !important;}
 
 
 .noresize { resize:none;}
@@ -603,26 +603,46 @@ padding: 4px;
 .news_detail .content { margin-top: 20px;}
 .news_detail .description { font-weight: bold; margin-bottom: 15px; font-size: 15px;}
 
-.album_page { margin: 20px 0px;}
+.album_page { margin: 20px 0px; overflow: hidden;}
 .ul_list_albums { font-size: 0; left: 0.5%; position: relative;}
 .ul_list_albums li{ float: left; width: 29%; margin:0px 2% 20px 2%;}
 .ul_list_albums li.last-child{width: 95%;}
+.ul_list_albums.ul_list_photo { width: auto; left: 0px; margin: 0 30px;}
+.ul_list_albums.ul_list_photo li { width: 23%; margin: 0 1% 20px 1%;}
 .ul_list_albums .album{padding: 5px}
-.album .cover{border: solid 1px #ccc;}
+.ul_list_albums.ul_list_photo .album { padding: 0px 0px 0px 0px;}
+.album .cover{border: solid 1px #ccc; position: relative;}
 .album .cover a { display: block; overflow: hidden; border: solid 5px #fff;}
+.album .cover img { max-height: 165px;min-width: 100%;min-height: 100px;max-width: 1000%;}
 .album .album_title{font-size: 15px;color: #fe3500;margin-top: 10px; display: block;}
 .album .info {font-size: 13px;font-family: Tahoma;color: #000000; line-height: 18px;}
+.album .photo-info { position: absolute; z-index: 1; width: auto; left: 5px; right: 5px; bottom: 5px; height: 26px; line-height: 26px; background: rgba(0,0,0,0.5); color: #fff; font-size: 12px;}
 .form_command { font-size: 0; position: absolute; top:-50px; right: 3%;}
 .form_command > a,
 .form_command > input.textbox { margin: 0px 0px 0px 10px; font-size: 14px;}
 .form_command input { width: 200px;}
 
-#albumSlide{ margin: 20px 30px; overflow: hidden; border: solid 1px #ccc; height: 350px; position: relative;}
-#albumSlide .nivoSlider { width: auto; height: 340px; background: #efefef; border: solid 5px #fff;}
-#albumSlide .nivoSlider > img { max-width: 100%;}
+#albumSlide{ margin: 20px 30px; overflow: hidden; border: solid 1px #ccc; max-height: 350px; position: relative;}
+#albumSlide .nivoSlider { width: auto; max-height: 340px; background: #efefef; border: solid 5px #fff;}
+#albumSlide .nivoSlider > img { width: auto; }
 #albumSlide .nivo-controlNav {position: absolute;right: 20px;bottom: 0px;z-index: 100; font-size: 0;}
 #albumSlide .nivo-controlNav a {cursor:pointer;font-size: 0;}
 
+.album .cover .share-fb{ display:inline-block; width: 16px; height: 16px; vertical-align: middle; margin: 0px 4px; border: solid 1px #fff; background:url(http://static.ak.facebook.com/images/share/facebook_share_icon.gif?6:26981) no-repeat top right; } 
+.album .cover .share-fb:hover { color:#fff; border-color:#295582; background:#3b5998 url(http://static.ak.facebook.com/images/share/facebook_share_icon.gif?6:26981) no-repeat top right; text-decoration:none; } 
+
+.photo-view {width: auto;margin: 20px;text-align: center;box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.5);-webkit-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.5);-moz-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.5);padding: 10px 0px;overflow: hidden;border-radius: 5px;-webkit-border-radius: 5px;-moz-border-radius: 5px;}
+.photo-view .photo-wrapper { position: relative; width: 100%;}
+.photo-view .photo-wrapper > a {display: inline-block;position: absolute;top: 50%;margin-top: -35px;width: 70px;height: 70px;border-radius: 45px;-webkit-border-radius: 45px;-moz-border-radius: 45px;background: rgba(25,25,25,0.8);}
+.photo-view .photo-wrapper .prev-photo { left: 10px;}
+.photo-view .photo-wrapper .next-photo { right: 10px;}
+.photo-view .photo-wrapper .prev-photo:before {content: '';position: absolute;left: 19px;top: 4px;background: url('../img/icons.png') no-repeat 0px -204px;height: 62px;width: 32px;}
+.photo-view .photo-wrapper .next-photo:before {content: '';position: absolute;left: 19px;top: 4px;background: url('../img/icons.png') no-repeat -64px -204px;height: 62px;width: 32px;}
+.photo-view .photo-info { margin: 10px 20px; font-size: 14px;}
+.photo-view .photo-info .photo-upload { float: left;}
+.photo-view .photo-info .photo-analysis{float: right;}
+.photo-view .photo-info a { color: #000; font-weight: bold; display: inline-block; margin-left: 10px;}
+.photo-view .photo-info a:hover { text-decoration: underline;}
 /* Mobile style */
 @media screen and (max-width: 719px) {
     .container { width: auto; margin: auto 10px;}
