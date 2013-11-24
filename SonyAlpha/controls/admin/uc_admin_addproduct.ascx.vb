@@ -3,6 +3,7 @@ Imports SonyAlphaLibs.Services
 Public Class uc_admin_addproduct
     Inherits System.Web.UI.UserControl
     Public listProductCategory As New List(Of ProductCategory)
+    Public listAlbums As New List(Of Album)
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         Page.ClientScript.RegisterOnSubmitStatement(txtDescription.GetType(), "txtMessage", "FCKUpdateLinkedField('" + txtDescription.ClientID + "');")
@@ -13,6 +14,13 @@ Public Class uc_admin_addproduct
                 ddlProductCategory.DataTextField = "Name"
                 ddlProductCategory.DataValueField = "Id"
                 ddlProductCategory.DataBind()
+            End If
+            listAlbums = AlbumServices.getListAllNormalAlbum(CN.ConnectionString)
+            If Not listAlbums.Count = 0 Then
+                ddlAlbumList.DataSource = listAlbums
+                ddlAlbumList.DataTextField = "FullName"
+                ddlAlbumList.DataValueField = "Id"
+                ddlAlbumList.DataBind()
             End If
         End If
     End Sub
@@ -39,6 +47,8 @@ Public Class uc_admin_addproduct
             product.MinDistance = txtMinDistance.Text
             product.MaxDistance = txtMaxDistance.Text
             product.LensDiameter = txtLensDiameter.Text
+            product.Price = txtPrice.Text
+            product.AlbumId = ddlAlbumList.SelectedValue
             If product.add(CN.ConnectionString) Then
                 Dim newId As String = CStr(ProductServices.getCurrentMaxId("sony_product", CN.ConnectionString))
                 Response.Redirect("?tpl=editproduct&id=" & newId)
