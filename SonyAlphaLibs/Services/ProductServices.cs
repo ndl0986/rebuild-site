@@ -23,7 +23,7 @@ namespace SonyAlphaLibs.Services
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.CommandText = "sony_sp_add_product";
                         cmd.Parameters.AddWithValue("@name", product.Name);
-                        cmd.Parameters.AddWithValue("@productType", product.ProductType);
+                        cmd.Parameters.AddWithValue("@productType", 0);
                         cmd.Parameters.AddWithValue("@categoryId", product.CategoryId);
                         cmd.Parameters.AddWithValue("@imageUrl", product.ImageUrl);
                         cmd.Parameters.AddWithValue("@shortDesc", product.ShortDesc);
@@ -37,6 +37,8 @@ namespace SonyAlphaLibs.Services
                         cmd.Parameters.AddWithValue("@minDistance", product.MinDistance);
                         cmd.Parameters.AddWithValue("@maxDistance", product.MaxDistance);
                         cmd.Parameters.AddWithValue("@lensDiameter", product.LensDiameter);
+                        cmd.Parameters.AddWithValue("@price", product.Price);
+                        cmd.Parameters.AddWithValue("@albumid", product.AlbumId);
                         SqlParameter returnVal = new SqlParameter("@returnVal", SqlDbType.Int);
                         returnVal.Direction = ParameterDirection.Output;
                         cmd.Parameters.Add(returnVal);
@@ -70,7 +72,7 @@ namespace SonyAlphaLibs.Services
                         cmd.CommandText = "sony_sp_update_product";
                         cmd.Parameters.AddWithValue("@id", product.Id);
                         cmd.Parameters.AddWithValue("@name", product.Name);
-                        cmd.Parameters.AddWithValue("@productType", product.ProductType);
+                        cmd.Parameters.AddWithValue("@productType", 0);
                         cmd.Parameters.AddWithValue("@categoryId", product.CategoryId);
                         cmd.Parameters.AddWithValue("@imageUrl", product.ImageUrl);
                         cmd.Parameters.AddWithValue("@shortDesc", product.ShortDesc);
@@ -84,6 +86,8 @@ namespace SonyAlphaLibs.Services
                         cmd.Parameters.AddWithValue("@minDistance", product.MinDistance);
                         cmd.Parameters.AddWithValue("@maxDistance", product.MaxDistance);
                         cmd.Parameters.AddWithValue("@lensDiameter", product.LensDiameter);
+                        cmd.Parameters.AddWithValue("@price", product.Price);
+                        cmd.Parameters.AddWithValue("@albumid", product.AlbumId);
                         SqlParameter returnVal = new SqlParameter("@returnVal", SqlDbType.Int);
                         returnVal.Direction = ParameterDirection.Output;
                         cmd.Parameters.Add(returnVal);
@@ -155,7 +159,7 @@ namespace SonyAlphaLibs.Services
                                 Product product = new Product();
                                 product.Id = (int)reader["id"];
                                 product.Name = reader["name"].ToString();
-                                product.ProductType = (int)reader["productType"];
+                                //product.ProductType = (int)reader["productType"];
                                 product.CategoryId = (int)reader["categoryId"];
                                 product.ImageUrl = reader["imageUrl"].ToString();
                                 product.ShortDesc = reader["shortDesc"].ToString();
@@ -171,6 +175,9 @@ namespace SonyAlphaLibs.Services
                                 product.LensDiameter = reader["lensDiameter"].ToString();
                                 product.Created = (DateTime)reader["Created"];
                                 product.Updated = (DateTime)reader["Updated"];
+                                product.Price = reader["price"].ToString();
+                                product.AlbumId = String.IsNullOrEmpty(reader["albumId"].ToString()) ? 0 : (int)reader["albumid"];
+                                product.ProductCover = reader["ProductCover"].ToString();
                                 lists.Add(product);
                             }
                         }
@@ -207,7 +214,7 @@ namespace SonyAlphaLibs.Services
                             {
                                 product.Id = (int)reader["id"];
                                 product.Name = reader["name"].ToString();
-                                product.ProductType = (int)reader["productType"];
+                                //product.ProductType = (int)reader["productType"];
                                 product.CategoryId = (int)reader["categoryId"];
                                 product.ImageUrl = reader["imageUrl"].ToString();
                                 product.ShortDesc = reader["shortDesc"].ToString();
@@ -221,6 +228,9 @@ namespace SonyAlphaLibs.Services
                                 product.MinDistance = reader["minDistance"].ToString();
                                 product.MaxDistance = reader["maxDistance"].ToString();
                                 product.LensDiameter = reader["lensDiameter"].ToString();
+                                product.Price = reader["price"].ToString();
+                                product.AlbumId = String.IsNullOrEmpty(reader["albumId"].ToString()) ? 0 : (int)reader["albumid"];
+                                product.ProductCover = reader["ProductCover"].ToString();
                                 product.Created = (DateTime)reader["Created"];
                                 product.Updated = (DateTime)reader["Updated"];
                             }
@@ -451,7 +461,7 @@ namespace SonyAlphaLibs.Services
                                 Product product = new Product();
                                 product.Id = (int)reader["id"];
                                 product.Name = reader["name"].ToString();
-                                product.ProductType = (int)reader["productType"];
+                                //product.ProductType = (int)reader["productType"];
                                 product.CategoryId = (int)reader["categoryId"];
                                 product.ImageUrl = reader["imageUrl"].ToString();
                                 product.ShortDesc = reader["shortDesc"].ToString();
@@ -467,6 +477,9 @@ namespace SonyAlphaLibs.Services
                                 product.LensDiameter = reader["lensDiameter"].ToString();
                                 product.Created = (DateTime)reader["Created"];
                                 product.Updated = (DateTime)reader["Updated"];
+                                product.Price = reader["price"].ToString();
+                                product.AlbumId = String.IsNullOrEmpty(reader["albumId"].ToString()) ? 0 : (int)reader["albumid"];
+                                product.ProductCover = reader["ProductCover"].ToString();
                                 lists.Add(product);
                             }
                         }

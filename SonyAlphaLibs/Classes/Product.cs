@@ -143,6 +143,24 @@ namespace SonyAlphaLibs
             set { listPhotoUrls = value; }
         }
 
+        private string price;
+
+        public string Price
+        {
+            get { return price; }
+            set { price = value; }
+        }
+
+        private int albumId;
+
+        public int AlbumId
+        {
+            get { return albumId; }
+            set { albumId = value; }
+        }
+
+        public string ProductCover { get; set; }
+        
         #endregion
 
         #region base method
