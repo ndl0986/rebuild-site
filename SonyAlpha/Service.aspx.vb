@@ -175,6 +175,7 @@ Public Class Service
             Dim num As Integer = CInt(Request.QueryString("num"))
             Dim listNews As New List(Of News)
             listNews = NewsServices.getListLastestNews(num, CN.ConnectionString)
+            GetMyResponse("200", New JavaScriptSerializer().Serialize(listNews))
         Catch ex As Exception
             GetMyResponse("500", "fail: " + ex.Message)
         End Try
