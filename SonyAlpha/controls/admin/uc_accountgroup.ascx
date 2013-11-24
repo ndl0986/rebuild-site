@@ -42,15 +42,19 @@
         <h4 class="heading">2. Tạo nhóm tài khoản</h4>
         <div class="clearfix"></div>
         <ul class="form">
-            <li class="row clerafix">
+            <%--<li class="row clearfix">
                 <div class="caption" >Nhóm Tài khoản :</div>
-                <div class="item"><asp:TextBox runat="server" ID="txtGroupId" CssClass="textbox" required minlength="4" maxlength="10"></asp:TextBox></div>
-            </li>
-            <li class="row clerafix">
-                <div class="caption" >Tên :</div>
+                <div class="item"><asp:TextBox runat="server" ID="txtGroupId" CssClass="textbox" ReadOnly="true" minlength="4" maxlength="10"></asp:TextBox></div>
+            </li>--%>
+            <li class="row clearfix">
+                <div class="caption" >Tên Nhóm:</div>
                 <div class="item"><asp:TextBox runat="server" ID="txtGroupName" CssClass="textbox" required maxlength="50"></asp:TextBox></div>
             </li>
-            <li class="row clerafix">
+            <li class="row clearfix">
+                <div class="caption" >Nhóm quản trị :</div>
+                <div class="item"><asp:CheckBox ID="chkIsSupper" runat="server" required /></div>
+            </li>
+            <li class="row clearfix">
                 <div class="caption" ></div>
                 <div class="item textright" >
                     <button class="action btnOk" runat="server" ID="btnSave" disabled="disabled" ><span class="label">Lưu</span></button>

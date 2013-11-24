@@ -32,15 +32,6 @@ Partial Public Class uc_accountgroup
     Protected WithEvents grvGroupAccount As Global.System.Web.UI.WebControls.GridView
 
     '''<summary>
-    '''txtGroupId control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents txtGroupId As Global.System.Web.UI.WebControls.TextBox
-
-    '''<summary>
     '''txtGroupName control.
     '''</summary>
     '''<remarks>
@@ -48,6 +39,15 @@ Partial Public Class uc_accountgroup
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents txtGroupName As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''chkIsSupper control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents chkIsSupper As Global.System.Web.UI.WebControls.CheckBox
 
     '''<summary>
     '''btnSave control.
