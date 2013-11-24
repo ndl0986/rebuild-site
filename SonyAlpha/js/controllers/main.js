@@ -125,6 +125,14 @@ function convertTime(time){
     return result.join('-') + ' ' + t.join(':');
 }
 
+
+function parseProductCategory(data){
+    var targetContent = $('#loadContent');
+    var catContent = $('#categoryContent');
+    var html=$.parseJSON(data.message);
+    catContent.html(html.Description);
+}
+
 $(document).ready(function () {
     var aspx = $('#hdfPage').val();
     checkLoged('isLoged');
@@ -210,6 +218,20 @@ $(document).ready(function () {
             });
 
             break;
+        case 'productcate':
+            $('#product_categories .title_banner_text a').click(function(e){
+                $(this).parents('.category_item').click();
+                return false;
+            });
+            $('#product_categories .category_item').click(function(e){
+                var productcateId = $(this).attr('data-id');
+                getCategoryById(productcateId,function(data){
+                    parseProductCategory(data);
+                });
+                getProductByCategoryId(productcateId,function(data){
+                    console.log(data);
+                });
+            });
         default:
             break;
     }
@@ -327,9 +349,7 @@ function doPostComment(albumId,photoId,comment,callback) {
     });
 }
 
-function getProductByCategoryId() {
-    var categoryId = 0;
-
+function getProductByCategoryId(categoryId,callback) {
     $.ajax({
         type: 'GET',
         timeout: 5000,
@@ -337,6 +357,7 @@ function getProductByCategoryId() {
         //data: { "categoryid": categoryId },
         success: function (response) {
             response = jQuery.parseJSON(response);
+            if($.isFunction(callback))callback(response);
             // do some thing
         },
         error: function (jqXHR, textStatus, errorThrown) {
@@ -376,6 +397,23 @@ function getListComments(photoId,callback){
         },
         error: function (jqXHR, textStatus, errorThrown) {
             console.log('error' + textStatus);
+        }
+    });
+}
+
+function getCategoryById(categoryId,callback) {
+    $.ajax({
+        type: 'GET',
+        timeout: 5000,
+        url: '/service.aspx?name=getproductcategorybyid&categoryid=' + categoryId,
+        //data: { "categoryid": categoryId },
+        success: function (response) {
+            response = jQuery.parseJSON(response);
+            if($.isFunction(callback))callback(response);
+            // do some thing
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log('error');
         }
     });
 }

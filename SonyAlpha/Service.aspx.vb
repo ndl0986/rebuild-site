@@ -61,6 +61,8 @@ Public Class Service
                         GetProductById()
                     Case "getuserbyusername"
                         GetUserByUserName()
+                    Case "getproductcategorybyid"
+                        GetProductCategoryById()
                 End Select
             Else
                 GetMyResponse("500", "Nothing todo!")
@@ -68,7 +70,16 @@ Public Class Service
         End If
         
     End Sub
-
+    Private Sub GetProductCategoryById()
+        Try
+            Dim categoryId As Integer = CInt(Request.QueryString("categoryid"))
+            Dim categoryP As New ProductCategory
+            categoryP = ProductServices.getProductCategoryById(categoryId, CN.ConnectionString)
+            GetMyResponse("200", New JavaScriptSerializer().Serialize(categoryP))
+        Catch ex As Exception
+            GetMyResponse("500", "fail: " + ex.Message)
+        End Try
+    End Sub
     Private Sub DoLogin()
         Try
             Dim username As String = Request.Params.Get("username")
@@ -88,7 +99,7 @@ Public Class Service
         Catch ex As Exception
             GetMyResponse("500", "fail: " + ex.Message)
         End Try
-        
+
     End Sub
 
     Private Sub GetUserInfo()
