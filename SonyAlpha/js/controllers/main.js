@@ -78,6 +78,33 @@ function parseSonyCenterSlide(){
     $('.bxslider').bxSlider({pagerCustom: '#bxpager'});
 }
 
+function parseAlbumSlide(){
+    var items = $('#UpdatePanelMain .ul_list_albums img');
+    var slide = $('<div></div>');
+    $('#albumSlide').append(slide);
+    if(items.length){
+        slide.append(items.clone());
+        slide.addClass('theme-default').nivoSlider({
+            effect: "random",
+            slices: 15,
+            boxCols: 8,
+            boxRows: 4,
+            animSpeed: 500,
+            pauseTime: 3000,
+            startSlide: 0,
+            directionNav: false,
+            directionNavHide: true,
+            controlNav: true,
+            controlNavThumbs: false,
+            controlNavThumbsFromRel: false,
+            keyboardNav: true,
+            pauseOnHover: true,
+            captionOpacity: 0.5,
+            manualAdvance: false
+        });        
+    }
+}
+
 $(document).ready(function () {
     var aspx = $('#hdfPage').val();
     checkLoged('isLoged');
@@ -142,6 +169,9 @@ $(document).ready(function () {
                 height: '358px',
                 alwaysVisible: true
             });
+            break;
+        case 'album':
+            parseAlbumSlide();
             break;
         default:
             break;

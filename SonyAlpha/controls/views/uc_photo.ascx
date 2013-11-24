@@ -11,9 +11,9 @@
             <div class="photo-analysis"><asp:Label runat="server" ID="lblVote"></asp:Label>/<asp:Label runat="server" ID="lblView"></asp:Label></div>
         </div>
         <div class="photo-actions">
-            <a class="btn flat orange ico ico-zoom" href="javascript:void(0);">Phóng lớn<em></em></a>
-            <a class="btn flat orange ico ico-vote" href="javascript:void(0);">Bình chọn<em></em></a>
-            <a class="btn flat ico ico-fb" href="javascript:void(0);"></a>
+            <a class="btn orange ico ico-zoom" href="javascript:void(0);">Phóng lớn<em></em></a>
+            <a class="btn orange ico ico-vote" href="javascript:void(0);">Bình chọn<em></em></a>
+            <a class="btn ico ico-fb" href="javascript:void(0);"></a>
         </div>
     </div>
     <div class="photo-comment">
