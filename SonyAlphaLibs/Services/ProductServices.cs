@@ -255,6 +255,7 @@ namespace SonyAlphaLibs.Services
                         cmd.Parameters.AddWithValue("@parentId", productCategory.ParentId);
                         cmd.Parameters.AddWithValue("@description", productCategory.Description);
                         cmd.Parameters.AddWithValue("@seoUrl", productCategory.SeoUrl);
+                        cmd.Parameters.AddWithValue("@coverphoto", productCategory.CoverPhoto);
                         SqlParameter returnVal = new SqlParameter("@returnVal", SqlDbType.Int);
                         returnVal.Direction = ParameterDirection.Output;
                         cmd.Parameters.Add(returnVal);
@@ -292,6 +293,7 @@ namespace SonyAlphaLibs.Services
                         cmd.Parameters.AddWithValue("@parentId", productCategory.ParentId);
                         cmd.Parameters.AddWithValue("@description", productCategory.Description);
                         cmd.Parameters.AddWithValue("@seoUrl", productCategory.SeoUrl);
+                        cmd.Parameters.AddWithValue("@coverphoto", productCategory.CoverPhoto);
                         SqlParameter returnVal = new SqlParameter("@returnVal", SqlDbType.Int);
                         returnVal.Direction = ParameterDirection.Output;
                         cmd.Parameters.Add(returnVal);
@@ -367,6 +369,7 @@ namespace SonyAlphaLibs.Services
                                 productCategory.ParentId = (int)reader["parentId"];
                                 productCategory.Description = reader["description"].ToString();
                                 productCategory.SeoUrl = reader["seoUrl"].ToString();
+                                productCategory.CoverPhoto = reader["coverphoto"].ToString();
                                 productCategory.Created = (DateTime)reader["Created"];
                                 productCategory.Updated = (DateTime)reader["Updated"];
                                 lists.Add(productCategory);
@@ -409,6 +412,7 @@ namespace SonyAlphaLibs.Services
                                 productCategory.ParentId = (int)reader["parentId"];
                                 productCategory.Description = reader["description"].ToString();
                                 productCategory.SeoUrl = reader["seoUrl"].ToString();
+                                productCategory.CoverPhoto = reader["coverphoto"].ToString();
                                 productCategory.Created = (DateTime)reader["Created"];
                                 productCategory.Updated = (DateTime)reader["Updated"];
                             }
@@ -472,6 +476,50 @@ namespace SonyAlphaLibs.Services
                 {
                     writeLog("", "Get All Product Error: " + ex.Message, connString);
                     return new List<Product>();
+                }
+            }
+            return lists;
+            #endregion
+        }
+
+        public static List<ProductCategory> getListAllProductCategoryChild(int parentCategoryid, string connString)
+        {
+            #region code
+            List<ProductCategory> lists = new List<ProductCategory>();
+            using (SqlConnection conn = new SqlConnection(connString))
+            {
+                try
+                {
+                    conn.Open();
+                    using (SqlCommand cmd = conn.CreateCommand())
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.CommandText = "sony_sp_get_all_product_category_child";
+                        cmd.Parameters.AddWithValue("@productCategoryId", parentCategoryid);
+
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                ProductCategory productCategory = new ProductCategory();
+                                productCategory.Id = (int)reader["id"];
+                                productCategory.Name = reader["name"].ToString();
+                                productCategory.AlbumId = String.IsNullOrEmpty(reader["albumId"].ToString()) ? 0 : (int)reader["albumId"];
+                                productCategory.ParentId = (int)reader["parentId"];
+                                productCategory.Description = reader["description"].ToString();
+                                productCategory.SeoUrl = reader["seoUrl"].ToString();
+                                productCategory.CoverPhoto = reader["coverphoto"].ToString();
+                                productCategory.Created = (DateTime)reader["Created"];
+                                productCategory.Updated = (DateTime)reader["Updated"];
+                                lists.Add(productCategory);
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    writeLog("", "Get All Product Category Error: " + ex.Message, connString);
+                    return new List<ProductCategory>();
                 }
             }
             return lists;

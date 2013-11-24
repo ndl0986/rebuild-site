@@ -49,6 +49,14 @@ namespace SonyAlphaLibs
             set { seoUrl = value; }
         }
 
+        private string coverPhoto;
+
+        public string CoverPhoto
+        {
+            get { return coverPhoto; }
+            set { coverPhoto = value; }
+        }
+
         #endregion
 
         #region base method
