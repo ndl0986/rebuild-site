@@ -15,7 +15,7 @@ Public Class uc_admin_addproduct
                 ddlProductCategory.DataValueField = "Id"
                 ddlProductCategory.DataBind()
             End If
-            listAlbums = AlbumServices.getListAllNormalAlbum(CN.ConnectionString)
+            listAlbums = AlbumServices.getListAllAlbumForProductCategory(CN.ConnectionString)
             If Not listAlbums.Count = 0 Then
                 ddlAlbumList.DataSource = listAlbums
                 ddlAlbumList.DataTextField = "FullName"
