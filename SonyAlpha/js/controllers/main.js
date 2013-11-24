@@ -1,4 +1,4 @@
-﻿function checkLoged(id) { if ($('#' + id).val() == 1) { $('.logined').show(); $('.notlogin').hide(); } else { $('.logined').hide(); $('.notlogin').show(); } }
+﻿function checkLoged(id) { if ($('#' + id).val() == 1) { $('.logined').show(); $('.not_logined').hide(); } else { $('.logined').hide(); $('.not_logined').show(); } }
 function togglePopup() { $('html').toggleClass('popupmode'); }
 function isPopupmode() { if ($('html').hasClass('popupmode')) { return true; } else { return false; } }
 function addBreadcum() {
@@ -214,9 +214,14 @@ function hideLoading(){
 }
 
 $(document).ready(function () {
+
+    checkLoged('isLoged');
+
+
     var aspx = $('#hdfPage').val();
     checkLoged('isLoged');
     addBreadcum();
+    AddThis();
     var mainBanner = $('.banner_container');
     var fluidBanner = $('.banner_container.type_0'), leftBanner = $('.banner_container.type_1'), rightBanner = $('.banner_container.type_2');
     if (mainBanner.hasClass('type_0') || mainBanner.hasClass('type_1')) {
@@ -267,6 +272,30 @@ $(document).ready(function () {
         });
     }
 
+    var reg = $('#formReg');
+    var sign = $('#formSign')
+
+    $('#hplSignup').click(function(){
+        if(reg.hasClass('hide')){
+            reg.removeClass('hide');
+            reg.fadeIn(300);
+        }
+    });
+
+    $('#hplSignin').click(function(){
+        if(sign.hasClass('hide')){
+            sign.removeClass('hide');
+            sign.fadeIn(300);
+        }
+    });
+
+    $($('.bgFormPopup').children('.close')).click(function(){
+        if(!$(this).parent().hasClass('hide')){
+            //$(this).parent().fadeOut(300,function(){
+                $(this).parent().addClass('hide');
+            //});
+        }
+    });
 
     switch (aspx) {
         case 'seller':
@@ -296,7 +325,7 @@ $(document).ready(function () {
                     getListComments(photoId,function(data){parseComments(data)});
                 });
             });
-
+            $('.fancybox').fancybox();
             break;
         case 'productcate':
             $('#loadContent').hide();
@@ -555,4 +584,10 @@ function getListPhotos(albumId,callback){
             console.log('error' + textStatus);
         }
     });
+}
+
+
+function AddThis(){
+    var html ='<li><div><a href="https://link.apps.zing.vn/share?u=https://alpha.sony.com.vn/&amp;t=Sony Alpha" target="_blank"></a><!-- AddThis Button BEGIN --><a class="addthis_button" href="https://www.addthis.com/bookmark.php?v=250&amp;pubid=xa-4f476065601b5428"><img src="https://s7.addthis.com/static/btn/v2/lg-share-en.gif" width="125" height="16" alt="Bookmark and Share" style="border:0"></a><script type="text/javascript" src="https://s7.addthis.com/js/250/addthis_widget.js#pubid=xa-4f476065601b5428" tabindex="1000"></script><div id="_atssh" style="visibility: hidden; height: 1px; width: 1px; position: absolute; z-index: 100000;"><iframe id="_atssh674" title="AddThis utility frame" style="height: 1px; width: 1px; position: absolute; z-index: 100000; border: 0px; left: 0px; top: 0px;" src="//s7.addthis.com/static/r07/sh142.html#iit=1385301130250&amp;tmr=load%3D1385301130016%26core%3D1385301130094%26main%3D1385301130250%26ifr%3D1385301130250&amp;cb=0&amp;cdn=0&amp;chr=UTF-8&amp;kw=&amp;ab=-&amp;dh=alpha.sony.com.vn&amp;dr=https%3A%2F%2Falpha.sony.com.vn%2Fhome%2Falpha_shop&amp;du=https%3A%2F%2Falpha.sony.com.vn%2Fhome%2Fongkinh&amp;dt=Sony&amp;dbg=0&amp;md=0&amp;cap=tc%3D0%26ab%3D0&amp;inst=1&amp;vcl=3&amp;jsl=33&amp;prod=true&amp;lng=vi&amp;ogt=&amp;pc=men&amp;pub=xa-4f476065601b5428&amp;ssl=1&amp;sid=5292048ae15b85a5&amp;srpl=1&amp;srcs=1&amp;srd=1&amp;srf=1&amp;srx=1&amp;ver=300&amp;xck=0&amp;xtr=0&amp;og=&amp;aa=0&amp;rev=124941&amp;ct=1&amp;xld=1&amp;xd=1"></iframe></div><script type="text/javascript" src="https://s7.addthis.com/static/r07/core111.js"></script><!-- AddThis Button END --></div></li>';
+    $('#nav').append(html);
 }

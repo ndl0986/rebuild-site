@@ -1,5 +1,7 @@
 ﻿<%@ Page Language="vb" AutoEventWireup="false" CodeBehind="Default.aspx.vb" Inherits="SonyAlpha._Default" %>
 <%@ OutputCache Duration="3000" Location="Client" VaryByParam="None" %>
+<%@ Register src="controls/views/uc_register.ascx" tagname="uc_register" tagprefix="uc1" %>
+<%@ Register src="controls/views/uc_login.ascx" tagname="uc_login" tagprefix="uc2" %>
 <!DOCTYPE html>
 <!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]><html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -18,6 +20,7 @@
     <meta content="" name="author"/>
     <link rel="stylesheet" type="text/css" href="css/reset.css"/>
     <link rel="stylesheet" type="text/css" href="css/styles.css"/>
+	<link rel="stylesheet" type="text/css" href="js/plugins/jquery.fancybox.css?v=2.1.5" media="screen" />
     <script type="text/javascript" src="<%=absoluteURL%>/js/libs/modernizr-2.5.3.min.js"></script>
 </head>
 <body>
@@ -29,8 +32,8 @@
             <div class="header-top-national">Việt Nam</div>
         </div>
         <div id="userStatus" class="clearfix">
-            <div class="logined"><asp:Label runat="server" ClientIDMode="Static" ID="lblUser" class="text username"></asp:Label></div>
-            <div class="not_logined"><a href="javascript:void(0);">Đăng ký</a><a href="javascript:void(0);">Đăng nhập</a></div>
+            <div class="logined"><asp:Label runat="server" ClientIDMode="Static" ID="lblUser" class="text username"></asp:Label>&nbsp;|&nbsp;<a href="/logout">Logout</a></div>
+            <div class="not_logined"><a id="hplSignup" href="javascript:void(0);">Đăng ký</a><a id="hplSignin" href="javascript:void(0);">Đăng nhập</a></div>
         </div>
         <div class="header-top-menu">
             <a href="http://www.sony.com.vn/support/productcategory/e+mount+camera" style="color: #FFF;">Hỗ trợ NEX</a>  |  
@@ -51,6 +54,8 @@
     <div id="footer" runat="server" class="clearfix"></div>
     </form>
     </div>
+    <div id="formReg" class="bgFormPopup hide"><a class="close"></a><uc1:uc_register ID="uc_register1" runat="server" /></div>
+    <div id="formSign" class="bgFormPopup hide"><a class="close"></a><uc2:uc_login ID="uc_login1" runat="server" /></div>
     <script type="text/javascript" src="<%=absoluteURL%>/js/libs/jquery-2.0.3.min.js"></script>
     <script type="text/javascript" src="<%=absoluteURL%>/js/libs/bootstrap.min.js"></script>
     <!--[if IE 8]>    
@@ -60,6 +65,8 @@
     <script type="text/javascript" src="<%=absoluteURL%>/js/plugins/jquery.bxslider.min.js"></script>
     <script type="text/javascript" src="<%=absoluteURL%>/js/plugins/jquery.nivo.slider.pack.js"></script>
     <script type="text/javascript" src="<%=absoluteURL%>/js/plugins/jquery.slimscroll.min.js"></script>
+	<script type="text/javascript" src="<%=absoluteURL%>/js/plugins/jquery.fancybox.js?v=2.1.5"></script>
     <script type="text/javascript" src="<%=absoluteURL%>/js/controllers/main.js"></script>
 </body>
 </html>
+

@@ -111,4 +111,22 @@ Partial Public Class _Default
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents footer As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+
+    '''<summary>
+    '''uc_register1 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents uc_register1 As Global.SonyAlpha.uc_register
+
+    '''<summary>
+    '''uc_login1 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents uc_login1 As Global.SonyAlpha.uc_login
 End Class

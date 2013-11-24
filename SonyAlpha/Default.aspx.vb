@@ -30,12 +30,18 @@ Public Class _Default
                 Session("accountname") = Request.Cookies("SonyAlpha").Values("accountname")
                 Session("accountgroup") = Request.Cookies("SonyAlpha").Values("accountgroup")
                 isLoged.Value = 1
-                lblUser.Text = "Xin chào, " + Session("membername") + "<em></em>"
+                lblUser.Text = Session("accountname")
             End If
         End If
 
         Try
             Select Case LCase(Request.QueryString("tpl"))
+                Case "logout"
+                    Session("accountid") = ""
+                    Session("accountname") = ""
+                    Session("accountgroup") = ""
+                    Response.Cookies("SonyAlpha").Expires = DateAdd(DateInterval.Day, -1, Now())
+                    Response.Redirect("/")
                 Case "album"
                     tpl = Page.LoadControl("controls/views/uc_album.ascx")
                 Case "albumdetail"

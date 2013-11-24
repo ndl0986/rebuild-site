@@ -3,12 +3,9 @@
     <h1>Bài viết mới nhất</h1>
     <ul class="list_lastestnews clearfix">
     <% For Each row As SonyAlphaLibs.News In listNews %>
-        <li class="small_news_item" data-id="<%=row.Id%>">
-            <div>
-                <img alt="<%= row.Title %>" src="<%= row.NewsImage %>"  height="40" width="40"/> <br />
-                <a href="<%= row.SeoUrl %>" style="color:Black;" ><%= row.Title %> </a><br />
-                <%= row.Created %><br />
-            </div>
+        <li class="small_news_item clearfix" data-id="<%=row.Id%>">
+            <div class="img"><img alt="<%= row.Title %>" src="<%= row.NewsImage %>"/></div>
+            <div class="text"><a class="title" href="<%= row.SeoUrl %>"><%= row.Title %></a><%= row.Created %></div>
         </li>
     <% Next%>
     </ul>

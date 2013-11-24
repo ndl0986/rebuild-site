@@ -30,6 +30,14 @@ Public Class uc_newscategory
             Else
                 bolType = False
                 listNewsInCat = SonyAlphaLibs.Services.NewsServices.getListNewsByCategory(catId, CN.ConnectionString)
+                Dim bllSetting As New SonyAlphaLibs.Setting
+                Dim bllPage As New SonyAlphaLibs.Page
+                bllSetting.Name = "menu_kythuat"
+                Dim intKyThuat As Integer = CInt(bllSetting.getByName(CN.ConnectionString))
+                Dim strHeader As String
+                bllPage.Id = intKyThuat
+                strHeader = bllPage.getById(CN.ConnectionString).PageContent
+                menuTech.InnerHtml = strHeader
             End If
 
 
