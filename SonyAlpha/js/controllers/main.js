@@ -236,7 +236,12 @@ function doRegister() {
         alert('Mật khẩu không trùng khớp!!!!!');
         return false;
     }
-
+    var capcha = $("#uc_register_txtCapcha").val();
+    var capchaBase = $("#uc_register_hdfCapcha").val();
+    if (capcha != capchaBase) {
+        alert('Sai mã bảo mật!!!!!');
+        return false;
+    }
     $.ajax({
         type: 'POST',
         timeout: 5000,
