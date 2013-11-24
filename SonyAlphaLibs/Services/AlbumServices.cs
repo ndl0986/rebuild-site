@@ -563,6 +563,7 @@ namespace SonyAlphaLibs.Services
                                 album.ViewCount = (int)reader["viewCount"];
                                 album.AlbumType = (int)reader["albumType"];
                                 album.AlbumCover = reader["albumCover"].ToString();
+                                album.TotalPhoto = (int)reader["TotalPhoto"];
                                 album.Created = (DateTime)reader["created"];
                                 album.Updated = (DateTime)reader["updated"];
                                 lists.Add(album);

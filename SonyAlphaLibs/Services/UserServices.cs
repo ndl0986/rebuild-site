@@ -181,6 +181,7 @@ namespace SonyAlphaLibs.Services
                         cmd.Parameters.AddWithValue("@fullname", user.FullName);
                         cmd.Parameters.AddWithValue("@status", user.Status ? 1 : 0);
                         cmd.Parameters.AddWithValue("@updated", user.Updated);
+                        cmd.Parameters.AddWithValue("@groupid", user.GroupId);
                         SqlParameter returnVal = new SqlParameter("@returnVal", SqlDbType.Int);
                         returnVal.Direction = ParameterDirection.Output;
                         cmd.Parameters.Add(returnVal);
@@ -324,6 +325,46 @@ namespace SonyAlphaLibs.Services
                 }
             }
             return rs;
+        }
+
+        public static List<UserSearch> getListUserByUserName(string userName, string connString)
+        {
+            #region code
+            List<UserSearch> lists = new List<UserSearch>();
+            using (SqlConnection conn = new SqlConnection(connString))
+            {
+                try
+                {
+                    conn.Open();
+                    using (SqlCommand cmd = conn.CreateCommand())
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.CommandText = "sony_sp_get_all_user_by_username";
+                        cmd.Parameters.AddWithValue("@username", userName);
+
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                UserSearch user = new UserSearch();
+                                user.Id = (int)reader["id"];
+                                user.FullName = reader["fullname"].ToString();
+                                user.UserName = reader["username"].ToString();
+                                user.Created = (DateTime)reader["registered"];
+                                user.Updated = (DateTime)reader["updated"];
+                                lists.Add(user);
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    writeLog("", "Get User Error: " + ex.Message, connString);
+                    return new List<UserSearch>();
+                }
+            }
+            return lists;
+            #endregion
         }
     }
 }
