@@ -16,6 +16,13 @@ Public Class uc_admin_addproduct
                 ddlProductCategory.DataBind()
             End If
             listAlbums = AlbumServices.getListAllAlbumForProductCategory(CN.ConnectionString)
+            If listAlbums.Count = 0 Then
+                Dim album As New Album
+                album.Id = 0
+                album.FullName = "---"
+                listAlbums.Add(album)
+            End If
+
             If Not listAlbums.Count = 0 Then
                 ddlAlbumList.DataSource = listAlbums
                 ddlAlbumList.DataTextField = "FullName"

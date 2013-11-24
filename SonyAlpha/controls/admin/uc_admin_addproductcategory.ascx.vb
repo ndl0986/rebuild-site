@@ -10,6 +10,12 @@ Public Class uc_admin_addproductcategory
         If Not Page.IsPostBack Then
             If listAlbums.Count = 0 Then
                 listAlbums = AlbumServices.getListAllAlbumForProductCategory(CN.ConnectionString)
+                If listAlbums.Count = 0 Then
+                    Dim album As New Album
+                    album.Id = 0
+                    album.FullName = "---"
+                    listAlbums.Add(album)
+                End If
             End If
             If listOtherCategory.Count = 0 Then
                 listOtherCategory = ProductServices.getListAllProductCategory(CN.ConnectionString)
