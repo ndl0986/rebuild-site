@@ -44,6 +44,7 @@ Public Class uc_photo
                 hplNext.CssClass = "hidden"
             End If
 
+            hdfAlbumId.Value = bllAlbum.Id
         Catch ex As Exception
 
         End Try

@@ -87,6 +87,7 @@ body { min-width: 320px; font-family: 'Tahoma'; font-size: 13px; font-weight: no
 textarea.textarea,
 input.textbox,
 input[type="text"].textbox {
+    outline: none;
     font-size: 16px;
     margin-bottom: 20px;
     background: #fff; height: 32px; border: solid 1px #c2c2c1; line-height: 32px; vertical-align: middle; padding: 0px; text-indent: 10px;
@@ -643,6 +644,25 @@ padding: 4px;
 .photo-view .photo-info .photo-analysis{float: right;}
 .photo-view .photo-info a { color: #000; font-weight: bold; display: inline-block; margin-left: 10px;}
 .photo-view .photo-info a:hover { text-decoration: underline;}
+.photo-view .share-fb { background: #000; width: 30px;}
+.photo-view .photo-actions { text-align: right; margin: 10px 20px;}
+.photo-comment { float: left; width: 530px; margin-left: 20px; background: #efefef; min-height: 200px; padding: 0px 10px 10px 10px;}
+.photo-specs {margin-left: 580px;padding-left: 10px;margin-right: 20px;}
+.photo-page .heading {height: 55px;color: #fe3500;font-size: 29px;line-height: 50px; margin-bottom: 10px; border-bottom: solid 1px #ccc;}
+.photo-specs span { display: inline-block; font-size: 12px; line-height: 20px;}
+.photo-specs .label { width: 130px;}
+.form-comment .avatar,
+#ulComments .avatar{ width: 54px; height: 54px; overflow: hidden; display: inline-block; float: left;background: url('../img/no_avatar.png') no-repeat }
+.form-comment .post-area { margin-left: 74px; position: relative;}
+.form-comment .post-area:before {}
+.post-area textarea.textbox { width: 450px;}
+.post-area .btn { float: right;}
+
+#ulComments li { margin: 10px 0px;}
+#ulComments .comment_content { margin-left: 70px; font-size: 12px;}
+#ulComments .user_name { font-weight: bold;}
+#ulComments .comment_detail { line-height: 16px; margin: 5px 0px;}
+#ulComments .comment_time{ color: #999; font-size: 11px; font-style: italic;}
 /* Mobile style */
 @media screen and (max-width: 719px) {
     .container { width: auto; margin: auto 10px;}

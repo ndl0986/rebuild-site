@@ -39,4 +39,13 @@ Partial Public Class uc_photo
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents hplUploader As Global.System.Web.UI.WebControls.HyperLink
+
+    '''<summary>
+    '''hdfAlbumId control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents hdfAlbumId As Global.System.Web.UI.WebControls.HiddenField
 End Class

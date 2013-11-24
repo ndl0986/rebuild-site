@@ -105,6 +105,26 @@ function parseAlbumSlide(){
     }
 }
 
+function parseComments(data){
+    //console.log($.parseJSON(data.message));
+    var ul=$('#ulComments');
+    ul.html('');
+    var cmt = $.parseJSON(data.message);
+    var html='';
+    for(var i=0;i<cmt.length;i++){
+        html+= '<li id="comment_'+ cmt[i].Id +'" class="clearfix"><a href="javascript:void(0);" class="avatar"></a><div class="comment_content"><div class="user_name">'
+        html+= cmt[i].UserName + '</div><div class="comment_detail">' + cmt[i].Comment + '</div><div class="comment_time">' + convertTime(cmt[i].Created.replace('/Date(','').replace(')/','')) + '</div></div></li>'
+    }
+    ul.append(html);
+}
+
+function convertTime(time){
+    var d = new Date(parseFloat(time));
+    var result=[d.getDate(),d.getMonth() + 1,d.getFullYear()]
+    var t = [d.getHours(),curr_m = d.getMinutes(),curr_s = d.getSeconds()];
+    return result.join('-') + ' ' + t.join(':');
+}
+
 $(document).ready(function () {
     var aspx = $('#hdfPage').val();
     checkLoged('isLoged');
@@ -176,6 +196,19 @@ $(document).ready(function () {
             break;
         case 'albumdetail':
             parseAlbumSlide();
+            break;
+        case 'photo':
+            var albumId = $('#hdfAlbumId').val(),photoId = $('#imgMain').attr('data-id');
+            getListComments(photoId,function(data){parseComments(data)});
+
+            $('#btnPostComment').click(function(){
+                var html = $('#txtComment').val();
+                doPostComment(albumId,photoId ,html,function(){
+                    $('#txtComment').val('');
+                    getListComments(photoId,function(data){parseComments(data)});
+                });
+            });
+
             break;
         default:
             break;
@@ -272,11 +305,8 @@ function doSendMail() {
     });
 }
 
-function doPostComment() {
-    var albumId = 0;
-    var photoId = 0;
-    var comment = '';
-
+function doPostComment(albumId,photoId,comment,callback) {
+    //console.log('doPostComment');
     $.ajax({
         type: 'POST',
         timeout: 5000,
@@ -284,11 +314,7 @@ function doPostComment() {
         data: { "albumid": albumId, "photoid": photoId, "comment": comment },
         success: function (response) {
             response = jQuery.parseJSON(response);
-            if (response.message == "ok") {
-                // flow to show result ok
-            } else {
-                // flow to show result not ok
-            }
+            if($.isFunction(callback))callback(response);
         },
         error: function (jqXHR, textStatus, errorThrown) {
             console.log('error');
@@ -328,6 +354,23 @@ function getProductById() {
         },
         error: function (jqXHR, textStatus, errorThrown) {
             console.log('error');
+        }
+    });
+}
+
+function getListComments(photoId,callback){
+    $.ajax({
+        type: 'GET',
+        timeout: 5000,
+        url: '/service.aspx?name=getlistcomment&photoid=' + photoId,
+        //data: { "productd": productId },
+        success: function (response) {
+            response = jQuery.parseJSON(response);
+            if($.isFunction(callback))callback(response);
+            // do some thing
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log('error' + textStatus);
         }
     });
 }
