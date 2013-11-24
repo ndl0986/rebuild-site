@@ -299,11 +299,16 @@ $(document).ready(function () {
 
             break;
         case 'productcate':
+            $('#loadContent').hide();
+            var li = $('#product_categories .category_item');
             $('#product_categories .title_banner_text a').click(function(e){
                 $(this).parents('.category_item').click();
                 return false;
             });
             $('#product_categories .category_item').click(function(e){
+                $('#loadContent').hide(300);
+                li.removeClass('active');
+                $(this).addClass('active');
                 showLoading($('#loadContent'));
                 var productcateId = $(this).attr('data-id');
                 getCategoryById(productcateId,function(data){
@@ -312,6 +317,7 @@ $(document).ready(function () {
                 getProductByCategoryId(productcateId,function(data){
                     parseProductsList(data);
                 });
+                $('#loadContent').show(300);
             });
         default:
             break;
