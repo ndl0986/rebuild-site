@@ -264,15 +264,25 @@ function doRegister() {
         alert('Sai mã bảo mật!!!!!');
         return false;
     }
+    var phone = $("#uc_register_txtPhone").val();
+    if (!isPhonenumber(phone)) {
+        alert('Số điện thoại không hợp lệ!!!!!');
+        return false;
+    }
+    var email = $("#uc_register_txtEmail").val();
+    if (!isEmail(email)) {
+        alert('Email không hợp lệ!!!!!');
+        return false;
+    }
     $.ajax({
         type: 'POST',
         timeout: 5000,
         url: '/service.aspx?name=register',
-        data: { "username": usn, "password": pass, "fullname": fullname },
+        data: { "username": usn, "password": pass, "fullname": fullname, "phone": phone, "email": email },
         success: function (response) {
             response = jQuery.parseJSON(response);
             if (response.message == "ok") {
-                alert('Đăng ký thành công!!!!');
+                alert('Đăng ký thành công!!!! Email xác nhận đã được gửi tới ' + email);
             } else {
                 alert('Đăng ký không thành công!!!!');
             }
@@ -416,4 +426,23 @@ function getCategoryById(categoryId,callback) {
             console.log('error');
         }
     });
+}
+
+function isEmail(email) {
+    var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+
+    if (!filter.test(email)) {
+        return false;
+    }
+    return true;
+}
+
+function isPhonenumber(input)
+{
+//  var phoneno = /^\d{10}$/;
+//  if(input.value.match(phoneno)) {
+//    return true;
+//  }
+    //  return false;
+    return true;
 }

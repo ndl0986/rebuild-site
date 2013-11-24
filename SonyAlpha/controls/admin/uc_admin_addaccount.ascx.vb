@@ -26,6 +26,8 @@ Public Class uc_admin_addaccount
                     user.FullName = txtFullName.Text
                     user.Status = chkStatus.Checked
                     user.GroupId = ddlUserGroup.SelectedValue
+                    user.Phone = txtPhone.Text
+                    user.Email = txtEmail.Text
                     If user.add(CN.ConnectionString) Then
                         Dim newId As Integer = UserServices.getCurrentMaxId("sony_user", CN.ConnectionString)
                         Response.Redirect("?tpl=editaccount&id=" & CStr(newId))

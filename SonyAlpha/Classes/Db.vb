@@ -376,4 +376,14 @@ Public Module Db
             Return ""
         End Try
     End Function
+
+    Public Function GetParamsActive(ByVal username As String, ByVal email As String)
+        Try
+            Dim text As String = username + "_" + email
+            text = base64Encode(text)
+            Return "/Service.aspx?name=activeuser&q=" + text
+        Catch ex As Exception
+            Return ""
+        End Try
+    End Function
 End Module

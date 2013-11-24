@@ -23,6 +23,8 @@ Public Class uc_admin_editaccount
                     txtUName.Text = user.UserName
                     ddlUserGroup.SelectedValue = user.GroupId
                     chkStatus.Checked = user.Status
+                    txtPhone.Text = user.Phone
+                    txtEmail.Text = user.Email
                 End If
             End If
         End If
@@ -35,7 +37,9 @@ Public Class uc_admin_editaccount
                 user.FullName = txtFullName.Text
                 user.Status = chkStatus.Checked
                 user.GroupId = ddlUserGroup.SelectedValue
-                If user.updateFullNameStatusGroup(CN.ConnectionString) Then
+                user.Phone = txtPhone.Text
+                user.Email = txtEmail.Text
+                If user.update(CN.ConnectionString) Then
                     ScriptManager.RegisterStartupScript(Me, GetType(String), "Message", "alert('Lưu User thành công !!!');", True)
                 Else
                     ScriptManager.RegisterStartupScript(Me, GetType(String), "Message", "alert('Lưu User không thành công !!!');", True)

@@ -63,6 +63,8 @@ Public Class Service
                         GetUserByUserName()
                     Case "getproductcategorybyid"
                         GetProductCategoryById()
+                    Case "activeuser"
+                        DoActiveUser()
                 End Select
             Else
                 GetMyResponse("500", "Nothing todo!")
@@ -122,15 +124,26 @@ Public Class Service
             Dim username As String = Request.Params.Get("username")
             Dim password As String = Request.Params.Get("password")
             Dim fullname As String = Request.Params.Get("fullname")
-            Dim status As Boolean = True
+            Dim phone As String = Request.Params.Get("phone")
+            Dim email As String = Request.Params.Get("email")
+            Dim status As Boolean = False
 
             Dim user As New User
             user.UserName = username
             user.PassWord = base64Encode(password)
             user.FullName = fullname
             user.Status = status
+            user.Phone = phone
+            user.Email = email
 
             If user.add(CN.ConnectionString) Then
+                Dim http As String = "http://" + HttpContext.Current.Request.UrlReferrer.Host
+                Dim activeUrl As String = http + GetParamsActive(username, email)
+                Dim mailFrom As String = SettingServices.getByName("adminMailFrom", CN.ConnectionString)
+                Dim mailFromPass As String = SettingServices.getByName("adminMailPass", CN.ConnectionString)
+                Dim subject As String = "Active Userinfo from SonyAlpha"
+                Dim mailcontent As String = "Please complete your registration by click on url : " + activeUrl
+                Sendmail(mailFrom, mailFromPass, email, subject, mailcontent)
                 GetMyResponse("200", "ok")
             Else
                 GetMyResponse("200", "fail")
@@ -172,27 +185,38 @@ Public Class Service
             Dim phone As String = Request.Params.Get("phone")
             Dim productName As String = Request.Params.Get("productname")
             Dim content As String = Request.Params.Get("mailcontent")
-
-            Dim smtpClient As New Net.Mail.SmtpClient
-            Dim message As New Net.Mail.MailMessage
+            
             Dim toAddress As String = SettingServices.getByName("adminMailTo", CN.ConnectionString)
             Dim mailFrom As String = SettingServices.getByName("adminMailFrom", CN.ConnectionString)
-            Dim fromAddress As New Net.Mail.MailAddress(SettingServices.getByName("adminMailFrom", CN.ConnectionString), toAddress)
-
-            smtpClient.Host = SettingServices.getByName("smtpHost", CN.ConnectionString)
-            smtpClient.Port = SettingServices.getByName("smtpPort", CN.ConnectionString)
-            smtpClient.Credentials = New Net.NetworkCredential(mailFrom, SettingServices.getByName("adminMailPass", CN.ConnectionString))
-            smtpClient.EnableSsl = True
-
-            message.From = fromAddress
-            message.To.Add(toAddress)
-            message.Subject = fullname + "_" + phone + "_" + productName
-            message.IsBodyHtml = False
-            message.Body = "From: " + email + " " + content
-            smtpClient.Send(message)
+            Dim mailFromPass As String = SettingServices.getByName("adminMailPass", CN.ConnectionString)
+            Dim subject As String = fullname + "_" + phone + "_" + productName
+            Dim mailcontent As String = "From: " + email + " " + content
+            Sendmail(mailFrom, mailFromPass, toAddress, subject, mailcontent)
             GetMyResponse("200", "ok")
         Catch ex As Exception
             GetMyResponse("500", "fail: " + ex.Message)
+        End Try
+    End Sub
+
+    Private Sub Sendmail(ByVal mailFrom As String, ByVal mailFromPass As String, ByVal mailTo As String, ByVal subject As String, _
+                         ByVal content As String)
+        Try
+            Dim fromAddress As New Net.Mail.MailAddress(mailFrom, mailTo)
+            Dim smtpClient As New Net.Mail.SmtpClient
+            Dim message As New Net.Mail.MailMessage
+            smtpClient.Host = SettingServices.getByName("smtpHost", CN.ConnectionString)
+            smtpClient.Port = SettingServices.getByName("smtpPort", CN.ConnectionString)
+            smtpClient.Credentials = New Net.NetworkCredential(mailFrom, mailFromPass)
+            smtpClient.EnableSsl = True
+
+            message.From = fromAddress
+            message.To.Add(mailTo)
+            message.Subject = subject
+            message.IsBodyHtml = False
+            message.Body = content
+            smtpClient.Send(message)
+        Catch ex As Exception
+
         End Try
     End Sub
 
@@ -291,6 +315,28 @@ Public Class Service
             Dim listUsers As New List(Of UserSearch)
             listUsers = UserServices.getListUserByUserName(username, CN.ConnectionString)
             GetMyResponse("200", New JavaScriptSerializer().Serialize(listUsers))
+        Catch ex As Exception
+            GetMyResponse("500", "fail: " + ex.Message)
+        End Try
+    End Sub
+
+    Private Sub DoActiveUser()
+        Try
+            Dim query As String = Request.QueryString("q")
+            Dim usn_email As String = base64Decode(query)
+            Dim arrs As String() = usn_email.Split("_")
+            Dim username As String = arrs(0)
+            Dim mail As String = arrs(1)
+            Dim user As New User
+            user = UserServices.getByUserName(username, CN.ConnectionString)
+            If Not user.Id = 0 Then
+                user.Status = True
+                If user.update(CN.ConnectionString) Then
+                    Response.Write("Congratulations! Your account has been actived!")
+                Else
+                    Response.Write("Opps! Activate account fail!")
+                End If
+            End If
         Catch ex As Exception
             GetMyResponse("500", "fail: " + ex.Message)
         End Try
