@@ -39,7 +39,7 @@
         <%If tblShop.Count > 0 Then%>
         <ul class="template ul_list_shop clearfix">
         <%For Each shop In tblShop%>
-            <li class="sonycenter_info" data-province="<%=shop.Province%>" data-provinces="<%=shop.ProvinceName%>"><div class="table_cell"><%= shop.Name%></div><div class="table_cell"><%= shop.Address%></div><div class="table_cell"><%= shop.OpenTime%> : <%=shop.CloseTime %></div><div class="table_cell"><%= shop.Phone%></div><div class="table_cell"></div></li>
+            <li class="sonycenter_info" data-province="<%=shop.Province%>" data-provinces="<%=shop.ProvinceName%>"><div class="table_cell"><%= shop.Name%></div><div class="table_cell"><%= shop.Address%></div><div class="table_cell"><%= shop.OpenTime%> : <%=shop.CloseTime %></div><div class="table_cell"><%= shop.Phone%></div><div class="table_cell"><a href="/Default.aspx?tpl=map&long=<%= shop.Longitude%>&lat=<%= shop.Latitude%>" style="color:Black;">Bản đồ</a></div></li>
         <%Next%>
         </ul>
         <%End If%>
