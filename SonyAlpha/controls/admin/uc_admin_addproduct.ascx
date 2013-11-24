@@ -12,21 +12,7 @@
             <li class="row clerafix">
                 <div class="caption" >Tên sản phẩm :</div>
                 <div class="item"><asp:TextBox runat="server" ID="txtName" CssClass="textbox" required MaxLength="150" ></asp:TextBox></div>
-            </li>
-            <li class="row clerafix">
-                <div class="caption" >Loại sản phẩm :</div>
-                <div class="item">
-                    <label class="selectfake">
-                        <asp:DropDownList runat="server" ID="ddlProductType">
-                            <asp:ListItem Value="1">Sản phẩm loại 1</asp:ListItem>
-                            <asp:ListItem Value="2">Sản phẩm loại 2</asp:ListItem>
-                            <asp:ListItem Value="3">Sản phẩm loại 3</asp:ListItem>
-                            <asp:ListItem Value="4">Sản phẩm loại 4</asp:ListItem>
-                            <asp:ListItem Value="5">Sản phẩm loại 5</asp:ListItem>
-                        </asp:DropDownList>
-                    </label>
-                </div>
-            </li>
+            </li>            
             <li class="row clerafix">
                 <div class="caption" >Danh mục sản phẩm :</div>
                 <div class="item">
@@ -46,6 +32,10 @@
                 </div>
             </li>
             <li class="row clerafix">
+                <div class="caption" >Album :</div>
+                <div class="item"><label class="selectfake"><asp:DropDownList runat="server" ID="ddlAlbumList" DataTextField="centerImage" DataValueField="centerImage"></asp:DropDownList></label></div>
+            </li>
+            <li class="row clerafix">
                 <div class="caption" >Mô tả ngắn :</div>
                 <div class="item"><asp:TextBox runat="server" ID="txtShortDesc" CssClass="textbox" MaxLength="300" TextMode="MultiLine"
                         Columns="100" Rows="10"></asp:TextBox></div>
@@ -55,6 +45,10 @@
                 <div class="item">
                     <FCKeditorV2:FCKeditor ID="txtDescription" runat="server" Height="500px"></FCKeditorV2:FCKeditor>
                 </div>
+            </li>
+            <li class="row clerafix">
+                <div class="caption" >Giá sản phẩm :</div>
+                <div class="item"><asp:TextBox runat="server" ID="txtPrice" CssClass="textbox" required MaxLength="150" ></asp:TextBox></div>
             </li>
             <li class="row clerafix">
                 <div class="caption" >Trạng thái :</div>

@@ -25,7 +25,7 @@ Public Class uc_admin_addproduct
         If Page.IsPostBack Then
             Dim product As New Product
             product.Name = txtName.Text
-            product.ProductType = ddlProductType.SelectedValue
+            'product.ProductType = ddlProductType.SelectedValue
             product.CategoryId = ddlProductCategory.SelectedValue
             product.ImageUrl = txtFileName.Text
             product.ShortDesc = txtShortDesc.Text

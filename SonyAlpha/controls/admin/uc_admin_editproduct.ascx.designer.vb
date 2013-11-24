@@ -23,15 +23,6 @@ Partial Public Class uc_admin_editproduct
     Protected WithEvents txtName As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
-    '''ddlProductType control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents ddlProductType As Global.System.Web.UI.WebControls.DropDownList
-
-    '''<summary>
     '''ddlProductCategory control.
     '''</summary>
     '''<remarks>
@@ -77,6 +68,15 @@ Partial Public Class uc_admin_editproduct
     Protected WithEvents txtFileName As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
+    '''ddlAlbumList control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents ddlAlbumList As Global.System.Web.UI.WebControls.DropDownList
+
+    '''<summary>
     '''txtShortDesc control.
     '''</summary>
     '''<remarks>
@@ -93,6 +93,15 @@ Partial Public Class uc_admin_editproduct
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents txtDescription As Global.FredCK.FCKeditorV2.FCKeditor
+
+    '''<summary>
+    '''txtPrice control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtPrice As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
     '''chkStatus control.

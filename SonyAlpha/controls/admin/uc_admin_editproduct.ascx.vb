@@ -3,6 +3,7 @@ Imports SonyAlphaLibs.Services
 Public Class uc_admin_editproduct
     Inherits System.Web.UI.UserControl
     Public listProductCategory As New List(Of ProductCategory)
+    Public listAlbums As New List(Of Album)
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         Page.ClientScript.RegisterOnSubmitStatement(txtDescription.GetType(), "txtMessage", "FCKUpdateLinkedField('" + txtDescription.ClientID + "');")
@@ -13,6 +14,13 @@ Public Class uc_admin_editproduct
                 ddlProductCategory.DataTextField = "Name"
                 ddlProductCategory.DataValueField = "Id"
                 ddlProductCategory.DataBind()
+            End If
+            listAlbums = AlbumServices.getListAllNormalAlbum(CN.ConnectionString)
+            If Not listAlbums.Count = 0 Then
+                ddlAlbumList.DataSource = listAlbums
+                ddlAlbumList.DataTextField = "FullName"
+                ddlAlbumList.DataValueField = "Id"
+                ddlAlbumList.DataBind()
             End If
             Dim id As String = Request.QueryString("id")
             If Not String.IsNullOrEmpty(id) Then
@@ -26,7 +34,7 @@ Public Class uc_admin_editproduct
         product = ProductServices.getById(id, CN.ConnectionString)
         If Not product.Id = 0 Then
             txtName.Text = product.Name
-            ddlProductType.SelectedValue = product.ProductType
+            'ddlProductType.SelectedValue = product.ProductType
             ddlProductCategory.SelectedValue = product.CategoryId
             txtFileName.Text = product.ImageUrl
             txtShortDesc.Text = product.ShortDesc
@@ -40,6 +48,8 @@ Public Class uc_admin_editproduct
             txtMinDistance.Text = product.MinDistance
             txtMaxDistance.Text = product.MaxDistance
             txtLensDiameter.Text = product.LensDiameter
+            ddlAlbumList.SelectedValue = product.AlbumId
+            txtPrice.Text = product.Price
             txtCreated.Text = product.Created
             txtUpdated.Text = product.Updated
         End If
@@ -50,7 +60,7 @@ Public Class uc_admin_editproduct
                 Dim product As New Product
                 product.Id = CInt(Request.QueryString("id"))
                 product.Name = txtName.Text
-                product.ProductType = ddlProductType.SelectedValue
+                'product.ProductType = ddlProductType.SelectedValue
                 product.CategoryId = ddlProductCategory.SelectedValue
                 product.ImageUrl = txtFileName.Text
                 product.ShortDesc = txtShortDesc.Text
@@ -64,6 +74,8 @@ Public Class uc_admin_editproduct
                 product.MinDistance = txtMinDistance.Text
                 product.MaxDistance = txtMaxDistance.Text
                 product.LensDiameter = txtLensDiameter.Text
+                product.Price = txtPrice.Text
+                product.AlbumId = ddlAlbumList.SelectedValue
                 If product.update(CN.ConnectionString) Then
                     ScriptManager.RegisterStartupScript(Me, GetType(String), "Message", "alert('Lưu Sản phẩm thành công !!!');", True)
                 Else
