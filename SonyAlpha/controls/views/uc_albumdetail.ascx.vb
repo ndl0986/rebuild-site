@@ -14,6 +14,7 @@ Public Class uc_albumdetail
 
             Dim tblAlbum As New SonyAlphaLibs.Album
             tblAlbum.Id = CInt(id)
+            tblAlbum.increaseView(CN.ConnectionString)
             tblAlbum = tblAlbum.getById(CN.ConnectionString)
             uc_albumInfo.Value = tblAlbum.FullName
             bllPhoto = tblAlbum.ListPhotos
