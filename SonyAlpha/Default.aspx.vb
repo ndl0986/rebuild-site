@@ -53,7 +53,7 @@ Public Class _Default
                 Case "sellerdetail"
                     tpl = Page.LoadControl("controls/views/uc_sellerdetail.ascx")
                 Case "productcate"
-                    tpl = Page.LoadControl("controls/views/uc_product.ascx")
+                    tpl = Page.LoadControl("controls/views/uc_productcategory.ascx")
                 Case "page"
                     tpl = Page.LoadControl("controls/views/uc_page.ascx")
                 Case "register"

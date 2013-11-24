@@ -39,7 +39,7 @@ Public Class uc_admin_addproductcategory
                 productCategory.ParentId = ddlParentCategory.SelectedValue
                 productCategory.AlbumId = ddlAlbums.SelectedValue
                 productCategory.Description = txtDescription.Value
-
+                productCategory.CoverPhoto = txtPhotoURL.Value
                 If productCategory.add(CN.ConnectionString) Then
                     Dim newId As Integer = ProductServices.getCurrentMaxId("sony_product_category", CN.ConnectionString)
                     productCategory.Id = newId

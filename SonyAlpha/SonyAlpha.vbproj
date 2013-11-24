@@ -162,6 +162,7 @@
     <Content Include="controls\views\uc_page.ascx" />
     <Content Include="controls\views\uc_photo.ascx" />
     <Content Include="controls\views\uc_product.ascx" />
+    <Content Include="controls\views\uc_productcategory.ascx" />
     <Content Include="controls\views\uc_register.ascx" />
     <Content Include="controls\views\uc_seller.ascx" />
     <Content Include="controls\views\uc_sellerdetail.ascx" />
@@ -1106,6 +1107,13 @@
     </Compile>
     <Compile Include="controls\views\uc_product.ascx.vb">
       <DependentUpon>uc_product.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\views\uc_productcategory.ascx.designer.vb">
+      <DependentUpon>uc_productcategory.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\views\uc_productcategory.ascx.vb">
+      <DependentUpon>uc_productcategory.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="controls\views\uc_register.ascx.designer.vb">

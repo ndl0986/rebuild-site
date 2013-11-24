@@ -50,6 +50,7 @@ Public Class uc_admin_editproductcategory
                     productCategory.ParentId = ddlParentCategory.SelectedValue
                     productCategory.AlbumId = ddlAlbums.SelectedValue
                     productCategory.Description = txtDescription.Value
+                    productCategory.CoverPhoto = txtPhotoURL.Value
                     If String.IsNullOrEmpty(productCategory.SeoUrl) Then
                         productCategory.SeoUrl = ProductCategorySeUrl(id, productCategory.Name)
                     End If
@@ -77,6 +78,7 @@ Public Class uc_admin_editproductcategory
         '    productCategory.SeoUrl = ProductCategorySeUrl(id, productCategory.Name)
         'End If
         txtSeoUrl.Text = productCategory.SeoUrl
+        txtPhotoURL.Value = productCategory.CoverPhoto
         txtCreated.Text = productCategory.Created
         txtUpdated.Text = productCategory.Updated
     End Sub
