@@ -65,12 +65,14 @@ Public Class Service
                         GetProductCategoryById()
                     Case "activeuser"
                         DoActiveUser()
+                    Case "getlistphotobyalbum"
+                        GetListPhotoByAlbum()
                 End Select
             Else
                 GetMyResponse("500", "Nothing todo!")
             End If
         End If
-        
+
     End Sub
     Private Sub GetProductCategoryById()
         Try
@@ -151,7 +153,7 @@ Public Class Service
         Catch ex As Exception
             GetMyResponse("500", "fail: " + ex.Message)
         End Try
-        
+
     End Sub
 
     Private Sub GetPage()
@@ -185,7 +187,7 @@ Public Class Service
             Dim phone As String = Request.Params.Get("phone")
             Dim productName As String = Request.Params.Get("productname")
             Dim content As String = Request.Params.Get("mailcontent")
-            
+
             Dim toAddress As String = SettingServices.getByName("adminMailTo", CN.ConnectionString)
             Dim mailFrom As String = SettingServices.getByName("adminMailFrom", CN.ConnectionString)
             Dim mailFromPass As String = SettingServices.getByName("adminMailPass", CN.ConnectionString)
@@ -337,6 +339,21 @@ Public Class Service
                     Response.Write("Opps! Activate account fail!")
                 End If
             End If
+        Catch ex As Exception
+            GetMyResponse("500", "fail: " + ex.Message)
+        End Try
+    End Sub
+
+    Private Sub GetListPhotoByAlbum()
+        Try
+            Dim albumId As Integer = CInt(Request.QueryString("albumid"))
+            Dim listPhotos As New List(Of Photo)
+            Dim album As New Album
+            album = AlbumServices.getById(albumId, CN.ConnectionString)
+            If Not album.Id = 0 Then
+                listPhotos = AlbumServices.getPhotoOfAlbum(album.AlbumImage, CN.ConnectionString)
+            End If
+            GetMyResponse("200", New JavaScriptSerializer().Serialize(listPhotos))
         Catch ex As Exception
             GetMyResponse("500", "fail: " + ex.Message)
         End Try
