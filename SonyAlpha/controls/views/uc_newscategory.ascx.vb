@@ -7,10 +7,13 @@ Public Class uc_newscategory
     Public listNewsInCat As New List(Of SonyAlphaLibs.News)
     Public listTop As New List(Of SonyAlphaLibs.News)
     Public bolType As Boolean = False
+    Public intMenu As String
+    Public catId As String
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         Try
-            Dim catId As Integer
+
             catId = Request.QueryString("id")
+            intMenu = Request.QueryString("mId")
             bllNewsCategory.Id = CInt(catId)
             Dim lstCats As New List(Of SonyAlphaLibs.NewsCategory)
             lstCats = bllNewsCategory.getListChild(CN.ConnectionString)

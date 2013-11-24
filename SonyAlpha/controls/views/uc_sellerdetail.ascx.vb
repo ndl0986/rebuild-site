@@ -11,8 +11,7 @@ Public Class uc_sellerdetail
             id = CInt(Request.QueryString("id"))
             tblDetail = SonyAlphaLibs.Services.SonyCenterServices.getCenterById(id, CN.ConnectionString)
             tblAlbum = SonyAlphaLibs.Services.AlbumServices.getById(tblDetail.CenterImage, CN.ConnectionString)
-            tblImages = tblAlbum.ListPhotos
-
+            tblImages = tblAlbum.getPhotoOfAlbum(CN.ConnectionString)
         Catch ex As Exception
 
         End Try

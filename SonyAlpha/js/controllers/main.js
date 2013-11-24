@@ -61,6 +61,23 @@ function parseShopCenter() {
     }
      
 }
+
+function parseSonyCenterSlide(){
+    //console.log(sonyCenterImages);
+    var target = $('#sonyCenterSlides');
+    var html='',html2='';
+    html= '<ul class="bxslider">';
+    html2='<div id="bxpager">';
+    for(var i=0;i<sonyCenterImages.length;i++){
+        html+='<li><img src="'+sonyCenterImages[i]+'" /></li>';
+        html2+='<a data-slide-index="'+i+'" href=""><img src="'+sonyCenterImages[i]+'" /></a>';
+    }
+    html+='</ul>';
+    html2+='</div>';
+    target.append(html).append(html2);
+    $('.bxslider').bxSlider({pagerCustom: '#bxpager'});
+}
+
 $(document).ready(function () {
     var aspx = $('#hdfPage').val();
     checkLoged('isLoged');
@@ -118,6 +135,13 @@ $(document).ready(function () {
     switch (aspx) {
         case 'seller':
             parseShopCenter();
+            break;
+        case 'sellerdetail':
+            parseSonyCenterSlide();
+            $('.shop-desc-content').slimScroll({
+                height: '358px',
+                alwaysVisible: true
+            });
             break;
         default:
             break;

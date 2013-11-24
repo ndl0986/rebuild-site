@@ -23,7 +23,7 @@ video { max-width: 100%;}
 .clearfix { *zoom: 1; }
 
 .relative{ position: relative;}
-img{ border: none; display: block;}
+img{ border: none;}
 /* =============================================================================
  *   Links
  * ========================================================================== */
@@ -517,6 +517,38 @@ Author URI: http://dev7studios.com
 .title_banner_text a { font-size: 14px; display: block; margin: 0px 15px; line-height: 40px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;}
 .list_news li { min-height: 260px; width: 48%; vertical-align: top; display: inline-block; margin-bottom: 20px;margin-right: 2%; border-bottom: dashed 1px #000;}
 .list_news .detail_item { padding-right: 10px;}
+
+
+#sonyCenterSlides{ float: right; width: 570px; padding: 15px 20px;}
+#sonyCenterSlides li{ height: 315px; border-radius: 20px;-webkit-border-radius: 20px;-moz-border-radius: 20px; overflow: hidden;}
+.bx-wrapper img {max-width: 100%;display: block;}
+#sonyCenterSlides #bxpager {text-align: center; font-size: 0;}
+#bxpager a {margin: 0; overflow: hidden; width: 85px; height: 50px; display:inline-block; border:solid 5px #fff;}
+#bxpager a img {border: none; min-width: 100%; height: auto; min-height: 50px;}
+#bxpager a:hover,
+#bxpager a.active {border-color: #5280DD;}
+
+.shop-desc{ float: left; width: 280px; margin: 15px 20px;}
+.shop-desc .title,
+.detail_thongtin .title{
+    font-size: 12px;font-weight: bold; text-indent: 15px; height: 30px; line-height: 30px; border-left: solid 10px #febf01;
+    background: #d6d4d4; /* Old browsers */
+    /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+    background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2Q2ZDRkNCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNmZmZmZmYiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+    background: -moz-linear-gradient(left,  #d6d4d4 0%, #ffffff 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, right top, color-stop(0%,#d6d4d4), color-stop(100%,#ffffff)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(left,  #d6d4d4 0%,#ffffff 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(left,  #d6d4d4 0%,#ffffff 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(left,  #d6d4d4 0%,#ffffff 100%); /* IE10+ */
+    background: linear-gradient(to right,  #d6d4d4 0%,#ffffff 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d6d4d4', endColorstr='#ffffff',GradientType=1 ); /* IE6-8 */
+}
+.shop-desc-content { height: 388px; padding-right: 30px;}
+#googleMap{ width: 470px; height: 270px; float: left; margin-left: 20px; margin-top: 30px;}
+.detail_thongtin { margin-left: 510px; margin-top: 30px;}
+.detail_thongtin .title{ margin-bottom: 20px;}
+.detail_thongtin .label { width: 85px;}
+.detail_thongtin span { display: inline-block; vertical-align: top; line-height: 20px;}
 .template { display: none;}
 .thumb_news {
 width: 224px;
@@ -565,6 +597,12 @@ padding: 4px;
 .single .title_news { margin-left: 146px;}
 .single .title_news a { margin-bottom: 2px;}
 .single .news_view {position: static; background: none; margin-left: 146px; color: #000; font-style: italic; padding-left: 0px;}
+
+.news_detail{ margin: 20px;}
+.news_detail .title {font-size: 20px;font-weight: bold;color: #fe3500;margin-top: 30px;}
+.news_detail .view_count {width: 100%;color: #000;font-size: 14px;font-style: italic;margin-top: 5px;}
+.news_detail .content { margin-top: 20px;}
+.news_detail .description { font-weight: bold; margin-bottom: 15px; font-size: 15px;}
 /* Mobile style */
 @media screen and (max-width: 719px) {
     .container { width: auto; margin: auto 10px;}
