@@ -55,6 +55,23 @@ namespace SonyAlphaLibs
             set { base.Created = value; }
         }
 
+        private string phone;
+
+        public string Phone
+        {
+            get { return phone; }
+            set { phone = value; }
+        }
+
+        private string email;
+
+        public string Email
+        {
+            get { return email; }
+            set { email = value; }
+        }
+        
+
         public string GroupName { get; set; }
         public string DefaultPass { get; set; }
         #endregion

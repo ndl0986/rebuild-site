@@ -27,8 +27,10 @@ namespace SonyAlphaLibs.Services
                         cmd.Parameters.AddWithValue("@password", user.PassWord);
                         cmd.Parameters.AddWithValue("@fullname", user.FullName);
                         cmd.Parameters.AddWithValue("@status", user.Status ? 1 : 0);
-                        cmd.Parameters.AddWithValue("@registered", user.Registered);
-                        cmd.Parameters.AddWithValue("@updated", user.Updated);
+                        //cmd.Parameters.AddWithValue("@registered", user.Registered);
+                        //cmd.Parameters.AddWithValue("@updated", user.Updated);
+                        cmd.Parameters.AddWithValue("@phone", user.Phone);
+                        cmd.Parameters.AddWithValue("@email", user.Email);
                         SqlParameter returnVal = new SqlParameter("@indentity", SqlDbType.Int);
                         returnVal.Direction = ParameterDirection.Output;
                         cmd.Parameters.Add(returnVal);
@@ -43,6 +45,44 @@ namespace SonyAlphaLibs.Services
                 }
             }
             return rs; 
+            #endregion
+        }
+
+        public static bool update(User user, string connString)
+        {
+            #region code
+            bool rs = false;
+            using (SqlConnection conn = new SqlConnection(connString))
+            {
+                try
+                {
+                    conn.Open();
+                    using (SqlCommand cmd = conn.CreateCommand())
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.CommandText = "sony_sp_update_user";
+                        cmd.Parameters.AddWithValue("@username", user.UserName);
+                        //cmd.Parameters.AddWithValue("@password", user.PassWord);
+                        cmd.Parameters.AddWithValue("@fullname", user.FullName);
+                        cmd.Parameters.AddWithValue("@status", user.Status ? 1 : 0);
+                        //cmd.Parameters.AddWithValue("@updated", user.Updated);
+                        cmd.Parameters.AddWithValue("@groupid", user.GroupId);
+                        cmd.Parameters.AddWithValue("@phone", user.Phone);
+                        cmd.Parameters.AddWithValue("@email", user.Email);
+                        SqlParameter returnVal = new SqlParameter("@returnVal", SqlDbType.Int);
+                        returnVal.Direction = ParameterDirection.Output;
+                        cmd.Parameters.Add(returnVal);
+
+                        cmd.ExecuteNonQuery();
+                        rs = ((int)cmd.Parameters["@returnVal"].Value != 0);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    return false;
+                }
+            }
+            return rs;
             #endregion
         }
 
@@ -72,6 +112,8 @@ namespace SonyAlphaLibs.Services
                                 user.GroupId = (int)reader["groupId"];
                                 user.Status = reader["status"].ToString().Equals("1") ||
                                     reader["status"].ToString().Equals("True");
+                                user.Phone = reader["phone"].ToString();
+                                user.Email = reader["email"].ToString();
                             }
                         }
                     }
@@ -111,6 +153,8 @@ namespace SonyAlphaLibs.Services
                                 user.Registered = (DateTime)reader["registered"];
                                 user.Updated = (DateTime)reader["updated"];
                                 user.GroupName = reader["groupname"].ToString();
+                                user.Phone = reader["phone"].ToString();
+                                user.Email = reader["email"].ToString();
                                 lists.Add(user);
                             }
                         }
@@ -124,6 +168,8 @@ namespace SonyAlphaLibs.Services
             return lists; 
             #endregion
         }
+
+        
 
         public static bool login(User user, String connString)
         {
@@ -145,54 +191,22 @@ namespace SonyAlphaLibs.Services
                         cmd.Parameters.AddWithValue("@username", userName);
 
                         String getPass = "";
+                        bool status = false;
                         using (SqlDataReader reader = cmd.ExecuteReader())
                         {
                             while (reader.Read())
                             {
-                                getPass = reader.GetString(2);
+                                getPass = reader["password"].ToString();
+                                status = reader["status"].ToString().Equals("1") || reader["status"].ToString().Equals("True");
                                 break;
                             }
                         }
-                        rs = (!String.IsNullOrEmpty(getPass) && getPass == passWord);
+                        rs = (!String.IsNullOrEmpty(getPass) && getPass == passWord && status);
                     }
                 }
                 catch (Exception ex)
                 {
                     return rs;
-                }
-            }
-            return rs;
-        }
-
-        public static bool update(User user, string connString)
-        {
-            bool rs = false;
-            using (SqlConnection conn = new SqlConnection(connString))
-            {
-                try
-                {
-                    conn.Open();
-                    using (SqlCommand cmd = conn.CreateCommand())
-                    {
-                        cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.CommandText = "sony_sp_update_user";
-                        cmd.Parameters.AddWithValue("@username", user.UserName);
-                        cmd.Parameters.AddWithValue("@password", user.PassWord);
-                        cmd.Parameters.AddWithValue("@fullname", user.FullName);
-                        cmd.Parameters.AddWithValue("@status", user.Status ? 1 : 0);
-                        cmd.Parameters.AddWithValue("@updated", user.Updated);
-                        cmd.Parameters.AddWithValue("@groupid", user.GroupId);
-                        SqlParameter returnVal = new SqlParameter("@returnVal", SqlDbType.Int);
-                        returnVal.Direction = ParameterDirection.Output;
-                        cmd.Parameters.Add(returnVal);
-
-                        cmd.ExecuteNonQuery();
-                        rs = ((int)cmd.Parameters["@returnVal"].Value != 0);
-                    }
-                }
-                catch (Exception ex)
-                {
-                    return false;
                 }
             }
             return rs;
@@ -223,6 +237,8 @@ namespace SonyAlphaLibs.Services
                                 rs.Updated = (DateTime)reader["updated"];
                                 rs.FullName = reader["fullname"].ToString();
                                 rs.GroupId = (int)reader["groupId"];
+                                rs.Phone = reader["phone"].ToString();
+                                rs.Email = reader["email"].ToString();
                                 break;
                             }
                         }
@@ -252,6 +268,8 @@ namespace SonyAlphaLibs.Services
                         cmd.Parameters.AddWithValue("@fullname", user.FullName);
                         cmd.Parameters.AddWithValue("@status", user.Status ? 1 : 0);
                         cmd.Parameters.AddWithValue("@groupId", user.GroupId);
+                        cmd.Parameters.AddWithValue("@phone", user.Phone);
+                        cmd.Parameters.AddWithValue("@email", user.Email);
                         SqlParameter returnVal = new SqlParameter("@returnVal", SqlDbType.Int);
                         returnVal.Direction = ParameterDirection.Output;
                         cmd.Parameters.Add(returnVal);
@@ -270,6 +288,7 @@ namespace SonyAlphaLibs.Services
 
         public static bool resetPasswordToDefault(string userName, string defaultpass, string connString)
         {
+            #region code
             bool rs = false;
             using (SqlConnection conn = new SqlConnection(connString))
             {
@@ -295,7 +314,8 @@ namespace SonyAlphaLibs.Services
                     return false;
                 }
             }
-            return rs;
+            return rs; 
+            #endregion
         }
 
         public static bool removeById(int id, string connString)
@@ -364,6 +384,38 @@ namespace SonyAlphaLibs.Services
                 }
             }
             return lists;
+            #endregion
+        }
+
+        public static bool changePassword(string userName, string pass, string connString)
+        {
+            #region code
+            bool rs = false;
+            using (SqlConnection conn = new SqlConnection(connString))
+            {
+                try
+                {
+                    conn.Open();
+                    using (SqlCommand cmd = conn.CreateCommand())
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.CommandText = "sony_sp_update_user_pass";
+                        cmd.Parameters.AddWithValue("@username", userName);
+                        cmd.Parameters.AddWithValue("@password", pass);
+                        SqlParameter returnVal = new SqlParameter("@returnVal", SqlDbType.Int);
+                        returnVal.Direction = ParameterDirection.Output;
+                        cmd.Parameters.Add(returnVal);
+
+                        cmd.ExecuteNonQuery();
+                        rs = ((int)cmd.Parameters["@returnVal"].Value != 0);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    return false;
+                }
+            }
+            return rs;
             #endregion
         }
     }
