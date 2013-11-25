@@ -46,8 +46,10 @@
                 </div>
             </li>
             <li class="row clearfix">
-                <div><select class="reg_label jqTransformHidden" id="uc_register_product" style="">
-						<option value="">SẢN PHẨM SỬ DỤNG:</option>
+                <div class="caption">SẢN PHẨM SỬ DỤNG:</div>
+                <div class="item">
+                    <select class="reg_label jqTransformHidden" id="uc_register_product" style="">
+						<option value=""></option>
 						<option value="1">DSLR-A100</option>
 						<option value="2">DSLR-A200/A290</option>
 						<option value="3">DSLR-A300/A350</option>
@@ -66,6 +68,8 @@
 						<option value="16">NEX-7</option>
                     </select>
                 </div>
+            </li>
+            <li class="right clearfix">
                     <a href="javascript:void(0);" class="btn flat orange upper" id="uc_register_btnOk">Đăng ký</a>
                     <a href="javascript:void(0);" class="btn flat orange upper" id="uc_register_btnCancel">Hủy</a>
             </li>

@@ -1,18 +1,14 @@
 ﻿<%@ Control Language="vb" AutoEventWireup="false" CodeBehind="uc_login.ascx.vb" Inherits="SonyAlpha.uc_login" %>
-<div class="content">
-<ul class="form frmSignIn">
-    <li><div id="title_frm">ĐĂNG NHẬP</div></li>
+<div class="content clearfix">
+<div class="title_frm">ĐĂNG NHẬP</div>
+<ul class="form frmSignIn floatleft">
     <li class="clearfix">
         <div class="caption">Tên đăng nhập :</div>
-        <div class="item">
-            <input id="uc_login_txtUserName" class="textbox" required maxlength="50"/>
-        </div>
+        <div class="item"><input id="uc_login_txtUserName" class="textbox" required maxlength="50"/></div>
     </li>
     <li class="clearfix">
         <div class="caption">Mật khẩu :</div>
-        <div class="item">
-            <input id="uc_login_txtPWD" class="textbox" required maxlength="100" type="password"/>
-        </div>
+        <div class="item"><input id="uc_login_txtPWD" class="textbox" required maxlength="100" type="password"/></div>
     </li>
     <li class="clearfix">
         <div class="caption">Mã bảo mật :</div>
@@ -21,7 +17,9 @@
             <input id="uc_login_txtCapcha" class="textbox" required maxlength="50"/>                   
             <input type="hidden" id="uc_login_hdfCapcha" value="<%= randomCode %>" />
         </div>
-    </li>       
+    </li>
+</ul>
+<ul class="form frmSignIn floatleft">
     <li class="clearfix">
         <div class="item"> <div class="caption">Ghi nhớ đăng nhập :</div>
             <input name="uc_login_chkSaveLogin" id="uc_login_chkSaveLogin" type="checkbox" />

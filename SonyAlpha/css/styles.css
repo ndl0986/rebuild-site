@@ -779,16 +779,23 @@ border-radius: 0px 0px 5px 5px;-webkit-border-radius: 0px 0px 5px 5px;-moz-borde
 .bgFormPopup { display: block; position: fixed; left:50%; margin-left: -430px; top: 50%; margin-top: -251px; width: 860px;height: 502px;background: url(../img/bg_popup_reg.png) no-repeat 0px 0px; z-index: 9999;}
 .bgFormPopup.hide{  display: none; z-index: -1;}
 .bgFormPopup .close{background: url('../img/close.png') no-repeat;cursor: pointer;height: 35px;position: absolute;right: -15px;top: -15px;width: 35px;}
-.bgFormPopup .form{background: #1B1B1B;width: 544px;height: 324px;margin-left: 105px;margin-top: 134px; font-size: 0;}
-.bgFormPopup .form .row { display: inline-block; width: 48%; margin-left: 1%; font-size: 13px; color: #fff; padding: 5px 0px; vertical-align: top;}
+
+.bgFormPopup .content{background: #1B1B1B;width: 544px;height: 324px;margin-left: 105px;margin-top: 134px; font-size: 0;}
+.bgFormPopup .form .row { display: inline-block; width: 46%; margin-left: 4%; font-size: 13px; color: #fff; padding: 5px 0px; vertical-align: top;}
+.bgFormPopup .title_frm { height: 50px; font-size: 25px;color: #fe3500; line-height: 50px; margin-left: 30px;}
+.bgFormPopup .form .right { width: 94%; text-align: right; font-size: 13px;}
 .bgFormPopup textarea.textarea,
 .bgFormPopup input.textbox,
-.bgFormPopup input[type="text"].textbox { margin-bottom: 0px; width: 220px; height: 28px;}
+.bgFormPopup input[type="text"].textbox,
+.bgFormPopup select { margin-bottom: 0px; width: 220px; height: 28px;}
 .bgFormPopup .form .caption { text-transform: uppercase; height: 30px; padding-left: 20px; line-height: 20px;background: url('../img/reg_label_bg.png') no-repeat;}
 #imgCaptcha {float: left; width: 110px;}
 #imgCaptcha + input { float: left; margin-left: 10px; width: 100px;}
 
-.frmSignIn li { color: #fff; margin-left: 30px; margin-bottom: 20px;}
+.frmSignIn { width: 272px;}
+.frmSignIn li { color: #999; margin-left: 30px; margin-bottom: 20px; font-size: 13px;}
+.frmSignIn li a { color: #666;}
+.frmSignIn li a:hover { color: #fe3500;}
 .frmSignIn .caption { font-size: 13px; text-transform: uppercase;}
 .frmSignIn .btn{ width: 88px;
 font-size: 13px;
