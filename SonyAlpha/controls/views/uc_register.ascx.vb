@@ -6,6 +6,9 @@
         Dim startIndex As Integer = r.[Next](1, 5)
         Dim length As Integer = r.[Next](5, 10)
         randomCode = Guid.NewGuid().ToString().Replace("-", "0").Substring(startIndex, length)
+        If randomCode.Length > 8 Then
+            randomCode = randomCode.Substring(0, randomCode.Length - 8)
+        End If
     End Sub
 
 End Class

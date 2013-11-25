@@ -390,11 +390,12 @@ function doRegister() {
         alert('Email không hợp lệ!!!!!');
         return false;
     }
+    var productused = $("#uc_register_product").val();
     $.ajax({
         type: 'POST',
         timeout: 5000,
         url: '/service.aspx?name=register',
-        data: { "username": usn, "password": pass, "fullname": fullname, "phone": phone, "email": email },
+        data: { "username": usn, "password": pass, "fullname": fullname, "phone": phone, "email": email, "productused": productused },
         success: function (response) {
             response = jQuery.parseJSON(response);
             if (response.message == "ok") {

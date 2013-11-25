@@ -128,6 +128,7 @@ Public Class Service
             Dim fullname As String = Request.Params.Get("fullname")
             Dim phone As String = Request.Params.Get("phone")
             Dim email As String = Request.Params.Get("email")
+            Dim productused As String = Request.Params.Get("productused")
             Dim status As Boolean = False
 
             Dim user As New User
@@ -137,9 +138,10 @@ Public Class Service
             user.Status = status
             user.Phone = phone
             user.Email = email
+            user.ProductUsed = productused
 
             If user.add(CN.ConnectionString) Then
-                Dim http As String = "http://" + HttpContext.Current.Request.UrlReferrer.Host
+                Dim http As String = ConfigurationManager.AppSettings("URL")
                 Dim activeUrl As String = http + GetParamsActive(username, email)
                 Dim mailFrom As String = SettingServices.getByName("adminMailFrom", CN.ConnectionString)
                 Dim mailFromPass As String = SettingServices.getByName("adminMailPass", CN.ConnectionString)

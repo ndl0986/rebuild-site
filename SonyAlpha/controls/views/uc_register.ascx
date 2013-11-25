@@ -46,7 +46,7 @@
                 </div>
             </li>
             <li class="row clearfix">
-                <div><select class="reg_label jqTransformHidden" id="product" style="">
+                <div><select class="reg_label jqTransformHidden" id="uc_register_product" style="">
 						<option value="">SẢN PHẨM SỬ DỤNG:</option>
 						<option value="1">DSLR-A100</option>
 						<option value="2">DSLR-A200/A290</option>
