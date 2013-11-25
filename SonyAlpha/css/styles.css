@@ -719,7 +719,7 @@ overflow: hidden;
 #categoryContent { margin: 20px 0px 0px 0px; font-size: 0; width: 848px !important;}
 #listItems {width: 848px !important;}
 #listItems ul { margin: 20px 0px 20px 1%;}
-#listItems li { width: 28%; padding: 20px 2.5%; display: inline-block; vertical-align: top; border-bottom: solid 1px #ccc;border-right: solid 1px #ccc;}
+#listItems li { width: 28%; padding: 20px 2.5%; display: inline-block; vertical-align: top; border-bottom: solid 1px #ccc;border-right: solid 1px #ccc; height: 260px;}
 #listItems li.third { border-right-color: transparent;}
 #listItems .product_img_wrapper {display: block;width: 112px;float: left}
 #listItems li .text {display: block;margin-left: 120px;font-size: 12px;line-height: 16px;min-height: 80px;}
