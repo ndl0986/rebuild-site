@@ -74,6 +74,7 @@ namespace SonyAlphaLibs
 
         public string GroupName { get; set; }
         public string DefaultPass { get; set; }
+        public string ProductUsed { get; set; } // user for register
         #endregion
 
         #region base method

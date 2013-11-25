@@ -343,6 +343,5 @@ namespace SonyAlphaLibs.Services
             return lists;
             #endregion
         }
-
     }
 }

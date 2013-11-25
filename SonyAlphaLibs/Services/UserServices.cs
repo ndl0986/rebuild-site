@@ -31,6 +31,7 @@ namespace SonyAlphaLibs.Services
                         //cmd.Parameters.AddWithValue("@updated", user.Updated);
                         cmd.Parameters.AddWithValue("@phone", user.Phone);
                         cmd.Parameters.AddWithValue("@email", user.Email);
+                        cmd.Parameters.AddWithValue("@productused", String.IsNullOrEmpty(user.ProductUsed) ? " " : user.ProductUsed);
                         SqlParameter returnVal = new SqlParameter("@indentity", SqlDbType.Int);
                         returnVal.Direction = ParameterDirection.Output;
                         cmd.Parameters.Add(returnVal);
@@ -155,6 +156,7 @@ namespace SonyAlphaLibs.Services
                                 user.GroupName = reader["groupname"].ToString();
                                 user.Phone = reader["phone"].ToString();
                                 user.Email = reader["email"].ToString();
+                                user.ProductUsed = reader["productused"].ToString();
                                 lists.Add(user);
                             }
                         }
@@ -239,6 +241,7 @@ namespace SonyAlphaLibs.Services
                                 rs.GroupId = (int)reader["groupId"];
                                 rs.Phone = reader["phone"].ToString();
                                 rs.Email = reader["email"].ToString();
+                                rs.ProductUsed = reader["productused"].ToString();
                                 break;
                             }
                         }
