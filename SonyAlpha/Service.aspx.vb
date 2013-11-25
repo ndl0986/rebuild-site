@@ -32,6 +32,8 @@ Public Class Service
                         DoRegister()
                     Case "login"
                         DoLogin()
+                    Case "loginmail"
+                        DoLoginMail()
                     Case "sendmailfaq"
                         DoSendMailFaq()
                     Case "postcomment"
@@ -93,6 +95,32 @@ Public Class Service
                 user.UserName = username
                 user.PassWord = base64Encode(password)
                 If user.login(CN.ConnectionString) Then
+                    user = user.getByUserName(CN.ConnectionString)
+                    Session("accountid") = user.UserName
+                    'Session("accountpass") = user.PassWord
+                    Session("accountname") = user.FullName
+                    Dim userGroup As New UserGroup
+                    UserGroup.Id = user.GroupId
+                    UserGroup = UserGroup.getById(CN.ConnectionString)
+                    Session("accountgroup") = UserGroup.GroupName
+
+                    If Request.Browser.Cookies = True Then
+                        Dim c As HttpCookie = New HttpCookie("SonyAlpha")
+                        If Request.Cookies("DealBox") Is Nothing Then
+                            c.Expires = DateAdd(DateInterval.Day, 30, Now())
+                            c.Values("accountid") = Session("accountid")
+                            'c.Values("accountpass") = Session("accountpass")
+                            c.Values("accountgroup") = Session("accountgroup")
+                            c.Values("accountname") = Session("accountname")
+                            Response.Cookies.Add(c)
+                        Else
+                            c.Values("accountid") = Session("accountid")
+                            'c.Values("accountpass") = Session("accountpass")
+                            c.Values("accountgroup") = Session("accountgroup")
+                            c.Values("accountname") = Session("accountname")
+                        End If
+                    End If
+                    
                     GetMyResponse("200", "ok")
                 Else
                     GetMyResponse("400", "fail")
@@ -357,6 +385,27 @@ Public Class Service
                 listPhotos = AlbumServices.getPhotoOfAlbum(album.AlbumImage, CN.ConnectionString)
             End If
             GetMyResponse("200", New JavaScriptSerializer().Serialize(listPhotos))
+        Catch ex As Exception
+            GetMyResponse("500", "fail: " + ex.Message)
+        End Try
+    End Sub
+
+    Private Sub DoLoginMail()
+        Try
+            Dim email As String = Request.Params.Get("username")
+            Dim password As String = Request.Params.Get("password")
+            If Not String.IsNullOrEmpty(email) And Not String.IsNullOrEmpty(password) Then
+                Dim user As New User
+                user.Email = email
+                user.PassWord = base64Encode(password)
+                If user.loginEmail(CN.ConnectionString) Then
+                    GetMyResponse("200", "ok")
+                Else
+                    GetMyResponse("400", "fail")
+                End If
+            Else
+                GetMyResponse("500", "invalid user account!")
+            End If
         Catch ex As Exception
             GetMyResponse("500", "fail: " + ex.Message)
         End Try

@@ -32,7 +32,7 @@
             <div class="header-top-national">Việt Nam</div>
         </div>
         <div id="userStatus" class="clearfix">
-            <div class="logined"><asp:Label runat="server" ClientIDMode="Static" ID="lblUser" class="text username"></asp:Label>&nbsp;|&nbsp;<a href="/logout">Logout</a></div>
+            <div class="logined"><a id="viewProfile" href="javascript:void(0);"><asp:Label runat="server" ClientIDMode="Static" ID="lblUser" class="text username"></asp:Label></a>&nbsp;|&nbsp;<a href="/logout">Logout</a></div>
             <div class="not_logined"><a id="hplSignup" href="javascript:void(0);">Đăng ký</a><a id="hplSignin" href="javascript:void(0);">Đăng nhập</a></div>
         </div>
         <div class="header-top-menu">

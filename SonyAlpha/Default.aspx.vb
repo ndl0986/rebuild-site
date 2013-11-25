@@ -72,6 +72,8 @@ Public Class _Default
                     tpl = Page.LoadControl("controls/views/uc_map.ascx")
                 Case "lastestnews"
                     tpl = Page.LoadControl("controls/views/uc_lastestnews.ascx")
+                Case "profile"
+                    tpl = Page.LoadControl("controls/views/uc_userprofile.ascx")
                 Case Else
                     intMenu = 1
                     tpl = Page.LoadControl("controls/views/uc_page.ascx")

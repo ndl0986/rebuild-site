@@ -277,24 +277,29 @@ $(document).ready(function () {
     var reg = $('#formReg');
     var sign = $('#formSign')
 
-    $('#hplSignup').click(function(){
-        if(reg.hasClass('hide')){
+    $('#hplSignup').click(function () {
+        if (reg.hasClass('hide')) {
             reg.removeClass('hide');
             reg.fadeIn(300);
         }
     });
 
-    $('#hplSignin').click(function(){
-        if(sign.hasClass('hide')){
+    $('#hplSignin').click(function () {
+        if (sign.hasClass('hide')) {
             sign.removeClass('hide');
             sign.fadeIn(300);
         }
     });
 
-    $($('.bgFormPopup').children('.close')).click(function(){
-        if(!$(this).parent().hasClass('hide')){
+    $('#viewProfile').click(function () {
+        window.location.assign('/profile.aspx');
+    });
+
+
+    $($('.bgFormPopup').children('.close')).click(function () {
+        if (!$(this).parent().hasClass('hide')) {
             //$(this).parent().fadeOut(300,function(){
-                $(this).parent().addClass('hide');
+            $(this).parent().addClass('hide');
             //});
         }
     });
@@ -317,14 +322,14 @@ $(document).ready(function () {
             parseAlbumSlide();
             break;
         case 'photo':
-            var albumId = $('#hdfAlbumId').val(),photoId = $('#imgMain').attr('data-id');
-            getListComments(photoId,function(data){parseComments(data)});
+            var albumId = $('#hdfAlbumId').val(), photoId = $('#imgMain').attr('data-id');
+            getListComments(photoId, function (data) { parseComments(data) });
 
-            $('#btnPostComment').click(function(){
+            $('#btnPostComment').click(function () {
                 var html = $('#txtComment').val();
-                doPostComment(albumId,photoId ,html,function(){
+                doPostComment(albumId, photoId, html, function () {
                     $('#txtComment').val('');
-                    getListComments(photoId,function(data){parseComments(data)});
+                    getListComments(photoId, function (data) { parseComments(data) });
                 });
             });
             $('.fancybox').fancybox();
@@ -332,20 +337,20 @@ $(document).ready(function () {
         case 'productcate':
             $('#loadContent').hide();
             var li = $('#product_categories .category_item');
-            $('#product_categories .title_banner_text a').click(function(e){
+            $('#product_categories .title_banner_text a').click(function (e) {
                 $(this).parents('.category_item').click();
                 return false;
             });
-            $('#product_categories .category_item').click(function(e){
+            $('#product_categories .category_item').click(function (e) {
                 $('#loadContent').hide(300);
                 li.removeClass('active');
                 $(this).addClass('active');
                 showLoading($('#loadContent'));
                 var productcateId = $(this).attr('data-id');
-                getCategoryById(productcateId,function(data){
+                getCategoryById(productcateId, function (data) {
                     parseProductCategory(data);
                 });
-                getProductByCategoryId(productcateId,function(data){
+                getProductByCategoryId(productcateId, function (data) {
                     parseProductsList(data);
                 });
                 $('#loadContent').show(300);
@@ -415,16 +420,20 @@ function doRegister() {
 function doLogin() {
     var usn = $("#uc_login_txtUserName").val();
     var pass = $("#uc_login_txtPWD").val();
-
+    var myUrl = '/service.aspx?name=login';
+    if (usn != '' && usn.indexOf('@') != -1) {
+        myUrl = '/service.aspx?name=loginmail';
+    }
     $.ajax({
         type: 'POST',
         timeout: 5000,
-        url: '/service.aspx?name=login',
+        url: myUrl,
         data: { "username": usn, "password": pass },
         success: function (response) {
             response = jQuery.parseJSON(response);
             if (response.message == "ok") {
-                alert('Đăng nhập thành công!!!!');
+                //alert('Đăng nhập thành công!!!!');
+                window.location.assign("/default.aspx")
             } else {
                 alert('Đăng nhập không thành công!!!!');
             }
@@ -555,7 +564,6 @@ function getCategoryById(categoryId,callback) {
 
 function isEmail(email) {
     var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-
     if (!filter.test(email)) {
         return false;
     }
@@ -564,11 +572,10 @@ function isEmail(email) {
 
 function isPhonenumber(input)
 {
-//  var phoneno = /^\d{10}$/;
-//  if(input.value.match(phoneno)) {
-//    return true;
-//  }
-    //  return false;
+    var phonelReg = /(\(?(\d|(\d[- ]\d))\)?[-. ]?)?(\d\.?\d\.?\d.?\d.?\d.?\d.?\d.?\d.?\d.?\d)/;
+    if (input == '' || !phonelReg.test(input)) {
+        return false;
+    }
     return true;
 }
 
