@@ -36,14 +36,15 @@ Public Class uc_newsdetail1
         End If
     End Sub
 
-    Private Sub btnSave_ServerClick(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnSave.ServerClick
+
+    Private Sub btnSave_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnSave.Click
         If Page.IsPostBack Then
             myNews.Title = txtTitle.Text.Trim
             myNews.Description = txtDescription.Text.Trim
             myNews.Detail = fckEditor.Value
             myNews.CategoryId = ddlGroup.SelectedValue
             myNews.Published = CBool(chkPublished.Checked)
-            myNews.NewsImage = txtPhotoURL.Value
+            myNews.NewsImage = txtPhotoURL.Text
 
             Dim result As Boolean
             If bolUpdate = False Then

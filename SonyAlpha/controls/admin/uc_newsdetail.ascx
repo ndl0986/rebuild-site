@@ -38,7 +38,7 @@
                     <ul id="ulPhotos" class="clearfix"></ul>
                     <div class="banner_photo clearfix">
                         <div class="floatleft">
-                            <input id="txtPhotoURL" runat="server" clientidmode="Static" type="text" class="textbox" placeholder="URL photo ..." />
+                            <asp:TextBox id="txtPhotoURL" runat="server" clientidmode="Static" type="text" class="textbox" placeholder="URL photo ..."></asp:TextBox>
                         </div>
                         <a href="javascript:void(0);" class="browser btn button"><span class="label">...</span></a>
                     </div>
@@ -47,7 +47,7 @@
             </li>
             <li class="row clerafix">
                 <div class="item textright" >
-                    <button class="action btnOk" runat="server" ID="btnSave" disabled="disabled" ><span class="label">Lưu</span></button>
+                    <asp:Button runat="server" CssClass="button action btnOk" ID="btnSave" Text="Lưu" Enabled="false" />
                     <a href="javascript:void(0);" class="button action" id="btnCancel"><span class="label">Hủy</span></a>
                 </div>
             </li>

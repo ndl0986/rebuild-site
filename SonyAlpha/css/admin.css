@@ -2676,6 +2676,8 @@ button.blue,
     -moz-transition: border .20s;
     -o-transition: border .20s;
     transition: border .20s;
+    text-shadow:none;
+    color: #fff;
 }
 
 button.blue:hover, 
