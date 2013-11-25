@@ -31,9 +31,11 @@ function parseShopCenter() {
         for (var i = 0; i < listShop.length; i++) {
             if ($(listShop[i]).attr('data-provinces') == 'TP. Hồ Chí Minh') {
                 listShopHCM += '<li class="table_row row_' + cHCM % 2 + '">' + listShop[i].innerHTML + '</li>'; cHCM += 1;
-            } else if ($(listAlphaShop[i]).attr('data-provinces') == 'Hà Nội') {
+            } else if ($(listShop[i]).attr('data-provinces') == 'Hà Nội') {
                 listShopHN += '<li class="table_row row_' + cHN % 2 + '">' + listShop[i].innerHTML + '</li>'; cHN += 1;
+
             } else {
+                console.log($(listShop[i]));
                 listShopOrthers += '<li class="table_row row_' + cOthers % 2 + '">' + listShop[i].innerHTML + '</li>'; cOthers += 1;
             }
         }
