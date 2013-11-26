@@ -18,7 +18,7 @@
             <% For Each album As Album In listAlbums%>
             <li class="clearfix">
                 <div class="album">
-                    <a href="javascript:void(0);" id="uc_userupload_album<%= album.Id %>" class="album_title">
+                    <a href="/useralbum/<%= album.Id %>.aspx" id="uc_userupload_album<%= album.Id %>" class="album_title">
                     <div class="cover">
                         <img width="138" height="139" alt="<%= album.FullName %>" src="<%= album.AlbumCover %>" />
                     </div>

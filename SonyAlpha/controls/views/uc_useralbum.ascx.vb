@@ -9,7 +9,7 @@ Public Class uc_useralbum
     Public albumId As Integer
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         username = Session("accountid")
-        albumId = CInt(Request.QueryString("albumid"))
+        albumId = CInt(Request.QueryString("id"))
         If Not Page.IsPostBack Then
             If Not String.IsNullOrEmpty(username) Then
                 user = UserServices.getByUserName(username, CN.ConnectionString)
