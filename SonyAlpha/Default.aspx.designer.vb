@@ -129,4 +129,13 @@ Partial Public Class _Default
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents uc_login1 As Global.SonyAlpha.uc_login
+
+    '''<summary>
+    '''uc_userupdate1 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents uc_userupdate1 As Global.SonyAlpha.uc_userupdate
 End Class

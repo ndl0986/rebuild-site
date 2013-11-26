@@ -275,7 +275,8 @@ $(document).ready(function () {
     }
 
     var reg = $('#formReg');
-    var sign = $('#formSign')
+    var sign = $('#formSign');
+    var update = $('#formUpdate');
 
     $('#hplSignup').click(function () {
         if (reg.hasClass('hide')) {
@@ -291,6 +292,13 @@ $(document).ready(function () {
         }
     });
 
+    $('#hplUserupdate').click(function () {
+        if (update.hasClass('hide')) {
+            update.removeClass('hide');
+            update.fadeIn(300);
+        }
+    });
+
     $('#viewProfile').click(function () {
         window.location.assign('/profile.aspx');
     });
@@ -303,12 +311,12 @@ $(document).ready(function () {
     });
 
 
-    $('.tab_nav_item > a').click(function(e){
+    $('.tab_nav_item > a').click(function (e) {
         e.preventDefault();
         $('.tab_nav_item').removeClass('active');
         $(this).parent().addClass('active');
         $('.tab-content').removeClass('active');
-        $('.tab-content[data-link='+ $(this).attr('href') +']').addClass('active');
+        $('.tab-content[data-link=' + $(this).attr('href') + ']').addClass('active');
         $('.tab_title h2').text($(this).attr('data-title'));
     });
 

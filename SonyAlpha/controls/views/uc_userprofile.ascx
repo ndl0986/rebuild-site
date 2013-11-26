@@ -4,6 +4,9 @@
     <% If String.IsNullOrEmpty(message) Then%>
     <ul class="user_form">
         <li class="clearfix">
+            <a href="javascript:void(0);" id="hplUserupdate">Cập nhật thông tin</a>
+        </li>
+        <li class="clearfix">
             <div class="caption">EMAIL : <%= user.Email %></div>
         </li>
         <li class="row clearfix">
