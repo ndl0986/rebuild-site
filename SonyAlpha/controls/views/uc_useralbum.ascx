@@ -10,7 +10,7 @@
             <li class="clearfix">
                 <div class="album">
                     <div class="cover">
-                        <a href="<%= photo.FileName %>">
+                        <a href="/photo/<%= photo.Id %>?cid=<%= album.Id %>">
                         <img width="138" height="139" alt="<%= photo.Title %>" src="<%= photo.FileName %>" />
                         </a>
                     </div>
