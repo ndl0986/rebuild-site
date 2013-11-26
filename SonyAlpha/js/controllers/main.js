@@ -378,6 +378,9 @@ jQuery(function () {
     $("#uc_email_fag_btnOk").click(function () {
         doSendMail();
     });
+    $("#uc_userupdate_btnOk").click(function () {
+        doUserUpdate();
+    });
 });
 
 function doRegister() {
@@ -417,6 +420,46 @@ function doRegister() {
                 alert('Đăng ký thành công!!!! Email xác nhận đã được gửi tới ' + email);
             } else {
                 alert('Đăng ký không thành công!!!!');
+            }
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log('error');
+        }
+    });
+}
+
+function doUserUpdate() {
+    var usn = $("#uc_userupdate_hdfUserName").val();
+    var pass = $("#uc_userupdate_txtPWD").val();
+    var pass1 = $("#uc_userupdate_txtPWD1").val();
+    var fullname = $("#uc_userupdate_txtFullName").val();
+    if (pass != '' && pass1 != '' && pass != pass1) {
+        alert('Mật khẩu không trùng khớp!!!!!');
+        return false;
+    }
+    var capcha = $("#uc_userupdate_txtCapcha").val();
+    var capchaBase = $("#uc_userupdate_hdfCapcha").val();
+    if (capcha != capchaBase) {
+        alert('Sai mã bảo mật!!!!!');
+        return false;
+    }
+    var phone = $("#uc_userupdate_txtPhone").val();
+    if (!isPhonenumber(phone)) {
+        alert('Số điện thoại không hợp lệ!!!!!');
+        return false;
+    }
+    var productused = $("#uc_userupdate_product").val();
+    $.ajax({
+        type: 'POST',
+        timeout: 5000,
+        url: '/service.aspx?name=userupdate',
+        data: { "username": usn, "password": pass, "fullname": fullname, "phone": phone, "productused": productused },
+        success: function (response) {
+            response = jQuery.parseJSON(response);
+            if (response.message == "ok") {
+                alert('Cập nhật thành công!!!! Email xác nhận đã được gửi tới email đăng ký của bạn!!!!');
+            } else {
+                alert('Cập nhật không thành công!!!!');
             }
         },
         error: function (jqXHR, textStatus, errorThrown) {

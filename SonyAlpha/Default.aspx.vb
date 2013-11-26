@@ -56,6 +56,8 @@ Public Class _Default
                     tpl = Page.LoadControl("controls/views/uc_useraddphoto.ascx")
                 Case "useralbum"
                     tpl = Page.LoadControl("controls/views/uc_useralbum.ascx")
+                Case "userupdate"
+                    tpl = Page.LoadControl("controls/views/uc_userupdate.ascx")
                 Case "newsdetail"
                     tpl = Page.LoadControl("controls/views/uc_newsdetail.ascx")
                 Case "news"

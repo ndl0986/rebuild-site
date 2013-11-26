@@ -171,6 +171,7 @@
     <Content Include="controls\views\uc_useralbum.ascx" />
     <Content Include="controls\views\uc_userpage.ascx" />
     <Content Include="controls\views\uc_userprofile.ascx" />
+    <Content Include="controls\views\uc_userupdate.ascx" />
     <Content Include="controls\views\uc_userupload.ascx" />
     <Content Include="Css\admin.css" />
     <Content Include="Css\bootstrap-select.css" />
@@ -1192,6 +1193,13 @@
     </Compile>
     <Compile Include="controls\views\uc_userprofile.ascx.vb">
       <DependentUpon>uc_userprofile.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\views\uc_userupdate.ascx.designer.vb">
+      <DependentUpon>uc_userupdate.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\views\uc_userupdate.ascx.vb">
+      <DependentUpon>uc_userupdate.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="controls\views\uc_userupload.ascx.designer.vb">

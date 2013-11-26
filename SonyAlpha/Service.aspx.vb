@@ -42,6 +42,8 @@ Public Class Service
                         DoDeleteComment()
                     Case "updatecomment"
                         DoUpdateComment()
+                    Case "userupdate"
+                        DoUserUpdate()
                 End Select
             Else
                 GetMyResponse("500", "Nothing todo!")
@@ -420,6 +422,45 @@ Public Class Service
             Else
                 GetMyResponse("200", "fail")
             End If
+        Catch ex As Exception
+            GetMyResponse("500", "fail: " + ex.Message)
+        End Try
+    End Sub
+
+    Private Sub DoUserUpdate()
+        Try
+            Dim username As String = Session("accountid")
+            Dim password As String = Request.Params.Get("password")
+            Dim fullname As String = Request.Params.Get("fullname")
+            Dim phone As String = Request.Params.Get("phone")
+            Dim productused As String = Request.Params.Get("productused")
+
+            Dim user As New User
+            user = UserServices.getFullByUserName(username, CN.ConnectionString)
+            If Not user.Id = 0 Then
+                If Not String.IsNullOrEmpty(password) Then
+                    user.PassWord = base64Encode(password)
+                End If
+                user.FullName = fullname
+                user.Phone = phone
+                user.ProductUsed = productused
+
+                If UserServices.updateIncludePass(user, CN.ConnectionString) Then
+                    Dim http As String = ConfigurationManager.AppSettings("URL")
+                    Dim activeUrl As String = http + GetParamsActive(username, user.Email)
+                    Dim mailFrom As String = SettingServices.getByName("adminMailFrom", CN.ConnectionString)
+                    Dim mailFromPass As String = SettingServices.getByName("adminMailPass", CN.ConnectionString)
+                    Dim subject As String = "Cập nhật thông tin người dùng "
+                    Dim mailcontent As String = "Thông tin của bạn tại SonyAlpha vừa được thay đổi !!!"
+                    Sendmail(mailFrom, mailFromPass, user.Email, subject, mailcontent)
+                    GetMyResponse("200", "ok")
+                Else
+                    GetMyResponse("200", "fail")
+                End If
+            Else
+                GetMyResponse("200", "fail")
+            End If
+            
         Catch ex As Exception
             GetMyResponse("500", "fail: " + ex.Message)
         End Try
