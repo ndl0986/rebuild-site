@@ -49,6 +49,8 @@ Public Class Service
         Else
             If Not String.IsNullOrEmpty(name) Then
                 Select Case name
+                    Case "testconnection"
+                        GetTestConnection()
                     Case "getuserinfo"
                         GetUserInfo()
                     Case "getpage"
@@ -405,6 +407,18 @@ Public Class Service
                 End If
             Else
                 GetMyResponse("500", "invalid user account!")
+            End If
+        Catch ex As Exception
+            GetMyResponse("500", "fail: " + ex.Message)
+        End Try
+    End Sub
+
+    Private Sub GetTestConnection()
+        Try
+            If BaseService.testConnection(CN.ConnectionString) Then
+                GetMyResponse("200", "ok")
+            Else
+                GetMyResponse("200", "fail")
             End If
         Catch ex As Exception
             GetMyResponse("500", "fail: " + ex.Message)

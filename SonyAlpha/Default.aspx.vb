@@ -50,6 +50,8 @@ Public Class _Default
                     tpl = Page.LoadControl("controls/views/uc_photo.ascx")
                 Case "profile"
                     tpl = Page.LoadControl("controls/views/uc_userprofile.ascx")
+                Case "userupload"
+                    tpl = Page.LoadControl("controls/views/uc_userupload.ascx")
                 Case "newsdetail"
                     tpl = Page.LoadControl("controls/views/uc_newsdetail.ascx")
                 Case "news"

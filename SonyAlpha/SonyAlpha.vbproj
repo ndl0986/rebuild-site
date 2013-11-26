@@ -167,7 +167,9 @@
     <Content Include="controls\views\uc_register.ascx" />
     <Content Include="controls\views\uc_seller.ascx" />
     <Content Include="controls\views\uc_sellerdetail.ascx" />
+    <Content Include="controls\views\uc_useralbum.ascx" />
     <Content Include="controls\views\uc_userprofile.ascx" />
+    <Content Include="controls\views\uc_userupload.ascx" />
     <Content Include="Css\admin.css" />
     <Content Include="Css\bootstrap-select.css" />
     <Content Include="Css\bootstrap.min.css" />
@@ -1149,11 +1151,25 @@
       <DependentUpon>uc_sellerdetail.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="controls\views\uc_useralbum.ascx.designer.vb">
+      <DependentUpon>uc_useralbum.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\views\uc_useralbum.ascx.vb">
+      <DependentUpon>uc_useralbum.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="controls\views\uc_userprofile.ascx.designer.vb">
       <DependentUpon>uc_userprofile.ascx</DependentUpon>
     </Compile>
     <Compile Include="controls\views\uc_userprofile.ascx.vb">
       <DependentUpon>uc_userprofile.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\views\uc_userupload.ascx.designer.vb">
+      <DependentUpon>uc_userupload.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\views\uc_userupload.ascx.vb">
+      <DependentUpon>uc_userupload.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Default.aspx.designer.vb">
