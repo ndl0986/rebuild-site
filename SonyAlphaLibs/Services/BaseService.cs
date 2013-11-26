@@ -65,5 +65,22 @@ namespace SonyAlphaLibs.Services
             }
             #endregion
         }
+
+        public static bool testConnection(String connString)
+        {
+            using (SqlConnection conn = new SqlConnection(connString))
+            {
+                try
+                {
+                    conn.Open();
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    return false;
+                }
+            }
+            return false;
+        }
     }
 }
