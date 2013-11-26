@@ -2,7 +2,7 @@
 Imports SonyAlphaLibs.Services
 Public Class uc_useralbum
     Inherits System.Web.UI.UserControl
-    Public user As New User
+    Public album As New Album
     Public username As String
     Public message As String = ""
     Public listPhotos As New List(Of Photo)
@@ -12,8 +12,8 @@ Public Class uc_useralbum
         albumId = CInt(Request.QueryString("id"))
         If Not Page.IsPostBack Then
             If Not String.IsNullOrEmpty(username) Then
-                user = UserServices.getByUserName(username, CN.ConnectionString)
-                listPhotos = PhotoServices.getListPhotoOfUser(username, albumId, CN.ConnectionString)
+                album = AlbumServices.getById(albumId, CN.ConnectionString)
+                listPhotos = PhotoServices.getListPhotoOfUser("'" + username + "'", albumId, CN.ConnectionString)
             Else
                 message = "Bạn chưa đăng nhập hoặc không thể tìm được thông tin của bạn trong hệ thống!!"
             End If
