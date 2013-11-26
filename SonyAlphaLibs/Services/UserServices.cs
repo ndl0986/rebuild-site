@@ -87,6 +87,44 @@ namespace SonyAlphaLibs.Services
             #endregion
         }
 
+        public static bool updateIncludePass(User user, string connString)
+        {
+            #region code
+            bool rs = false;
+            using (SqlConnection conn = new SqlConnection(connString))
+            {
+                try
+                {
+                    conn.Open();
+                    using (SqlCommand cmd = conn.CreateCommand())
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.CommandText = "sony_sp_update_user_full";
+                        cmd.Parameters.AddWithValue("@username", user.UserName);
+                        cmd.Parameters.AddWithValue("@password", user.PassWord);
+                        cmd.Parameters.AddWithValue("@fullname", user.FullName);
+                        cmd.Parameters.AddWithValue("@status", user.Status ? 1 : 0);
+                        cmd.Parameters.AddWithValue("@groupid", user.GroupId);
+                        cmd.Parameters.AddWithValue("@phone", user.Phone);
+                        cmd.Parameters.AddWithValue("@email", user.Email);
+                        cmd.Parameters.AddWithValue("@productused", user.ProductUsed);
+                        SqlParameter returnVal = new SqlParameter("@returnVal", SqlDbType.Int);
+                        returnVal.Direction = ParameterDirection.Output;
+                        cmd.Parameters.Add(returnVal);
+
+                        cmd.ExecuteNonQuery();
+                        rs = ((int)cmd.Parameters["@returnVal"].Value != 0);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    return false;
+                }
+            }
+            return rs;
+            #endregion
+        }
+
         public static User getById(int id, String connString)
         {
             User user = new User();
@@ -218,6 +256,7 @@ namespace SonyAlphaLibs.Services
 
         public static User getByUserName(string userName, string connString)
         {
+            #region code
             User rs = new User();
             using (SqlConnection conn = new SqlConnection(connString))
             {
@@ -254,7 +293,52 @@ namespace SonyAlphaLibs.Services
                     return rs;
                 }
             }
+            return rs; 
+            #endregion
+        }
+
+        public static User getFullByUserName(string userName, string connString)
+        {
+            #region code
+            User rs = new User();
+            using (SqlConnection conn = new SqlConnection(connString))
+            {
+                try
+                {
+                    conn.Open();
+                    using (SqlCommand cmd = conn.CreateCommand())
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.CommandText = "sony_sp_get_user_by_username";
+                        cmd.Parameters.AddWithValue("@username", userName);
+
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                rs.Id = (int)reader["id"];
+                                rs.UserName = userName;
+                                rs.Status = reader["status"].ToString().Equals("1") || reader["status"].ToString().Equals("True") ? true : false;
+                                rs.Created = (DateTime)reader["registered"];
+                                rs.Updated = (DateTime)reader["updated"];
+                                rs.FullName = reader["fullname"].ToString();
+                                rs.GroupId = (int)reader["groupId"];
+                                rs.Phone = reader["phone"].ToString();
+                                rs.Email = reader["email"].ToString();
+                                rs.PassWord = reader["password"].ToString();
+                                rs.ProductUsed = reader["productused"].ToString();
+                                break;
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    return rs;
+                }
+            }
             return rs;
+            #endregion
         }
 
         public static bool updateFullNameStatus(User user, string connString)
