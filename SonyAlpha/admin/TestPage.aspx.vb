@@ -22,33 +22,33 @@ Public Class TestPage
         myBanner.ListPhotos = New List(Of BannerPhoto)
 
         
-        Dim connString As String
-        connString = ConfigurationManager.ConnectionStrings("ApplicationServices").ConnectionString
+        'Dim connString As String
+        'connString = ConfigurationManager.ConnectionStrings("ApplicationServices").ConnectionString
 
 
-        If Not String.IsNullOrEmpty(connString) Then
-            txtTest.Text = connString.ToString
-            ' test add user
-            'txtTest.Text = myUser.add(connString.ToString)
-            ' test login
-            'txtTest.Text = myUser.login(connString.ToString)
-            ' test update user
-            'txtTest.Text = myUser.update(connString.ToString)
-            If myBanner.add(connString) Then
-                Dim id As Integer = myBanner.getCurrentMaxId(connString)
-                myBanner.Id = id
-                For i As Integer = 0 To 3 Step 1
-                    Dim bannerPhoto As New BannerPhoto
-                    bannerPhoto.BannerId = id
-                    bannerPhoto.ImageUrl = "ImageUrl_" + i.ToString()
-                    bannerPhoto.Link2 = "LinkTo_" + i.ToString()
-                    myBanner.ListPhotos.Add(bannerPhoto)
-                Next
-                myBanner.setPhoto2Banner(connString)
-                txtTest.Text = id.ToString()
-            End If
+        'If Not String.IsNullOrEmpty(connString) Then
+        '    txtTest.Text = connString.ToString
+        '    ' test add user
+        '    'txtTest.Text = myUser.add(connString.ToString)
+        '    ' test login
+        '    'txtTest.Text = myUser.login(connString.ToString)
+        '    ' test update user
+        '    'txtTest.Text = myUser.update(connString.ToString)
+        '    If myBanner.add(connString) Then
+        '        Dim id As Integer = myBanner.getCurrentMaxId(connString)
+        '        myBanner.Id = id
+        '        For i As Integer = 0 To 3 Step 1
+        '            Dim bannerPhoto As New BannerPhoto
+        '            bannerPhoto.BannerId = id
+        '            bannerPhoto.ImageUrl = "ImageUrl_" + i.ToString()
+        '            bannerPhoto.Link2 = "LinkTo_" + i.ToString()
+        '            myBanner.ListPhotos.Add(bannerPhoto)
+        '        Next
+        '        myBanner.setPhoto2Banner(connString)
+        '        txtTest.Text = id.ToString()
+        '    End If
 
-        End If
+        'End If
 
     End Sub
 
