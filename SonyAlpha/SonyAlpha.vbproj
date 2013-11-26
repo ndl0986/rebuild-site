@@ -167,6 +167,7 @@
     <Content Include="controls\views\uc_register.ascx" />
     <Content Include="controls\views\uc_seller.ascx" />
     <Content Include="controls\views\uc_sellerdetail.ascx" />
+    <Content Include="controls\views\uc_useraddphoto.ascx" />
     <Content Include="controls\views\uc_useralbum.ascx" />
     <Content Include="controls\views\uc_userprofile.ascx" />
     <Content Include="controls\views\uc_userupload.ascx" />
@@ -1149,6 +1150,13 @@
     </Compile>
     <Compile Include="controls\views\uc_sellerdetail.ascx.vb">
       <DependentUpon>uc_sellerdetail.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\views\uc_useraddphoto.ascx.designer.vb">
+      <DependentUpon>uc_useraddphoto.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\views\uc_useraddphoto.ascx.vb">
+      <DependentUpon>uc_useraddphoto.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="controls\views\uc_useralbum.ascx.designer.vb">

@@ -10,7 +10,7 @@
                 <div class="album">
                     <div class="cover"></div>
                     <div class="info">
-                    <a href="javascript:void(0);" id="uc_userupload_uploadnew" class="album_title">Up hình mới</a>
+                    <a href="/useraddphoto.aspx" id="uc_userupload_uploadnew" class="album_title">Up hình mới</a>
                     </div>
                 </div>
             </li>
