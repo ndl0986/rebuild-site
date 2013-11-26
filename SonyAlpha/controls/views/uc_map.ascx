@@ -6,9 +6,9 @@
     var latitude = <%= Request.QueryString("lat") %>;
 </script>
 <div class="content">
-    <div class="section">
-        <div id="map_canvas" class="google-map" style="height:300px;width:300px;">hello</div>
-    </div>
+    
+        <div id="map_canvas" class="google-map" style="height:300px;width:100%;"></div>
+    
 </div>
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
 <script language="javascript" type="text/javascript">
@@ -16,7 +16,7 @@
                 var map_canvas = document.getElementById('map_canvas');
                 var map_options = {
                     center: new google.maps.LatLng(lat, long),
-                    zoom: 16,
+                    zoom: 17,
                     mapTypeId: google.maps.MapTypeId.ROADMAP,
                     mapMaker: true
                 }
