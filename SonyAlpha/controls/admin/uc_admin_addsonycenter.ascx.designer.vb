@@ -59,15 +59,6 @@ Partial Public Class uc_admin_addsonycenter
     Protected WithEvents ddlProvince As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
-    '''txtDescription control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents txtDescription As Global.FredCK.FCKeditorV2.FCKeditor
-
-    '''<summary>
     '''ddlRetailLevel control.
     '''</summary>
     '''<remarks>
@@ -75,6 +66,15 @@ Partial Public Class uc_admin_addsonycenter
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents ddlRetailLevel As Global.System.Web.UI.WebControls.DropDownList
+
+    '''<summary>
+    '''txtDescription control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtDescription As Global.FredCK.FCKeditorV2.FCKeditor
 
     '''<summary>
     '''ddlAlbumList control.

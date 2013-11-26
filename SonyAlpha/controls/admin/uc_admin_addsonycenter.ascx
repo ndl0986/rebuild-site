@@ -30,12 +30,6 @@
                 <div class="item"><label class="selectfake"><asp:DropDownList runat="server" ID="ddlProvince" DataTextField="Province" DataValueField="Province"></asp:DropDownList></label></div>
             </li>
             <li class="row clerafix">
-                <div class="caption" >Mô tả :</div>
-                <div class="item">
-                    <FCKeditorV2:FCKeditor ID="txtDescription" runat="server" Height="500px"></FCKeditorV2:FCKeditor>
-                </div>
-            </li>
-            <li class="row clerafix">
                 <div class="caption" >Cấp đại lý :</div>
                 <div class="item"><label class="selectfake">
                     <asp:DropDownList runat="server" ID="ddlRetailLevel">
@@ -43,6 +37,12 @@
                         <asp:ListItem Value="1">Alpha Shop</asp:ListItem>
                         <asp:ListItem Value="2">Shop</asp:ListItem>
                     </asp:DropDownList></label></div>
+            </li>
+            <li class="row clerafix">
+                <div class="caption" >Mô tả :</div>
+                <div class="item">
+                    <FCKeditorV2:FCKeditor ID="txtDescription" runat="server" Height="500px"></FCKeditorV2:FCKeditor>
+                </div>
             </li>
             <li class="row clerafix">
                 <div class="caption" >Album :</div>

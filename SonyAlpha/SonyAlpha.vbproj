@@ -169,6 +169,7 @@
     <Content Include="controls\views\uc_sellerdetail.ascx" />
     <Content Include="controls\views\uc_useraddphoto.ascx" />
     <Content Include="controls\views\uc_useralbum.ascx" />
+    <Content Include="controls\views\uc_userpage.ascx" />
     <Content Include="controls\views\uc_userprofile.ascx" />
     <Content Include="controls\views\uc_userupload.ascx" />
     <Content Include="Css\admin.css" />
@@ -684,8 +685,21 @@
     <Content Include="Js\libs\jquery-2.0.3.min.js" />
     <Content Include="Js\libs\modernizr-2.5.3.min.js" />
     <Content Include="Js\libs\respond.min.js" />
+    <Content Include="Js\plugins\blank.gif" />
     <Content Include="Js\plugins\bootstrap-select.min.js" />
+    <Content Include="Js\plugins\fancybox_loading%402x.gif" />
+    <Content Include="Js\plugins\fancybox_loading.gif" />
+    <Content Include="Js\plugins\fancybox_overlay.png" />
+    <Content Include="Js\plugins\fancybox_sprite%402x.png" />
+    <Content Include="Js\plugins\fancybox_sprite.png" />
     <Content Include="Js\plugins\jquery.bxslider.min.js" />
+    <Content Include="Js\plugins\jquery.fancybox.css" />
+    <Content Include="Js\plugins\jquery.fancybox.js" />
+    <Content Include="Js\plugins\jquery.fancybox.pack.js" />
+    <Content Include="Js\plugins\jquery.lazyload.min.js" />
+    <Content Include="Js\plugins\jquery.nivo.slider.pack.js" />
+    <Content Include="Js\plugins\jquery.slimscroll.min.js" />
+    <Content Include="Js\plugins\jquery.validate.js" />
     <Content Include="Service.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -1164,6 +1178,13 @@
     </Compile>
     <Compile Include="controls\views\uc_useralbum.ascx.vb">
       <DependentUpon>uc_useralbum.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\views\uc_userpage.ascx.designer.vb">
+      <DependentUpon>uc_userpage.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\views\uc_userpage.ascx.vb">
+      <DependentUpon>uc_userpage.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="controls\views\uc_userprofile.ascx.designer.vb">

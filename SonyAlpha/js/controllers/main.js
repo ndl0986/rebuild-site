@@ -298,10 +298,18 @@ $(document).ready(function () {
 
     $($('.bgFormPopup').children('.close')).click(function () {
         if (!$(this).parent().hasClass('hide')) {
-            //$(this).parent().fadeOut(300,function(){
             $(this).parent().addClass('hide');
-            //});
         }
+    });
+
+
+    $('.tab_nav_item > a').click(function(e){
+        e.preventDefault();
+        $('.tab_nav_item').removeClass('active');
+        $(this).parent().addClass('active');
+        $('.tab-content').removeClass('active');
+        $('.tab-content[data-link='+ $(this).attr('href') +']').addClass('active');
+        $('.tab_title h2').text($(this).attr('data-title'));
     });
 
     switch (aspx) {

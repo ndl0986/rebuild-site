@@ -102,9 +102,9 @@ Public Class Service
                     'Session("accountpass") = user.PassWord
                     Session("accountname") = user.FullName
                     Dim userGroup As New UserGroup
-                    UserGroup.Id = user.GroupId
-                    UserGroup = UserGroup.getById(CN.ConnectionString)
-                    Session("accountgroup") = UserGroup.GroupName
+                    userGroup.Id = user.GroupId
+                    userGroup = userGroup.getById(CN.ConnectionString)
+                    Session("accountgroup") = userGroup.GroupName
 
                     If Request.Browser.Cookies = True Then
                         Dim c As HttpCookie = New HttpCookie("SonyAlpha")
@@ -122,7 +122,7 @@ Public Class Service
                             c.Values("accountname") = Session("accountname")
                         End If
                     End If
-                    
+
                     GetMyResponse("200", "ok")
                 Else
                     GetMyResponse("400", "fail")

@@ -49,7 +49,7 @@ Public Class _Default
                 Case "photo"
                     tpl = Page.LoadControl("controls/views/uc_photo.ascx")
                 Case "profile"
-                    tpl = Page.LoadControl("controls/views/uc_userprofile.ascx")
+                    tpl = Page.LoadControl("controls/views/uc_userpage.ascx")
                 Case "userupload"
                     tpl = Page.LoadControl("controls/views/uc_userupload.ascx")
                 Case "useraddphoto"

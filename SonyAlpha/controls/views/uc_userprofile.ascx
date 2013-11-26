@@ -1,13 +1,8 @@
 ﻿<%@ Control Language="vb" AutoEventWireup="false" CodeBehind="uc_userprofile.ascx.vb" Inherits="SonyAlpha.uc_userprofile" %>
-
-<div class="content">    
+<div class="user_content">    
     <div class="message"><%= message %></div>
     <% If String.IsNullOrEmpty(message) Then%>
-    <h1>TÀI KHOẢN CÁ NHÂN</h1>
-    <ul class="form">
-        <li class="clearfix">
-            <div class="caption"><a href="/userupload.aspx" >Ảnh đã đăng</a></div>
-        </li>
+    <ul class="user_form">
         <li class="clearfix">
             <div class="caption">EMAIL : <%= user.Email %></div>
         </li>
@@ -70,13 +65,9 @@
                         <% If user.ProductUsed = "16" Then%>
 						    NEX-7
                         <% End If%>                    
-           </div>            
-           <li class="row clearfix">
-                <div class="item">
-                    <img alt="sony_camera" src="/upload/sony_camera.png" />
-                </div>
-           </li>
+           </div>
         </li>
     </ul>
+    <img class="img_bg" alt="sony_camera" src="/upload/sony_camera.png" />
     <% End If%>
 </div>
