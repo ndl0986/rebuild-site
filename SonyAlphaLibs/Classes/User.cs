@@ -110,6 +110,10 @@ namespace SonyAlphaLibs
             return UserServices.login(this.UserName, this.PassWord, connString);
         }
 
+        public bool loginEmail(String connString)
+        {
+            return UserServices.loginEmail(this.Email, this.PassWord, connString);
+        }
         public User getByUserName(String connString)
         {
             return UserServices.getByUserName(this.UserName, connString);

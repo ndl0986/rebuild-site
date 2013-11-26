@@ -180,6 +180,7 @@ namespace SonyAlphaLibs.Services
 
         public static bool login(String userName, String passWord, String connString)
         {
+            #region code
             bool rs = false;
             using (SqlConnection conn = new SqlConnection(connString))
             {
@@ -211,7 +212,8 @@ namespace SonyAlphaLibs.Services
                     return rs;
                 }
             }
-            return rs;
+            return rs; 
+            #endregion
         }
 
         public static User getByUserName(string userName, string connString)
@@ -416,6 +418,44 @@ namespace SonyAlphaLibs.Services
                 catch (Exception ex)
                 {
                     return false;
+                }
+            }
+            return rs;
+            #endregion
+        }
+
+        public static bool loginEmail(string email, string password, string connString)
+        {
+            #region code
+            bool rs = false;
+            using (SqlConnection conn = new SqlConnection(connString))
+            {
+                try
+                {
+                    conn.Open();
+                    using (SqlCommand cmd = conn.CreateCommand())
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.CommandText = "sony_sp_get_user_by_email";
+                        cmd.Parameters.AddWithValue("@email", email);
+
+                        String getPass = "";
+                        bool status = false;
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                getPass = reader["password"].ToString();
+                                status = reader["status"].ToString().Equals("1") || reader["status"].ToString().Equals("True");
+                                break;
+                            }
+                        }
+                        rs = (!String.IsNullOrEmpty(getPass) && getPass == password && status);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    return rs;
                 }
             }
             return rs;

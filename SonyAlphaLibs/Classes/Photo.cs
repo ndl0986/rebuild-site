@@ -168,6 +168,15 @@ namespace SonyAlphaLibs
             get { return likeCount; }
             set { likeCount = value; }
         }
+
+        private string userUpload;
+
+        public string UserUpload
+        {
+            get { return userUpload; }
+            set { userUpload = value; }
+        }
+        
         #endregion
 
         #region base method

@@ -42,6 +42,7 @@ namespace SonyAlphaLibs.Services
                         cmd.Parameters.AddWithValue("@viewCount", photo.ViewCount);
                         cmd.Parameters.AddWithValue("@voteCount", photo.VoteCount);
                         cmd.Parameters.AddWithValue("@likeCount", photo.LikeCount);
+                        cmd.Parameters.AddWithValue("@userupload", String.IsNullOrEmpty(photo.UserUpload) ? "admin" : photo.UserUpload);
                         SqlParameter returnVal = new SqlParameter("@returnVal", SqlDbType.Int);
                         returnVal.Direction = ParameterDirection.Output;
                         cmd.Parameters.Add(returnVal);
@@ -94,6 +95,7 @@ namespace SonyAlphaLibs.Services
                         cmd.Parameters.AddWithValue("@viewCount", photo.ViewCount);
                         cmd.Parameters.AddWithValue("@voteCount", photo.VoteCount);
                         cmd.Parameters.AddWithValue("@likeCount", photo.LikeCount);
+                        cmd.Parameters.AddWithValue("@userupload", String.IsNullOrEmpty(photo.UserUpload) ? "admin" : photo.UserUpload);
                         SqlParameter returnVal = new SqlParameter("@returnVal", SqlDbType.Int);
                         returnVal.Direction = ParameterDirection.Output;
                         cmd.Parameters.Add(returnVal);
@@ -186,6 +188,7 @@ namespace SonyAlphaLibs.Services
                                 photo.LikeCount = (int)reader["likeCount"];
                                 photo.Created = (DateTime)reader["created"];
                                 photo.Updated = (DateTime)reader["updated"];
+                                photo.UserUpload = reader["userupload"].ToString();
                                 lists.Add(photo);
                             }
                         }
@@ -243,6 +246,7 @@ namespace SonyAlphaLibs.Services
                                 photo.LikeCount = (int)reader["likeCount"];
                                 photo.Created = (DateTime)reader["created"];
                                 photo.Updated = (DateTime)reader["updated"];
+                                photo.UserUpload = reader["userupload"].ToString();
                             }
                         }
                     }
@@ -535,6 +539,125 @@ namespace SonyAlphaLibs.Services
                 {
                     writeLog("", "getPhotoOfProduct Error: " + ex.Message, connString);
                     return new List<String>();
+                }
+            }
+            return lists;
+            #endregion
+        }
+
+        public static List<Photo> getListPhotoOfUser(string username, String connString)
+        {
+            #region code
+            List<Photo> lists = new List<Photo>();
+            using (SqlConnection conn = new SqlConnection(connString))
+            {
+                try
+                {
+                    conn.Open();
+                    using (SqlCommand cmd = conn.CreateCommand())
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.CommandText = "sony_sp_get_all_photo_by_username";
+                        cmd.Parameters.AddWithValue("@username", username);
+
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                Photo photo = new Photo();
+                                photo.Id = (int)reader["id"];
+                                photo.Title = reader["title"].ToString();
+                                photo.FileName = reader["filename"].ToString();
+                                photo.Description = reader["description"].ToString();
+                                photo.RedirectUrl = reader["redirectUrl"].ToString();
+                                photo.Status = reader["status"].ToString().Equals("1") || reader["status"].ToString().Equals("True");
+                                photo.CameraName = reader["cameraName"].ToString();
+                                photo.CameraModel = reader["cameraModel"].ToString();
+                                photo.FStop = reader["fStop"].ToString();
+                                photo.ExposureTime = reader["exposureTime"].ToString();
+                                photo.ISO = reader["iso"].ToString();
+                                photo.ExposureBlas = reader["exposureBlas"].ToString();
+                                photo.FocalLengh = reader["focalLengh"].ToString();
+                                photo.MaxAperture = reader["maxAperture"].ToString();
+                                photo.MateringMode = reader["materingMode"].ToString();
+                                photo.SubjectDistance = reader["subjectDistance"].ToString();
+                                photo.FlashMode = reader["flashMode"].ToString();
+                                photo.FlashEnergy = reader["flashEnergy"].ToString();
+                                photo.ViewCount = (int)reader["viewCount"];
+                                photo.VoteCount = (int)reader["voteCount"];
+                                photo.LikeCount = (int)reader["likeCount"];
+                                photo.Created = (DateTime)reader["created"];
+                                photo.Updated = (DateTime)reader["updated"];
+                                photo.UserUpload = reader["userupload"].ToString();
+                                lists.Add(photo);
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    writeLog("", "Get All Photo Error: " + ex.Message, connString);
+                    return new List<Photo>();
+                }
+            }
+            return lists;
+            #endregion
+        }
+
+        public static List<Photo> getListPhotoOfUser(string username, int albumId, String connString)
+        {
+            #region code
+            List<Photo> lists = new List<Photo>();
+            using (SqlConnection conn = new SqlConnection(connString))
+            {
+                try
+                {
+                    conn.Open();
+                    using (SqlCommand cmd = conn.CreateCommand())
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.CommandText = "sony_sp_get_all_photo_by_username_albumid";
+                        cmd.Parameters.AddWithValue("@username", username);
+                        cmd.Parameters.AddWithValue("@albumid", albumId);
+
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                Photo photo = new Photo();
+                                photo.Id = (int)reader["id"];
+                                photo.Title = reader["title"].ToString();
+                                photo.FileName = reader["filename"].ToString();
+                                photo.Description = reader["description"].ToString();
+                                photo.RedirectUrl = reader["redirectUrl"].ToString();
+                                photo.Status = reader["status"].ToString().Equals("1") || reader["status"].ToString().Equals("True");
+                                photo.CameraName = reader["cameraName"].ToString();
+                                photo.CameraModel = reader["cameraModel"].ToString();
+                                photo.FStop = reader["fStop"].ToString();
+                                photo.ExposureTime = reader["exposureTime"].ToString();
+                                photo.ISO = reader["iso"].ToString();
+                                photo.ExposureBlas = reader["exposureBlas"].ToString();
+                                photo.FocalLengh = reader["focalLengh"].ToString();
+                                photo.MaxAperture = reader["maxAperture"].ToString();
+                                photo.MateringMode = reader["materingMode"].ToString();
+                                photo.SubjectDistance = reader["subjectDistance"].ToString();
+                                photo.FlashMode = reader["flashMode"].ToString();
+                                photo.FlashEnergy = reader["flashEnergy"].ToString();
+                                photo.ViewCount = (int)reader["viewCount"];
+                                photo.VoteCount = (int)reader["voteCount"];
+                                photo.LikeCount = (int)reader["likeCount"];
+                                photo.Created = (DateTime)reader["created"];
+                                photo.Updated = (DateTime)reader["updated"];
+                                photo.UserUpload = reader["userupload"].ToString();
+                                lists.Add(photo);
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    writeLog("", "Get All Photo Error: " + ex.Message, connString);
+                    return new List<Photo>();
                 }
             }
             return lists;
