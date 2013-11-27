@@ -194,7 +194,7 @@ namespace SonyAlphaLibs.Services
                                 user.GroupName = reader["groupname"].ToString();
                                 user.Phone = reader["phone"].ToString();
                                 user.Email = reader["email"].ToString();
-                                user.ProductUsed = reader["productused"].ToString();
+                                user.ProductUsed = String.IsNullOrEmpty(reader["productused"].ToString()) ? "0" : reader["productused"].ToString();
                                 lists.Add(user);
                             }
                         }
@@ -282,7 +282,7 @@ namespace SonyAlphaLibs.Services
                                 rs.GroupId = (int)reader["groupId"];
                                 rs.Phone = reader["phone"].ToString();
                                 rs.Email = reader["email"].ToString();
-                                rs.ProductUsed = reader["productused"].ToString();
+                                rs.ProductUsed = String.IsNullOrEmpty(reader["productused"].ToString()) ? "0" : reader["productused"].ToString();
                                 break;
                             }
                         }
