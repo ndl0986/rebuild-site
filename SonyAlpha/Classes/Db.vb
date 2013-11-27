@@ -182,7 +182,7 @@ Public Module Db
         strUrl = strUrl.Replace("&", "va")
         strUrl = strUrl.Replace(Chr(34), "")
         strUrl = strUrl.Replace(ChrW(&H22), "")
-        strUrl = strUrl.Replace("\""", String.Empty)
+        strUrl = strUrl.Replace(ControlChars.Quote, String.Empty)
         Dim y As Integer
         For y = 0 To arr1.Length - 1
             If strUrl.IndexOf(arr1(y)) <> -1 Then
