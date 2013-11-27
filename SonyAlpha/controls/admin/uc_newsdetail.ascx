@@ -34,8 +34,7 @@
             </li>
             <li class="row clerafix">
                 <div class="caption" >Photo :</div>
-                <div id="lstPhotos" class="item">
-                    <ul id="ulPhotos" class="clearfix"></ul>
+                <div id="lstPhotos" class="item">                    
                     <div class="banner_photo clearfix">
                         <div class="floatleft">
                             <asp:TextBox id="txtPhotoURL" runat="server" clientidmode="Static" type="text" class="textbox" placeholder="URL photo ..."></asp:TextBox>

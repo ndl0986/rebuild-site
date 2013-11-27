@@ -13,7 +13,7 @@ Public Class uc_newsdetail1
             chkPublished.Checked = news.Published
             txtDescription.Text = news.Description
             fckEditor.Value = news.Detail
-            news.NewsImage = news.NewsImage
+            txtPhotoURL.Text = news.NewsImage
         End If
     End Sub
     Private Sub Page_Init(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Init
