@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using SonyAlphaLibs.Services;
 
 namespace SonyAlphaLibs
 {
-    public class AlbumComment : BaseModel
+    public class AlbumComment : BaseModel, IBaseFunction<AlbumComment>
     {
         #region fields
         private string userName;
@@ -48,6 +49,35 @@ namespace SonyAlphaLibs
             set { comment = value; }
         }
         
+        #endregion
+
+        #region base method
+        public bool add(string connString)
+        {
+            return AlbumServices.setComment2Album(this, connString);
+        }
+
+        public bool update(string connString)
+        {
+            //return AlbumServices.updateComment(this, connString);
+            return false;
+        }
+
+        public List<AlbumComment> getListAll(string connString)
+        {
+            return AlbumServices.getListComment(connString);
+        }
+
+        public AlbumComment getById(string connString)
+        { 
+            //return AlbumServices.getAlbumComment(base.Id, connString);
+            return new AlbumComment();
+        }
+
+        public bool removeById(string connString)
+        {
+            return AlbumServices.removeCommentById(base.Id, connString);
+        }
         #endregion
 
         #region constructor

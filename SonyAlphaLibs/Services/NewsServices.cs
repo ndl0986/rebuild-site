@@ -509,7 +509,7 @@ namespace SonyAlphaLibs.Services
         /// <param name="connString"></param>
         /// <returns></returns>
         public static List<News> getListNewsByCategoryIds(List<int> categoryIds, int pageNum, int pageSize, 
-            int order, string orderBy, string connString)
+            int order, string orderBy, string connString, ref int totalNews)
         {
             #region code
             List<News> lists = new List<News>();
@@ -534,14 +534,22 @@ namespace SonyAlphaLibs.Services
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.CommandText = "sony_sp_get_all_news_by_list_category_id";
-                        cmd.Parameters.AddWithValue("@categoryIds", categoryIds);
+                        cmd.Parameters.AddWithValue("@categoryIds", listCategoryIds);
                         cmd.Parameters.AddWithValue("@pageNum", pageNum);
                         cmd.Parameters.AddWithValue("@pageSize", pageSize);
                         cmd.Parameters.AddWithValue("@order", order);
                         cmd.Parameters.AddWithValue("@orderBy", orderBy);
+                        SqlParameter returnVal = new SqlParameter("@returnVal", SqlDbType.Int);
+                        returnVal.Direction = ParameterDirection.Output;
+                        cmd.Parameters.Add(returnVal);
+
+                        // get total news
+                        cmd.ExecuteNonQuery();
+                        totalNews = (int)cmd.Parameters["@returnVal"].Value;
 
                         using (SqlDataReader reader = cmd.ExecuteReader())
                         {
+                           
                             while (reader.Read())
                             {
                                 News news = new News();
@@ -563,8 +571,10 @@ namespace SonyAlphaLibs.Services
                                 news.Updated = (DateTime)reader["updated"];
                                 lists.Add(news);
                             }
+                            
                         }
                     }
+                    
                 }
                 catch (Exception ex)
                 {

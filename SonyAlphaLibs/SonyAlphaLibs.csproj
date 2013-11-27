@@ -60,6 +60,7 @@
     <Compile Include="Classes\NewsCategory.cs" />
     <Compile Include="Classes\Page.cs" />
     <Compile Include="Classes\PageBanner.cs" />
+    <Compile Include="Classes\Paging.cs" />
     <Compile Include="Classes\Permission.cs" />
     <Compile Include="Classes\Photo.cs" />
     <Compile Include="Classes\Product.cs" />

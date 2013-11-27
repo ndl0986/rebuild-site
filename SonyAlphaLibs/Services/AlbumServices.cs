@@ -763,5 +763,10 @@ namespace SonyAlphaLibs.Services
             return rs;
             #endregion
         }
+
+        public static List<AlbumComment> getListComment(string connString)
+        {
+            return new List<AlbumComment>();
+        }
     }
 }
