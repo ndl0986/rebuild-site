@@ -37,17 +37,6 @@ Public Class uc_newscategory
                 If totalNews > 0 Then
                     GeneratePaging(listPaging, totalNews, pageSize, pgUrl, totalPage)
                 End If
-
-
-
-                'For Each bllItem As SonyAlphaLibs.NewsCategory In lstCats
-                '    Dim bllItemNews As List(Of SonyAlphaLibs.News)
-                '    bllItemNews = SonyAlphaLibs.Services.NewsServices.getListNewsByCategory(bllItem.Id, CN.ConnectionString)
-                '    listNewsInCat.AddRange(bllItemNews)
-                '    If bllItemNews.Count > 0 Then
-                '        listTop.Add(bllItemNews.Item(bllItemNews.Count - 1))
-                '    End If
-                'Next
             Else
                 bolType = False
                 listNewsInCat = SonyAlphaLibs.Services.NewsServices.getListNewsByCategory(catId, CN.ConnectionString)
