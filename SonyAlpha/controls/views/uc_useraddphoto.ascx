@@ -1,46 +1,46 @@
 ﻿<%@ Control Language="vb" AutoEventWireup="false" CodeBehind="uc_useraddphoto.ascx.vb" Inherits="SonyAlpha.uc_useraddphoto" %>
-<div class="content">
+<link rel="stylesheet" type="text/css" href="css/uploadify.css"/>
+<div class="user_upload_page content">
     <div class="message"><%= message %></div>
-    <% If String.IsNullOrEmpty(message) Then%>
-    <ul class="ul_list_albums clearfix">
+    <ul class="ul_upload clearfix">
         <li>
             <div class="caption">Album : </div>
             <div class="item">
-                <asp:DropDownList ID="ddlAlbums" runat="server"></asp:DropDownList>
+                <asp:DropDownList ID="ddlAlbums" runat="server" ClientIDMode="Static" AutoPostBack="True"></asp:DropDownList>
             </div>
         </li>
         <li class="row clerafix">
-                <div class="caption" >Chọn ảnh :</div>
-                <div class="item">
-                    <asp:HiddenField runat="server" ID="urlPath" ClientIDMode="Static" />
-                    <ajaxToolkit:AsyncFileUpload ID="fileUpload" ClientIDMode="Static" runat="server" ThrobberID="myThrobber" OnClientUploadError="uploadError" OnClientUploadComplete="uploadComplete" CssClass="btn button red"/>
-                    <asp:Label runat="server" ID="myThrobber" style="display: none;"><img alt="" src="../../Img/ajax-loader.gif"/></asp:Label>
-                    <asp:TextBox runat="server" ID="txtFileName" ClientIDMode="Static" CssClass="textbox detail hidden" required maxlength="500"></asp:TextBox>
-                </div>
-            </li>
+            <div class="caption" >Chọn ảnh :</div>
+            <div class="item">
+                <ajaxToolkit:AjaxFileUpload ID="AjaxFileUpload1" runat="server" ThrobberID="myThrobber" OnClientUploadError="uploadError" OnClientUploadComplete="uploadComplete" OnClientUploadStart="onClientUploadStart" OnClientUploadCompleteAll="onClientUploadCompleteAll" AllowedFileTypes="jpg,jpeg,gif,png" MaximumNumberOfFiles="10"/>
+                <asp:Label runat="server" ID="myThrobber" style="display: none;"><img alt="" src="../../Img/ajax-loader.gif"/></asp:Label>
+            </div>
+        </li>
     </ul>
-    <% End If %>
+    <div id="AddToAlbum">
+        <div id="fileList"></div>
+        <asp:Button ID="btnSave" runat="server" Text="OK" />
+    </div>
+
+    <div id="testExif" runat="server"></div>
 </div>
 <script type = "text/javascript">
     $(document).ready(function () {
-        $('.btnOk').removeAttr('disabled').addClass('blue');
-        if ($('#txtFileName').val() != '') {
-            showDetail();
-        }
-    });
 
+    });
     function uploadComplete(sender, args) {
-        $('#txtFileName').val($('#urlPath').val() + args.get_fileName());
-        showDetail();
+        var img = $('<div class="thumbnail"></div>').attr('style', 'background:url("' + args._postedUrl + args.get_fileName() + '");');
+        $('#fileList').append(img);
     }
 
     function uploadError(sender) {
-        $('#txtFileName').val("File upload failed.");
     }
 
-    function showDetail() {
-        var img = $('<div class="thumbnail"></div>').attr('style', 'background:url("/upload/image/product/' + $('#txtFileName').val() + '");');
-        $('#fileUpload').after(img).addClass('hidden');
-        $('.detail').removeClass("hidden");
+    function onClientUploadStart(sender, e) {
     }
+
+    function onClientUploadCompleteAll(sender, e) {
+
+    }
+    
 </script>

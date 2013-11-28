@@ -32,14 +32,35 @@ Public Class uc_newscategory
                 Dim listIds As New List(Of Integer)
                 For Each newsCategory As NewsCategory In lstCats
                     listIds.Add(newsCategory.Id)
+                    Dim bllItemNews As List(Of SonyAlphaLibs.News)
+                    bllItemNews = SonyAlphaLibs.Services.NewsServices.getListNewsByCategory(newsCategory.Id, CN.ConnectionString)
+                    If bllItemNews.Count > 0 Then
+                        listTop.Add(bllItemNews.Item(bllItemNews.Count - 1))
+                    End If
                 Next
+                listNewsInCat = NewsServices.getListNewsByCategoryIds(listIds, pageNum, pageSize, 0, "created", CN.ConnectionString, totalNews)
+
+                If totalNews > 0 Then
+                    GeneratePaging(listPaging, totalNews, pageSize, pgUrl, totalPage)
+                End If
+                'For Each bllItem As SonyAlphaLibs.NewsCategory In lstCats
+                '    Dim bllItemNews As List(Of SonyAlphaLibs.News)
+                '    bllItemNews = SonyAlphaLibs.Services.NewsServices.getListNewsByCategory(bllItem.Id, CN.ConnectionString)
+                '    listNewsInCat.AddRange(bllItemNews)
+                '    If bllItemNews.Count > 0 Then
+                '        listTop.Add(bllItemNews.Item(bllItemNews.Count - 1))
+                '    End If
+                'Next
+            Else
+                bolType = False
+                'listNewsInCat = SonyAlphaLibs.Services.NewsServices.getListNewsByCategory(catId, CN.ConnectionString)
+                Dim listIds As New List(Of Integer)
+                listIds.Add(catId)
                 listNewsInCat = NewsServices.getListNewsByCategoryIds(listIds, pageNum, pageSize, 0, "created", CN.ConnectionString, totalNews)
                 If totalNews > 0 Then
                     GeneratePaging(listPaging, totalNews, pageSize, pgUrl, totalPage)
                 End If
-            Else
-                bolType = False
-                listNewsInCat = SonyAlphaLibs.Services.NewsServices.getListNewsByCategory(catId, CN.ConnectionString)
+
                 Dim bllSetting As New SonyAlphaLibs.Setting
                 Dim bllPage As New SonyAlphaLibs.Page
                 bllSetting.Name = "menu_kythuat"
@@ -75,7 +96,7 @@ Public Class uc_newscategory
             For i As Integer = 0 To totalPage Step 1
                 Dim paging As New Paging
                 paging.PageNum = i.ToString()
-                paging.PageText = i.ToString()
+                paging.PageText = (i + 1).ToString()
                 If pgUrl.Contains("&page=") Then
                     pgUrl = pgUrl.Substring(0, pgUrl.IndexOf("&page="))
                 End If

@@ -816,6 +816,18 @@ margin-right: 6px;}
 .new_album {height: 175px;border: dashed 1px #ccc;margin: 5px; position: relative; color: #fe3500;}
 .new_album .ico-add{ font-size: 20px; font-weight: bold; height: 30px; width: 30px; position: absolute; top: 10px; right: 10px;}
 .new_album a { line-height: 175px; vertical-align: middle; text-align: center; font-size: 15px; display: inline-block; width: 100%;color: #fe3500;}
+.user_upload_page { margin: 50px 100px; border: solid 1px #efefef; padding: 10px;}
+.ul_upload li { padding: 5px 0px;}
+.ul_upload .caption { font-size: 14px; font-weight: bold;}
+.ul_upload select { padding: 5px; outline: none;}
+.ul_upload .ajax__fileupload_dropzone { border: dashed 1px #AF4420;}
+.ul_upload .ajax__fileupload_dropzone:hover { border-color: #3333ff;}
+.ul_upload .ajax__fileupload { border: none;}
+
+.paging { font-size: 0; color: #000; text-align: center;}
+.paging li { display: inline-block; height: 20px; line-height: 20px; padding: 0px 5px;}
+.paging a { font-size: 13px; color: #000;}
+.paging .active{ color: #AF4420; display: block;}
 /* Mobile style */
 @media screen and (max-width: 719px) {
     .container { width: auto; margin: auto 10px;}

@@ -23,13 +23,13 @@ Partial Public Class _Default
     Protected WithEvents form1 As Global.System.Web.UI.HtmlControls.HtmlForm
 
     '''<summary>
-    '''ScriptManager control.
+    '''ToolkitScriptManager control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents ScriptManager As Global.System.Web.UI.ScriptManager
+    Protected WithEvents ToolkitScriptManager As Global.AjaxControlToolkit.ToolkitScriptManager
 
     '''<summary>
     '''lblUser control.

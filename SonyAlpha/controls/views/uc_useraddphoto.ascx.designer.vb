@@ -23,22 +23,13 @@ Partial Public Class uc_useraddphoto
     Protected WithEvents ddlAlbums As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
-    '''urlPath control.
+    '''AjaxFileUpload1 control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents urlPath As Global.System.Web.UI.WebControls.HiddenField
-
-    '''<summary>
-    '''fileUpload control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents fileUpload As Global.AjaxControlToolkit.AsyncFileUpload
+    Protected WithEvents AjaxFileUpload1 As Global.AjaxControlToolkit.AjaxFileUpload
 
     '''<summary>
     '''myThrobber control.
@@ -50,11 +41,20 @@ Partial Public Class uc_useraddphoto
     Protected WithEvents myThrobber As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''txtFileName control.
+    '''btnSave control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtFileName As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents btnSave As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
+    '''testExif control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents testExif As Global.System.Web.UI.HtmlControls.HtmlGenericControl
 End Class

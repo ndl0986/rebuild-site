@@ -22,12 +22,13 @@
     <link rel="stylesheet" type="text/css" href="css/reset.css"/>
     <link rel="stylesheet" type="text/css" href="css/styles.css"/>
 	<link rel="stylesheet" type="text/css" href="js/plugins/jquery.fancybox.css?v=2.1.5" media="screen" />
-    <script type="text/javascript" src="<%=absoluteURL%>/js/libs/modernizr-2.5.3.min.js"></script>
+    <script type="text/javascript" src="/js/libs/modernizr-2.5.3.min.js"></script>
 </head>
 <body>
     <div id="wrapper">
     <form id="form1" runat="server">
-    <asp:ScriptManager ID="ScriptManager" runat="server" ScriptMode="Release"/>
+    <ajaxToolkit:ToolkitScriptManager ID="ToolkitScriptManager" runat="server" ScriptMode="Release" ></ajaxToolkit:ToolkitScriptManager>
+    <script type="text/javascript" src="/js/libs/jquery-2.0.3.min.js"></script>
     <div id="header" class="clearfix">
         <div id="page_header" class="header_content clearfix">
             <div class="header-top-national">Việt Nam</div>
@@ -55,20 +56,20 @@
     <div id="footer" runat="server" class="clearfix"></div>
     </form>
     </div>
-    <div id="formReg" class="bgFormPopup hide"><a class="close"></a><uc1:uc_register ID="uc_register1" runat="server" /></div>
+    <div id="formReg" class="bgFormPopup hide"><a class="close"></a>
+        <uc1:uc_register ID="uc_register1" runat="server" /></div>
     <div id="formSign" class="bgFormPopup hide"><a class="close"></a><uc2:uc_login ID="uc_login1" runat="server" /></div>
     <div id="formUpdate" class="bgFormPopup hide"><a class="close"></a><uc3:uc_userupdate ID="uc_userupdate1" runat="server" /></div>
-    <script type="text/javascript" src="<%=absoluteURL%>/js/libs/jquery-2.0.3.min.js"></script>
-    <script type="text/javascript" src="<%=absoluteURL%>/js/libs/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/js/libs/bootstrap.min.js"></script>
     <!--[if IE 8]>    
       <script src="../js/libs/respond.min.js"></script>
     <![endif]-->
-    <script type="text/javascript" src="<%=absoluteURL%>/js/plugins/jquery.lazyload.min.js"></script>
-    <script type="text/javascript" src="<%=absoluteURL%>/js/plugins/jquery.bxslider.min.js"></script>
-    <script type="text/javascript" src="<%=absoluteURL%>/js/plugins/jquery.nivo.slider.pack.js"></script>
-    <script type="text/javascript" src="<%=absoluteURL%>/js/plugins/jquery.slimscroll.min.js"></script>
-	<script type="text/javascript" src="<%=absoluteURL%>/js/plugins/jquery.fancybox.js?v=2.1.5"></script>
-    <script type="text/javascript" src="<%=absoluteURL%>/js/controllers/main.js"></script>
+    <script type="text/javascript" src="/js/plugins/jquery.lazyload.min.js"></script>
+    <script type="text/javascript" src="/js/plugins/jquery.bxslider.min.js"></script>
+    <script type="text/javascript" src="/js/plugins/jquery.nivo.slider.pack.js"></script>
+    <script type="text/javascript" src="/js/plugins/jquery.slimscroll.min.js"></script>
+	<script type="text/javascript" src="/js/plugins/jquery.fancybox.js?v=2.1.5"></script>
+    <script type="text/javascript" src="/js/controllers/main.js"></script>
 </body>
 </html>
 

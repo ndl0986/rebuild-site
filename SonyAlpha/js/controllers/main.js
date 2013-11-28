@@ -35,7 +35,7 @@ function parseShopCenter() {
                 listShopHN += '<li class="table_row row_' + cHN % 2 + '">' + listShop[i].innerHTML + '</li>'; cHN += 1;
 
             } else {
-                console.log($(listShop[i]));
+                //console.log($(listShop[i]));
                 listShopOrthers += '<li class="table_row row_' + cOthers % 2 + '">' + listShop[i].innerHTML + '</li>'; cOthers += 1;
             }
         }

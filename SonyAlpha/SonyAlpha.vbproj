@@ -53,6 +53,10 @@
     <Reference Include="AjaxMin">
       <HintPath>packages\AjaxMin.4.97.4951.28483\lib\net40\AjaxMin.dll</HintPath>
     </Reference>
+    <Reference Include="ExifMetadata, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\ExifMetadata.dll</HintPath>
+    </Reference>
     <Reference Include="FredCK.FCKeditorV2, Version=2.6.3.22451, Culture=neutral, PublicKeyToken=4f86767c9b519a06, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\FredCK.FCKeditorV2.dll</HintPath>
@@ -701,6 +705,7 @@
     <Content Include="Js\plugins\jquery.nivo.slider.pack.js" />
     <Content Include="Js\plugins\jquery.slimscroll.min.js" />
     <Content Include="Js\plugins\jquery.validate.js" />
+    <Content Include="Js\plugins\uploadify.swf" />
     <Content Include="Service.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -1252,6 +1257,9 @@
       <DependentUpon>Service.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
+    <Compile Include="upload.ashx.vb">
+      <DependentUpon>upload.ashx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">
@@ -1367,6 +1375,7 @@
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
     <Content Include="packages.config" />
+    <Content Include="upload.ashx" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

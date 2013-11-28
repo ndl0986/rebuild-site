@@ -1,13 +1,16 @@
 ﻿Imports SonyAlphaLibs
 Imports SonyAlphaLibs.Services
+Imports System.IO
+Imports LevDan.Exif
 Public Class uc_useraddphoto
     Inherits System.Web.UI.UserControl
-    Public username As String
-    Public fullname As String
-    Public user As New User
+    Dim username As String
+    Dim fullname As String
+    Dim user As New User
     Public message As String = ""
-    Public listAlbums As New List(Of Album)
-
+    Dim listAlbums As New List(Of Album)
+    Dim strPath As String
+    Dim listFiles As New List(Of String)
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         username = Session("accountid")
         If Not Page.IsPostBack Then
@@ -30,4 +33,34 @@ Public Class uc_useraddphoto
         End If
     End Sub
 
+
+    Private Sub AjaxFileUpload1_UploadComplete(ByVal sender As Object, ByVal e As AjaxControlToolkit.AjaxFileUploadEventArgs) Handles AjaxFileUpload1.UploadComplete
+
+        strPath = Context.Server.MapPath("~/upload/image/album/1/")
+        Dim filename As String = e.FileName
+        If Not Directory.Exists(strPath) Then
+            Directory.CreateDirectory(strPath)
+        End If
+
+        AjaxFileUpload1.SaveAs((strPath & "\") + filename)
+        e.PostedUrl = GetURL(strPath)
+        listFiles.Add(filename)
+
+        Dim _exif As New ExifTagCollection((strPath & "\") + filename)
+        Dim str As String
+        For Each info In _exif
+            str = str & info.FieldName & ":" & info.Value & "<br/>"
+        Next
+        testExif.InnerHtml = str
+    End Sub
+
+    Private Sub btnSave_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnSave.Click
+        Dim album As String = ddlAlbums.SelectedValue
+        Dim str As String = Context.Server.MapPath("~/upload/image/album/" & album & "/")
+
+        For Each item In listFiles
+            My.Computer.FileSystem.MoveFile(strPath & "\" & item.Trim, str & item)
+        Next
+
+    End Sub
 End Class
