@@ -896,5 +896,62 @@ namespace SonyAlphaLibs.Services
             return lists;
             #endregion
         }
+        /// <summary>
+        /// Get lastest new with category as input param
+        /// </summary>
+        /// <param name="num"></param>
+        /// <param name="categoryId"></param>
+        /// <param name="connString"></param>
+        /// <returns></returns>
+        public static List<News> getListLastestNewsWithCategory(int num, int categoryId, string connString)
+        {
+            #region code
+            List<News> lists = new List<News>();
+            using (SqlConnection conn = new SqlConnection(connString))
+            {
+                try
+                {
+                    conn.Open();
+                    using (SqlCommand cmd = conn.CreateCommand())
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.CommandText = "sony_sp_get_lastest_news_by_categoryid";
+                        cmd.Parameters.AddWithValue("@num", num);
+                        cmd.Parameters.AddWithValue("@categoryId", categoryId);
+
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                News news = new News();
+                                news.Id = (int)reader["id"];
+                                news.Title = reader["title"].ToString();
+                                news.SeoUrl = reader["seoUrl"].ToString();
+                                news.Detail = reader["detail"].ToString();
+                                news.Description = reader["description"].ToString();
+                                news.CategoryId = (int)reader["categoryId"];
+                                news.Published = reader["published"].ToString().Equals("1") || reader["published"].ToString().Equals("True");
+                                news.MetaTag = reader["metaTag"].ToString();
+                                news.MetaTitle = reader["metaTitle"].ToString();
+                                news.MetaKeyWord = reader["metaKeyword"].ToString();
+                                news.ViewCount = (int)reader["viewCount"];
+                                news.LikeCount = (int)reader["likeCount"];
+                                news.NewsImage = reader["newsImage"].ToString();
+                                news.RelatedNewsIds = reader["relatedNewsIds"].ToString();
+                                news.Created = (DateTime)reader["created"];
+                                news.Updated = (DateTime)reader["updated"];
+                                lists.Add(news);
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    return new List<News>();
+                }
+            }
+            return lists;
+            #endregion
+        }
     }
 }
