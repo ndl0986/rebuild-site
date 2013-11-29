@@ -7,7 +7,7 @@
         <li>
             <div class="new_album">
                 <div class="ico-add">+</div>
-                <a href="/useraddphoto.aspx" id="uc_userupload_uploadnew" class="album_title">Đăng thêm ảnh</a>
+                <a href="useraddphoto.aspx" id="uc_userupload_uploadnew" class="album_title">Đăng thêm ảnh</a>
             </div>
         </li>
         <% If listAlbums.Count > 0 Then%>

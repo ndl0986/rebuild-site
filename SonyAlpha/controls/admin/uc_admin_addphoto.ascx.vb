@@ -2,6 +2,7 @@
 Imports SonyAlphaLibs.Services
 Imports System.IO
 Imports System.Configuration
+Imports LevDan.Exif
 Public Class uc_admin_addphoto
     Inherits System.Web.UI.UserControl
     Dim myAlbum As New SonyAlphaLibs.Album
@@ -75,6 +76,49 @@ Public Class uc_admin_addphoto
         Dim filePath As String
         filePath = Server.MapPath("~/upload/image/album/" & Request.QueryString("aid") & "/")
         fileUpload.SaveAs(filePath + e.FileName)
+
+        Dim _exif As New ExifTagCollection(Server.MapPath("~/upload/image/album/" & Request.QueryString("aid") & "/") & e.FileName)
+        myPhoto.UserUpload = Session("accountid")
+        For Each info In _exif
+            Select Case info.FieldName
+                Case "Make"
+                    myPhoto.CameraName = info.Value
+                Case "Model"
+                    myPhoto.CameraModel = info.Value
+                Case "ExposureTime"
+                    myPhoto.ExposureTime = info.Value
+                Case "MaxApertureValue "
+                    myPhoto.MaxAperture = info.Value
+                Case "FocalLength"
+                    myPhoto.FocalLengh = info.Value
+                Case "FlashEnergy"
+                    myPhoto.FlashEnergy = info.Value
+                Case "Flash"
+                    myPhoto.FlashMode = info.Value
+                Case "FNumber"
+                    myPhoto.FStop = info.Value
+                Case "MeteringMode"
+                    myPhoto.MateringMode = info.Value
+                Case "ISOSpeedRatings"
+                    myPhoto.ISO = info.Value
+                Case "ExposureBiasValue"
+                    myPhoto.ExposureBlas = info.Value
+                Case "SubjectDistance"
+                    myPhoto.SubjectDistance = info.Value
+            End Select
+        Next
+        txtCamera.Text = myPhoto.CameraName
+        txtCameraModel.Text = myPhoto.CameraModel
+        txtExposureBlas.Text = myPhoto.ExposureBlas
+        txtExposureTime.Text = myPhoto.ExposureTime
+        txtFlashEnergy.Text = myPhoto.FlashEnergy
+        txtFlashMode.Text = myPhoto.FlashMode
+        txtFocalLengh.Text = myPhoto.FocalLengh
+        txtFstop.Text = myPhoto.FStop
+        txtMateringMode.Text = myPhoto.MateringMode
+        txtMaxAperture.Text = myPhoto.MaxAperture
+        txtISO.Text = myPhoto.ISO
+        txtSubjectDistance.Text = myPhoto.SubjectDistance
     End Sub
 
     Private Sub btnSave_ServerClick(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnSave.ServerClick
@@ -95,14 +139,10 @@ Public Class uc_admin_addphoto
                 myPhoto.MaxAperture = txtMaxAperture.Text
                 myPhoto.ISO = txtISO.Text
                 myPhoto.SubjectDistance = txtSubjectDistance.Text
-
-
-
                 Dim result As Boolean
                 If bolUpdate = False Then
                     myPhoto.add(CN.ConnectionString)
                     myPhoto.Id = SonyAlphaLibs.Services.PhotoServices.getCurrentMaxId("sony_photo", CN.ConnectionString)
-
                     If CheckDuplicate() Then
                         result = myAlbum.setPhoto2Album(myPhoto, CN.ConnectionString)
                     End If
