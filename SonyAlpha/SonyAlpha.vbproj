@@ -1257,9 +1257,6 @@
       <DependentUpon>Service.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
-    <Compile Include="upload.ashx.vb">
-      <DependentUpon>upload.ashx</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">
@@ -1375,7 +1372,6 @@
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
     <Content Include="packages.config" />
-    <Content Include="upload.ashx" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
