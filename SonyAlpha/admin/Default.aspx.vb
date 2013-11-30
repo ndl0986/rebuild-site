@@ -93,6 +93,12 @@
                         tpl = Page.LoadControl("../controls/admin/uc_admin_addprovince.ascx")
                     Case "editprovince"
                         tpl = Page.LoadControl("../controls/admin/uc_admin_editprovince.ascx")
+                    Case "questionanswer"
+                        tpl = Page.LoadControl("../controls/admin/uc_admin_questionanswer.ascx")
+                    Case "addqa"
+                        tpl = Page.LoadControl("../controls/admin/uc_admin_addqa.ascx")
+                    Case "editqa"
+                        tpl = Page.LoadControl("../controls/admin/uc_admin_editqa.ascx")
                     Case "files"
                         Response.Redirect("FileManager.aspx")
                     Case "logout"

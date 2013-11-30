@@ -123,6 +123,7 @@
     <Content Include="controls\admin\uc_admin_addproduct.ascx" />
     <Content Include="controls\admin\uc_admin_addproductcategory.ascx" />
     <Content Include="controls\admin\uc_admin_addprovince.ascx" />
+    <Content Include="controls\admin\uc_admin_addqa.ascx" />
     <Content Include="controls\admin\uc_admin_addsetting.ascx" />
     <Content Include="controls\admin\uc_admin_addsonycenter.ascx" />
     <Content Include="controls\admin\uc_admin_album.ascx" />
@@ -131,11 +132,13 @@
     <Content Include="controls\admin\uc_admin_editproduct.ascx" />
     <Content Include="controls\admin\uc_admin_editproductcategory.ascx" />
     <Content Include="controls\admin\uc_admin_editprovince.ascx" />
+    <Content Include="controls\admin\uc_admin_editqa.ascx" />
     <Content Include="controls\admin\uc_admin_editsetting.ascx" />
     <Content Include="controls\admin\uc_admin_editsonycenter.ascx" />
     <Content Include="controls\admin\uc_admin_menulist.ascx" />
     <Content Include="controls\admin\uc_admin_photocomments.ascx" />
     <Content Include="controls\admin\uc_admin_provinces.ascx" />
+    <Content Include="controls\admin\uc_admin_questionanswer.ascx" />
     <Content Include="controls\admin\uc_admin_settings.ascx" />
     <Content Include="controls\admin\uc_admin_sonycenters.ascx" />
     <Content Include="controls\admin\uc_banneradd.ascx" />
@@ -836,6 +839,13 @@
       <DependentUpon>uc_admin_addprovince.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="controls\admin\uc_admin_addqa.ascx.designer.vb">
+      <DependentUpon>uc_admin_addqa.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\admin\uc_admin_addqa.ascx.vb">
+      <DependentUpon>uc_admin_addqa.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="controls\admin\uc_admin_addsetting.ascx.designer.vb">
       <DependentUpon>uc_admin_addsetting.ascx</DependentUpon>
     </Compile>
@@ -892,6 +902,13 @@
       <DependentUpon>uc_admin_editprovince.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="controls\admin\uc_admin_editqa.ascx.designer.vb">
+      <DependentUpon>uc_admin_editqa.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\admin\uc_admin_editqa.ascx.vb">
+      <DependentUpon>uc_admin_editqa.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="controls\admin\uc_admin_editsetting.ascx.designer.vb">
       <DependentUpon>uc_admin_editsetting.ascx</DependentUpon>
     </Compile>
@@ -925,6 +942,13 @@
     </Compile>
     <Compile Include="controls\admin\uc_admin_provinces.ascx.vb">
       <DependentUpon>uc_admin_provinces.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\admin\uc_admin_questionanswer.ascx.designer.vb">
+      <DependentUpon>uc_admin_questionanswer.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\admin\uc_admin_questionanswer.ascx.vb">
+      <DependentUpon>uc_admin_questionanswer.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="controls\admin\uc_admin_settings.ascx.designer.vb">

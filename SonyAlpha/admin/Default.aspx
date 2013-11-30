@@ -49,6 +49,7 @@
                             <li><a href="?tpl=newscategory">Thể loại</a></li>
                             <li><a href="?tpl=news">Danh sách bài viết</a></li>
                             <li><a href="?tpl=addnews">Viết bài</a></li>
+                            <li><a href="?tpl=questionanswer">Hỏi đáp</a></li>
                         </ul>
                         </li>
                         <li><a href="#">Hình ảnh</a>
