@@ -1,4 +1,6 @@
-﻿Public Class _Default1
+﻿Imports SonyAlphaLibs
+Imports SonyAlphaLibs.Services
+Public Class _Default1
     Inherits System.Web.UI.Page
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
@@ -18,6 +20,11 @@
         Else
             Try
                 '-----------------------------------------'
+                Dim user As New User
+                user = UserServices.getByUserName(Session("accountid"), CN.ConnectionString)
+                If Not user.isAdmin(CN.ConnectionString) Then
+                    Response.Redirect("/")
+                End If
                 Select Case LCase(Request.QueryString("tpl"))
                     Case "accounts"
                         tpl = Page.LoadControl("../controls/admin/uc_account.ascx")
