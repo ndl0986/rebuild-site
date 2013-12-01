@@ -41,6 +41,8 @@ Public Class _Default
                     Session("accountname") = ""
                     Session("accountgroup") = ""
                     Response.Cookies("SonyAlpha").Expires = DateAdd(DateInterval.Day, -1, Now())
+                    isLoged.Value = 0
+                    Response.Cache.SetNoStore()
                     Response.Redirect("/")
                 Case "album"
                     tpl = Page.LoadControl("controls/views/uc_album.ascx")

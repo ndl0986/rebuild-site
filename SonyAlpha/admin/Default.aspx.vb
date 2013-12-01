@@ -110,10 +110,11 @@ Public Class _Default1
                         Response.Redirect("FileManager.aspx")
                     Case "logout"
                         Session("accountid") = ""
-                        'Session("accountpass") = ""
                         Session("accountname") = ""
                         Session("accountgroup") = ""
                         Response.Cookies("SonyAlpha").Expires = DateAdd(DateInterval.Day, -1, Now())
+                        isValid.Value = 0
+                        Response.Cache.SetNoStore()
                         Response.Redirect("/")
                     Case Else
                         tpl = Page.LoadControl("../controls/admin/uc_account.ascx")
