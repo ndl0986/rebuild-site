@@ -763,10 +763,50 @@ namespace SonyAlphaLibs.Services
             return rs;
             #endregion
         }
-
+        /// <summary>
+        /// Get list all album comment
+        /// </summary>
+        /// <param name="connString"></param>
+        /// <returns></returns>
         public static List<AlbumComment> getListComment(string connString)
         {
-            return new List<AlbumComment>();
+            #region code
+            List<AlbumComment> lists = new List<AlbumComment>();
+            using (SqlConnection conn = new SqlConnection(connString))
+            {
+                try
+                {
+                    conn.Open();
+                    using (SqlCommand cmd = conn.CreateCommand())
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.CommandText = "sony_sp_get_all_album_comment";
+
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                AlbumComment albumComment = new AlbumComment();
+                                albumComment.Id = (int)reader["id"];
+                                albumComment.AlbumId = String.IsNullOrEmpty(reader["albumId"].ToString()) ? 0 : (int)reader["albumId"];
+                                albumComment.PhotoId = String.IsNullOrEmpty(reader["photoId"].ToString()) ? 0 : (int)reader["photoId"];
+                                albumComment.Comment = reader["comment"].ToString();
+                                albumComment.Status = reader["status"].ToString().Equals("1") || reader["status"].ToString().Equals("True");
+                                albumComment.UserName = reader["username"].ToString();
+                                albumComment.Created = (DateTime)reader["created"];
+                                lists.Add(albumComment);
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    writeLog("", "Get All AlbumComment Error: " + ex.Message, connString);
+                    return new List<AlbumComment>();
+                }
+            }
+            return lists;
+            #endregion
         }
 
         public static AlbumComment getCommentById(int commentId, string connString)
