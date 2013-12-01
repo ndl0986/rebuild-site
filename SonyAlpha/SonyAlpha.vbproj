@@ -676,8 +676,6 @@
     <Content Include="Img\folder\folder_closed.gif" />
     <Content Include="Img\folder\folder_opened.gif" />
     <Content Include="Img\folder\root.gif" />
-    <Content Include="Img\google+-ui-sprite-colour.png" />
-    <Content Include="Img\google+-ui-sprite-gray.png" />
     <Content Include="Img\icons.png" />
     <Content Include="Img\img_icon_slider.png" />
     <Content Include="Img\logo.jpg" />

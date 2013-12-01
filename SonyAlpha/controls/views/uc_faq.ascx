@@ -4,11 +4,11 @@
 <div id="menuTech" runat="server" clientidmode="Static" class="box_gradient"></div><uc1:uc_lastestnews ID="uc_lastestnews" runat="server" />
 <script>
     $('#ulFAQ').on('click', 'li', function () {
-        var li = this;
+        var li = $(this);
         var q = $(li.children()[0]);
         var an = $(li.children()[1]);
         q.toggleClass('show');
-        if (q.hassClass('show')) {
+        if (q.hasClass('show')) {
             an.slideDown(300);
         } else {
             an.slideUp(300);

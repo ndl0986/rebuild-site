@@ -15,8 +15,8 @@
             <HeaderStyle CssClass="girdheader"/>
             <Columns>
                 <asp:BoundField DataField="Id" HeaderText="Id" SortExpression="Id" ReadOnly="true"/>
-                <asp:BoundField DataField="Question" HeaderText="Question" SortExpression="Question" />
-                <asp:BoundField DataField="Answer" HeaderText="Answer" SortExpression="Answer" />
+                <asp:BoundField DataField="Question" HeaderText="Question" />
+                <asp:BoundField DataField="Answer" HeaderText="Answer" />
                 <asp:TemplateField HeaderText="Commands" ShowHeader="False" HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center">
                     <ItemTemplate>
                         <asp:LinkButton ID="lEdit" runat="server" CausesValidation="False" CommandName="Select" Text="Edit" CssClass="button"><span class="icon icon46"></span></asp:LinkButton>
@@ -33,7 +33,4 @@
     <SelectParameters>
         <asp:Parameter Name="connString" Type="String" />
     </SelectParameters>
-    <DeleteParameters>
-        <asp:Parameter Name="connString" Type="String" />
-    </DeleteParameters>
 </asp:ObjectDataSource>

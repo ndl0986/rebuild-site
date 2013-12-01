@@ -824,8 +824,11 @@ margin-right: 6px;}
 .album_page .message { margin: 10px 28px; font-size: 14px;}
 
 .faq_page { margin: 30px;}
-.faq_page li { margin-bottom: 15px; color: #555;}
-.faq_page .question.show { color: #fe3500;}
+.faq_page li { margin-bottom: 20px; color: #555; line-height: 16px;}
+.faq_page .question { cursor: pointer;}
+.faq_page .question.show { color: #fe3500; font-weight: bold; margin-bottom: 5px;}
+.map_page { text-align: center;}
+.map_page .google-map { margin: auto;}
 /*------------------------------------*\
     $ICONS
 \*------------------------------------*/
