@@ -1,11 +1,17 @@
 ﻿Imports System.IO
 Imports System.Configuration
-
+Imports SonyAlphaLibs
+Imports SonyAlphaLibs.Services
 Public Class FileManager
     Inherits System.Web.UI.Page
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         If Not Page.IsPostBack Then
+            Dim user As New User
+            user = UserServices.getByUserName(Session("accountid"), CN.ConnectionString)
+            If Not user.isAdmin(CN.ConnectionString) Then
+                Response.Redirect("/")
+            End If
             Dim strDir As String = Server.MapPath("~/upload")
             Dim fRootNode As New TreeNode("Root", strDir, "/img/folder/root.gif")
             trvFolder.Nodes.Add(fRootNode)
