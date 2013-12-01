@@ -6,6 +6,7 @@
     <div class="tab_nav clearfix">
         <div class="tab_nav_item active"><a href="tab#profile" data-title="Tài khoản cá nhân" class="uppercase">/ Thông tin cá nhân</a></div>
         <div class="tab_nav_item"><a href="tab#photo" data-title="Album của <%=Session("accountname")%>" class="uppercase">/ Ảnh đã đăng</a></div>
+        <a href="javascript:void(0);" id="hplUserupdate">Cập nhật thông tin</a>
     </div>
     <div class="tab_container">
         <div class="tab-content active" data-link="tab#profile">

@@ -11,8 +11,8 @@
             <div class="photo-analysis"><span><%= bllDetail.VoteCount%></span>&nbsp;bình chọn&nbsp;/&nbsp;<span><%=bllDetail.ViewCount %></span>&nbsp;lượt xem</div>
         </div>
         <div class="photo-actions">
-            <a class="btn orange uppercase fancybox" href="<%= bllDetail.FileName %>">Phóng lớn</a>
-            <a class="btn orange uppercase" href="javascript:void(0);">Bình chọn</a>
+            <a class="btn orange uppercase fancybox" href="<%= bllDetail.FileName %>">Phóng lớn <span class="icon icon160"></span></a>
+            <a class="btn orange uppercase" href="javascript:void(0);">Bình chọn <span class="icon icon101"></span></a>
             <a class="btn share-fb" href="https://www.facebook.com/sharer/sharer.php?u=<%=bllDetail.FileName %>"></a>
         </div>
     </div>

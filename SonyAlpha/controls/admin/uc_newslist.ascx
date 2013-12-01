@@ -8,13 +8,10 @@
     <div class="section clearfix">
         <asp:Label runat="server" ID="lblMessage"></asp:Label>
         <h4 class="heading">Danh sách tin tức<a href="?tpl=addnews" class="floatright button action"><span class="icon icon68"></span></a></h4>
-        <asp:GridView EmptyDataText="Không có trang nào" ID="grvNews" 
-            runat="server" AllowPaging="True" AllowSorting="True" DataSourceID="objNews"  
-            SkinID="Defaultgridview" AutoGenerateColumns="False" CssClass="datatable" 
-            GridLines="None">
+        <asp:GridView EmptyDataText="Không có trang nào" ID="grvNews" runat="server" AllowPaging="True" AllowSorting="True" DataSourceID="objNews" SkinID="Defaultgridview" AutoGenerateColumns="False" CssClass="datatable" GridLines="None">
             <HeaderStyle CssClass="girdheader"/>
             <Columns>
-                <asp:BoundField DataField="Id" HeaderText="Id" SortExpression="Id" ReadOnly=true />
+                <asp:BoundField DataField="Id" HeaderText="Id" SortExpression="Id" ReadOnly="true" />
                 <asp:BoundField DataField="Title" HeaderText="Tiêu đề" SortExpression="Title" />
                 <asp:BoundField DataField="Created" HeaderText="Created at" SortExpression="Created" dataformatstring="{0:dd/MM/yyyy}" htmlencode="false" />
                 <asp:BoundField DataField="Updated" HeaderText="Last modified" SortExpression="Updated" dataformatstring="{0:dd/MM/yyyy}" htmlencode="false"/>

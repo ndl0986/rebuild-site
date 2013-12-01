@@ -110,7 +110,7 @@ Public Class Service
 
                     If Request.Browser.Cookies = True Then
                         Dim c As HttpCookie = New HttpCookie("SonyAlpha")
-                        If Request.Cookies("DealBox") Is Nothing Then
+                        If Request.Cookies("SonyAlpha") Is Nothing Then
                             c.Expires = DateAdd(DateInterval.Day, 30, Now())
                             c.Values("accountid") = Session("accountid")
                             'c.Values("accountpass") = Session("accountpass")
@@ -235,8 +235,7 @@ Public Class Service
         End Try
     End Sub
 
-    Private Sub Sendmail(ByVal mailFrom As String, ByVal mailFromPass As String, ByVal mailTo As String, ByVal subject As String, _
-                         ByVal content As String)
+    Private Sub Sendmail(ByVal mailFrom As String, ByVal mailFromPass As String, ByVal mailTo As String, ByVal subject As String, ByVal content As String)
         Try
             Dim fromAddress As New Net.Mail.MailAddress(mailFrom, mailTo)
             Dim smtpClient As New Net.Mail.SmtpClient
@@ -250,7 +249,7 @@ Public Class Service
             message.To.Add(mailTo)
             message.Subject = subject
             message.IsBodyHtml = False
-            message.Body = content
+            message.Body = Content
             smtpClient.Send(message)
         Catch ex As Exception
 

@@ -115,9 +115,41 @@ function parseComments(data){
     var html='';
     for(var i=0;i<cmt.length;i++){
         html+= '<li id="comment_'+ cmt[i].Id +'" class="clearfix"><a href="javascript:void(0);" class="avatar"></a><div class="comment_content"><div class="user_name">'
-        html+= cmt[i].UserName + '</div><div class="comment_detail">' + cmt[i].Comment + '</div><div class="comment_time">' + convertTime(cmt[i].Created.replace('/Date(','').replace(')/','')) + '</div></div></li>'
+        html+= cmt[i].UserName + '</div><div class="comment_detail">' + cmt[i].Comment + '</div><div class="comment_time">' + convertTime(cmt[i].Created.replace('/Date(','').replace(')/','')) + '</div></div><a class="btn_edit"><span class="icon icon57" onClick="updateComment('+cmt[i].Id+')"></span></a><a class="btn_delete"><span class="icon icon56" onClick="deleteComment('+cmt[i].Id+')"></span></a></li>'
     }
     ul.append(html);
+}
+
+function updateComment(id){
+    var li = $('#comment_'+id);
+    li.addClass('editmode');
+    var currentContent = li.find('.comment_detail');
+    var editContent = $('<textarea class="comment_edit_area noresize"></textarea>');
+    var btnUpdateOk = $('<a class="btn flat orange floatright">OK</a>');
+    var btnUpdateCancel = $('<a class="btn flat orange floatright">Cancel</a>');
+    currentContent.after(btnUpdateOk).after(btnUpdateCancel).after(editContent).addClass('hidden');
+    btnUpdateCancel.click(function(){
+        currentContent.removeClass('hidden');
+        btnUpdateOk.remove();
+        editContent.remove();
+        $(this).remove();
+        li.removeClass('editmode');
+    });
+    btnUpdateOk.click(function(){
+        doUpdateComment(id,editContent.val(),function(){
+            currentContent.text(editContent.val()).removeClass('hidden');
+            editContent.remove();
+            btnUpdateOk.remove();
+            btnUpdateCancel.remove();
+            li.removeClass('editmode');
+        });
+    });
+}
+
+function deleteComment(id){
+    doDeleteComment(id,function(){
+        $('#comment_'+id).remove();
+    });
 }
 
 function convertTime(time){
@@ -133,7 +165,7 @@ function parseProductCategory(data){
     var catContent = $('#categoryContent');
     var html=$.parseJSON(data.message);
     catContent.html(html.Description);
-    $('#productContent').hide();
+    $('#productContent').slideUp(300);
 }
 
 function parseProductsList(data){
@@ -152,7 +184,7 @@ function parseProductsList(data){
         html+='<div class="cover"><a href="javascript:void(0);" onClick="loadProduct('+items[i].Id+')"><img src="'+ items[i].ProductCover +'" alt=""></a></div></li>';
     }
     html+='</ul>';
-    catContent.html(html).show();
+    catContent.html(html).slideDown(300);
 }
 
 function parseProductItem(data){
@@ -175,15 +207,15 @@ function parseProductItem(data){
     divInfo.html(str);
 
     getListPhotos(item.AlbumId,function(data){
-        parseLoadPhotos(data,divSlide);
+        parseLoadProductPhotos(data,divSlide);
     });
 
     //divSlide.html(slide);
-    catContent.html(divSlide).append(divInfo).show();
+    catContent.html(divSlide).append(divInfo).slideDown(300);
     
 }
 
-function parseLoadPhotos(data,target){
+function parseLoadProductPhotos(data,target){
     var items=$.parseJSON(data.message);
     var html='',html2='';
     html= '<ul class="bxslider">';
@@ -215,11 +247,30 @@ function hideLoading(){
     $('#loading').hide();
 }
 
+function AddThis(){
+    var html ='<li><div><a href="https://link.apps.zing.vn/share?u=https://alpha.sony.com.vn/&amp;t=Sony Alpha" target="_blank"></a><!-- AddThis Button BEGIN --><a class="addthis_button" href="https://www.addthis.com/bookmark.php?v=250&amp;pubid=xa-4f476065601b5428"><img src="https://s7.addthis.com/static/btn/v2/lg-share-en.gif" width="125" height="16" alt="Bookmark and Share" style="border:0"></a><script type="text/javascript" src="https://s7.addthis.com/js/250/addthis_widget.js#pubid=xa-4f476065601b5428" tabindex="1000"></script><div id="_atssh" style="visibility: hidden; height: 1px; width: 1px; position: absolute; z-index: 100000;"><iframe id="_atssh674" title="AddThis utility frame" style="height: 1px; width: 1px; position: absolute; z-index: 100000; border: 0px; left: 0px; top: 0px;" src="//s7.addthis.com/static/r07/sh142.html#iit=1385301130250&amp;tmr=load%3D1385301130016%26core%3D1385301130094%26main%3D1385301130250%26ifr%3D1385301130250&amp;cb=0&amp;cdn=0&amp;chr=UTF-8&amp;kw=&amp;ab=-&amp;dh=alpha.sony.com.vn&amp;dr=https%3A%2F%2Falpha.sony.com.vn%2Fhome%2Falpha_shop&amp;du=https%3A%2F%2Falpha.sony.com.vn%2Fhome%2Fongkinh&amp;dt=Sony&amp;dbg=0&amp;md=0&amp;cap=tc%3D0%26ab%3D0&amp;inst=1&amp;vcl=3&amp;jsl=33&amp;prod=true&amp;lng=vi&amp;ogt=&amp;pc=men&amp;pub=xa-4f476065601b5428&amp;ssl=1&amp;sid=5292048ae15b85a5&amp;srpl=1&amp;srcs=1&amp;srd=1&amp;srf=1&amp;srx=1&amp;ver=300&amp;xck=0&amp;xtr=0&amp;og=&amp;aa=0&amp;rev=124941&amp;ct=1&amp;xld=1&amp;xd=1"></iframe></div><script type="text/javascript" src="https://s7.addthis.com/static/r07/core111.js"></script><!-- AddThis Button END --></div></li>';
+    $('#nav').append(html);
+}
+
+function isEmail(email) {
+    var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+    if (!filter.test(email)) {
+        return false;
+    }
+    return true;
+}
+
+function isPhonenumber(input)
+{
+    var phonelReg = /(\(?(\d|(\d[- ]\d))\)?[-. ]?)?(\d\.?\d\.?\d.?\d.?\d.?\d.?\d.?\d.?\d.?\d)/;
+    if (input == '' || !phonelReg.test(input)) {
+        return false;
+    }
+    return true;
+}
+
 $(document).ready(function () {
-
     checkLoged('isLoged');
-
-
     var aspx = $('#hdfPage').val();
     checkLoged('isLoged');
     addBreadcum();
@@ -320,6 +371,19 @@ $(document).ready(function () {
         $('.tab_title h2').text($(this).attr('data-title'));
     });
 
+    $("#uc_register_btnOk").click(function () {
+        doRegister();
+    });
+    $("#uc_login_btnOk").click(function () {
+        doLogin();
+    });
+    $("#uc_email_fag_btnOk").click(function () {
+        doSendMail();
+    });
+    $("#uc_userupdate_btnOk").click(function () {
+        doUserUpdate();
+    });
+
     switch (aspx) {
         case 'seller':
             parseShopCenter();
@@ -351,14 +415,16 @@ $(document).ready(function () {
             $('.fancybox').fancybox();
             break;
         case 'productcate':
-            $('#loadContent').hide();
+            $('#loadContent').slideUp(0);
             var li = $('#product_categories .category_item');
             $('#product_categories .title_banner_text a').click(function (e) {
                 $(this).parents('.category_item').click();
                 return false;
             });
             $('#product_categories .category_item').click(function (e) {
-                $('#loadContent').hide(300);
+                if($(this).hasClass('active')) return false;
+                e.preventDefault();
+                $('#loadContent').slideUp(300);
                 li.removeClass('active');
                 $(this).addClass('active');
                 showLoading($('#loadContent'));
@@ -369,26 +435,11 @@ $(document).ready(function () {
                 getProductByCategoryId(productcateId, function (data) {
                     parseProductsList(data);
                 });
-                $('#loadContent').show(300);
+                $('#loadContent').slideDown(300);
             });
         default:
             break;
     }
-});
-
-jQuery(function () {
-    $("#uc_register_btnOk").click(function () {
-        doRegister();
-    });
-    $("#uc_login_btnOk").click(function () {
-        doLogin();
-    });
-    $("#uc_email_fag_btnOk").click(function () {
-        doSendMail();
-    });
-    $("#uc_userupdate_btnOk").click(function () {
-        doUserUpdate();
-    });
 });
 
 function doRegister() {
@@ -546,6 +597,40 @@ function doPostComment(albumId,photoId,comment,callback) {
     });
 }
 
+function doDeleteComment(commentId,callback) {
+    //console.log('doPostComment');
+    $.ajax({
+        type: 'POST',
+        timeout: 5000,
+        url: '/service.aspx?name=deletecomment',
+        data: { "commentId":commentId },
+        success: function (response) {
+            response = jQuery.parseJSON(response);
+            if($.isFunction(callback))callback(response);
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log('error');
+        }
+    });
+}
+
+function doUpdateComment(commentId,comment,callback) {
+    //console.log('doPostComment');
+    $.ajax({
+        type: 'POST',
+        timeout: 5000,
+        url: '/service.aspx?name=updatecomment',
+        data: { "commentId":commentId,"comment": comment },
+        success: function (response) {
+            response = jQuery.parseJSON(response);
+            if($.isFunction(callback))callback(response);
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log('error');
+        }
+    });
+}
+
 function getProductByCategoryId(categoryId,callback) {
     $.ajax({
         type: 'GET',
@@ -621,23 +706,6 @@ function getCategoryById(categoryId,callback) {
     });
 }
 
-function isEmail(email) {
-    var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-    if (!filter.test(email)) {
-        return false;
-    }
-    return true;
-}
-
-function isPhonenumber(input)
-{
-    var phonelReg = /(\(?(\d|(\d[- ]\d))\)?[-. ]?)?(\d\.?\d\.?\d.?\d.?\d.?\d.?\d.?\d.?\d.?\d)/;
-    if (input == '' || !phonelReg.test(input)) {
-        return false;
-    }
-    return true;
-}
-
 function getListPhotos(albumId,callback){
     $.ajax({
         type: 'GET',
@@ -653,10 +721,4 @@ function getListPhotos(albumId,callback){
             console.log('error' + textStatus);
         }
     });
-}
-
-
-function AddThis(){
-    var html ='<li><div><a href="https://link.apps.zing.vn/share?u=https://alpha.sony.com.vn/&amp;t=Sony Alpha" target="_blank"></a><!-- AddThis Button BEGIN --><a class="addthis_button" href="https://www.addthis.com/bookmark.php?v=250&amp;pubid=xa-4f476065601b5428"><img src="https://s7.addthis.com/static/btn/v2/lg-share-en.gif" width="125" height="16" alt="Bookmark and Share" style="border:0"></a><script type="text/javascript" src="https://s7.addthis.com/js/250/addthis_widget.js#pubid=xa-4f476065601b5428" tabindex="1000"></script><div id="_atssh" style="visibility: hidden; height: 1px; width: 1px; position: absolute; z-index: 100000;"><iframe id="_atssh674" title="AddThis utility frame" style="height: 1px; width: 1px; position: absolute; z-index: 100000; border: 0px; left: 0px; top: 0px;" src="//s7.addthis.com/static/r07/sh142.html#iit=1385301130250&amp;tmr=load%3D1385301130016%26core%3D1385301130094%26main%3D1385301130250%26ifr%3D1385301130250&amp;cb=0&amp;cdn=0&amp;chr=UTF-8&amp;kw=&amp;ab=-&amp;dh=alpha.sony.com.vn&amp;dr=https%3A%2F%2Falpha.sony.com.vn%2Fhome%2Falpha_shop&amp;du=https%3A%2F%2Falpha.sony.com.vn%2Fhome%2Fongkinh&amp;dt=Sony&amp;dbg=0&amp;md=0&amp;cap=tc%3D0%26ab%3D0&amp;inst=1&amp;vcl=3&amp;jsl=33&amp;prod=true&amp;lng=vi&amp;ogt=&amp;pc=men&amp;pub=xa-4f476065601b5428&amp;ssl=1&amp;sid=5292048ae15b85a5&amp;srpl=1&amp;srcs=1&amp;srd=1&amp;srf=1&amp;srx=1&amp;ver=300&amp;xck=0&amp;xtr=0&amp;og=&amp;aa=0&amp;rev=124941&amp;ct=1&amp;xld=1&amp;xd=1"></iframe></div><script type="text/javascript" src="https://s7.addthis.com/static/r07/core111.js"></script><!-- AddThis Button END --></div></li>';
-    $('#nav').append(html);
 }

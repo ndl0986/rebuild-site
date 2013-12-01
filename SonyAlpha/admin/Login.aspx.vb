@@ -35,7 +35,7 @@ Public Class Login
 
             If Request.Browser.Cookies = True Then
                 Dim c As HttpCookie = New HttpCookie("SonyAlpha")
-                If Request.Cookies("DealBox") Is Nothing Then
+                If Request.Cookies("SonyAlpha") Is Nothing Then
                     c.Expires = DateAdd(DateInterval.Day, 30, Now())
                     c.Values("accountid") = Session("accountid")
                     'c.Values("accountpass") = Session("accountpass")

@@ -110,7 +110,6 @@
     <Content Include="admin\Default.aspx" />
     <Content Include="admin\FileManager.aspx" />
     <Content Include="admin\Login.aspx" />
-    <Content Include="admin\Photos.aspx" />
     <Content Include="admin\TestPage.aspx" />
     <Content Include="controls\admin\uc_account.ascx" />
     <Content Include="controls\admin\uc_accountgroup.ascx" />
@@ -159,6 +158,7 @@
     <Content Include="controls\views\uc_albumdetail.ascx" />
     <Content Include="controls\views\uc_banner.ascx" />
     <Content Include="controls\views\uc_email_faq.ascx" />
+    <Content Include="controls\views\uc_faq.ascx" />
     <Content Include="controls\views\uc_footer.ascx" />
     <Content Include="controls\views\uc_header.ascx" />
     <Content Include="controls\views\uc_lastestnews.ascx" />
@@ -742,13 +742,6 @@
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
-    <Compile Include="admin\Photos.aspx.designer.vb">
-      <DependentUpon>Photos.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="admin\Photos.aspx.vb">
-      <DependentUpon>Photos.aspx</DependentUpon>
-      <SubType>ASPXCodebehind</SubType>
-    </Compile>
     <Compile Include="admin\TestPage.aspx.designer.vb">
       <DependentUpon>TestPage.aspx</DependentUpon>
     </Compile>
@@ -1089,6 +1082,13 @@
     </Compile>
     <Compile Include="controls\views\uc_email_faq.ascx.vb">
       <DependentUpon>uc_email_faq.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\views\uc_faq.ascx.designer.vb">
+      <DependentUpon>uc_faq.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\views\uc_faq.ascx.vb">
+      <DependentUpon>uc_faq.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="controls\views\uc_footer.ascx.designer.vb">
