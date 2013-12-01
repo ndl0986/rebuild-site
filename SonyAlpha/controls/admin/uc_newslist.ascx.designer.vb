@@ -32,6 +32,15 @@ Partial Public Class uc_newslist
     Protected WithEvents grvNews As Global.System.Web.UI.WebControls.GridView
 
     '''<summary>
+    '''ddlPageSize control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents ddlPageSize As Global.System.Web.UI.WebControls.DropDownList
+
+    '''<summary>
     '''objNews control.
     '''</summary>
     '''<remarks>

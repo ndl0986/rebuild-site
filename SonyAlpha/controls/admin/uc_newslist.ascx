@@ -25,6 +25,7 @@
             <FooterStyle Font-Bold="True" ForeColor="White" />
             <PagerStyle CssClass="pagepad" HorizontalAlign="Right" />
         </asp:GridView>
+        <div class="pagesize">Hiển thị <asp:DropDownList runat="server" ID="ddlPageSize" AutoPostBack="True"><asp:ListItem Selected="True" Value="10">10</asp:ListItem><asp:ListItem Value="20">20</asp:ListItem><asp:ListItem Value="50">50</asp:ListItem></asp:DropDownList></div>
     </div>
 </div>
 <asp:ObjectDataSource ID="objNews" runat="server" 

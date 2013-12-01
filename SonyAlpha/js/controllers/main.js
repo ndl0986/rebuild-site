@@ -127,6 +127,7 @@ function updateComment(id){
     var editContent = $('<textarea class="comment_edit_area noresize"></textarea>');
     var btnUpdateOk = $('<a class="btn flat orange floatright">OK</a>');
     var btnUpdateCancel = $('<a class="btn flat orange floatright">Cancel</a>');
+    editContent.val(currentContent.text());
     currentContent.after(btnUpdateOk).after(btnUpdateCancel).after(editContent).addClass('hidden');
     btnUpdateCancel.click(function(){
         currentContent.removeClass('hidden');

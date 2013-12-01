@@ -27,4 +27,10 @@ Public Class uc_newslist
         strURL = "?tpl=editnews&id=" & grvNews.Rows(grvNews.SelectedIndex).Cells(0).Text
         Response.Redirect(strURL)
     End Sub
+
+    Private Sub ddlPageSize_SelectedIndexChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles ddlPageSize.SelectedIndexChanged
+        grvNews.PageSize = ddlPageSize.SelectedValue
+        grvNews.DataSourceID = ""
+        grvNews.DataSourceID = "objNews"
+    End Sub
 End Class
