@@ -13,6 +13,7 @@ namespace SonyAlphaLibs.Services
 
         public static bool addPermission(Permission permission, string connString)
         {
+            #region code
             bool rs = false;
             using (SqlConnection conn = new SqlConnection(connString))
             {
@@ -42,7 +43,8 @@ namespace SonyAlphaLibs.Services
                     return false;
                 }
             }
-            return rs;
+            return rs; 
+            #endregion
         }
 
         public static bool updatePermission(Permission permission, string connString)
@@ -52,6 +54,7 @@ namespace SonyAlphaLibs.Services
 
         public static bool deletePermission(Permission permission, string connString)
         {
+            #region code
             bool rs = false;
             using (SqlConnection conn = new SqlConnection(connString))
             {
@@ -76,11 +79,13 @@ namespace SonyAlphaLibs.Services
                     return false;
                 }
             }
-            return rs;
+            return rs; 
+            #endregion
         }
 
         public static List<Permission> getListAll(string connString)
         {
+            #region code
             List<Permission> lists = new List<Permission>();
             using (SqlConnection conn = new SqlConnection(connString))
             {
@@ -114,11 +119,13 @@ namespace SonyAlphaLibs.Services
                     return new List<Permission>();
                 }
             }
-            return lists;
+            return lists; 
+            #endregion
         }
 
         public static Permission getById(int id, string connString)
         {
+            #region code
             Permission permission = new Permission();
             using (SqlConnection conn = new SqlConnection(connString))
             {
@@ -151,11 +158,13 @@ namespace SonyAlphaLibs.Services
                     return permission;
                 }
             }
-            return permission;
+            return permission; 
+            #endregion
         }
 
         public static Permission getByName(string name, string connString)
         {
+            #region code
             Permission permission = new Permission();
             using (SqlConnection conn = new SqlConnection(connString))
             {
@@ -188,7 +197,8 @@ namespace SonyAlphaLibs.Services
                     return permission;
                 }
             }
-            return permission;
+            return permission; 
+            #endregion
         }
 
         public static bool removeById(int id, string connString)
@@ -198,6 +208,7 @@ namespace SonyAlphaLibs.Services
 
         public static bool setPermission2Group(int permissionId, int groupId, string connString)
         {
+            #region code
             bool rs = false;
             using (SqlConnection conn = new SqlConnection(connString))
             {
@@ -225,12 +236,14 @@ namespace SonyAlphaLibs.Services
                     return false;
                 }
             }
-            return rs;
+            return rs; 
+            #endregion
         }
 
         public static bool setPermission2MenuPage(int permissionGroupId, int menuPageId,
             bool isPage, String connString)
         {
+            #region code
             bool rs = false;
             using (SqlConnection conn = new SqlConnection(connString))
             {
@@ -259,11 +272,13 @@ namespace SonyAlphaLibs.Services
                     return false;
                 }
             }
-            return rs;
+            return rs; 
+            #endregion
         }
 
         public static Permission getPermissionOfGroup(int groupId, String connString)
         {
+            #region code
             using (SqlConnection conn = new SqlConnection(connString))
             {
                 try
@@ -293,8 +308,49 @@ namespace SonyAlphaLibs.Services
                 {
                     return new Permission();
                 }
-            } 
-            return new Permission();
+            }
+            return new Permission(); 
+            #endregion
+        }
+        /// <summary>
+        /// check if groupid belong to admin group or not
+        /// </summary>
+        /// <param name="groupId"></param>
+        /// <param name="connString"></param>
+        /// <returns></returns>
+        public static bool checkIfAdminGroup(int groupId, string connString)
+        {
+            #region code
+            bool rs = false;
+            using (SqlConnection conn = new SqlConnection(connString))
+            {
+                try
+                {
+                    conn.Open();
+                    using (SqlCommand cmd = conn.CreateCommand())
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.CommandText = "sony_sp_get_user_group_by_id";
+                        cmd.Parameters.AddWithValue("@id", groupId);
+
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                rs = reader["issuper"].ToString().Equals("1") 
+                                    || reader["issuper"].ToString().Equals("True");
+                                break;
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    return false;
+                }
+            }
+            return rs;
+            #endregion
         }
     }
 }

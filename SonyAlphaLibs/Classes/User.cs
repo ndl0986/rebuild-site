@@ -128,6 +128,11 @@ namespace SonyAlphaLibs
         {
             return UserServices.resetPasswordToDefault(this.UserName, this.DefaultPass , connString);
         }
+
+        public bool isAdmin(string connString)
+        {
+            return PermissionServices.checkIfAdminGroup(this.GroupId, connString);
+        }
         #endregion
 
         #region constructor

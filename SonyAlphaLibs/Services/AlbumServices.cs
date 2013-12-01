@@ -768,5 +768,43 @@ namespace SonyAlphaLibs.Services
         {
             return new List<AlbumComment>();
         }
+
+        public static AlbumComment getCommentById(int commentId, string connString)
+        {
+            #region code
+            AlbumComment rs = new AlbumComment();
+            using (SqlConnection conn = new SqlConnection(connString))
+            {
+                try
+                {
+                    conn.Open();
+                    using (SqlCommand cmd = conn.CreateCommand())
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.CommandText = "sony_sp_get_album_comment_by_id";
+                        cmd.Parameters.AddWithValue("@id", commentId);
+
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                rs.AlbumId = String.IsNullOrEmpty(reader["albumId"].ToString()) ? 0 : (int)reader["albumId"];
+                                rs.PhotoId = String.IsNullOrEmpty(reader["photoId"].ToString()) ? 0 : (int)reader["photoId"];
+                                rs.Comment = reader["comment"].ToString();
+                                rs.Status = reader["status"].ToString().Equals("1") || reader["status"].ToString().Equals("True");
+                                rs.UserName = reader["username"].ToString();
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    writeLog("", "Get Album Comment Error: " + ex.Message, connString);
+                    return new AlbumComment();
+                }
+            }
+            return rs;
+            #endregion
+        }
     }
 }
