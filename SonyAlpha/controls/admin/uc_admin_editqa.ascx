@@ -11,7 +11,7 @@
         <ul class="form">
             <li class="row clerafix">
                 <div class="caption" >Câu hỏi :</div>
-                <FCKeditorV2:FCKeditor ID="txtQuestion" runat="server" Height="500px"></FCKeditorV2:FCKeditor>
+                <asp:TextBox ID="txtQuestion" runat="server" TextMode="MultiLine" Columns="150" Rows="10"></asp:TextBox>
             </li>
             <li class="row clerafix">
                 <div class="caption" >Câu trả lời :</div>

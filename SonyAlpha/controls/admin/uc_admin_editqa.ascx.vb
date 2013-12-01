@@ -16,7 +16,7 @@ Public Class uc_admin_editqa
         Dim qa As QuestionAnswer
         qa = QAServices.getById(CInt(id), CN.ConnectionString)
         If Not qa.Id = 0 Then
-            txtQuestion.Value = qa.Question
+            txtQuestion.Text = qa.Question
             txtAnswer.Value = qa.Answer
         End If
 
@@ -27,7 +27,7 @@ Public Class uc_admin_editqa
                 Dim qa As New QuestionAnswer
                 id = Request.QueryString("id")
                 qa.Id = ID
-                qa.Question = txtQuestion.Value
+                qa.Question = txtQuestion.Text
                 qa.Answer = txtAnswer.Value
                 If qa.update(CN.ConnectionString) Then
                     ScriptManager.RegisterStartupScript(Me, GetType(String), "Message", "alert('Lưu Hỏi đáp thành công !!!');", True)

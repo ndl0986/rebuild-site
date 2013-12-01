@@ -20,7 +20,7 @@ Partial Public Class uc_admin_addqa
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtQuestion As Global.FredCK.FCKeditorV2.FCKeditor
+    Protected WithEvents txtQuestion As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
     '''txtAnswer control.
