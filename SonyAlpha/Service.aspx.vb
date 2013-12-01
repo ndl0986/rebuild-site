@@ -323,7 +323,7 @@ Public Class Service
             albumComment = AlbumServices.getCommentById(commentId, CN.ConnectionString)
             Dim user As New User
             user = UserServices.getByUserName(Session("accountid"), CN.ConnectionString)
-            If albumComment.UserName = Session("accountid") Or user.isAdmin(CN.ConnectionString) Then
+            If albumComment.UserName = Session("accountid") Then
                 Dim c As HttpCookie = Request.Cookies("SonyAlpha")
                 If Not c Is Nothing Then
                     If c.Values("accountid") = Session("accountid") Then
