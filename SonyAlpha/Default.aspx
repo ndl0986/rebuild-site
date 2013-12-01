@@ -46,7 +46,7 @@
     <div id="container">
         <div id="breadcum" class="breadcum clearfix"></div>
         <div id="banner" runat="server" class="clearfix"></div>
-        <asp:UpdatePanel ID="UpdatePanelMain" runat="server">
+        <asp:UpdatePanel ID="UpdatePanelMain" runat="server" class="clearfix">
             <ContentTemplate>
                 <asp:PlaceHolder runat="server" ID="plhMain"></asp:PlaceHolder>
             </ContentTemplate>

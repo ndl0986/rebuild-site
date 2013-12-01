@@ -1,5 +1,5 @@
 ﻿<%@ Control Language="vb" AutoEventWireup="false" CodeBehind="uc_lastestnews.ascx.vb" Inherits="SonyAlpha.uc_lastestnews" %>
-<div class="lastestnews">
+<div class="lastestnews box_gradient">
     <h1>Bài viết mới nhất</h1>
     <ul class="list_lastestnews clearfix">
     <% For Each row As SonyAlphaLibs.News In listNews %>
