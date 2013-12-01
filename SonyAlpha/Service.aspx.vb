@@ -262,19 +262,24 @@ Public Class Service
             Dim photoId As Integer = CInt(Request.Params.Get("photoid"))
             Dim comment As String = Request.Params.Get("comment")
 
-            Dim albumComment As New AlbumComment
-            albumComment.UserName = Session("accountname")
-            albumComment.AlbumId = albumId
-            albumComment.PhotoId = photoId
-            albumComment.Status = True
-            albumComment.Comment = comment
+            If Not Session("accountid") = Nothing Then
+                Dim albumComment As New AlbumComment
+                albumComment.UserName = Session("accountid")
+                albumComment.AlbumId = albumId
+                albumComment.PhotoId = photoId
+                albumComment.Status = True
+                albumComment.Comment = comment
 
-            If AlbumServices.setComment2Album(albumComment, CN.ConnectionString) Then
-                Dim commentId As Integer = AlbumServices.getCurrentMaxId("sony_album_comment", CN.ConnectionString)
-                GetMyResponse("200", commentId)
+                If AlbumServices.setComment2Album(albumComment, CN.ConnectionString) Then
+                    Dim commentId As Integer = AlbumServices.getCurrentMaxId("sony_album_comment", CN.ConnectionString)
+                    GetMyResponse("200", commentId)
+                Else
+                    GetMyResponse("200", "-1")
+                End If
             Else
-                GetMyResponse("200", "-1")
+                GetMyResponse("500", "Not login!")
             End If
+            
         Catch ex As Exception
             GetMyResponse("500", "fail: " + ex.Message)
         End Try
@@ -285,10 +290,22 @@ Public Class Service
             Dim commentId As Integer = CInt(Request.Params.Get("commentid"))
 
             Dim albumComment As New AlbumComment
-            albumComment.Id = commentId
-
-            If AlbumServices.removeCommentById(commentId, CN.ConnectionString) Then
-                GetMyResponse("200", "ok")
+            albumComment = AlbumServices.getCommentById(commentId, CN.ConnectionString)
+            Dim user As New User
+            user = UserServices.getByUserName(Session("accountid"), CN.ConnectionString)
+            If albumComment.UserName = Session("accountid") Or user.isAdmin(CN.ConnectionString) Then
+                Dim c As HttpCookie = Request.Cookies("SonyAlpha")
+                If Not c Is Nothing Then
+                    If c.Values("accountid") = Session("accountid") Then
+                        If AlbumServices.removeCommentById(commentId, CN.ConnectionString) Then
+                            GetMyResponse("200", "ok")
+                        Else
+                            GetMyResponse("200", "fail")
+                        End If
+                    End If
+                Else
+                    GetMyResponse("200", "fail")
+                End If
             Else
                 GetMyResponse("200", "fail")
             End If
@@ -302,8 +319,23 @@ Public Class Service
             Dim commentId As Integer = CInt(Request.Params.Get("commentId"))
             Dim comment As String = Request.Params.Get("comment")
 
-            If AlbumServices.updateAlbumComment(commentId, comment, CN.ConnectionString) Then
-                GetMyResponse("200", "ok")
+            Dim albumComment As New AlbumComment
+            albumComment = AlbumServices.getCommentById(commentId, CN.ConnectionString)
+            Dim user As New User
+            user = UserServices.getByUserName(Session("accountid"), CN.ConnectionString)
+            If albumComment.UserName = Session("accountid") Or user.isAdmin(CN.ConnectionString) Then
+                Dim c As HttpCookie = Request.Cookies("SonyAlpha")
+                If Not c Is Nothing Then
+                    If c.Values("accountid") = Session("accountid") Then
+                        If AlbumServices.updateAlbumComment(commentId, comment, CN.ConnectionString) Then
+                            GetMyResponse("200", "ok")
+                        Else
+                            GetMyResponse("200", "fail")
+                        End If
+                    End If
+                Else
+                    GetMyResponse("200", "fail")
+                End If
             Else
                 GetMyResponse("200", "fail")
             End If
