@@ -172,7 +172,11 @@ Public Class Service
             user.Email = email
             user.ProductUsed = productused
 
-            If user.add(CN.ConnectionString) Then
+            Dim errCode As String = String.Empty
+            ' return errCode = 900 - Khong xac dinh
+            ' return errCode = 901 - Trung username
+            ' return errCode = 902 - Trung email
+            If user.add(CN.ConnectionString, errCode) Then
                 Dim http As String = ConfigurationManager.AppSettings("URL")
                 Dim activeUrl As String = http + GetParamsActive(username, email)
                 Dim mailFrom As String = SettingServices.getByName("adminMailFrom", CN.ConnectionString)
@@ -182,7 +186,7 @@ Public Class Service
                 Sendmail(mailFrom, mailFromPass, email, subject, mailcontent)
                 GetMyResponse("200", "ok")
             Else
-                GetMyResponse("200", "fail")
+                GetMyResponse("200", errCode)
             End If
         Catch ex As Exception
             GetMyResponse("500", "fail: " + ex.Message)

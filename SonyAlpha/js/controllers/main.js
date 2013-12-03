@@ -488,6 +488,10 @@ function doRegister() {
             response = jQuery.parseJSON(response);
             if (response.message == "ok") {
                 alert('Đăng ký thành công!!!! Email xác nhận đã được gửi tới ' + email);
+            } else if (response.message === "901") {
+                alert('Đăng ký không thành công! Tên đăng nhập đã được sử dụng! Vui lòng nhập lại!');
+            } else if (response.message === "902") {
+                alert('Đăng ký không thành công! Email đã được sử dụng! Vui lòng nhập lại!');
             } else {
                 alert('Đăng ký không thành công!!!!');
             }

@@ -706,7 +706,6 @@
     <Content Include="Js\plugins\jquery.nivo.slider.pack.js" />
     <Content Include="Js\plugins\jquery.slimscroll.min.js" />
     <Content Include="Js\plugins\jquery.validate.js" />
-    <Content Include="Js\plugins\uploadify.swf" />
     <Content Include="Service.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
