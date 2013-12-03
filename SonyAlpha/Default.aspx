@@ -1,8 +1,9 @@
 ﻿<%@ Page Language="vb" AutoEventWireup="false" CodeBehind="Default.aspx.vb" Inherits="SonyAlpha._Default" %>
-<%@ OutputCache Duration="3000" Location="Client" VaryByParam="None" %>
+<!--<%@ OutputCache Duration="3000" Location="Client" VaryByParam="None" %>-->
 <%@ Register src="controls/views/uc_register.ascx" tagname="uc_register" tagprefix="uc1" %>
 <%@ Register src="controls/views/uc_login.ascx" tagname="uc_login" tagprefix="uc2" %>
 <%@ Register src="controls/views/uc_userupdate.ascx" tagname="uc_userupdate" tagprefix="uc3" %>
+<%@ Register src="controls/views/uc_email_faq.ascx" tagname="uc_email_faq" tagprefix="uc4" %>
 <!DOCTYPE html>
 <!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]><html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -56,10 +57,10 @@
     <div id="footer" runat="server" class="clearfix"></div>
     </form>
     </div>
-    <div id="formReg" class="bgFormPopup hide"><a class="close"></a>
-        <uc1:uc_register ID="uc_register1" runat="server" /></div>
-    <div id="formSign" class="bgFormPopup hide"><a class="close"></a><uc2:uc_login ID="uc_login1" runat="server" /></div>
-    <div id="formUpdate" class="bgFormPopup hide"><a class="close"></a><uc3:uc_userupdate ID="uc_userupdate1" runat="server" /></div>
+    <div id="formReg" style="display:none;" class="bgFormPopup hide"><a class="close"></a><uc1:uc_register ID="uc_register1" runat="server" /></div>
+    <div id="formSign" style="display:none;" class="bgFormPopup hide"><a class="close"></a><uc2:uc_login ID="uc_login1" runat="server" /></div>
+    <div id="formUpdate" style="display:none;" class="bgFormPopup hide"><a class="close"></a><uc3:uc_userupdate ID="uc_userupdate1" runat="server" /></div>
+    <div id="formSendQuestion" style="display:none;" class="bgFormPopup hide"><a class="close"></a><uc4:uc_email_faq ID="uc_email_faq1" runat="server" /></div>
     <script type="text/javascript" src="/js/libs/bootstrap.min.js"></script>
     <!--[if IE 8]>    
       <script src="../js/libs/respond.min.js"></script>
@@ -72,4 +73,5 @@
     <script type="text/javascript" src="/js/controllers/main.js"></script>
 </body>
 </html>
+
 

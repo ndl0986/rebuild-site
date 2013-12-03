@@ -329,6 +329,7 @@ $(document).ready(function () {
     var reg = $('#formReg');
     var sign = $('#formSign');
     var update = $('#formUpdate');
+    var sendfaq = $('#formSendQuestion');
 
     $('#hplSignup').click(function () {
         if (reg.hasClass('hide')) {
@@ -351,14 +352,23 @@ $(document).ready(function () {
         }
     });
 
+    $('#hplSendFAQ').click(function () {
+        if (sendfaq.hasClass('hide')) {
+            sendfaq.removeClass('hide');
+            sendfaq.fadeIn(300);
+        }
+    });
+
     $('#viewProfile').click(function () {
         window.location.assign('/profile.aspx');
     });
 
 
     $($('.bgFormPopup').children('.close')).click(function () {
-        if (!$(this).parent().hasClass('hide')) {
-            $(this).parent().addClass('hide');
+        var pop = $(this).parent();
+        if (!pop.hasClass('hide')) {
+            pop.fadeOut(300,function(){pop.addClass('hide')});
+            //$(this).parent().addClass('hide');
         }
     });
 

@@ -1,6 +1,5 @@
 ﻿<%@ Control Language="vb" AutoEventWireup="false" CodeBehind="uc_email_faq.ascx.vb" Inherits="SonyAlpha.uc_email_faq" %>
 <div class="content">
-    <div class="section">
         <ul class="form">
             <li class="row clerafix">
                 <div class="caption">Họ tên :</div>
@@ -20,18 +19,14 @@
             </li>
             <li class="row clerafix">
                 <div class="caption">Nội dung :</div>
-                <div class="item"><textarea  id="uc_email_fag_txtContent" 
-                 rows="4" cols="50" maxlength="1000" required ></textarea></div>
+                <div class="item"><textarea  id="uc_email_fag_txtContent" class="noresize" rows="4" cols="58" maxlength="1000" required ></textarea></div>
             </li>
             <li class="row clearfix">
-                <div class="item"><label id="uc_email_fag_message" ></label> </div>
+                <div class="item"><label id="uc_email_fag_message"></label></div>
             </li>
-            <li class="row clerafix">
-                <div class="logined">
-                    <a href="javascript:void(0);" class="button action" id="uc_email_fag_btnOk" style="width:150px;color:Black;"> <span class="label">Gửi</span></a>
-                    <a href="javascript:void(0);" class="button action" id="uc_email_fag_btnCancel" style="width:150px;color:Black;"><span class="label">Hủy</span></a>
-                </div>
+            <li class="row text-right" style="width:90%;">
+                <a href="javascript:void(0);" class="btn flat orange" id="uc_email_fag_btnOk">Gửi</a>
+                <a href="javascript:void(0);" class="btn flat orange" id="uc_email_fag_btnCancel">Hủy</a>
             </li>
         </ul>
-    </div>
 </div>
