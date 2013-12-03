@@ -49,6 +49,50 @@ namespace SonyAlphaLibs.Services
             #endregion
         }
 
+        public static bool addUser(User user, String connString, ref string errorCode)
+        {
+            #region code
+            bool rs = false;
+            using (SqlConnection conn = new SqlConnection(connString))
+            {
+                try
+                {
+                    conn.Open();
+                    using (SqlCommand cmd = conn.CreateCommand())
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.CommandText = "sony_sp_add_user_return_code";
+                        cmd.Parameters.AddWithValue("@username", user.UserName);
+                        cmd.Parameters.AddWithValue("@password", user.PassWord);
+                        cmd.Parameters.AddWithValue("@fullname", user.FullName);
+                        cmd.Parameters.AddWithValue("@status", user.Status ? 1 : 0);
+                        //cmd.Parameters.AddWithValue("@registered", user.Registered);
+                        //cmd.Parameters.AddWithValue("@updated", user.Updated);
+                        cmd.Parameters.AddWithValue("@phone", user.Phone);
+                        cmd.Parameters.AddWithValue("@email", user.Email);
+                        cmd.Parameters.AddWithValue("@productused", String.IsNullOrEmpty(user.ProductUsed) ? " " : user.ProductUsed);
+                        SqlParameter returnVal = new SqlParameter("@indentity", SqlDbType.Int);
+                        returnVal.Direction = ParameterDirection.Output;
+                        cmd.Parameters.Add(returnVal);
+                        SqlParameter errCode = new SqlParameter("@errorcode", SqlDbType.Int);
+                        errCode.Direction = ParameterDirection.Output;
+                        errCode.Value = "";
+                        cmd.Parameters.Add(errCode);
+
+                        cmd.ExecuteNonQuery();
+                        rs = ((int)cmd.Parameters["@indentity"].Value != 0);
+                        errorCode = cmd.Parameters["@errorCode"].Value.ToString();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    return false;
+                }
+            }
+            return rs;
+            #endregion
+        }
+
         public static bool update(User user, string connString)
         {
             #region code

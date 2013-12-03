@@ -105,6 +105,11 @@ namespace SonyAlphaLibs
         #endregion
 
         #region ext method
+        public bool add(String connString, ref string errorCode)
+        {
+            return UserServices.addUser(this, connString, ref errorCode);
+        }
+
         public bool login(String connString)
         {
             return UserServices.login(this.UserName, this.PassWord, connString);
