@@ -519,7 +519,8 @@ Public Class Service
     Private Sub DoVotePhoto()
         Try
             Dim photoId As Integer = CInt(Request.Params.Get("id"))
-            Dim myVal As Integer = PhotoServices.increaseVoteCount(photoId, CN.ConnectionString)
+            Dim username As String = Session("accountid")
+            Dim myVal As Integer = PhotoServices.increaseVoteCount(photoId, username, CN.ConnectionString)
             If myVal > 0 Then
                 GetMyResponse("200", myVal.ToString())
             Else
