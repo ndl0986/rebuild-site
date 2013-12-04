@@ -225,5 +225,57 @@ namespace SonyAlphaLibs.Services
             return sonyCenter;
             #endregion
         }
+
+        public static List<SonyCenter> getCenterByProvince(int provinceId, string connString)
+        {
+            #region code
+            List<SonyCenter> sonyCenters = new List<SonyCenter>();
+            using (SqlConnection conn = new SqlConnection(connString))
+            {
+                try
+                {
+                    conn.Open();
+                    using (SqlCommand cmd = conn.CreateCommand())
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.CommandText = "sony_sp_get_all_sony_center_by_province";
+                        cmd.Parameters.AddWithValue("@provinceId", provinceId);
+
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                SonyCenter sonyCenter = new SonyCenter();
+                                sonyCenter.Id = (int)reader["id"];
+                                sonyCenter.Name = reader["name"].ToString();
+                                sonyCenter.Address = reader["address"].ToString();
+                                sonyCenter.Phone = reader["phone"].ToString();
+                                sonyCenter.Fax = reader["fax"].ToString();
+                                sonyCenter.Province = reader["province"].ToString();
+                                sonyCenter.Description = reader["description"].ToString();
+                                sonyCenter.RetailLevel = (int)reader["retailLevel"];
+                                sonyCenter.CenterImage = reader["CenterImage"].ToString();
+                                sonyCenter.OpenTime = reader["opentime"].ToString();
+                                sonyCenter.CloseTime = reader["closetime"].ToString();
+                                sonyCenter.Longitude = reader["longitude"].ToString();
+                                sonyCenter.Latitude = reader["latitude"].ToString();
+                                sonyCenter.Created = (DateTime)reader["created"];
+                                sonyCenter.Updated = (DateTime)reader["updated"];
+                                sonyCenter.SonyCenterCover = reader["SonyCenterCover"].ToString();
+                                sonyCenter.ProvinceName = reader["ProvinceName"].ToString();
+                                sonyCenters.Add(sonyCenter);
+                            }
+                        }
+
+                    }
+                }
+                catch (Exception ex)
+                {
+                    return new List<SonyCenter>();
+                }
+            }
+            return sonyCenters;
+            #endregion
+        }
     }
 }
