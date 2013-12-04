@@ -664,5 +664,38 @@ namespace SonyAlphaLibs.Services
             return lists;
             #endregion
         }
+
+        public static string getOwnerOfPhoto(int photoId, string connString)
+        {
+            #region code
+            string rs = string.Empty;
+            using (SqlConnection conn = new SqlConnection(connString))
+            {
+                try
+                {
+                    conn.Open();
+                    using (SqlCommand cmd = conn.CreateCommand())
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.CommandText = "sony_sp_get_owner_of_photo";
+                        cmd.Parameters.AddWithValue("@photoId", photoId);
+                        SqlParameter returnVal = new SqlParameter("@returnVal", SqlDbType.VarChar);
+                        returnVal.Direction = ParameterDirection.Output;
+                        returnVal.Size = 50;
+                        cmd.Parameters.Add(returnVal);
+
+                        cmd.ExecuteNonQuery();
+                        rs = cmd.Parameters["@returnVal"].Value.ToString();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    writeLog("", "Get Photo Error: " + ex.Message, connString);
+                    return rs;
+                }
+            }
+            return rs;
+            #endregion
+        }
     }
 }
