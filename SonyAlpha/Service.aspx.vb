@@ -73,6 +73,8 @@ Public Class Service
                         DoActiveUser()
                     Case "getlistphotobyalbum"
                         GetListPhotoByAlbum()
+                    Case "getCenterByProvince"
+                        GetListSonyCenterByProvince()
                 End Select
             Else
                 GetMyResponse("500", "Nothing todo!")
@@ -496,6 +498,17 @@ Public Class Service
                 GetMyResponse("200", "fail")
             End If
             
+        Catch ex As Exception
+            GetMyResponse("500", "fail: " + ex.Message)
+        End Try
+    End Sub
+
+    Private Sub GetListSonyCenterByProvince()
+        Try
+            Dim centerProvince As String = CInt(Request.QueryString("province"))
+            Dim listCenters As New List(Of SonyCenter)
+            listCenters = SonyCenterServices.getCenterByProvince(centerProvince, CN.ConnectionString)
+            GetMyResponse("200", New JavaScriptSerializer().Serialize(listCenters))
         Catch ex As Exception
             GetMyResponse("500", "fail: " + ex.Message)
         End Try
