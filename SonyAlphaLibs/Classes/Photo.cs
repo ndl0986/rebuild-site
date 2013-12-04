@@ -229,7 +229,7 @@ namespace SonyAlphaLibs
 
         public int increaseVoteCount(String connString)
         {
-            return PhotoServices.increaseVoteCount(base.Id, connString);
+            return PhotoServices.increaseVoteCount(base.Id, "admin", connString);
         }
 
         public int increaseLikeCount(String connString)

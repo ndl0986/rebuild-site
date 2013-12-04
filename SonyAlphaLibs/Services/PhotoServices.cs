@@ -389,7 +389,7 @@ namespace SonyAlphaLibs.Services
             #endregion
         }
 
-        public static int increaseVoteCount(int photoId, string connString)
+        public static int increaseVoteCount(int photoId, string username, string connString)
         {
             #region code
             int rs = 0;
@@ -403,6 +403,7 @@ namespace SonyAlphaLibs.Services
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.CommandText = "sony_sp_increase_photo_vote_count";
                         cmd.Parameters.AddWithValue("@id", photoId);
+                        cmd.Parameters.AddWithValue("@username", username);
                         SqlParameter returnVal = new SqlParameter("@returnVal", SqlDbType.Int);
                         returnVal.Direction = ParameterDirection.Output;
                         cmd.Parameters.Add(returnVal);
