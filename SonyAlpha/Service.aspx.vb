@@ -44,6 +44,8 @@ Public Class Service
                         DoUpdateComment()
                     Case "userupdate"
                         DoUserUpdate()
+                    Case "votephoto"
+                        DoVotePhoto()
                 End Select
             Else
                 GetMyResponse("500", "Nothing todo!")
@@ -509,6 +511,20 @@ Public Class Service
             Dim listCenters As New List(Of SonyCenter)
             listCenters = SonyCenterServices.getCenterByProvince(centerProvince, CN.ConnectionString)
             GetMyResponse("200", New JavaScriptSerializer().Serialize(listCenters))
+        Catch ex As Exception
+            GetMyResponse("500", "fail: " + ex.Message)
+        End Try
+    End Sub
+
+    Private Sub DoVotePhoto()
+        Try
+            Dim photoId As Integer = CInt(Request.Params.Get("id"))
+            Dim myVal As Integer = PhotoServices.increaseVoteCount(photoId, CN.ConnectionString)
+            If myVal > 0 Then
+                GetMyResponse("200", myVal.ToString())
+            Else
+                GetMyResponse("200", "0")
+            End If
         Catch ex As Exception
             GetMyResponse("500", "fail: " + ex.Message)
         End Try

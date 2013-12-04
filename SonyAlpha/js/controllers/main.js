@@ -367,7 +367,7 @@ $(document).ready(function () {
     $($('.bgFormPopup').children('.close')).click(function () {
         var pop = $(this).parent();
         if (!pop.hasClass('hide')) {
-            pop.fadeOut(300,function(){pop.addClass('hide')});
+            pop.fadeOut(300, function () { pop.addClass('hide') });
             //$(this).parent().addClass('hide');
         }
     });
@@ -393,6 +393,9 @@ $(document).ready(function () {
     });
     $("#uc_userupdate_btnOk").click(function () {
         doUserUpdate();
+    });
+    $("#uc_photo_button_vote_photo").click(function () {
+        doVotePhoto();
     });
 
     switch (aspx) {
@@ -433,7 +436,7 @@ $(document).ready(function () {
                 return false;
             });
             $('#product_categories .category_item').click(function (e) {
-                if($(this).hasClass('active')) return false;
+                if ($(this).hasClass('active')) return false;
                 e.preventDefault();
                 $('#loadContent').slideUp(300);
                 li.removeClass('active');
@@ -734,6 +737,27 @@ function getListPhotos(albumId,callback){
         },
         error: function (jqXHR, textStatus, errorThrown) {
             console.log('error' + textStatus);
+        }
+    });
+}
+
+function doVotePhoto(callback) {
+    //console.log('doPostComment');
+    var photoId = $("#uc_photo_hdfId").val();
+    $.ajax({
+        type: 'POST',
+        timeout: 5000,
+        url: '/service.aspx?name=votephoto',
+        data: { "id": photoId },
+        success: function (response) {
+            response = jQuery.parseJSON(response);
+            if (response.message == "1") { 
+                
+            }
+            if ($.isFunction(callback)) callback(response);
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log('error');
         }
     });
 }

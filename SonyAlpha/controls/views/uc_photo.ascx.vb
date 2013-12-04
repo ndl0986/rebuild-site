@@ -7,8 +7,10 @@ Public Class uc_photo
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         Try
             bllAlbum.Id = CInt(Request.QueryString("cId"))
+            bllAlbum.increaseView(CN.ConnectionString)
             bllAlbum = bllAlbum.getById(CN.ConnectionString)
             bllDetail.Id = CInt(Request.QueryString("id"))
+            bllDetail.increaseViewCount(CN.ConnectionString)
             bllDetail = bllDetail.getById(CN.ConnectionString)
             hplUploader.Text = bllAlbum.AlbumCreator
             hplUploader.NavigateUrl = "~/"

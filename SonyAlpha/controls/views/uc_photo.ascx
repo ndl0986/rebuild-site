@@ -5,6 +5,7 @@
             <asp:HyperLink runat="server" ID="hplPrev" ClientIDMode="Static" CssClass="prev-photo"></asp:HyperLink>
             <asp:HyperLink runat="server" ID="hplNext" ClientIDMode="Static" CssClass="next-photo"></asp:HyperLink>
             <img id="imgMain" class="img-main" alt="" data-id="<%=bllDetail.Id %>" src="<%= bllDetail.FileName %>"/>
+            <input id="uc_photo_hdfId" type="hidden" value="<%= bllDetail.Id %>" />
         </div>
         <div class="photo-info clearfix">
             <div class="photo-upload">Người gửi<asp:HyperLink runat="server" ID="hplUploader" ClientIDMode="Static"></asp:HyperLink></div>
@@ -12,7 +13,7 @@
         </div>
         <div class="photo-actions">
             <a class="btn orange uppercase fancybox" href="<%= bllDetail.FileName %>">Phóng lớn <span class="icon icon160"></span></a>
-            <a class="btn orange uppercase" href="javascript:void(0);">Bình chọn <span class="icon icon101"></span></a>
+            <a class="btn orange uppercase" href="javascript:void(0);" id="uc_photo_button_vote_photo">Bình chọn <span class="icon icon101"></span></a>
             <a class="btn share-fb" href="https://www.facebook.com/sharer/sharer.php?u=<%=bllDetail.FileName %>"></a>
         </div>
     </div>
