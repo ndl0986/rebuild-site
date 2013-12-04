@@ -77,6 +77,8 @@ Public Class Service
                         GetListPhotoByAlbum()
                     Case "getCenterByProvince"
                         GetListSonyCenterByProvince()
+                    Case "getOwnerOfPhoto"
+                        GetOwnerOfPhoto()
                 End Select
             Else
                 GetMyResponse("500", "Nothing todo!")
@@ -526,6 +528,16 @@ Public Class Service
             Else
                 GetMyResponse("200", "0")
             End If
+        Catch ex As Exception
+            GetMyResponse("500", "fail: " + ex.Message)
+        End Try
+    End Sub
+
+    Private Sub GetOwnerOfPhoto()
+        Try
+            Dim photoId As Integer = CInt(Request.Params.Get("id"))
+            Dim username As String = PhotoServices.getOwnerOfPhoto(photoId, CN.ConnectionString)
+            GetMyResponse("200", username)
         Catch ex As Exception
             GetMyResponse("500", "fail: " + ex.Message)
         End Try
