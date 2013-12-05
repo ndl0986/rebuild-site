@@ -1,4 +1,10 @@
-﻿window._user = {};
+﻿window._user = null;
+function getParameterByName(name) {
+    name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+        results = regex.exec(location.search);
+    return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+}
 function getCookie(c_name){
     var c_value = document.cookie;
     var c_start = c_value.indexOf(" "+c_name+"=");
@@ -29,7 +35,8 @@ function checkLoged() {
     //console.log(getCookie('SonyAlpha'));
     if (isLoged!=null) { 
         $('.logined').show(); 
-        $('.not_logined').hide(); 
+        $('.not_logined').hide();
+    $('#viewProfile').attr('href','/profile.aspx');
     } else { 
         $('.logined').hide(); 
         $('.not_logined').show();
@@ -75,27 +82,51 @@ function parseShopCenter() {
                 listShopOrthers += '<li class="table_row row_' + cOthers % 2 + '">' + listShop[i].innerHTML + '</li>'; cOthers += 1;
             }
         }
-        var html = '<div class="sony_center_city">TP. Hồ Chí Minh</div>';
-        html += '<ul class="ul_list_center clearfix">' + listHCM + '</ul>';
-        html += '<div class="button_viewmore ico ico-arr-down">Xem đại lý khác<em></em></div><div class="effect collapse"><ul class="ul_table">';
-        html += '<li class="table_header"><div>Đại lý</div><div>Địa chỉ</div><div>Giờ mở cửa</div><div>Điện thoại</div><div>Bản đồ</div></li>';
-        html += listShopHCM + '</ul></div>';
-        html += '<div class="sony_center_city">Hà Nội</div>';
-        html += '<ul class="ul_list_center clearfix">' + listHN + '</ul>';
-        html += '<div class="button_viewmore ico ico-arr-down">Xem đại lý khác<em></em></div><div class="effect collapse"><ul class="ul_table">';
-        html += '<li class="table_header"><div>Đại lý</div><div>Địa chỉ</div><div>Giờ mở cửa</div><div>Điện thoại</div><div>Bản đồ</div></li>';
-        html += listShopHN + '</ul></div>';
-        html += '<div class="sony_center_city">Tỉnh thành khác</div>';
-        html += '<ul class="ul_list_center clearfix">' + listOrthers + '</ul>';
-        html += '<div class="button_viewmore ico ico-arr-down">Xem đại lý khác<em></em></div><div class="effect collapse"><ul class="ul_table">';
-        html += '<li class="table_header"><div>Đại lý</div><div>Địa chỉ</div><div>Giờ mở cửa</div><div>Điện thoại</div><div>Bản đồ</div></li>';
-        html += listShopOrthers + '</ul></div>';
-        $('#uc_shop_template').append(html);
 
-        $('#uc_shop_template .button_viewmore').click(function(){
-            $(this).next().toggleClass('collapse');
-        });
-        
+        var pId = getParameterByName('pId');
+        if(pId=='' || pId==0){
+            var html = '<div class="sony_center_city">TP. Hồ Chí Minh</div>';
+            html += '<ul class="ul_list_center clearfix">' + listHCM + '</ul>';
+            html += '<div class="button_viewmore ico ico-arr-down">Xem đại lý khác<em></em></div><div class="effect collapse"><ul class="ul_table">';
+            html += '<li class="table_header"><div>Đại lý</div><div>Địa chỉ</div><div>Giờ mở cửa</div><div>Điện thoại</div><div>Bản đồ</div></li>';
+            html += listShopHCM + '</ul></div>';
+            html += '<div class="sony_center_city">Hà Nội</div>';
+            html += '<ul class="ul_list_center clearfix">' + listHN + '</ul>';
+            html += '<div class="button_viewmore ico ico-arr-down">Xem đại lý khác<em></em></div><div class="effect collapse"><ul class="ul_table">';
+            html += '<li class="table_header"><div>Đại lý</div><div>Địa chỉ</div><div>Giờ mở cửa</div><div>Điện thoại</div><div>Bản đồ</div></li>';
+            html += listShopHN + '</ul></div>';
+            html += '<div class="sony_center_city">Tỉnh thành khác</div>';
+            html += '<ul class="ul_list_center clearfix">' + listOrthers + '</ul>';
+            html += '<div class="button_viewmore ico ico-arr-down">Xem đại lý khác<em></em></div><div class="effect collapse"><ul class="ul_table">';
+            html += '<li class="table_header"><div>Đại lý</div><div>Địa chỉ</div><div>Giờ mở cửa</div><div>Điện thoại</div><div>Bản đồ</div></li>';
+            html += listShopOrthers + '</ul></div>';
+            $('#uc_shop_template').append(html);
+
+            $('#uc_shop_template .button_viewmore').click(function(){
+                $(this).next().toggleClass('collapse');
+            });            
+        }else{
+            var html = '<div class="sony_center_city">'+$('#ddlProvince option:selected').text()+'</div>';
+            if(listHCM!=''){html += '<ul class="ul_list_center clearfix">' + listHCM + '</ul>';}
+            if(listShopHCM!=''){
+                html += '<div class="effect"><ul class="ul_table">';
+                html += '<li class="table_header"><div>Đại lý</div><div>Địa chỉ</div><div>Giờ mở cửa</div><div>Điện thoại</div><div>Bản đồ</div></li>';
+                html += listShopHCM + '</ul></div>';
+            }
+            if(listOrthers!=''){html += '<ul class="ul_list_center clearfix">' + listOrthers + '</ul>';}
+            if(listShopOrthers!=''){
+                html += '<div class="effect"><ul class="ul_table">';
+                html += '<li class="table_header"><div>Đại lý</div><div>Địa chỉ</div><div>Giờ mở cửa</div><div>Điện thoại</div><div>Bản đồ</div></li>';
+                html += listShopOrthers + '</ul></div>';
+            }
+            if(listHN!=''){html += '<ul class="ul_list_center clearfix">' + listHN + '</ul>';}
+            if(listShopHN!=''){
+                html += '<div class="effect"><ul class="ul_table">';
+                html += '<li class="table_header"><div>Đại lý</div><div>Địa chỉ</div><div>Giờ mở cửa</div><div>Điện thoại</div><div>Bản đồ</div></li>';
+                html += listShopHN + '</ul></div>';
+            }
+            $('#uc_shop_template').html(html);
+        }
     }
      
 }
@@ -148,9 +179,10 @@ function parseComments(data){
     var ul=$('#ulComments');
     ul.html('');
     var cmt = $.parseJSON(data.message);
+    //console.log(cmt);
     var html='';
     for(var i=0;i<cmt.length;i++){
-        html+= '<li id="comment_'+ cmt[i].Id +'" class="clearfix"><a href="javascript:void(0);" class="avatar"></a><div class="comment_content"><div class="user_name">'
+        html+= '<li id="comment_'+ cmt[i].Id +'" data-user="'+cmt[i].UserName+'" class="clearfix"><a href="javascript:void(0);" class="avatar"></a><div class="comment_content"><div class="user_name">'
         html+= cmt[i].UserName + '</div><div class="comment_detail">' + cmt[i].Comment + '</div><div class="comment_time">' + convertTime(cmt[i].Created.replace('/Date(','').replace(')/','')) + '</div></div><a class="btn_edit"><span class="icon icon57" onClick="updateComment('+cmt[i].Id+')"></span></a><a class="btn_delete"><span class="icon icon56" onClick="deleteComment('+cmt[i].Id+')"></span></a></li>'
     }
     ul.append(html);
@@ -158,6 +190,7 @@ function parseComments(data){
 
 function updateComment(id){
     var li = $('#comment_'+id);
+    if(window._user==null || window._user.username!=li.attr('data-user')){alert('Bạn không có quyền sửa bình luận này');return false;}
     li.addClass('editmode');
     var currentContent = li.find('.comment_detail');
     var editContent = $('<textarea class="comment_edit_area noresize"></textarea>');
@@ -184,6 +217,7 @@ function updateComment(id){
 }
 
 function deleteComment(id){
+    if(window._user==null || window._user.username!=li.attr('data-user')){alert('Bạn không có quyền xóa bình luận này');return false;}
     doDeleteComment(id,function(){
         $('#comment_'+id).remove();
     });
@@ -330,36 +364,10 @@ $(document).ready(function () {
     }
     if (fluidBanner.length) {
         fluidBanner.addClass('main-slider');
-        fluidBanner.children().addClass("fluid-slider").bxSlider({
-            slideWidth: 930,
-            minSlides: 1,
-            maxSlides: 1,
-            controls: true,
-            pager: false,
-            auto: true,
-            speed: 600,
-            useCSS: true
-        });
+        fluidBanner.children().addClass("fluid-slider").bxSlider({slideWidth: 930,minSlides: 1,maxSlides: 1,controls: true,pager: false,auto: true,speed: 600,useCSS: true});
     }
     if (leftBanner.length && leftBanner.find('li').length > 1) {
-        leftBanner.addClass('theme-default').children().nivoSlider({
-            effect: "random",
-            slices: 15,
-            boxCols: 8,
-            boxRows: 4,
-            animSpeed: 500,
-            pauseTime: 3000,
-            startSlide: 0,
-            directionNav: false,
-            directionNavHide: true,
-            controlNav: true,
-            controlNavThumbs: false,
-            controlNavThumbsFromRel: false,
-            keyboardNav: true,
-            pauseOnHover: true,
-            captionOpacity: 0.5,
-            manualAdvance: false
-        });
+        leftBanner.addClass('theme-default').children().nivoSlider({effect: "random",slices: 15,boxCols: 8,boxRows: 4,animSpeed: 500,pauseTime: 3000,startSlide: 0,directionNav: false,directionNavHide: true,controlNav: true,controlNavThumbs: false,controlNavThumbsFromRel: false,keyboardNav: true,pauseOnHover: true,captionOpacity: 0.5,manualAdvance: false});
     }
 
     var reg = $('#formReg');
@@ -394,11 +402,6 @@ $(document).ready(function () {
             sendfaq.fadeIn(300);
         }
     });
-
-    $('#viewProfile').click(function () {
-        window.location.assign('/profile.aspx');
-    });
-
 
     $($('.bgFormPopup').children('.close')).click(function () {
         var pop = $(this).parent();
@@ -437,6 +440,9 @@ $(document).ready(function () {
     switch (aspx) {
         case 'seller':
             parseShopCenter();
+            $('#uc_seller_btnSearch').click(function(){
+                window.location.href = "/seller.aspx?mId=2&pId=" + $('#ddlProvince').val();
+            });
             break;
         case 'sellerdetail':
             parseSonyCenterSlide();
@@ -447,6 +453,15 @@ $(document).ready(function () {
             break;
         case 'album':
             parseAlbumSlide();
+            if(window._user!=null)$('#uc_album_btnUpload').removeClass('hidden');
+            $('#uc_album_btnSeach').click(function(){
+                if($('#txtKeywords').val()!='')window.location.href = 'searchuser.aspx?key=' + $('#txtKeywords').val();
+            });
+            break;
+        case 'searchuser':
+            $('#uc_album_btnSeach').click(function(){
+                if($('#txtKeywords').val()!='')window.location.href = 'searchuser.aspx?key=' + $('#txtKeywords').val();
+            });        
             break;
         case 'albumdetail':
             parseAlbumSlide();
@@ -456,6 +471,7 @@ $(document).ready(function () {
             getListComments(photoId, function (data) { parseComments(data) });
 
             $('#btnPostComment').click(function () {
+                if(window._user==null){alert('Bạn phải đăng nhập mới có quyền bình luận');$('#txtComment').val('');return false;}
                 var html = $('#txtComment').val();
                 doPostComment(albumId, photoId, html, function () {
                     $('#txtComment').val('');

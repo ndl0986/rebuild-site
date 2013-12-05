@@ -38,7 +38,7 @@ Public Class uc_photo
                     hplPrev.CssClass = "hidden"
                 End If
                 If nextPhoto.Id <> 0 Then
-                    hplNext.NavigateUrl = "/photo/" & prevPhoto.Id & "?cId=" & bllAlbum.Id & "&mId=" & Request.QueryString("mId")
+                    hplNext.NavigateUrl = "/photo/" & nextPhoto.Id & "?cId=" & bllAlbum.Id & "&mId=" & Request.QueryString("mId")
                 Else
                     hplNext.CssClass = "hidden"
                 End If

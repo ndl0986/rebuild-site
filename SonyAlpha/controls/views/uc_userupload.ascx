@@ -1,17 +1,13 @@
 ﻿<%@ Control Language="vb" AutoEventWireup="false" CodeBehind="uc_userupload.ascx.vb" Inherits="SonyAlpha.uc_userupload" %>
-<%@ Import Namespace="SonyAlphaLibs" %>
-<div class="album_page">
-    <div class="message"><%= message %></div>
+<div class="album_page"><div class="message"><%= message %></div>
+    <%If Request.QueryString("id") <> "" Then%><h2 class="title">Album của <%=username%></h2><%End If%>
     <% If String.IsNullOrEmpty(message) Then%>
     <ul class="ul_list_albums clearfix">
-        <li>
-            <div class="new_album">
-                <div class="ico-add">+</div>
-                <a href="useraddphoto.aspx" id="uc_userupload_uploadnew" class="album_title">Đăng thêm ảnh</a>
-            </div>
-        </li>
+        <%If isViewOnly = False Then%>
+        <li><div class="new_album"><div class="ico-add">+</div><a href="useraddphoto.aspx" id="uc_userupload_uploadnew" class="album_title">Đăng thêm ảnh</a></div></li>
+        <%End If%>
         <% If listAlbums.Count > 0 Then%>
-        <% For Each album As Album In listAlbums%>
+        <% For Each album In listAlbums%>
         <li class="clearfix">
             <div class="album">
                 <div class="cover">
@@ -31,3 +27,4 @@
     </ul>
     <% End If %>
 </div>
+<script type="text/javascript">document.getElementById('breadcum').style.display = 'none';</script>

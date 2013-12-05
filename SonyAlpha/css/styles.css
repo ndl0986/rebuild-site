@@ -603,8 +603,11 @@ Author URI: http://dev7studios.com
 .album .photo-info { position: absolute; z-index: 1; width: auto; left: 5px; right: 5px; bottom: 5px; height: 26px; line-height: 26px; background: rgba(0,0,0,0.5); color: #fff; font-size: 12px;}
 .form_command { font-size: 0; position: absolute; top:-50px; right: 3%;}
 .form_command > a,
-.form_command > input.textbox { margin: 0px 0px 0px 10px; font-size: 14px;}
+.form_command > input.textbox { margin: 0px 0px 0px 10px; font-size: 14px; line-height: 27px; height: 27px;}
 .form_command input { width: 200px;}
+.form_command .btn { height: 29px; line-height: 29px;}
+.album_page h2.title{ margin: 0px 0px 10px 30px; font-size: 18px;}
+
 
 #albumSlide{ margin: 20px 30px; overflow: hidden; border: solid 1px #ccc; max-height: 350px; position: relative;}
 #albumSlide .nivoSlider { width: auto; max-height: 340px; background: #efefef; border: solid 5px #fff;}
@@ -782,10 +785,7 @@ border-radius: 5px;-webkit-border-radius: 5px;-moz-border-radius:5px;padding-top
 .frmSignIn li a { color: #666;}
 .frmSignIn li .item a:hover { color: #fe3500;}
 .frmSignIn .caption { font-size: 13px; text-transform: uppercase;}
-.frmSignIn .btn{ width: 88px;
-font-size: 13px;
-text-align: center;
-margin-right: 6px;}
+.frmSignIn .btn{ width: 88px;font-size: 13px;text-align: center;margin-right: 6px;}
 
 .user_page { margin: 40px 50px 20px 50px;}
 .tab_nav { border-bottom: solid 8px #F4602E;}
@@ -830,6 +830,43 @@ margin-right: 6px;}
 .map_page { text-align: center;}
 .map_page .google-map { margin: auto;}
 .faq_page .toolbar { margin: 0px 10px 10px 0px;}
+
+.info_search{width: 174px;height: 106px;background: url(../img/bg_search.png) no-repeat left top scroll #fff;color: #000;position: absolute;right: 18px;top: -131px;padding-bottom: 10px;background-size: 100% 100%;-webkit-background-size: 100% 100%;-moz-background-size: 100% 100%;}
+.info_search .title{margin: 40px 10px 0px;}
+.info_search .select{margin: 5px 10px 0px 10px;}
+.info_search select { outline: none; width: 100%;}
+.info_search .btn_search{margin: 5px 10px 0px 0px; float: right; border-radius: 4px;-webkit-border-radius: 4px;-moz-border-radius: 4px; height: 20px; line-height: 20px; background: #ee0000;}
+
+.user_search_page {margin: 80px; position: relative;}
+.user_search_page .title {border-bottom: solid 8px #F4602E; font-size: 18px; padding-bottom: 10px;}
+.user_search_page .title .orange { color:#F4602E; }
+
+.datatable {border: none;background: #fff;width: 100%;}
+.datatable tr:hover{background:#E9EDFE;}
+.datatable tr td{border-bottom:1px solid #CCC;color:#669;padding:6px 8px; vertical-align: top; }
+.datatable tr th{border-bottom:2px solid #6678B1;color:#039;cursor:pointer;font-size:14px;font-weight:400;text-align:left;padding:10px 8px}
+.datatable tr:hover td,.datatable tr a {
+    color: #039;
+}
+.datatable input[type=text]{-moz-border-radius:4px;-moz-box-shadow:inset 0 1px 2px #ddd;-o-border-radius:4px;-webkit-border-radius:4px;-webkit-box-shadow:inset 0 1px 2px #DDD;background:#fff;border:solid 1px #c4c4c4;border-radius:4px;box-shadow:inset 0 1px 2px #DDD;display:inline-block;font-weight:700;height:28px;overflow:hidden;text-indent:10px}
+.datatable .button,.datatable button,.datatable .button:hover,.datatable button:hover {
+    background: none;
+    border: none;
+    padding: 0;
+    float: none;
+}
+
+.datatable .button span.icon,.datatable button span.icon {
+    margin: 0;
+}
+.datatable .pagepad td { border-bottom: none; background: none;}
+.buttons:before,.buttons:after {
+    content: "\0020";
+    display: block;
+    height: 0;
+    visibility: hidden;
+}
+
 /*------------------------------------*\
     $ICONS
 \*------------------------------------*/

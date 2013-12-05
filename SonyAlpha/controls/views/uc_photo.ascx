@@ -34,15 +34,15 @@
         </div>
         <div class="photo-specs">
             <div class="heading">Thông tin</div>
-		    <div><span class="label">Chụp bằng máy</span><span>:<%= bllDetail.CameraName%></span></div>
-            <div><span class="label">Tên sản phẩm</span><span>:<%= bllDetail.CameraModel%></span></div>
-            <div><span class="label">Khẩu độ mở</span><span>:<%= bllDetail.MaxAperture%></span></div><br />
-            <div><span class="label">Thời gian phơi sáng</span><span>:<%= bllDetail.ExposureTime%></span></div>
-            <div><span class="label">Độ nhạy ISO</span><span>:<%= bllDetail.ISO%></span></div>
-            <div><span class="label">Độ bù sáng</span><span>:<%= bllDetail.ExposureBlas%></span></div><br/>
-		    <div><span class="label">Tiêu cự</span><span>:<%= bllDetail.FocalLengh%></span></div>
-            <div><span class="label">Đo sáng</span><span>:<%= bllDetail.FStop%></span></div>
-            <div><span class="label">Flash</span><span>:<%= bllDetail.FlashEnergy%></span></div>
+		    <div><span class="label">Chụp bằng máy</span><span>:&nbsp;<%= bllDetail.CameraName%></span></div>
+            <div><span class="label">Tên sản phẩm</span><span>:&nbsp;<%= bllDetail.CameraModel%></span></div>
+            <div><span class="label">Khẩu độ mở</span><span>:&nbsp;<%= bllDetail.MaxAperture%></span></div><br />
+            <div><span class="label">Thời gian phơi sáng</span><span>:&nbsp;<%= bllDetail.ExposureTime%></span></div>
+            <div><span class="label">Độ nhạy ISO</span><span>:&nbsp;<%= bllDetail.ISO%></span></div>
+            <div><span class="label">Độ bù sáng</span><span>:&nbsp;<%= bllDetail.ExposureBlas%></span></div><br/>
+		    <div><span class="label">Tiêu cự</span><span>:&nbsp;<%= bllDetail.FocalLengh%></span></div>
+            <div><span class="label">Đo sáng</span><span>:&nbsp;<%= bllDetail.FStop%></span></div>
+            <div><span class="label">Flash</span><span>:&nbsp;<%= bllDetail.FlashEnergy%></span></div>
         </div>   
     </div>
 </div>

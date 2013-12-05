@@ -1,6 +1,6 @@
 ﻿<%@ Control Language="vb" AutoEventWireup="false" CodeBehind="uc_album.ascx.vb" Inherits="SonyAlpha.uc_album" %>
 <div class="form_command clearfix">
-    <a class="btn blue uppercase">Đăng ảnh</a><input class="textbox noshadow" type="text" id="txtKeywords" placeholder="Tìm kiếm thành viên" /><a class="btn orange uppercase">Tìm kiếm</a>
+    <a id="uc_album_btnUpload" class="btn blue uppercase hidden" href="useraddphoto.aspx">Đăng ảnh</a><input class="textbox noshadow" type="text" id="txtKeywords" placeholder="Tìm kiếm thành viên" /><a id="uc_album_btnSeach" class="btn orange uppercase" href="javascript:void(0);">Tìm kiếm</a>
 </div>
 <div id="albumSlide"></div>
 <div class="album_page">

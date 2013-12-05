@@ -51,6 +51,8 @@ Public Class _Default
                     tpl = Page.LoadControl("controls/views/uc_photo.ascx")
                 Case "profile"
                     tpl = Page.LoadControl("controls/views/uc_userpage.ascx")
+                Case "user"
+                    tpl = Page.LoadControl("controls/views/uc_userupload.ascx")
                 Case "userupload"
                     tpl = Page.LoadControl("controls/views/uc_userupload.ascx")
                 Case "useraddphoto"
@@ -83,6 +85,8 @@ Public Class _Default
                     tpl = Page.LoadControl("controls/views/uc_map.ascx")
                 Case "lastestnews"
                     tpl = Page.LoadControl("controls/views/uc_lastestnews.ascx")
+                Case "searchuser"
+                    tpl = Page.LoadControl("controls/views/uc_search_user.ascx")
                 Case Else
                     intMenu = 1
                     tpl = Page.LoadControl("controls/views/uc_page.ascx")

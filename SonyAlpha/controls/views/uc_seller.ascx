@@ -22,6 +22,11 @@
         </ul>
         <%End If%>
     </div>
+    <div class="info_search">
+        <p class="title">Tỉnh thành</p>
+        <div class="select"><asp:DropDownList runat="server" ID="ddlProvince" ClientIDMode="Static"></asp:DropDownList></div>
+        <a href="javascript:void(0);" class="btn btn_search" id="uc_seller_btnSearch">Tìm kiếm</a>
+    </div>
 </div>
 <div class="shop_body">
     <div class="main_tab_alpha">

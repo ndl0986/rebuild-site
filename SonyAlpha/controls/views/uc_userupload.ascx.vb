@@ -4,12 +4,19 @@ Public Class uc_userupload
     Inherits System.Web.UI.UserControl
     Public user As New User
     Public username As String
+    Public isViewOnly As Boolean
     Public message As String = ""
     Public listAlbums As New List(Of Album)
     Public listPhotoOfUser As New List(Of Photo)
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         username = Session("accountid")
+        If username = Request.QueryString("id") Then
+            isViewOnly = False
+        ElseIf Request.QueryString("id") <> Nothing Then
+            isViewOnly = True
+            username = Request.QueryString("id")
+        End If
         If Not Page.IsPostBack Then
             If Not String.IsNullOrEmpty(username) Then
                 user = UserServices.getByUserName(username, CN.ConnectionString)
@@ -33,7 +40,7 @@ Public Class uc_userupload
                     myAlbum.TotalPhoto = totalPhoto
                 Next
             Else
-                message = "Bạn chưa đăng nhập hoặc không thể tìm được thông tin của bạn trong hệ thống!!"
+                message = "Bạn chưa đăng nhập hoặc không thể tìm được thông tin trong hệ thống!!"
             End If
         End If
     End Sub
