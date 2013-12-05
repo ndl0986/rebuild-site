@@ -15,7 +15,13 @@
         <li class="clearfix">
             <div class="album">
                 <div class="cover">
-                    <a href="/useralbum/<%= album.Id %>.aspx" id="uc_userupload_album<%= album.Id %>"><img alt="<%= album.FullName %>" src="<%= album.AlbumCover %>" /></a>
+                    <a href="/useralbum/<%= album.Id %>.aspx" id="uc_userupload_album<%= album.Id %>">
+                    <% If album.TotalPhoto > 0 Then%>
+                        <img alt="<%= album.FullName %>" src="<%= album.AlbumCover %>" />
+                    <% Else%>
+                        <img alt="<%= album.FullName %>" src="/upload/image/images.jpg" />
+                    <% End If%>
+                    </a>
                 </div>
                 <div class="album_title"><%= album.FullName %></div>
             </div>
