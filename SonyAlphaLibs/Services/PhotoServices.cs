@@ -559,7 +559,7 @@ namespace SonyAlphaLibs.Services
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.CommandText = "sony_sp_get_all_photo_by_username";
-                        cmd.Parameters.AddWithValue("@username", username);
+                        cmd.Parameters.AddWithValue("@userupload", username);
 
                         using (SqlDataReader reader = cmd.ExecuteReader())
                         {
