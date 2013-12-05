@@ -79,6 +79,8 @@ Public Class Service
                         GetListSonyCenterByProvince()
                     Case "getOwnerOfPhoto"
                         GetOwnerOfPhoto()
+                    Case "getIfVoted"
+                        GetIfVoted()
                 End Select
             Else
                 GetMyResponse("500", "Nothing todo!")
@@ -538,6 +540,20 @@ Public Class Service
             Dim photoId As Integer = CInt(Request.Params.Get("id"))
             Dim username As String = PhotoServices.getOwnerOfPhoto(photoId, CN.ConnectionString)
             GetMyResponse("200", username)
+        Catch ex As Exception
+            GetMyResponse("500", "fail: " + ex.Message)
+        End Try
+    End Sub
+
+    Private Sub GetIfVoted()
+        Try
+            Dim photoId As Integer = CInt(Request.QueryString("id"))
+            Dim username As String = Session("accountid")
+            If PhotoServices.checkIfVoted(photoId, username, CN.ConnectionString) Then
+                GetMyResponse("200", "1")
+            Else
+                GetMyResponse("200", "0")
+            End If
         Catch ex As Exception
             GetMyResponse("500", "fail: " + ex.Message)
         End Try
