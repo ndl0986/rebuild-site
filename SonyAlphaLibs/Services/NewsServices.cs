@@ -953,5 +953,37 @@ namespace SonyAlphaLibs.Services
             return lists;
             #endregion
         }
+
+        public static int increaseViewCount(int newsId, string connString)
+        {
+            #region code
+            int rs = 0;
+            using (SqlConnection conn = new SqlConnection(connString))
+            {
+                try
+                {
+                    conn.Open();
+                    using (SqlCommand cmd = conn.CreateCommand())
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.CommandText = "sony_sp_increase_news_view_count";
+                        cmd.Parameters.AddWithValue("@id", newsId);
+                        SqlParameter returnVal = new SqlParameter("@returnVal", SqlDbType.Int);
+                        returnVal.Direction = ParameterDirection.Output;
+                        cmd.Parameters.Add(returnVal);
+
+                        cmd.ExecuteNonQuery();
+                        rs = (int)cmd.Parameters["@returnVal"].Value;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    writeLog("", "Update News Error: " + ex.Message, connString);
+                    return rs;
+                }
+            }
+            return rs;
+            #endregion
+        }
     }
 }
