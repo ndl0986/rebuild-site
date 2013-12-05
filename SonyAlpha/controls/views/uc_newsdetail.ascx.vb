@@ -12,6 +12,7 @@ Public Class uc_newsdetail
             Dim id As String
             catId = Request.QueryString("cId")
             id = Request.QueryString("id")
+            NewsServices.increaseViewCount(id, CN.ConnectionString)
             bllNewsCategory.Id = CInt(catId)
             Dim lstCats As New List(Of SonyAlphaLibs.NewsCategory)
             lstCats = bllNewsCategory.getListChild(CN.ConnectionString)
