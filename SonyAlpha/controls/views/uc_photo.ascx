@@ -12,7 +12,9 @@
         </div>
         <div class="photo-actions">
             <a class="btn orange uppercase fancybox" href="<%= bllDetail.FileName %>">Phóng lớn <span class="icon icon160"></span></a>
+            <% If Not voted Then%>
             <a class="btn orange uppercase" href="javascript:void(0);" id="uc_photo_button_vote_photo">Bình chọn <span class="icon icon101"></span></a>
+            <% End If %>
             <a class="btn share-fb"></a>
         </div>
     </div>
