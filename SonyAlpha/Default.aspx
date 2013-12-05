@@ -31,29 +31,20 @@
     <ajaxToolkit:ToolkitScriptManager ID="ToolkitScriptManager" runat="server" ScriptMode="Release" ></ajaxToolkit:ToolkitScriptManager>
     <script type="text/javascript" src="/js/libs/jquery-2.0.3.min.js"></script>
     <div id="header" class="clearfix">
-        <div id="page_header" class="header_content clearfix">
-            <div class="header-top-national">Việt Nam</div>
-        </div>
+        <div id="page_header" class="header_content clearfix"><div class="header-top-national">Việt Nam</div></div>
         <div id="userStatus" class="clearfix">
             <div class="logined" style="display:none;"><a id="viewProfile" href="javascript:void(0);"><asp:Label runat="server" ClientIDMode="Static" ID="lblUser" class="text username"></asp:Label></a>&nbsp;|&nbsp;<a href="/logout">Logout</a></div>
             <div class="not_logined" style="display:none;"><a id="hplSignup" href="javascript:void(0);">Đăng ký</a><a id="hplSignin" href="javascript:void(0);">Đăng nhập</a></div>
         </div>
-        <div class="header-top-menu">
-            <a href="http://www.sony.com.vn/support/productcategory/e+mount+camera" style="color: #FFF;">Hỗ trợ NEX</a>  |  
-            <a href="http://www.sony.com.vn/support/productcategory/dslr+camera" style="color: #FFF;">Hỗ trợ DSLR</a> 
-		</div>
+        <div class="header-top-menu"><a href="http://www.sony.com.vn/support/productcategory/e+mount+camera" style="color: #FFF;">Hỗ trợ NEX</a>  |  <a href="http://www.sony.com.vn/support/productcategory/dslr+camera" style="color: #FFF;">Hỗ trợ DSLR</a> </div>
         <div id="topmenu" runat="server"></div>
     </div>
     <div id="container">
         <div id="breadcum" class="breadcum clearfix"></div>
         <div id="banner" runat="server" class="clearfix"></div>
-        <asp:UpdatePanel ID="UpdatePanelMain" runat="server" class="clearfix">
-            <ContentTemplate>
-                <asp:PlaceHolder runat="server" ID="plhMain"></asp:PlaceHolder>
-            </ContentTemplate>
-        </asp:UpdatePanel>
+        <asp:UpdatePanel ID="UpdatePanelMain" runat="server" class="clearfix"><ContentTemplate><asp:PlaceHolder runat="server" ID="plhMain"></asp:PlaceHolder></ContentTemplate></asp:UpdatePanel>
     </div>
-    <asp:HiddenField ID="isLoged" Value="0" runat="server" /><asp:HiddenField ID="hdfPage" Value="" runat="server" /><asp:HiddenField ID="hdfMenu" Value="" runat="server" />
+    <asp:HiddenField ID="hdfPage" Value="" runat="server" /><asp:HiddenField ID="hdfMenu" Value="" runat="server" />
     <div id="footer" runat="server" class="clearfix"></div>
     </form>
     </div>
@@ -62,9 +53,7 @@
     <div id="formUpdate" style="display:none;" class="bgFormPopup hide"><a class="close"></a><uc3:uc_userupdate ID="uc_userupdate1" runat="server" /></div>
     <div id="formSendQuestion" style="display:none;" class="bgFormPopup hide"><a class="close"></a><uc4:uc_email_faq ID="uc_email_faq1" runat="server" /></div>
     <script type="text/javascript" src="/js/libs/bootstrap.min.js"></script>
-    <!--[if IE 8]>    
-      <script src="../js/libs/respond.min.js"></script>
-    <![endif]-->
+    <!--[if IE 8]><script src="../js/libs/respond.min.js"></script><![endif]-->
     <script type="text/javascript" src="/js/plugins/jquery.lazyload.min.js"></script>
     <script type="text/javascript" src="/js/plugins/jquery.bxslider.min.js"></script>
     <script type="text/javascript" src="/js/plugins/jquery.nivo.slider.pack.js"></script>

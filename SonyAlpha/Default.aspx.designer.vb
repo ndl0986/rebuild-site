@@ -77,15 +77,6 @@ Partial Public Class _Default
     Protected WithEvents plhMain As Global.System.Web.UI.WebControls.PlaceHolder
 
     '''<summary>
-    '''isLoged control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents isLoged As Global.System.Web.UI.WebControls.HiddenField
-
-    '''<summary>
     '''hdfPage control.
     '''</summary>
     '''<remarks>
