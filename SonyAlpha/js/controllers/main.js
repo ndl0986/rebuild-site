@@ -1,4 +1,40 @@
-﻿function checkLoged(id) { if ($('#' + id).val() == 1) { $('.logined').show(); $('.not_logined').hide(); } else { $('.logined').hide(); $('.not_logined').show(); } }
+﻿window._user = {};
+function getCookie(c_name){
+    var c_value = document.cookie;
+    var c_start = c_value.indexOf(" "+c_name+"=");
+    if(c_start==-1)c_start=c_value.indexOf(c_name+"=");
+    if(c_start==-1){
+        c_value=null;
+    }else{
+        c_start=c_value.indexOf("=",c_start)+1;
+        var c_end = c_value.indexOf(";",c_start);
+        if(c_end==-1)c_end=c_value.length;
+        c_value = unescape(c_value.substring(c_start,c_end));
+    }
+    return c_value;
+}
+function getUserInfoFromCookie(){
+    var userInfor = getCookie('SonyAlpha');
+    var user = {};
+    if(userInfor==null) return null;
+    var arr = userInfor.split('&');
+    user.username = arr[0].split('=')[1];
+    user.group = arr[1].split('=')[1];
+    user.fullname = arr[2].split('=')[1];
+    window._user = user;
+    return window._user;
+}
+function checkLoged() { 
+    var isLoged = getUserInfoFromCookie();
+    //console.log(getCookie('SonyAlpha'));
+    if (isLoged!=null) { 
+        $('.logined').show(); 
+        $('.not_logined').hide(); 
+    } else { 
+        $('.logined').hide(); 
+        $('.not_logined').show();
+    } 
+}
 function togglePopup() { $('html').toggleClass('popupmode'); }
 function isPopupmode() { if ($('html').hasClass('popupmode')) { return true; } else { return false; } }
 function addBreadcum() {
@@ -271,7 +307,7 @@ function isPhonenumber(input)
 }
 
 $(document).ready(function () {
-    checkLoged('isLoged');
+    checkLoged();
     var aspx = $('#hdfPage').val();
     checkLoged('isLoged');
     addBreadcum();
@@ -743,7 +779,7 @@ function getListPhotos(albumId,callback){
 
 function doVotePhoto(callback) {
     //console.log('doPostComment');
-    var photoId = $("#uc_photo_hdfId").val();
+    var photoId = $("#imgMain").attr('data-id');
     $.ajax({
         type: 'POST',
         timeout: 5000,
@@ -752,9 +788,10 @@ function doVotePhoto(callback) {
         success: function (response) {
             response = jQuery.parseJSON(response);
             if (response.message == "1") { 
-                
+                $('#uc_photo_button_vote_photo').addClass('active');
+                $('#uc_photo_vote_count').text(parseInt($(this).text()+1));
+                if ($.isFunction(callback)) callback(response);   
             }
-            if ($.isFunction(callback)) callback(response);
         },
         error: function (jqXHR, textStatus, errorThrown) {
             console.log('error');

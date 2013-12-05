@@ -1,5 +1,5 @@
 ﻿<%@ Page Language="vb" AutoEventWireup="false" CodeBehind="Default.aspx.vb" Inherits="SonyAlpha._Default" %>
-<!--<%@ OutputCache Duration="3000" Location="Client" VaryByParam="None" %>-->
+<%@ OutputCache Duration="3000" Location="Client" VaryByParam="None" %>
 <%@ Register src="controls/views/uc_register.ascx" tagname="uc_register" tagprefix="uc1" %>
 <%@ Register src="controls/views/uc_login.ascx" tagname="uc_login" tagprefix="uc2" %>
 <%@ Register src="controls/views/uc_userupdate.ascx" tagname="uc_userupdate" tagprefix="uc3" %>
@@ -35,8 +35,8 @@
             <div class="header-top-national">Việt Nam</div>
         </div>
         <div id="userStatus" class="clearfix">
-            <div class="logined"><a id="viewProfile" href="javascript:void(0);"><asp:Label runat="server" ClientIDMode="Static" ID="lblUser" class="text username"></asp:Label></a>&nbsp;|&nbsp;<a href="/logout">Logout</a></div>
-            <div class="not_logined"><a id="hplSignup" href="javascript:void(0);">Đăng ký</a><a id="hplSignin" href="javascript:void(0);">Đăng nhập</a></div>
+            <div class="logined" style="display:none;"><a id="viewProfile" href="javascript:void(0);"><asp:Label runat="server" ClientIDMode="Static" ID="lblUser" class="text username"></asp:Label></a>&nbsp;|&nbsp;<a href="/logout">Logout</a></div>
+            <div class="not_logined" style="display:none;"><a id="hplSignup" href="javascript:void(0);">Đăng ký</a><a id="hplSignin" href="javascript:void(0);">Đăng nhập</a></div>
         </div>
         <div class="header-top-menu">
             <a href="http://www.sony.com.vn/support/productcategory/e+mount+camera" style="color: #FFF;">Hỗ trợ NEX</a>  |  

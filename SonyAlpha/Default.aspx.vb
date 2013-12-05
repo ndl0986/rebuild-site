@@ -1,5 +1,4 @@
-﻿
-Imports SonyAlphaLibs
+﻿Imports SonyAlphaLibs
 Imports SonyAlphaLibs.Services
 Imports System.Configuration
 Public Class _Default
@@ -29,7 +28,7 @@ Public Class _Default
                 Session("accountid") = Request.Cookies("SonyAlpha").Values("accountid")
                 Session("accountname") = Request.Cookies("SonyAlpha").Values("accountname")
                 Session("accountgroup") = Request.Cookies("SonyAlpha").Values("accountgroup")
-                isLoged.Value = 1
+                'isLoged.Value = 1
                 lblUser.Text = Session("accountname")
             End If
         End If
@@ -41,7 +40,7 @@ Public Class _Default
                     Session("accountname") = ""
                     Session("accountgroup") = ""
                     Response.Cookies("SonyAlpha").Expires = DateAdd(DateInterval.Day, -1, Now())
-                    isLoged.Value = 0
+                    'isLoged.Value = 0
                     Response.Cache.SetNoStore()
                     Response.Redirect("/")
                 Case "album"
