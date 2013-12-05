@@ -4,6 +4,7 @@ Public Class uc_photo
     Inherits System.Web.UI.UserControl
     Public bllDetail As New SonyAlphaLibs.Photo
     Dim bllAlbum As New SonyAlphaLibs.Album
+    Public voted As Boolean = False
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         Try
             bllAlbum.Id = CInt(Request.QueryString("cId"))
@@ -47,6 +48,9 @@ Public Class uc_photo
             End If
 
             hdfAlbumId.Value = bllAlbum.Id
+
+            Dim username As String = Session("accountid")
+            voted = PhotoServices.checkIfVoted(bllDetail.Id, username, CN.ConnectionString)
         Catch ex As Exception
 
         End Try
