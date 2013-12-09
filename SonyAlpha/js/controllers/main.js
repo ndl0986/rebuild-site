@@ -1,4 +1,4 @@
-﻿window._user = null;
+window._user = null;
 function getParameterByName(name) {
     name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
     var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
@@ -509,31 +509,50 @@ $(document).ready(function () {
 });
 
 function doRegister() {
+    var isValid = true;
     var usn = $("#uc_register_txtUserName").val();
     var pass = $("#uc_register_txtPWD").val();
     var pass1 = $("#uc_register_txtPWD1").val();
     var fullname = $("#uc_register_txtFullName").val();
+    var errEl = $('#uc_register_mess');
+    errEl.text(', ');
     if (pass != pass1) {
-        alert('Mật khẩu không trùng khớp!!!!!');
-        return false;
+        //alert('Mật khẩu không trùng khớp!!!!!');
+        errEl.text(errEl.text()+'Mật khẩu không trùng khớp'+errEl.text(', '));
+        $("#uc_register_txtPWD").addClass('error');
+        $("#uc_register_txtPWD1").addClass('error');
+        isValid = false;
     }
     var capcha = $("#uc_register_txtCapcha").val();
     var capchaBase = $("#uc_register_hdfCapcha").val();
     if (capcha != capchaBase) {
-        alert('Sai mã bảo mật!!!!!');
-        return false;
+        //alert('Sai mã bảo mật!!!!!');
+        errEl.text(errEl.text()+'Sai mã bảo mật'+errEl.text(', '));
+        $("#uc_register_txtCapcha").addClass('error');
+        isValid = false;
     }
     var phone = $("#uc_register_txtPhone").val();
     if (!isPhonenumber(phone)) {
-        alert('Số điện thoại không hợp lệ!!!!!');
-        return false;
+        //alert('Số điện thoại không hợp lệ!!!!!');
+        errEl.text(errEl.text()+'Số điện thoại không hợp lệ'+errEl.text(', '));
+        $("#uc_register_txtCapcha").addClass('error');
+        isValid = false;
     }
     var email = $("#uc_register_txtEmail").val();
     if (!isEmail(email)) {
-        alert('Email không hợp lệ!!!!!');
-        return false;
+        //alert('Email không hợp lệ!!!!!');
+        errEl.text(errEl.text()+'Email không hợp lệ'+errEl.text(', '));
+        $("#uc_register_txtEmail").addClass('error');
+        isValid = false;
     }
+    var err = errEl.text();
+    if(err.length>=2){err = err.substring(0,2);}
+    if(err.length>=2){err= err.substring(0,err.length-2);}
+    errEl.text(err);
     var productused = $("#uc_register_product").val();
+
+    if(isValid == false) return false;
+
     $.ajax({
         type: 'POST',
         timeout: 5000,
@@ -613,7 +632,7 @@ function doLogin() {
             response = jQuery.parseJSON(response);
             if (response.message == "ok") {
                 //alert('Đăng nhập thành công!!!!');
-                window.location.assign("/default.aspx")
+                window.location.reload(true);
             } else {
                 alert('Đăng nhập không thành công!!!!');
             }
