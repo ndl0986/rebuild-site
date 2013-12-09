@@ -94,6 +94,9 @@ input[type="text"].textbox {
     border-radius: 0;-webkit-border-radius: 0;-moz-border-radius: 0;
     box-shadow: 1px 1px 6px 0px rgba(0,0,0,0.2) inset;-webkit-box-shadow: 1px 1px 6px 0px rgba(0,0,0,0.2) inset;-moz-box-shadow: 1px 1px 6px 0px rgba(0,0,0,0.2) inset;
 }
+textarea.textarea.error,
+input.textbox.error,
+input[type="text"].textbox.error{border-color: #ff0000}
 .btn { border: none; height: 34px; line-height:34px; vertical-align: middle; padding: 0px 10px; display: inline-block; vertical-align: top;}
 .btn.blue { background: #518ab2; color: #fff;}
 .btn.orange { background: #fe3500; color: #fff;height: 29px;line-height: 29px;}
@@ -779,6 +782,7 @@ border-radius: 5px;-webkit-border-radius: 5px;-moz-border-radius:5px;padding-top
 .bgFormPopup .form .caption { text-transform: uppercase; height: 30px; padding-left: 20px; line-height: 20px;background: url('../img/reg_label_bg.png') no-repeat;}
 #imgCaptcha {float: left; width: 110px;}
 #imgCaptcha + input { float: left; margin-left: 10px; width: 100px;}
+.bgFormPopup .error_message {display: inline-block;text-align: left;width: 360px; color: #ff0000; font-size: 13px; margin: 5px 0px 0px 22px; line-height: 16px; float: left;}
 
 .frmSignIn { width: 272px;}
 .frmSignIn li { color: #999; margin-left: 30px; margin-bottom: 20px; font-size: 13px;}
