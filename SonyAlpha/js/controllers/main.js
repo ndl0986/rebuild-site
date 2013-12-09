@@ -518,7 +518,7 @@ function doRegister() {
     errEl.text(', ');
     if (pass != pass1) {
         //alert('Mật khẩu không trùng khớp!!!!!');
-        errEl.text(errEl.text()+'Mật khẩu không trùng khớp'+errEl.text(', '));
+        errEl.text(errEl.text()+'Mật khẩu không trùng khớp, ');
         $("#uc_register_txtPWD").addClass('error');
         $("#uc_register_txtPWD1").addClass('error');
         isValid = false;
@@ -527,21 +527,21 @@ function doRegister() {
     var capchaBase = $("#uc_register_hdfCapcha").val();
     if (capcha != capchaBase) {
         //alert('Sai mã bảo mật!!!!!');
-        errEl.text(errEl.text()+'Sai mã bảo mật'+errEl.text(', '));
+        errEl.text(errEl.text()+'Sai mã bảo mật, ');
         $("#uc_register_txtCapcha").addClass('error');
         isValid = false;
     }
     var phone = $("#uc_register_txtPhone").val();
     if (!isPhonenumber(phone)) {
         //alert('Số điện thoại không hợp lệ!!!!!');
-        errEl.text(errEl.text()+'Số điện thoại không hợp lệ'+errEl.text(', '));
+        errEl.text(errEl.text()+'Số điện thoại không hợp lệ, ');
         $("#uc_register_txtCapcha").addClass('error');
         isValid = false;
     }
     var email = $("#uc_register_txtEmail").val();
     if (!isEmail(email)) {
         //alert('Email không hợp lệ!!!!!');
-        errEl.text(errEl.text()+'Email không hợp lệ'+errEl.text(', '));
+        errEl.text(errEl.text()+'Email không hợp lệ, ');
         $("#uc_register_txtEmail").addClass('error');
         isValid = false;
     }
