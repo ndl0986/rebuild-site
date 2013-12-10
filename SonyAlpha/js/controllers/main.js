@@ -448,6 +448,9 @@ $(document).ready(function () {
             pop.fadeOut(300, function () { pop.addClass('hide') });
         }
     });
+    $("#uc_login_goregister").click(function () {
+        $('#hplSignup').click();$("#uc_login_btnCancel").click();
+    });    
 
 
     switch (aspx) {
