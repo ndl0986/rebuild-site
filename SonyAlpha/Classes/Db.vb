@@ -380,7 +380,7 @@ Public Module Db
     Public Function GetParamsActive(ByVal username As String, ByVal email As String)
         Try
             Dim text As String = username + "_" + email
-            text = base64Encode(text)
+            text = System.Web.HttpUtility.UrlEncode(base64Encode(text))
             Return "/Service.aspx?name=activeuser&q=" + text
         Catch ex As Exception
             Return ""

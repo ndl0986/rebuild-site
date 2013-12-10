@@ -403,8 +403,8 @@ Public Class Service
     Private Sub DoActiveUser()
         Try
             Dim query As String = Request.QueryString("q")
-            Dim usn_email As String = base64Decode(query)
-            Dim arrs As String() = usn_email.Split("_")
+            Dim usnEmail As String = System.Web.HttpUtility.UrlDecode(base64Decode(query))
+            Dim arrs As String() = usnEmail.Split("_")
             Dim username As String = arrs(0)
             Dim mail As String = arrs(1)
             Dim user As New User
