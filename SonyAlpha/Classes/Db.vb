@@ -397,4 +397,19 @@ Public Module Db
 
         Return IIf(upper, final.ToUpper(), final)
     End Function
+
+    Public Function GetContentActive(ByVal url As String, ByVal message As String) As String
+        Dim sb As New StringBuilder
+        sb.Append("<!DOCTYPE html>")
+        sb.Append("<html>")
+        sb.Append("<head>")
+        sb.Append("<meta http-equiv='refresh' content='5; URL=" + url + "'>")
+        sb.Append("</head>")
+        sb.Append("<body>")
+        sb.Append("<h1>" + message + "</h1>")
+        sb.Append("Please wait for 5 seconds or <a href='" + url + "'> Click here to HomePage</a>")
+        sb.Append("</body>")
+        sb.Append("</html>")
+        Return sb.ToString()
+    End Function
 End Module

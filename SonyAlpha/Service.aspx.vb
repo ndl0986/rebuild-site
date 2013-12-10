@@ -411,11 +411,14 @@ Public Class Service
             user = UserServices.getByUserName(username, CN.ConnectionString)
             If Not user.Id = 0 Then
                 user.Status = True
+                Dim http As String = ConfigurationManager.AppSettings("URL")
+                Dim content As String = ""
                 If user.update(CN.ConnectionString) Then
-                    Response.Write("Congratulations! Your account has been actived!")
+                    content = GetContentActive(http, "Congratulations! Your account has been actived!")
                 Else
-                    Response.Write("Opps! Activate account fail!")
+                    content = GetContentActive(http, "Opps! Activate account fail!")
                 End If
+                Response.Write(content)
             End If
         Catch ex As Exception
             GetMyResponse("500", "fail: " + ex.Message)
