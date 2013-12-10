@@ -436,6 +436,19 @@ $(document).ready(function () {
     $("#uc_photo_button_vote_photo").click(function () {
         doVotePhoto();
     });
+    $("#uc_login_btnCancel").click(function () {
+        var pop = $('#formSign');
+        if (!pop.hasClass('hide')) {
+            pop.fadeOut(300, function () { pop.addClass('hide') });
+        }
+    });
+    $("#uc_register_btnCancel").click(function () {
+        var pop = $('#formReg');
+        if (!pop.hasClass('hide')) {
+            pop.fadeOut(300, function () { pop.addClass('hide') });
+        }
+    });
+
 
     switch (aspx) {
         case 'seller':
@@ -516,12 +529,25 @@ function doRegister() {
     var fullname = $("#uc_register_txtFullName").val();
     var errEl = $('#uc_register_mess');
     errEl.text(', ');
-    if (pass != pass1) {
+    if (usn=='') {
         //alert('Mật khẩu không trùng khớp!!!!!');
-        errEl.text(errEl.text()+'Mật khẩu không trùng khớp, ');
+        errEl.text(errEl.text()+'Tên đăng nhập là bắt buộc, ');
+        $("#uc_register_txtUserName").addClass('error');
+        isValid = false;
+    }
+    if (fullname=='') {
+        //alert('Mật khẩu không trùng khớp!!!!!');
+        errEl.text(errEl.text()+'Tên đầy đủ là bắt buộc, ');
+        $("#uc_register_txtFullName").addClass('error');
+        isValid = false;
+    }
+    if (pass != pass1 || pass=='') {
+        //alert('Mật khẩu không trùng khớp!!!!!');
+        errEl.text(errEl.text()+'Mật khẩu không hợp lệ, ');
         $("#uc_register_txtPWD").addClass('error');
         $("#uc_register_txtPWD1").addClass('error');
         isValid = false;
+        
     }
     var capcha = $("#uc_register_txtCapcha").val();
     var capchaBase = $("#uc_register_hdfCapcha").val();
@@ -532,23 +558,25 @@ function doRegister() {
         isValid = false;
     }
     var phone = $("#uc_register_txtPhone").val();
-    if (!isPhonenumber(phone)) {
+    if (!isPhonenumber(phone)||phone=='') {
         //alert('Số điện thoại không hợp lệ!!!!!');
         errEl.text(errEl.text()+'Số điện thoại không hợp lệ, ');
-        $("#uc_register_txtCapcha").addClass('error');
+        $("#uc_register_txtPhone").addClass('error');
         isValid = false;
     }
     var email = $("#uc_register_txtEmail").val();
-    if (!isEmail(email)) {
+    if (!isEmail(email) || email=='') {
         //alert('Email không hợp lệ!!!!!');
         errEl.text(errEl.text()+'Email không hợp lệ, ');
         $("#uc_register_txtEmail").addClass('error');
         isValid = false;
     }
     var err = errEl.text();
-    if(err.length>=2){err = err.substring(0,2);}
-    if(err.length>=2){err= err.substring(0,err.length-2);}
+
+    if(err.length>=2){err = err.substring(2,err.length-2);}
+    if(err.length>=2){err= err.substring(0,err.length);}
     errEl.text(err);
+
     var productused = $("#uc_register_product").val();
 
     if(isValid == false) return false;

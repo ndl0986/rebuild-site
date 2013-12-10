@@ -782,7 +782,7 @@ border-radius: 5px;-webkit-border-radius: 5px;-moz-border-radius:5px;padding-top
 .bgFormPopup .form .caption { text-transform: uppercase; height: 30px; padding-left: 20px; line-height: 20px;background: url('../img/reg_label_bg.png') no-repeat;}
 #imgCaptcha {float: left; width: 110px;}
 #imgCaptcha + input { float: left; margin-left: 10px; width: 100px;}
-.bgFormPopup .error_message {display: inline-block;text-align: left;width: 360px; color: #ff0000; font-size: 13px; margin: 5px 0px 0px 22px; line-height: 16px; float: left;}
+.bgFormPopup .error_message {display: inline-block;text-align: left;width: 360px; color: #ff0000; font-size: 11px; margin: 5px 0px 0px 22px; line-height: 16px; float: left;}
 
 .frmSignIn { width: 272px;}
 .frmSignIn li { color: #999; margin-left: 30px; margin-bottom: 20px; font-size: 13px;}
