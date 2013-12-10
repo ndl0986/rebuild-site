@@ -20,6 +20,7 @@
     <meta name="robots" content="follow, all" />
     <meta name="language" content="en, sv" />
     <meta content="" name="author"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <link rel="stylesheet" type="text/css" href="css/reset.css"/>
     <link rel="stylesheet" type="text/css" href="css/styles.css"/>
 	<link rel="stylesheet" type="text/css" href="js/plugins/jquery.fancybox.css?v=2.1.5" media="screen" />

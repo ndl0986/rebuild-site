@@ -1,4 +1,4 @@
-<%@ Control Language="vb" AutoEventWireup="false" CodeBehind="uc_register.ascx.vb" Inherits="SonyAlpha.uc_register" %>
+﻿<%@ Control Language="vb" AutoEventWireup="false" CodeBehind="uc_register.ascx.vb" Inherits="SonyAlpha.uc_register" %>
 <div class="content">
         <ul class="form">
             <li class="row clearfix">
