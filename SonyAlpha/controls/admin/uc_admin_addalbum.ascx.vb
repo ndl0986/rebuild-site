@@ -15,7 +15,7 @@ Public Class uc_admin_addalbum
             myAlbum.AlbumImage = ""
             myAlbum.ViewCount = 0
             myAlbum.AlbumType = ddlAlbumType.SelectedValue
-            myAlbum.AlbumCover = txtPhotoURL.Value
+            'myAlbum.AlbumCover = txtPhotoURL.Value
             Dim result
             result = myAlbum.add(CN.ConnectionString)
             If result = True Then

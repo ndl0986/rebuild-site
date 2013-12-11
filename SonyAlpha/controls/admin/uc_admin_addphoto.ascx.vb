@@ -3,6 +3,10 @@ Imports SonyAlphaLibs.Services
 Imports System.IO
 Imports System.Configuration
 Imports LevDan.Exif
+Imports System.Web
+Imports System.Web.Services
+Imports System.Web.Script.Services
+Imports System.Web.Script.Serialization
 Public Class uc_admin_addphoto
     Inherits System.Web.UI.UserControl
     Dim myAlbum As New SonyAlphaLibs.Album
@@ -38,8 +42,13 @@ Public Class uc_admin_addphoto
         txtMaxAperture.Text = myPhoto.MaxAperture
         txtISO.Text = myPhoto.ISO
         txtSubjectDistance.Text = myPhoto.SubjectDistance
+        If myAlbum.AlbumCover = myPhoto.FileName Then
+            chkCover.Checked = True
+        End If
     End Sub
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+        Dim c As HttpCookie = New HttpCookie("SonyAlphaUpload")
+        c.Values("exif") = ""
         Dim id As String
         id = Request.QueryString("id")
         If id = "" Then
@@ -64,7 +73,7 @@ Public Class uc_admin_addphoto
                 If filePath <> "" Then
                     oFolder = Directory.CreateDirectory(NewsPath & "\" & filePath)
                 End If
-                UploadFolderPath = GetURL(Server.MapPath("~/upload/image/album/" & Request.QueryString("aid") & "/"))
+                UploadFolderPath = "/upload/image/album/" & Request.QueryString("aid") & "/"
                 urlPath.Value = UploadFolderPath
             Catch ex As Exception
 
@@ -107,21 +116,19 @@ Public Class uc_admin_addphoto
                     myPhoto.SubjectDistance = info.Value
             End Select
         Next
-        txtCamera.Text = myPhoto.CameraName
-        txtCameraModel.Text = myPhoto.CameraModel
-        txtExposureBlas.Text = myPhoto.ExposureBlas
-        txtExposureTime.Text = myPhoto.ExposureTime
-        txtFlashEnergy.Text = myPhoto.FlashEnergy
-        txtFlashMode.Text = myPhoto.FlashMode
-        txtFocalLengh.Text = myPhoto.FocalLengh
-        txtFstop.Text = myPhoto.FStop
-        txtMateringMode.Text = myPhoto.MateringMode
-        txtMaxAperture.Text = myPhoto.MaxAperture
-        txtISO.Text = myPhoto.ISO
-        txtSubjectDistance.Text = myPhoto.SubjectDistance
+        If Request.Browser.Cookies = True Then
+            Dim c As HttpCookie = New HttpCookie("SonyAlphaUpload")
+            If Request.Cookies("SonyAlphaUpload") Is Nothing Then
+                c.Expires = DateAdd(DateInterval.Day, 30, Now())
+                c.Values("exif") = New JavaScriptSerializer().Serialize(myPhoto)
+                Response.Cookies.Add(c)
+            Else
+                c.Values("exif") = New JavaScriptSerializer().Serialize(myPhoto)
+            End If
+        End If
     End Sub
 
-    Private Sub btnSave_ServerClick(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnSave.ServerClick
+    Private Sub btnSave_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnSave.Click
         If Page.IsPostBack Then
             Try
                 myPhoto.FileName = txtFileName.Text
@@ -139,6 +146,10 @@ Public Class uc_admin_addphoto
                 myPhoto.MaxAperture = txtMaxAperture.Text
                 myPhoto.ISO = txtISO.Text
                 myPhoto.SubjectDistance = txtSubjectDistance.Text
+                If chkCover.Checked = True Then
+                    myAlbum.AlbumCover = myPhoto.FileName
+                    myAlbum.update(CN.ConnectionString)
+                End If
                 Dim result As Boolean
                 If bolUpdate = False Then
                     myPhoto.add(CN.ConnectionString)
@@ -155,5 +166,6 @@ Public Class uc_admin_addphoto
 
             End Try
         End If
+
     End Sub
 End Class

@@ -64,7 +64,8 @@ Public Class uc_admin_editalbum
             myAlbum.AlbumType = ddlAlbumType.SelectedValue
             myAlbum.AlbumCover = txtPhotoURL.Value
             If myAlbum.update(CN.ConnectionString) Then
-                ScriptManager.RegisterStartupScript(Me, GetType(String), "Message", "alert('Lưu Album thành công !!!');", True)
+                'ScriptManager.RegisterStartupScript(Me, GetType(String), "Message", "alert('Lưu Album thành công !!!');window.location.href", True)
+                Response.Redirect("?tpl=albums")
             Else
                 ScriptManager.RegisterStartupScript(Me, GetType(String), "Message", "alert('Lưu Album không thành công !!!');", True)
             End If
