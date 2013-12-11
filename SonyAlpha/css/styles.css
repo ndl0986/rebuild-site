@@ -724,7 +724,8 @@ overflow: hidden;
 .product_slide { float: left; width: 500px; margin: 20px 0px; position: relative;}
 .product_slide .bxslider li { width: 490px !important; border: solid 1px #efefef; background: #fff; padding: 4px;}
 
-#sonyCenterSlides #bxpager,.product_slide #bxpager { width: 400px; margin: 10px auto;}
+#sonyCenterSlides #bxpager { width: 480px; margin: 10px auto;}
+.product_slide #bxpager { width: 400px; margin: 10px auto;}
 #sonyCenterSlides .bx-wrapper .bx-controls-direction a,
 .product_slide .bx-wrapper .bx-controls-direction a {position: absolute;bottom: 20px;margin-top: 0;outline: 0;width: 32px;height: 32px;text-indent: -9999px;z-index: 9999;}
 #sonyCenterSlides .bx-wrapper .bx-controls-direction a.disabled ,
@@ -737,10 +738,10 @@ overflow: hidden;
 .product_slide .bx-wrapper .bx-prev:hover {background-position: 0 0;}
 #sonyCenterSlides .bx-wrapper .bx-next:hover,
 .product_slide .bx-wrapper .bx-next:hover {background-position: -43px 0;}
-#sonyCenterSlides .bx-wrapper .bx-controls-direction a{ bottom: 36px;}
+#sonyCenterSlides .bx-wrapper .bx-controls-direction a{ top: 350px;}
 #sonyCenterSlides .bx-wrapper .bx-prev { left: 30px;}
 #sonyCenterSlides .bx-wrapper .bx-next {right: 30px;}
-
+#sonyCenterSlides .bx-wrapper img {width: 100%;}
 .box_gradient {float: left; width: 180px; margin-left: 15px; font-size: 11px;
 background: rgb(255,255,255); /* Old browsers */
 /* IE9 SVG, needs conditional override of 'filter' to 'none' */

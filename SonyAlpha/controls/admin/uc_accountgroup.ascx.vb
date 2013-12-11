@@ -24,4 +24,30 @@ Public Class uc_accountgroup
             End If
         End If
     End Sub
+
+    Private Sub grvGroupAccount_RowCommand(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewCommandEventArgs) Handles grvGroupAccount.RowCommand
+        Try
+            Dim userGroup As New UserGroup
+            userGroup.Id = CInt(e.CommandArgument)
+            userGroup = userGroup.getById(CN.ConnectionString)
+            If e.CommandName = "DeleteRow" Then
+                userGroup.removeById(CN.ConnectionString)
+
+                grvGroupAccount.DataSourceID = ""
+                grvGroupAccount.DataSourceID = "objGroupAccount"
+            End If
+            If e.CommandName = "UpdateRow" Then
+                Dim selectedRow As GridViewRow = DirectCast(DirectCast(e.CommandSource, LinkButton).NamingContainer, GridViewRow)
+                Dim intRowIndex As Integer = Convert.ToInt32(selectedRow.RowIndex)
+                userGroup.GroupName = TryCast(selectedRow.Cells(1).Controls(0), TextBox).Text
+                userGroup.IsSuper = CBool(TryCast(selectedRow.Cells(2).Controls(0), CheckBox).Checked)
+
+                If userGroup.update(CN.ConnectionString) Then
+                    Response.Redirect("?tpl=accountsgroup")
+                End If
+            End If
+        Catch ex As Exception
+
+        End Try
+    End Sub
 End Class
