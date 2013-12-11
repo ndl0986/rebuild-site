@@ -30,12 +30,6 @@ Public Class uc_accountgroup
             Dim userGroup As New UserGroup
             userGroup.Id = CInt(e.CommandArgument)
             userGroup = userGroup.getById(CN.ConnectionString)
-            If e.CommandName = "DeleteRow" Then
-                userGroup.removeById(CN.ConnectionString)
-
-                grvGroupAccount.DataSourceID = ""
-                grvGroupAccount.DataSourceID = "objGroupAccount"
-            End If
             If e.CommandName = "UpdateRow" Then
                 Dim selectedRow As GridViewRow = DirectCast(DirectCast(e.CommandSource, LinkButton).NamingContainer, GridViewRow)
                 Dim intRowIndex As Integer = Convert.ToInt32(selectedRow.RowIndex)

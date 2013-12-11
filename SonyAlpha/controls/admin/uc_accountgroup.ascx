@@ -22,7 +22,6 @@
                 <asp:TemplateField HeaderText="Commands" ShowHeader="False">
                     <ItemTemplate>
                         <asp:LinkButton ID="lEdit" runat="server" CausesValidation="False" CommandName="Edit" Text="Edit" CssClass="button"><span class="icon icon46"></span></asp:LinkButton>
-                        <asp:LinkButton ID="lDelete" runat="server" CausesValidation="False" CommandName="DeleteRow" CommandArgument='<%#Eval("Id") %>' Text="Delete" CssClass="actDel button" messdelete="Delete this group ?"><span class="icon icon186"></span></asp:LinkButton>
                     </ItemTemplate>
                     <EditItemTemplate>
                         <asp:LinkButton ID="lUpdate" runat="server" CausesValidation="False" CommandName="UpdateRow" CommandArgument='<%#Eval("Id") %>' Text="Ok" CssClass="button"><span class="icon icon44"></span></asp:LinkButton>

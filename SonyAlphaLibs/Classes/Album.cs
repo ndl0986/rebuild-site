@@ -95,6 +95,19 @@ namespace SonyAlphaLibs
             return AlbumServices.getListAll(connString);
         }
 
+        public List<Album> getListNormal(String connString) {
+            return AlbumServices.getListAllNormalAlbum(connString);
+        }
+
+        public List<Album> getListTypeCenter(String connString) {
+            return AlbumServices.getListAllAlbumForCenter(connString);
+        }
+
+        public List<Album> getListTypeProduct(String connString)
+        {
+            return AlbumServices.getListAllAlbumForProductCategory(connString);
+        }
+
         public Album getById(String connString)
         {
             Album album = AlbumServices.getById(base.Id, connString);

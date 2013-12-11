@@ -8,7 +8,7 @@
 <div class="content">
     <div class="section">
         <asp:Label runat="server" ID="lblMessage"></asp:Label>
-        <h4 class="heading">Danh sách albums photo<a href="?tpl=addalbum" class="floatright button action"><span class="icon icon68"></span></a></h4>
+        <h4 class="heading">Danh sách albums photo: <asp:DropDownList runat="server" ID="ddlAlbumType" AutoPostBack="True"><asp:ListItem Value="*">-- Tất cả --</asp:ListItem><asp:ListItem Value="0">Thường</asp:ListItem><asp:ListItem Value="1">Dành cho Trung tâm Sony</asp:ListItem><asp:ListItem Value="2">Dành cho Nhóm sản phẩm</asp:ListItem></asp:DropDownList><a href="?tpl=addalbum" class="floatright button action"><span class="icon icon68"></span></a></h4>
         <asp:GridView EmptyDataText="Không có albums nào" ID="grvAlbums" runat="server" 
             AllowPaging="True" AllowSorting="True" DataSourceID="objAlbums"
             SkinID="Defaultgridview" AutoGenerateColumns="False" CssClass="datatable" 
@@ -31,10 +31,7 @@
             <FooterStyle Font-Bold="True" ForeColor="White" />
             <PagerStyle CssClass="pagepad" HorizontalAlign="Right" />
         </asp:GridView>
+        <div class="pagesize">Hiển thị <asp:DropDownList runat="server" ID="ddlPageSize" AutoPostBack="True"><asp:ListItem Selected="True" Value="10">10</asp:ListItem><asp:ListItem Value="20">20</asp:ListItem><asp:ListItem Value="50">50</asp:ListItem></asp:DropDownList></div>
     </div>
 </div>
-<asp:ObjectDataSource ID="objAlbums" runat="server" SelectMethod="getListAll" TypeName="SonyAlphaLibs.Album">
-    <SelectParameters>
-        <asp:Parameter Name="connString" Type="String" />
-    </SelectParameters>
-</asp:ObjectDataSource>
+<asp:ObjectDataSource ID="objAlbums" runat="server" SelectMethod="getListAll" TypeName="SonyAlphaLibs.Album"><SelectParameters><asp:Parameter Name="connString" Type="String" /></SelectParameters></asp:ObjectDataSource>

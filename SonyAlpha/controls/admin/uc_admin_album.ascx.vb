@@ -7,8 +7,21 @@ Public Class uc_admin_album
         objAlbums.SelectParameters.Item("connString").DefaultValue = CN.ConnectionString
     End Sub
 
-    Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
-
+    Private Sub grvAlbums_PageIndexChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles grvAlbums.PageIndexChanged
+        grvAlbums.PageSize = ddlPageSize.SelectedValue
+        Select Case ddlAlbumType.SelectedValue
+            Case 0
+                objAlbums.SelectMethod = "getListNormal"
+            Case 1
+                objAlbums.SelectMethod = "getListTypeCenter"
+            Case 2
+                objAlbums.SelectMethod = "getListTypeProduct"
+            Case Else
+                objAlbums.SelectMethod = "getListAll"
+        End Select
+        objAlbums.SelectParameters.Item("connString").DefaultValue = CN.ConnectionString
+        grvAlbums.DataSourceID = ""
+        grvAlbums.DataSourceID = "objAlbums"
     End Sub
 
     Private Sub grvAlbums_RowCommand(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewCommandEventArgs) Handles grvAlbums.RowCommand
@@ -26,17 +39,45 @@ Public Class uc_admin_album
         End Try
     End Sub
 
-    Private Sub grvAlbums_RowDeleting(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewDeleteEventArgs) Handles grvAlbums.RowDeleting
-        Try
-            grvAlbums.DataBind()
-        Catch ex As Exception
-
-        End Try
-    End Sub
-
     Private Sub grvAlbums_SelectedIndexChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles grvAlbums.SelectedIndexChanged
         Dim strURL As String
         strURL = "?tpl=editalbum&id=" & grvAlbums.Rows(grvAlbums.SelectedIndex).Cells(0).Text
         Response.Redirect(strURL)
+    End Sub
+
+    Private Sub ddlPageSize_SelectedIndexChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles ddlPageSize.SelectedIndexChanged
+        grvAlbums.PageSize = ddlPageSize.SelectedValue
+        Select Case ddlAlbumType.SelectedValue
+            Case 0
+                objAlbums.SelectMethod = "getListNormal"
+            Case 1
+                objAlbums.SelectMethod = "getListTypeCenter"
+            Case 2
+                objAlbums.SelectMethod = "getListTypeProduct"
+            Case Else
+                objAlbums.SelectMethod = "getListAll"
+        End Select
+        objAlbums.SelectParameters.Item("connString").DefaultValue = CN.ConnectionString
+        grvAlbums.DataSourceID = ""
+        grvAlbums.DataSourceID = "objAlbums"
+    End Sub
+
+    Private Sub ddlAlbumType_SelectedIndexChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles ddlAlbumType.SelectedIndexChanged
+        grvAlbums.PageSize = ddlPageSize.SelectedValue
+        Select Case ddlAlbumType.SelectedValue
+            Case 0
+                objAlbums.SelectMethod = "getListNormal"
+            Case 1
+                objAlbums.SelectMethod = "getListTypeCenter"
+            Case 2
+                objAlbums.SelectMethod = "getListTypeProduct"
+            Case Else
+                objAlbums.SelectMethod = "getListAll"
+        End Select
+        objAlbums.SelectParameters.Item("connString").DefaultValue = CN.ConnectionString
+        grvAlbums.DataSourceID = ""
+        grvAlbums.DataSourceID = "objAlbums"
+        grvAlbums.DataBind()
+
     End Sub
 End Class

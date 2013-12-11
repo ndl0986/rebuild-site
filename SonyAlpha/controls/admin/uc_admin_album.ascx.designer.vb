@@ -23,6 +23,15 @@ Partial Public Class uc_admin_album
     Protected WithEvents lblMessage As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
+    '''ddlAlbumType control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents ddlAlbumType As Global.System.Web.UI.WebControls.DropDownList
+
+    '''<summary>
     '''grvAlbums control.
     '''</summary>
     '''<remarks>
@@ -30,6 +39,15 @@ Partial Public Class uc_admin_album
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents grvAlbums As Global.System.Web.UI.WebControls.GridView
+
+    '''<summary>
+    '''ddlPageSize control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents ddlPageSize As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
     '''objAlbums control.
