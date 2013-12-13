@@ -217,9 +217,10 @@ function updateComment(id){
 }
 
 function deleteComment(id){
+    var li = $('#comment_'+id);
     if(window._user==null || window._user.username!=li.attr('data-user')){alert('Bạn không có quyền xóa bình luận này');return false;}
     doDeleteComment(id,function(){
-        $('#comment_'+id).remove();
+        li.remove();
     });
 }
 
@@ -487,6 +488,7 @@ $(document).ready(function () {
             getListComments(photoId, function (data) { parseComments(data) });
 
             $('#btnPostComment').click(function () {
+                if($('#txtComment').val()=='')return false;
                 if(window._user==null){alert('Bạn phải đăng nhập mới có quyền bình luận');$('#txtComment').val('');return false;}
                 var html = $('#txtComment').val();
                 doPostComment(albumId, photoId, html, function () {
