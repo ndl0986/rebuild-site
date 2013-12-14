@@ -7,7 +7,7 @@
 <div class="content">
     <div class="section">
         <asp:Label runat="server" ID="lblMessage"></asp:Label>
-        <h4 class="heading">Danh sách Trung tâm<a href="?tpl=addsonycenter" class="floatright button action"><span class="icon icon68"></span></a></h4>
+        <h4 class="heading">Danh sách Trung tâm <asp:DropDownList runat="server" ID="ddlRetailLevel" AutoPostBack="true"><asp:ListItem Value="*">--- All ---</asp:ListItem><asp:ListItem Value="0">Pro Shop</asp:ListItem><asp:ListItem Value="1">Alpha Shop</asp:ListItem><asp:ListItem Value="2">Shop</asp:ListItem></asp:DropDownList><a href="?tpl=addsonycenter" class="floatright button action"><span class="icon icon68"></span></a></h4>
         <asp:GridView EmptyDataText="Không có trung tâm nào" ID="grvSonyCenters" runat="server" 
             AllowPaging="True" AllowSorting="True" DataSourceID="objSonyCenters"
             SkinID="Defaultgridview" AutoGenerateColumns="False" CssClass="datatable" 
@@ -29,13 +29,9 @@
             <FooterStyle Font-Bold="True" ForeColor="White" />
             <PagerStyle CssClass="pagepad" HorizontalAlign="Right" />
         </asp:GridView>
+        <div class="pagesize">Hiển thị <asp:DropDownList runat="server" ID="ddlPageSize" AutoPostBack="True"><asp:ListItem Selected="True" Value="10">10</asp:ListItem><asp:ListItem Value="20">20</asp:ListItem><asp:ListItem Value="50">50</asp:ListItem></asp:DropDownList></div>
     </div>
 </div>
 <asp:ObjectDataSource ID="objSonyCenters" runat="server" DeleteMethod="removeById" SelectMethod="getListAll" TypeName="SonyAlphaLibs.SonyCenter">
-    <SelectParameters>
-        <asp:Parameter Name="connString" Type="String" />
-    </SelectParameters>
-    <DeleteParameters>
-        <asp:Parameter Name="connString" Type="String" />
-    </DeleteParameters>
+    <SelectParameters><asp:Parameter Name="connString" Type="String" /></SelectParameters>
 </asp:ObjectDataSource>

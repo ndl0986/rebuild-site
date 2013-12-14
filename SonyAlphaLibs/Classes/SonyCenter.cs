@@ -130,6 +130,11 @@ namespace SonyAlphaLibs
             return SonyCenterServices.getListAllCenter(connString);
         }
 
+        public List<SonyCenter> getListByType(int typeId, String connString)
+        {
+            return SonyCenterServices.getCenterByType(typeId, connString);
+        }
+
         public SonyCenter getById(String connString)
         {
             return SonyCenterServices.getCenterById(this.Id, connString);

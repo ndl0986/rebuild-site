@@ -136,6 +136,11 @@ namespace SonyAlphaLibs
             return NewsServices.getListAll(connString);
         }
 
+        public List<News> getListByCategory(int categoryId, String connString)
+        {
+            return NewsServices.getListNewsByCategory(categoryId, connString);
+        }
+
         public News getById(String connString)
         {
             return NewsServices.getById(base.Id, connString);

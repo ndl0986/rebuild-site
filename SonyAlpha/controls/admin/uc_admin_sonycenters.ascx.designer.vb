@@ -23,6 +23,15 @@ Partial Public Class uc_admin_sonycenters
     Protected WithEvents lblMessage As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
+    '''ddlRetailLevel control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents ddlRetailLevel As Global.System.Web.UI.WebControls.DropDownList
+
+    '''<summary>
     '''grvSonyCenters control.
     '''</summary>
     '''<remarks>
@@ -30,6 +39,15 @@ Partial Public Class uc_admin_sonycenters
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents grvSonyCenters As Global.System.Web.UI.WebControls.GridView
+
+    '''<summary>
+    '''ddlPageSize control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents ddlPageSize As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
     '''objSonyCenters control.
