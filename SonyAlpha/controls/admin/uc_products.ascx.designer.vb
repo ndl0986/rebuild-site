@@ -23,6 +23,15 @@ Partial Public Class uc_products
     Protected WithEvents lblMessage As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
+    '''ddlProductCategory control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents ddlProductCategory As Global.System.Web.UI.WebControls.DropDownList
+
+    '''<summary>
     '''grvProducts control.
     '''</summary>
     '''<remarks>
@@ -30,6 +39,15 @@ Partial Public Class uc_products
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents grvProducts As Global.System.Web.UI.WebControls.GridView
+
+    '''<summary>
+    '''ddlPageSize control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents ddlPageSize As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
     '''objProducts control.

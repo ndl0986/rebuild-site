@@ -80,6 +80,11 @@ namespace SonyAlphaLibs
             return ProductServices.getListAllProductCategory(connString);
         }
 
+        public List<ProductCategory> getListAllChild(String connString)
+        {
+            return ProductServices.getListAllChildProductCategory(connString);
+        }
+
         public ProductCategory getById(String connString)
         {
             return ProductServices.getProductCategoryById(base.Id, connString);

@@ -7,7 +7,7 @@
 <div class="content">
     <div class="section">
         <asp:Label runat="server" ID="lblMessage"></asp:Label>
-        <h4 class="heading">Danh sách Sản phẩm<a href="?tpl=addproduct" class="floatright button action"><span class="icon icon68"></span></a></h4>
+        <h4 class="heading">Danh sách sản phẩm : <asp:DropDownList runat="server" ID="ddlProductCategory" AutoPostBack="true"></asp:DropDownList><a href="?tpl=addproduct" class="floatright button action"><span class="icon icon68"></span></a></h4>
         <asp:GridView EmptyDataText="Không có sản phẩm nào" ID="grvProducts" runat="server" 
             AllowPaging="True" AllowSorting="True" DataSourceID="objProducts"
             SkinID="Defaultgridview" AutoGenerateColumns="False" CssClass="datatable" 
@@ -28,6 +28,7 @@
             <FooterStyle Font-Bold="True" ForeColor="White" />
             <PagerStyle CssClass="pagepad" HorizontalAlign="Right" />
         </asp:GridView>
+        <div class="pagesize">Hiển thị <asp:DropDownList runat="server" ID="ddlPageSize" AutoPostBack="True"><asp:ListItem Selected="True" Value="10">10</asp:ListItem><asp:ListItem Value="20">20</asp:ListItem><asp:ListItem Value="50">50</asp:ListItem></asp:DropDownList></div>
     </div>
 </div>
 <asp:ObjectDataSource ID="objProducts" runat="server" DeleteMethod="removeById" SelectMethod="getListAll" TypeName="SonyAlphaLibs.Product">

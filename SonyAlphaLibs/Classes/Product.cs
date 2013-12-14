@@ -184,6 +184,11 @@ namespace SonyAlphaLibs
             return ProductServices.getListAll(connString);
         }
 
+        public List<Product> getListByCategory(int categoryId, String connString)
+        {
+            return ProductServices.getListProductByCategoryId(categoryId,connString);
+        }
+
         public Product getById(String connString)
         {
             return ProductServices.getById(base.Id, connString);
