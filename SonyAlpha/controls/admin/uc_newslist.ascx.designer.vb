@@ -23,6 +23,15 @@ Partial Public Class uc_newslist
     Protected WithEvents lblMessage As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
+    '''ddlNewsCategory control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents ddlNewsCategory As Global.System.Web.UI.WebControls.DropDownList
+
+    '''<summary>
     '''grvNews control.
     '''</summary>
     '''<remarks>

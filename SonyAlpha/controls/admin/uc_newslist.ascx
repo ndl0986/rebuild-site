@@ -7,8 +7,8 @@
 <div class="content">
     <div class="section clearfix">
         <asp:Label runat="server" ID="lblMessage"></asp:Label>
-        <h4 class="heading">Danh sách tin tức<a href="?tpl=addnews" class="floatright button action"><span class="icon icon68"></span></a></h4>
-        <asp:GridView EmptyDataText="Không có trang nào" ID="grvNews" runat="server" AllowPaging="True" AllowSorting="True" DataSourceID="objNews" SkinID="Defaultgridview" AutoGenerateColumns="False" CssClass="datatable" GridLines="None">
+        <h4 class="heading">Danh sách tin tức <asp:DropDownList runat="server" ID="ddlNewsCategory" AutoPostBack="True"></asp:DropDownList><a href="?tpl=addnews" class="floatright button action"><span class="icon icon68"></span></a></h4>
+        <asp:GridView EmptyDataText="Không có tin tức nào" ID="grvNews" runat="server" AllowPaging="True" AllowSorting="True" DataSourceID="objNews" SkinID="Defaultgridview" AutoGenerateColumns="False" CssClass="datatable" GridLines="None">
             <HeaderStyle CssClass="girdheader"/>
             <Columns>
                 <asp:BoundField DataField="Id" HeaderText="Id" SortExpression="Id" ReadOnly="true" />
@@ -18,7 +18,7 @@
                 <asp:TemplateField HeaderText="Commands" ShowHeader="False" HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign=Center>
                     <ItemTemplate>
                         <asp:LinkButton ID="lEdit" runat="server" CausesValidation="False" CommandName="Select" Text="Edit" CssClass="button"><span class="icon icon46"></span></asp:LinkButton>
-                        <asp:LinkButton ID="lDelete" runat="server" CausesValidation="False" CommandName="DeleteRow" CommandArgument='<%#Eval("Id") %>'  Text="Delete" CssClass="actDel button" messdelete="Delete this page ?"><span class="icon icon186"></span></asp:LinkButton>
+                        <asp:LinkButton ID="lDelete" runat="server" CausesValidation="False" CommandName="DeleteRow" CommandArgument='<%#Eval("Id") %>'  Text="Delete" CssClass="actDel button" messdelete="Delete this news ?"><span class="icon icon186"></span></asp:LinkButton>
                     </ItemTemplate>
                 </asp:TemplateField>
             </Columns>
