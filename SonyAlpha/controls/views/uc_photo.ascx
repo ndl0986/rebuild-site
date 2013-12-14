@@ -36,13 +36,13 @@
             <div class="heading">Thông tin</div>
 		    <div><span class="label">Chụp bằng máy</span><span>:&nbsp;<%= bllDetail.CameraName%></span></div>
             <div><span class="label">Tên sản phẩm</span><span>:&nbsp;<%= bllDetail.CameraModel%></span></div>
-            <div><span class="label">Khẩu độ mở</span><span>:&nbsp;<%= bllDetail.MaxAperture%></span></div><br />
+            <div><span class="label">Khẩu độ mở</span><span>:&nbsp;<%= bllDetail.FStop%></span></div><br />
             <div><span class="label">Thời gian phơi sáng</span><span>:&nbsp;<%= bllDetail.ExposureTime%></span></div>
             <div><span class="label">Độ nhạy ISO</span><span>:&nbsp;<%= bllDetail.ISO%></span></div>
             <div><span class="label">Độ bù sáng</span><span>:&nbsp;<%= bllDetail.ExposureBlas%></span></div><br/>
 		    <div><span class="label">Tiêu cự</span><span>:&nbsp;<%= bllDetail.FocalLengh%></span></div>
-            <div><span class="label">Đo sáng</span><span>:&nbsp;<%= bllDetail.FStop%></span></div>
-            <div><span class="label">Flash</span><span>:&nbsp;<%= bllDetail.FlashEnergy%></span></div>
+            <div><span class="label">Đo sáng</span><span>:&nbsp;<%= bllDetail.MateringMode%></span></div>
+            <div><span class="label">Flash</span><span>:&nbsp;<%= bllDetail.FlashMode%></span></div>
         </div>   
     </div>
 </div>

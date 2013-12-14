@@ -638,7 +638,7 @@ Author URI: http://dev7studios.com
 .photo-comment { float: left; width: 530px; margin-left: 20px; background: #efefef; min-height: 200px; padding: 0px 10px 10px 10px;}
 .photo-specs {margin-left: 580px;padding-left: 10px;margin-right: 20px;}
 .photo-page .heading {height: 55px;color: #fe3500;font-size: 29px;line-height: 50px; margin-bottom: 10px; border-bottom: solid 1px #ccc;}
-.photo-specs span { display: inline-block; font-size: 12px; line-height: 20px;}
+.photo-specs span { display: inline-block; font-size: 12px; line-height: 20px; vertical-align: top; width: 180px;}
 .photo-specs .label { width: 130px;}
 .form-comment .avatar,
 #ulComments .avatar{ width: 54px; height: 54px; overflow: hidden; display: inline-block; float: left;background: url('../img/no_avatar.png') no-repeat; }
