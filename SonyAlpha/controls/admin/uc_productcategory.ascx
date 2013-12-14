@@ -7,8 +7,8 @@
 <div class="content">
     <div class="section">
         <asp:Label runat="server" ID="lblMessage"></asp:Label>
-        <h4 class="heading">Danh sách Danh mục<a href="?tpl=addproductcategory" class="floatright button action"><span class="icon icon68"></span></a></h4>
-        <asp:GridView EmptyDataText="Không có danh mục nào" ID="grvProductCategorys" runat="server" 
+        <h4 class="heading">Danh sách Nhóm sản phầm<a href="?tpl=addproductcategory" class="floatright button action"><span class="icon icon68"></span></a></h4>
+        <asp:GridView EmptyDataText="Không có nhóm sản phẩm nào" ID="grvProductCategorys" runat="server" 
             AllowPaging="True" AllowSorting="True" DataSourceID="objProductCategorys"
             SkinID="Defaultgridview" AutoGenerateColumns="False" CssClass="datatable" 
             GridLines="None">
@@ -22,7 +22,7 @@
                 <asp:TemplateField HeaderText="Commands" ShowHeader="False" HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center">
                     <ItemTemplate>
                         <asp:LinkButton ID="lEdit" runat="server" CausesValidation="False" CommandName="Select" Text="Edit" CssClass="button"><span class="icon icon46"></span></asp:LinkButton>
-                        <asp:LinkButton ID="lDelete" runat="server" CausesValidation="False" CommandArgument='<%#Eval("Id") %>' CommandName="DeleteRow" Text="Delete" CssClass="actDel button" messdelete="Delete this album ?"><span class="icon icon186"></span></asp:LinkButton>
+                        <asp:LinkButton ID="lDelete" runat="server" CausesValidation="False" CommandArgument='<%#Eval("Id") %>' CommandName="DeleteRow" Text="Delete" CssClass="actDel button" messdelete="Delete this product category ?"><span class="icon icon186"></span></asp:LinkButton>
                     </ItemTemplate>
                 </asp:TemplateField>
             </Columns>
