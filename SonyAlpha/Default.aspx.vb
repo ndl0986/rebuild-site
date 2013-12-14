@@ -87,6 +87,8 @@ Public Class _Default
                     tpl = Page.LoadControl("controls/views/uc_lastestnews.ascx")
                 Case "searchuser"
                     tpl = Page.LoadControl("controls/views/uc_search_user.ascx")
+                Case "forgotpass"
+                    tpl = Page.LoadControl("controls/views/uc_userforgotpass.ascx")
                 Case Else
                     intMenu = 1
                     tpl = Page.LoadControl("controls/views/uc_page.ascx")

@@ -375,6 +375,7 @@ $(document).ready(function () {
     var sign = $('#formSign');
     var update = $('#formUpdate');
     var sendfaq = $('#formSendQuestion');
+    var forgotpass = $('#formForgotpass');
 
     $('#hplSignup').click(function () {
         if (reg.hasClass('hide')) {
@@ -404,6 +405,14 @@ $(document).ready(function () {
         }
     });
 
+    $('#uc_login_forgot_pass').click(function() {
+        if (forgotpass.hasClass('hide')) {
+            forgotpass.removeClass('hide');
+            forgotpass.fadeIn(300);
+        }
+        $("#uc_login_btnCancel").click();
+    });
+    
     $($('.bgFormPopup').children('.close')).click(function () {
         var pop = $(this).parent();
         if (!pop.hasClass('hide')) {
@@ -440,20 +449,29 @@ $(document).ready(function () {
     $("#uc_login_btnCancel").click(function () {
         var pop = $('#formSign');
         if (!pop.hasClass('hide')) {
-            pop.fadeOut(300, function () { pop.addClass('hide') });
+            pop.fadeOut(300, function () { pop.addClass('hide'); });
         }
     });
     $("#uc_register_btnCancel").click(function () {
         var pop = $('#formReg');
         if (!pop.hasClass('hide')) {
-            pop.fadeOut(300, function () { pop.addClass('hide') });
+            pop.fadeOut(300, function () { pop.addClass('hide'); });
         }
     });
     $("#uc_login_goregister").click(function () {
         $('#hplSignup').click();$("#uc_login_btnCancel").click();
-    });    
+    });
+    $("#uc_userforgotpass_btnOk").click(function () {
+        doForgotPass();
+    });
 
-
+    $("#uc_userforgotpass_btnCancel").click(function () {
+        var pop = $('#formForgotpass');
+        if (!pop.hasClass('hide')) {
+            pop.fadeOut(300, function () { pop.addClass('hide'); });
+        }
+    });
+    
     switch (aspx) {
         case 'seller':
             parseShopCenter();
@@ -859,6 +877,55 @@ function doVotePhoto(callback) {
                 $('#uc_photo_button_vote_photo').addClass('active');
                 $('#uc_photo_vote_count').text(parseInt($(this).text()+1));
                 if ($.isFunction(callback)) callback(response);   
+            }
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log('error');
+        }
+    });
+}
+
+function doForgotPass() {
+    var isValid = true;
+    
+    var errEl = $('#uc_forgotpass_mess');
+    errEl.text(', ');
+
+    var capcha = $("#uc_forgotpass_txtCapcha").val();
+    var capchaBase = $("#uc_forgotpass_hdfCapcha").val();
+    if (capcha != capchaBase) {
+        errEl.text(errEl.text() + 'Sai mã bảo mật, ');
+        $("#uc_forgotpass_txtCapcha").addClass('error');
+        isValid = false;
+    }
+    
+    var email = $("#uc_forgotpass_txtEmail").val();
+    if (!isEmail(email) || email == '') {
+        errEl.text(errEl.text() + 'Email không hợp lệ, ');
+        $("#uc_forgotpass_txtEmail").addClass('error');
+        isValid = false;
+    }
+    var err = errEl.text();
+
+    if (err.length >= 2) { err = err.substring(2, err.length - 2); }
+    if (err.length >= 2) { err = err.substring(0, err.length); }
+    errEl.text(err);
+
+    if (isValid == false) return false;
+
+    $.ajax({
+        type: 'POST',
+        timeout: 5000,
+        url: '/service.aspx?name=forgotpass',
+        data: { "email": email },
+        success: function (response) {
+            response = jQuery.parseJSON(response);
+            if (response.message == "1") {
+                alert('Yêu cầu thành công!!!! Email chứa mất khẩu mới đã được gửi tới ' + email);
+            } else if (response.message === "2") {
+                alert('Yêu cầu không thành công! Email chưa được đăng ký! Vui lòng nhập lại!');
+            } else {
+                alert('Yêu cầu không thành công!!!!');
             }
         },
         error: function (jqXHR, textStatus, errorThrown) {

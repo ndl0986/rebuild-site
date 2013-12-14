@@ -4,6 +4,7 @@
 <%@ Register src="controls/views/uc_login.ascx" tagname="uc_login" tagprefix="uc2" %>
 <%@ Register src="controls/views/uc_userupdate.ascx" tagname="uc_userupdate" tagprefix="uc3" %>
 <%@ Register src="controls/views/uc_email_faq.ascx" tagname="uc_email_faq" tagprefix="uc4" %>
+<%@ Register src="controls/views/uc_userforgotpass.ascx" tagname="uc_forgotpass" tagprefix="uc5" %>
 <!DOCTYPE html>
 <!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]><html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -53,6 +54,7 @@
     <div id="formSign" style="display:none;" class="bgFormPopup hide"><a class="close"></a><uc2:uc_login ID="uc_login1" runat="server" /></div>
     <div id="formUpdate" style="display:none;" class="bgFormPopup hide"><a class="close"></a><uc3:uc_userupdate ID="uc_userupdate1" runat="server" /></div>
     <div id="formSendQuestion" style="display:none;" class="bgFormPopup hide"><a class="close"></a><uc4:uc_email_faq ID="uc_email_faq1" runat="server" /></div>
+    <div id="formForgotpass" style="display:none;" class="bgFormPopup hide"><a class="close"></a><uc5:uc_forgotpass ID="uc_forgotpass1" runat="server" /></div>
     <script type="text/javascript" src="/js/libs/bootstrap.min.js"></script>
     <!--[if IE 8]><script src="../js/libs/respond.min.js"></script><![endif]-->
     <script type="text/javascript" src="/js/plugins/jquery.lazyload.min.js"></script>

@@ -1,4 +1,5 @@
-﻿Imports SonyAlphaLibs
+﻿Imports Microsoft.VisualBasic.CompilerServices
+Imports SonyAlphaLibs
 Imports SonyAlphaLibs.Services
 Imports System.Web
 Imports System.Web.Services
@@ -46,6 +47,8 @@ Public Class Service
                         DoUserUpdate()
                     Case "votephoto"
                         DoVotePhoto()
+                    Case "forgotpass"
+                        DoForgotPass()
                 End Select
             Else
                 GetMyResponse("500", "Nothing todo!")
@@ -261,7 +264,7 @@ Public Class Service
             message.To.Add(mailTo)
             message.Subject = subject
             message.IsBodyHtml = False
-            message.Body = Content
+            message.Body = content
             smtpClient.Send(message)
         Catch ex As Exception
 
@@ -291,7 +294,7 @@ Public Class Service
             Else
                 GetMyResponse("500", "Not login!")
             End If
-            
+
         Catch ex As Exception
             GetMyResponse("500", "fail: " + ex.Message)
         End Try
@@ -506,7 +509,7 @@ Public Class Service
             Else
                 GetMyResponse("200", "fail")
             End If
-            
+
         Catch ex As Exception
             GetMyResponse("500", "fail: " + ex.Message)
         End Try
@@ -557,6 +560,24 @@ Public Class Service
             Else
                 GetMyResponse("200", "0")
             End If
+        Catch ex As Exception
+            GetMyResponse("500", "fail: " + ex.Message)
+        End Try
+    End Sub
+
+    Private Sub DoForgotPass()
+        Try
+            Dim email As String = Request.Params.Get("email")
+            Dim randompass As String = GenerateRandomString(7, False)
+            Dim rs As Integer = UserServices.forGotPass(email, base64Encode(randompass), CN.ConnectionString)
+            If rs = 1 Then
+                Dim mailFrom As String = SettingServices.getByName("adminMailFrom", CN.ConnectionString)
+                Dim mailFromPass As String = SettingServices.getByName("adminMailPass", CN.ConnectionString)
+                Dim subject As String = "SonyAlpha - Cấp lại mật khẩu mới"
+                Dim mailcontent As String = "Mật khẩu của bạn tại SonyAlpha vừa được thay đổi !!! Mật khẩu mới: " + randompass
+                Sendmail(mailFrom, mailFromPass, email, subject, mailcontent)
+            End If
+            GetMyResponse("200", rs.ToString())
         Catch ex As Exception
             GetMyResponse("500", "fail: " + ex.Message)
         End Try
