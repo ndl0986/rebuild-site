@@ -30,48 +30,48 @@
             <div class="colLeft">
                 <div class="menuborder">
                     <ul id="nav">
-                        <li><a href="#">Tài khoản - phân quyền</a>
+                        <li><a class="item-head" href="#">Tài khoản - phân quyền</a>
                         <ul>
-                            <li><a href="?tpl=accounts">Danh mục tài khoản</a></li>
-                            <li><a href="?tpl=accountsgroup">Danh mục nhóm tài khoản</a></li>
-                            <li><a href="?tpl=permissions">Danh mục quyền hạn</a></li>
+                            <li><a class="item-child" href="?tpl=accounts">Danh mục tài khoản</a></li>
+                            <li><a class="item-child" href="?tpl=accountsgroup">Danh mục nhóm tài khoản</a></li>
+                            <li><a class="item-child" href="?tpl=permissions">Danh mục quyền hạn</a></li>
                         </ul>
                         </li>
-                        <li><a href="#">Sản phẩm</a>
+                        <li><a class="item-head" href="#">Sản phẩm</a>
                         <ul>
-                            <li><a href="?tpl=productcategory">Nhóm sản phẩm</a></li>
-                            <li><a href="?tpl=products">Danh mục sản phẩm</a></li>
-                            <li><a href="?tpl=addproduct">Tạo sản phẩm mới</a></li>
+                            <li><a class="item-child" href="?tpl=productcategory">Nhóm sản phẩm</a></li>
+                            <li><a class="item-child" href="?tpl=products">Danh mục sản phẩm</a></li>
+                            <li><a class="item-child" href="?tpl=addproduct">Tạo sản phẩm mới</a></li>
                         </ul>
                         </li>
-                        <li><a href="#">Tin tức</a>
+                        <li><a class="item-head" href="#">Tin tức</a>
                         <ul>
-                            <li><a href="?tpl=newscategory">Thể loại</a></li>
-                            <li><a href="?tpl=news">Danh sách bài viết</a></li>
-                            <li><a href="?tpl=addnews">Viết bài</a></li>
-                            <li><a href="?tpl=questionanswer">Hỏi đáp</a></li>
+                            <li><a class="item-child" href="?tpl=newscategory">Thể loại</a></li>
+                            <li><a class="item-child" href="?tpl=news">Danh sách bài viết</a></li>
+                            <li><a class="item-child" href="?tpl=addnews">Viết bài</a></li>
+                            <li><a class="item-child" href="?tpl=questionanswer">Hỏi đáp</a></li>
                         </ul>
                         </li>
-                        <li><a href="#">Hình ảnh</a>
+                        <li><a class="item-head" href="#">Hình ảnh</a>
                         <ul>
-                            <li><a href="?tpl=albums">Albums</a></li>
-                            <li><a href="?tpl=photocomments">Comments</a></li>
+                            <li><a class="item-child" href="?tpl=albums">Albums</a></li>
+                            <li><a class="item-child" href="?tpl=photocomments">Comments</a></li>
                         </ul>
                         </li>
-                        <li><a href="#">Trung tâm Sony</a>
+                        <li><a class="item-head" href="#">Trung tâm Sony</a>
                         <ul>
-                            <li><a href="?tpl=sonycenters">Danh sách Trung tâm</a></li>
-                            <li><a href="?tpl=provinces">Danh sách tỉnh thành</a></li>
+                            <li><a class="item-child" href="?tpl=sonycenters">Danh sách Trung tâm</a></li>
+                            <li><a class="item-child" href="?tpl=provinces">Danh sách tỉnh thành</a></li>
                         </ul>    
                         </li>
-                        <li><a href="#">Hệ thống - Giao diện</a>
+                        <li><a class="item-head" href="#">Hệ thống - Giao diện</a>
                         <ul>
-                            <li><a href="?tpl=pages">Quản lý trang</a></li>
-                            <li><a href="?tpl=banners">Quản lý banner</a></li>
-                            <li><a href="?tpl=menus">Quản lý menu</a></li>
-                            <li><a href="?tpl=banerpage">Banner - Page</a></li>
-                            <li><a href="?tpl=settings">Cấu hình</a></li>
-                            <li><a href="?tpl=files" target="_blank">Quản lý files</a></li>
+                            <li><a class="item-child" href="?tpl=pages">Quản lý trang</a></li>
+                            <li><a class="item-child" href="?tpl=banners">Quản lý banner</a></li>
+                            <li><a class="item-child" href="?tpl=menus">Quản lý menu</a></li>
+                            <li><a class="item-child" href="?tpl=banerpage">Banner - Page</a></li>
+                            <li><a class="item-child" href="?tpl=settings">Cấu hình</a></li>
+                            <li><a class="item-child" href="?tpl=files" target="_blank">Quản lý files</a></li>
                         </ul>
                         </li>
                     </ul>
@@ -103,7 +103,7 @@
         }
         $(document).ready(function () {
             var container = $($('.container')[0]);
-            container.css('min-height',$(window).innerHeight()-150);
+            container.css('min-height', $(window).innerHeight() - 150);
 
             var inputs = $('.form').find('input');
             $('#btnCancel').click(function () {
@@ -123,9 +123,7 @@
                     $('.btnOk').attr('disabled', 'disabled').removeClass('blue');
                 }
             });
-            $('.datatable input').keyup(function (event) {
-                event.stopPropagation();
-            });
+            $('.datatable input').keyup(function (event) { event.stopPropagation(); });
             $('#nav > li > a').click(function () {
                 if (!$(this).hasClass('active')) {
                     $('#nav li ul').slideUp();
@@ -134,21 +132,28 @@
                     $(this).addClass('active');
                 }
             });
-            $('#nav a').click(function (event) {
-                event.stopPropagation();
-            });
-            $('.menuborder').click(function () {
-                $('body').toggleClass('showmenu');
-            });
+            $('#nav a').click(function (event) { event.stopPropagation(); });
+            $('.menuborder').click(function () { $('body').toggleClass('showmenu'); });
+
+            setMenuActive();
         });
 
         function FCKUpdateLinkedField(id) {
             try {
-                if (typeof (FCKeditorAPI) == "object") {
-                    FCKeditorAPI.GetInstance(id).UpdateLinkedField();
-                }
+                if (typeof (FCKeditorAPI) == "object") {FCKeditorAPI.GetInstance(id).UpdateLinkedField();}
             }
             catch (err) {
+            }
+        }
+
+        function setMenuActive() {
+            var action = $("#form1").attr('action');
+            var link = $('#nav .item-child[href="' + action + '"]');
+            if (link.length) {
+                link.addClass('active');
+                var atop = $(link.closest('ul').prev()[0]);
+                atop.next().slideToggle();
+                atop.addClass('active');
             }
         }
     </script>

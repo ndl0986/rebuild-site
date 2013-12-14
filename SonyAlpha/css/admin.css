@@ -2316,6 +2316,7 @@ label.error::before {
     border-bottom: 1px dotted #ccc;
     padding: 10px 25px;
 }
+#nav li ul a.active{font-weight: bold;}
 
 input[type=button]:disabled,input[type=submit]:disabled,button:disabled,input[type=button]:disabled:hover,input[type=submit]:disabled:hover,button:disabled:hover {
     -moz-box-shadow: none;
