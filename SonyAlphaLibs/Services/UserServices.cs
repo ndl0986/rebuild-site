@@ -589,5 +589,37 @@ namespace SonyAlphaLibs.Services
             return rs;
             #endregion
         }
+
+        public static int forGotPass(string email, string pass, string connString)
+        {
+            #region code
+            int rs = 0;
+            using (SqlConnection conn = new SqlConnection(connString))
+            {
+                try
+                {
+                    conn.Open();
+                    using (SqlCommand cmd = conn.CreateCommand())
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.CommandText = "sony_sp_update_user_password_to_random";
+                        cmd.Parameters.AddWithValue("@email", email);
+                        cmd.Parameters.AddWithValue("@randompass", pass);
+                        SqlParameter returnVal = new SqlParameter("@returnVal", SqlDbType.Int);
+                        returnVal.Direction = ParameterDirection.Output;
+                        cmd.Parameters.Add(returnVal);
+
+                        cmd.ExecuteNonQuery();
+                        rs = (int)cmd.Parameters["@returnVal"].Value;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    return rs;
+                }
+            }
+            return rs;
+            #endregion
+        }
     }
 }
