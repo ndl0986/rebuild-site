@@ -340,6 +340,14 @@ function isPhonenumber(input){
     return true;
 }
 
+function isNotSpecial(input) {
+    var filter = /^[a-zA-Z0-9]+$/;
+    if (!filter.test(input)) {
+        return false;
+    }
+    return true;
+}
+
 function resetForm(){
     $('.form input.textbox').val('').removeClass('error');
     $('.error_message').html('');
@@ -555,6 +563,7 @@ $(document).ready(function () {
 
 function doRegister() {
     var isValid = true;
+    $('.form input.textbox').removeClass('error');
     var usn = $("#uc_register_txtUserName").val();
     var pass = $("#uc_register_txtPWD").val();
     var pass1 = $("#uc_register_txtPWD1").val();
@@ -562,10 +571,13 @@ function doRegister() {
     var errEl = $('#uc_register_mess');
     errEl.text(', ');
     if (usn=='') {
-        //alert('Mật khẩu không trùng khớp!!!!!');
         errEl.text(errEl.text()+'Tên đăng nhập là bắt buộc, ');
         $("#uc_register_txtUserName").addClass('error');
         isValid = false;
+    }else if(!isNotSpecial(usn)){
+        errEl.text(errEl.text()+'Tên đăng nhập chỉ có ký tự a-Z và số, ');
+        $("#uc_register_txtUserName").addClass('error');
+        isValid = false;        
     }
     if (fullname=='') {
         //alert('Mật khẩu không trùng khớp!!!!!');
@@ -612,7 +624,6 @@ function doRegister() {
     var productused = $("#uc_register_product").val();
 
     if(isValid == false) return false;
-    $('.form input.textbox').removeClass('error');
     errEl.text('');
     $.ajax({
         type: 'POST',
@@ -678,12 +689,53 @@ function doUserUpdate() {
 }
 
 function doLogin() {
+    var errEl = $('#uc_login_mess');
     var usn = $("#uc_login_txtUserName").val();
     var pass = $("#uc_login_txtPWD").val();
     var myUrl = '/service.aspx?name=login';
+    var isValid = true;
+    $('.form input.textbox').removeClass('error');
+
+    errEl.text(', ');
     if (usn != '' && usn.indexOf('@') != -1) {
         myUrl = '/service.aspx?name=loginmail';
+        var email = usn;
+        if (!isEmail(email) || email == '') {
+            errEl.text(errEl.text() + 'Tên đăng nhập không hợp lệ, ');
+            $("#uc_login_txtUserName").addClass('error');
+            isValid = false;
+        }
+    }else if(usn==''){
+        errEl.text(errEl.text()+'Tên đăng nhập là bắt buộc, ');
+        $("#uc_login_txtUserName").addClass('error');
+        isValid = false;
     }
+
+    if (pass=='') {
+        errEl.text(errEl.text()+'Mật khẩu là bắt buộc, ');
+        $("#uc_login_txtPWD").addClass('error');
+        isValid = false;
+        
+    }
+
+    var capcha = $("#uc_login_txtCapcha").val();
+    var capchaBase = $("#uc_login_hdfCapcha").val();
+    if (capcha != capchaBase) {
+        errEl.text(errEl.text() + 'Sai mã bảo mật, ');
+        $("#uc_login_txtCapcha").addClass('error');
+        isValid = false;
+    }
+    
+
+    var err = errEl.text();
+
+    if (err.length >= 2) { err = err.substring(2, err.length - 2); }
+    if (err.length >= 2) { err = err.substring(0, err.length); }
+    errEl.text(err);
+
+    if (isValid == false) return false;
+    errEl.text('');
+
     $.ajax({
         type: 'POST',
         timeout: 5000,
@@ -897,7 +949,7 @@ function doVotePhoto(callback) {
 
 function doForgotPass() {
     var isValid = true;
-    
+    $('.form input.textbox').removeClass('error');   
     var errEl = $('#uc_forgotpass_mess');
     errEl.text(', ');
 
@@ -922,8 +974,6 @@ function doForgotPass() {
     errEl.text(err);
 
     if (isValid == false) return false;
-
-    $('.form input.textbox').removeClass('error');
     errEl.text('');
     $.ajax({
         type: 'POST',

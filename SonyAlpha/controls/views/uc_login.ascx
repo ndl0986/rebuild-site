@@ -28,4 +28,5 @@
         <a href="javascript:void(0);" class="btn flat orange uppercase" id="uc_login_btnCancel">Hủy</a>
     </li>
 </ul>
+<span class="error_message" id="uc_login_mess"></span>
 </div>
