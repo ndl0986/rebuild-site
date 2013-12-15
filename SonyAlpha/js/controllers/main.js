@@ -332,12 +332,17 @@ function isEmail(email) {
     return true;
 }
 
-function isPhonenumber(input)
-{
+function isPhonenumber(input){
     var phonelReg = /(\(?(\d|(\d[- ]\d))\)?[-. ]?)?(\d\.?\d\.?\d.?\d.?\d.?\d.?\d.?\d.?\d.?\d)/;
     if (input == '' || !phonelReg.test(input)) {
         return false;
     }
+    return true;
+}
+
+function resetForm(){
+    $('.form input.textbox').val('').removeClass('error');
+    $('.error_message').html('');
     return true;
 }
 
@@ -379,6 +384,7 @@ $(document).ready(function () {
 
     $('#hplSignup').click(function () {
         if (reg.hasClass('hide')) {
+            resetForm();
             reg.removeClass('hide');
             reg.fadeIn(300);
         }
@@ -386,6 +392,7 @@ $(document).ready(function () {
 
     $('#hplSignin').click(function () {
         if (sign.hasClass('hide')) {
+            resetForm();
             sign.removeClass('hide');
             sign.fadeIn(300);
         }
@@ -393,6 +400,7 @@ $(document).ready(function () {
 
     $('#hplUserupdate').click(function () {
         if (update.hasClass('hide')) {
+            resetForm();
             update.removeClass('hide');
             update.fadeIn(300);
         }
@@ -400,6 +408,7 @@ $(document).ready(function () {
 
     $('#hplSendFAQ').click(function () {
         if (sendfaq.hasClass('hide')) {
+            resetForm();
             sendfaq.removeClass('hide');
             sendfaq.fadeIn(300);
         }
@@ -603,7 +612,8 @@ function doRegister() {
     var productused = $("#uc_register_product").val();
 
     if(isValid == false) return false;
-
+    $('.form input.textbox').removeClass('error');
+    errEl.text('');
     $.ajax({
         type: 'POST',
         timeout: 5000,
@@ -618,7 +628,7 @@ function doRegister() {
             } else if (response.message === "902") {
                 alert('Đăng ký không thành công! Email đã được sử dụng! Vui lòng nhập lại!');
             } else {
-                alert('Đăng ký không thành công!!!!');
+                alert('Đăng ký không thành công!!!! Vui lòng thử lại !');
             }
         },
         error: function (jqXHR, textStatus, errorThrown) {
@@ -913,6 +923,8 @@ function doForgotPass() {
 
     if (isValid == false) return false;
 
+    $('.form input.textbox').removeClass('error');
+    errEl.text('');
     $.ajax({
         type: 'POST',
         timeout: 5000,
