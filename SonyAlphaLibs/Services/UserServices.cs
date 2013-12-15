@@ -539,8 +539,10 @@ namespace SonyAlphaLibs.Services
                         cmd.CommandText = "sony_sp_update_user_pass";
                         cmd.Parameters.AddWithValue("@username", userName);
                         cmd.Parameters.AddWithValue("@password", pass);
-                        SqlParameter returnVal = new SqlParameter("@returnVal", SqlDbType.Int);
-                        returnVal.Direction = ParameterDirection.Output;
+                        var returnVal = new SqlParameter("@returnVal", SqlDbType.Int)
+                        {
+                            Direction = ParameterDirection.Output
+                        };
                         cmd.Parameters.Add(returnVal);
 
                         cmd.ExecuteNonQuery();
