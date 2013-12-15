@@ -12,7 +12,7 @@
 <!--[if IE 9]><html class="no-js ie9 lt-ie9"> <![endif]-->
 <!--[if gt IE 9]><!--> <html class="lt-ie10 no-js"> <!--<![endif]-->
 <head runat="server">
-    <title></title>
+    <title>Sony Alpha</title>
     <link rel="SHORTCUT ICON" href="logo.ico"/>
     <meta content="" name="copyright" />
     <meta name="Description" content=""/>
