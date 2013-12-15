@@ -1,6 +1,5 @@
 img {/*height: auto;*/-ms-interpolation-mode: bicubic;}
-img,
-embed,
+img,embed,
 object,
 video { max-width: 100%;}
 /* Disable flexiblity for IE8 and below */
@@ -835,10 +834,13 @@ border-radius: 5px;-webkit-border-radius: 5px;-moz-border-radius:5px;padding-top
 .faq_page .question { cursor: pointer;}
 .faq_page .question.show { color: #fe3500; font-weight: bold; margin-bottom: 5px;}
 .map_page { text-align: center;}
-.map_page .google-map { margin: auto;}
+.map_page .google-map { margin: auto;width: 600px; height: 400px; float: none;}
+.google-map { width: 470px; height: 270px;float: left;margin: 30px 20px;}
+.google-map img { max-width: none;}
 .faq_page .toolbar { margin: 0px 10px 10px 0px;}
+.ico-map {background: url(../img/map.png) no-repeat left top scroll transparent; display: inline-block; height: 37px; width: 38px; margin: auto; font-size: 0;}
 
-.info_search{width: 174px;height: 106px;background: url(../img/bg_search.png) no-repeat left top scroll #fff;color: #000;position: absolute;right: 18px;top: -131px;padding-bottom: 10px;background-size: 100% 100%;-webkit-background-size: 100% 100%;-moz-background-size: 100% 100%;}
+.info_search{width: 187px;height: 112px;background: url(../img/bg_search.png) no-repeat left top scroll #fff;color: #000;position: absolute;right: 6px;top: -139px;padding-bottom: 10px;background-size: 100% 100%;-webkit-background-size: 100% 100%;-moz-background-size: 100% 100%;}
 .info_search .title{margin: 40px 10px 0px;}
 .info_search .select{margin: 5px 10px 0px 10px;}
 .info_search select { outline: none; width: 100%;}

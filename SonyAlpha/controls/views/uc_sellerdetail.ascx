@@ -14,7 +14,7 @@
 <% End If%>
 </div>
 <div class="clearfix">
-    <div id="map_canvas" class="google-map" ></div>   
+    <div id="map_canvas" class="google-map"></div>   
     <div class="detail_thongtin">
         <div class="title">Thông tin liên lạc</div>
         <div><span class="label">Địa chỉ </span><span>:&nbsp;<%= tblDetail.Address%></span></div>
@@ -24,14 +24,32 @@
 </div>
 <script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
 <script language="javascript" type="text/javascript">
-            function initialize(lat, long) {
-                var map_canvas = document.getElementById('map_canvas');
-                var map_options = {
-                    center: new google.maps.LatLng(lat, long),
-                    zoom: 8,
-                    mapTypeId: google.maps.MapTypeId.ROADMAP
-                }
-                var map = new google.maps.Map(map_canvas, map_options);
-            }
-            initialize(<%= tblDetail.Latitude%>, <%= tblDetail.Longitude%>);
+    function initialize() {
+        var map_canvas = document.getElementById('map_canvas');
+        var lat =<%= tblDetail.Latitude%>, long=<%= tblDetail.Longitude%>;
+        var myLatlng = new google.maps.LatLng(lat,long);
+
+        var map_options = {
+            center: new google.maps.LatLng(lat, long),
+            zoom: 18,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        }
+        var map = new google.maps.Map(map_canvas, map_options);
+        var infowindow = new google.maps.InfoWindow({
+            content: '<%= tblDetail.Address%>'
+        });
+
+        var marker = new google.maps.Marker({
+            position: myLatlng,
+            map: map,
+            title: '<%= tblDetail.Address%>'
+        });
+        google.maps.event.addListener(marker, 'click', function() {
+            infowindow.open(map,marker);
+        });
+        
+    }
+
+
+    google.maps.event.addDomListener(window, 'load', initialize);
 </script>  
