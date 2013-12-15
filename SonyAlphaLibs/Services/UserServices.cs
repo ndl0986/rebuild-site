@@ -27,8 +27,7 @@ namespace SonyAlphaLibs.Services
                         cmd.Parameters.AddWithValue("@password", user.PassWord);
                         cmd.Parameters.AddWithValue("@fullname", user.FullName);
                         cmd.Parameters.AddWithValue("@status", user.Status ? 1 : 0);
-                        //cmd.Parameters.AddWithValue("@registered", user.Registered);
-                        //cmd.Parameters.AddWithValue("@updated", user.Updated);
+                        cmd.Parameters.AddWithValue("@avatar", String.IsNullOrEmpty(user.Avatar) ? "" : user.Avatar);
                         cmd.Parameters.AddWithValue("@phone", user.Phone);
                         cmd.Parameters.AddWithValue("@email", user.Email);
                         cmd.Parameters.AddWithValue("@productused", String.IsNullOrEmpty(user.ProductUsed) ? " " : user.ProductUsed);
@@ -67,7 +66,7 @@ namespace SonyAlphaLibs.Services
                         cmd.Parameters.AddWithValue("@fullname", user.FullName);
                         cmd.Parameters.AddWithValue("@status", user.Status ? 1 : 0);
                         //cmd.Parameters.AddWithValue("@registered", user.Registered);
-                        //cmd.Parameters.AddWithValue("@updated", user.Updated);
+                        cmd.Parameters.AddWithValue("@avatar", String.IsNullOrEmpty(user.Avatar) ? "" : user.Avatar);
                         cmd.Parameters.AddWithValue("@phone", user.Phone);
                         cmd.Parameters.AddWithValue("@email", user.Email);
                         cmd.Parameters.AddWithValue("@productused", String.IsNullOrEmpty(user.ProductUsed) ? " " : user.ProductUsed);
@@ -110,7 +109,7 @@ namespace SonyAlphaLibs.Services
                         //cmd.Parameters.AddWithValue("@password", user.PassWord);
                         cmd.Parameters.AddWithValue("@fullname", user.FullName);
                         cmd.Parameters.AddWithValue("@status", user.Status ? 1 : 0);
-                        //cmd.Parameters.AddWithValue("@updated", user.Updated);
+                        cmd.Parameters.AddWithValue("@avatar", String.IsNullOrEmpty(user.Avatar) ? "" : user.Avatar);
                         cmd.Parameters.AddWithValue("@groupid", user.GroupId);
                         cmd.Parameters.AddWithValue("@phone", user.Phone);
                         cmd.Parameters.AddWithValue("@email", user.Email);
@@ -152,6 +151,7 @@ namespace SonyAlphaLibs.Services
                         cmd.Parameters.AddWithValue("@phone", user.Phone);
                         cmd.Parameters.AddWithValue("@email", user.Email);
                         cmd.Parameters.AddWithValue("@productused", user.ProductUsed);
+                        cmd.Parameters.AddWithValue("@avatar", String.IsNullOrEmpty(user.Avatar) ? "" : user.Avatar);
                         SqlParameter returnVal = new SqlParameter("@returnVal", SqlDbType.Int);
                         returnVal.Direction = ParameterDirection.Output;
                         cmd.Parameters.Add(returnVal);
@@ -197,6 +197,7 @@ namespace SonyAlphaLibs.Services
                                     reader["status"].ToString().Equals("True");
                                 user.Phone = reader["phone"].ToString();
                                 user.Email = reader["email"].ToString();
+                                user.Avatar = reader["avatar"].ToString();
                             }
                         }
                     }
@@ -239,6 +240,7 @@ namespace SonyAlphaLibs.Services
                                 user.Phone = reader["phone"].ToString();
                                 user.Email = reader["email"].ToString();
                                 user.ProductUsed = String.IsNullOrEmpty(reader["productused"].ToString()) ? "0" : reader["productused"].ToString();
+                                user.Avatar = String.IsNullOrEmpty(reader["avatar"].ToString()) ? "0" : reader["avatar"].ToString();
                                 lists.Add(user);
                             }
                         }
@@ -327,6 +329,7 @@ namespace SonyAlphaLibs.Services
                                 rs.Phone = reader["phone"].ToString();
                                 rs.Email = reader["email"].ToString();
                                 rs.ProductUsed = String.IsNullOrEmpty(reader["productused"].ToString()) ? "0" : reader["productused"].ToString();
+                                rs.Avatar = String.IsNullOrEmpty(reader["avatar"].ToString()) ? "0" : reader["avatar"].ToString();
                                 break;
                             }
                         }
@@ -371,6 +374,7 @@ namespace SonyAlphaLibs.Services
                                 rs.Email = reader["email"].ToString();
                                 rs.PassWord = reader["password"].ToString();
                                 rs.ProductUsed = reader["productused"].ToString();
+                                rs.Avatar = reader["avatar"].ToString();
                                 break;
                             }
                         }

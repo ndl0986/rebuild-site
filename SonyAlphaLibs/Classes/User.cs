@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using SonyAlphaLibs.Services;
 
 namespace SonyAlphaLibs
@@ -70,7 +68,14 @@ namespace SonyAlphaLibs
             get { return email; }
             set { email = value; }
         }
-        
+
+        private string avatar;
+
+        public string Avatar
+        {
+            get { return avatar; }
+            set { avatar = value; }
+        }
 
         public string GroupName { get; set; }
         public string DefaultPass { get; set; }
