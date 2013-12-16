@@ -599,7 +599,7 @@ Author URI: http://dev7studios.com
 .ul_list_albums.ul_list_photo .album { padding: 0px 0px 0px 0px;}
 .album .cover{border: solid 1px #ccc; position: relative;box-shadow: 1px 1px 3px rgba(0,0,0,0.2);-webkit-box-shadow: 1px 1px 3px rgba(0,0,0,0.2);-moz-box-shadow: 1px 1px 3px rgba(0,0,0,0.2);}
 .album .cover a { display: block; overflow: hidden; border: solid 5px #fff; height: 155px;}
-.album .cover img { max-width: 270px;}
+.ul_list_photo .album .cover img { max-width: 270px;}
 .album .album_title{font-size: 15px;color: #fe3500;margin-top: 10px; display: block;}
 .album .info {font-size: 13px;font-family: Tahoma;color: #000000; line-height: 18px;}
 .album .photo-info { position: absolute; z-index: 1; width: auto; left: 5px; right: 5px; bottom: 5px; height: 26px; line-height: 26px; background: rgba(0,0,0,0.5); color: #fff; font-size: 12px;}
