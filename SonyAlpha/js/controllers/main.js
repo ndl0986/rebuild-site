@@ -147,12 +147,32 @@ function parseSonyCenterSlide(){
     $('.bxslider').bxSlider({pagerCustom: '#bxpager'});
 }
 
+function getRandomArrayElements(arr, count) {
+    var randoms = [], clone = arr.slice(0);
+    for (var i = 0, index; i < count; ++i) {
+        index = Math.floor(Math.random() * clone.length);
+        randoms.push(clone[index]);
+        clone[index] = clone.pop();
+    }
+    return randoms;
+}
+
 function parseAlbumSlide(){
     var items = $('#UpdatePanelMain .ul_list_albums img');
     var slide = $('<div></div>');
     $('#albumSlide').append(slide);
     if(items.length){
-        slide.append(items.clone());
+        if(items.length<=5){
+            slide.append(items.clone());
+        }else{
+            var arr = [];
+            for(var i=0;i<items.length;i++){arr.push(items[i]);}
+            var itemsClone = getRandomArrayElements(arr,5);
+            for(var i=0;i<itemsClone.length;i++){
+                slide.append($(itemsClone[i]).clone());
+            }
+            
+        }
         slide.addClass('theme-default').nivoSlider({
             effect: "random",
             slices: 15,

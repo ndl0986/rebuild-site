@@ -47,8 +47,10 @@ Public Class uc_admin_addphoto
         End If
     End Sub
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
-        Dim c As HttpCookie = New HttpCookie("SonyAlphaUpload")
-        c.Values("exif") = ""
+        If Request.Cookies("SonyAlphaUpload") IsNot Nothing Then
+            Response.Cookies("SonyAlphaUpload").Expires = DateAdd(DateInterval.Day, -1, Now())
+        End If
+
         Dim id As String
         id = Request.QueryString("id")
         If id = "" Then
