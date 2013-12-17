@@ -5,12 +5,12 @@
     <% If String.IsNullOrEmpty(message) Then%>
     <div class="title_frm">Album <strong><%= album.FullName %></strong></div>
     <% If listPhotos.Count > 0 Then%>    
-    <ul class="ul_list_albums clearfix">
+    <ul class="ul_list_albums ul_list_photo clearfix">
     <% For Each photo As Photo In listPhotos%>
         <li class="clearfix">
             <div class="album">
                 <div class="cover">
-                    <a href="/photo/<%= photo.Id %>?cid=<%= album.Id %>"><img width="138" alt="<%= photo.Title %>" src="<%= photo.FileName %>" /></a>
+                    <a href="/photo/<%= photo.Id %>?cid=<%= album.Id %>"><img alt="<%= photo.Title %>" src="<%= photo.FileName %>" /></a>
                 </div>
             </div>
         </li>

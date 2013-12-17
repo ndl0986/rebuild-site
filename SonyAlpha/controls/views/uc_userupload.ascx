@@ -15,7 +15,7 @@
                     <% If album.TotalPhoto > 0 Then%>
                         <img alt="<%= album.FullName %>" src="<%= album.AlbumCover %>" />
                     <% Else%>
-                        <img alt="<%= album.FullName %>" src="/upload/image/images.jpg" />
+                        <img alt="<%= album.FullName %>" src="/img/no_image.png" />
                     <% End If%>
                     </a>
                 </div>

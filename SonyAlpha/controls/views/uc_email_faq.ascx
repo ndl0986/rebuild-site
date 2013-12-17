@@ -21,10 +21,8 @@
                 <div class="caption">Nội dung :</div>
                 <div class="item"><textarea  id="uc_email_fag_txtContent" class="noresize" rows="4" cols="58" maxlength="1000" required ></textarea></div>
             </li>
-            <li class="row clearfix">
-                <div class="item"><label id="uc_email_fag_message"></label></div>
-            </li>
             <li class="row text-right" style="width:90%;">
+                <span id="uc_email_fag_message" class="error_message"></span>
                 <a href="javascript:void(0);" class="btn flat orange" id="uc_email_fag_btnOk">Gửi</a>
                 <a href="javascript:void(0);" class="btn flat orange" id="uc_email_fag_btnCancel">Hủy</a>
             </li>

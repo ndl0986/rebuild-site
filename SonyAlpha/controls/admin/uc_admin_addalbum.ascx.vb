@@ -8,7 +8,7 @@ Public Class uc_admin_addalbum
 
     End Sub
 
-    Private Sub btnSave_ServerClick(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnSave.ServerClick
+    Private Sub btnSave_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnSave.Click
         If Page.IsPostBack Then
             myAlbum.FullName = txtName.Text.Trim
             myAlbum.AlbumCreator = Session("accountname")
@@ -20,7 +20,7 @@ Public Class uc_admin_addalbum
             result = myAlbum.add(CN.ConnectionString)
             If result = True Then
                 'ScriptManager.RegisterStartupScript(Me, GetType(String), "Message", "alert('Lưu album thành công !!!');", True)
-                Response.Redirect("?tpl=addphotos&aid=" & myAlbum.getCurrentMaxId(CN.ConnectionString).ToString)
+                Response.Redirect("?tpl=addphotos&aid=" & myAlbum.getCurrentMaxId(CN.ConnectionString).ToString())
             Else
                 ScriptManager.RegisterStartupScript(Me, GetType(String), "Message", "alert('Lưu album không thành công !!!');", False)
             End If

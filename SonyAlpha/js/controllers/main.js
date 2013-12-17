@@ -374,6 +374,16 @@ function resetForm(){
     return true;
 }
 
+function getYoutubeid(url){
+    var regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+    var match = url.match(regExp);
+    if (match&&match[2].length==11){
+        return match[2];
+    }else{
+        return false;
+    }
+}
+
 $(document).ready(function () {
     checkLoged();
     var aspx = $('#hdfPage').val();
@@ -386,9 +396,7 @@ $(document).ready(function () {
         var items = mainBanner.find('.item');
         for (var i = 0; i < items.length; i++) {
             if ($(items[i]).attr('src').indexOf('youtube') != -1) {
-                var ifrm = $('<iframe></iframe>');
-                ifrm.attr("src", $(items[i]).attr('src') + '?wmode=transparent').width('100%');
-                $(items[i]).replaceWith(ifrm);
+                $(items[i]).parent().attr('data-video',getYoutubeid($(items[i]).attr('src')));
             }
             if ($(items[i]).attr('src').indexOf('.swf') != -1) {
                 var ifrm = '<embed height="360" width="698" src="' + $(items[i]).attr('src') + '" name="flashBanner" quality="high" scale="noborder" wmode="transparent" allowscriptaccess="sameDomain">';
@@ -398,7 +406,20 @@ $(document).ready(function () {
     }
     if (fluidBanner.length) {
         fluidBanner.addClass('main-slider');
-        fluidBanner.children().addClass("fluid-slider").bxSlider({slideWidth: 930,minSlides: 1,maxSlides: 1,controls: true,pager: false,auto: true,speed: 600,useCSS: true});
+        var slider = fluidBanner.children().addClass("fluid-slider").bxSlider({
+            slideWidth: 930,minSlides: 1,maxSlides: 1,controls: true,pager: false,auto: true,speed: 600,useCSS: true,autoControls: true,
+            onSlideAfter: function($slideElement, oldIndex, newIndex){
+                var li = $slideElement;
+                var videoId = li.children().attr('data-video');
+                if(videoId!==undefined){
+                    var ifrm = $('<iframe></iframe>');
+                    ifrm.attr("src", 'http://www.youtube.com/embed/' + videoId + '?autohide=1&wmode=transparent&autoplay=1').width('100%');
+                    //$(items[i]).replaceWith(ifrm);
+                    li.html(ifrm);
+                    $('.bx-stop').click();
+                }
+            }
+        });
     }
     if (leftBanner.length && leftBanner.find('li').length > 1) {
         leftBanner.addClass('theme-default').children().nivoSlider({effect: "random",slices: 15,boxCols: 8,boxRows: 4,animSpeed: 500,pauseTime: 3000,startSlide: 0,directionNav: false,directionNavHide: true,controlNav: true,controlNavThumbs: false,controlNavThumbsFromRel: false,keyboardNav: true,pauseOnHover: true,captionOpacity: 0.5,manualAdvance: false});
@@ -428,7 +449,7 @@ $(document).ready(function () {
 
     $('#hplUserupdate').click(function () {
         if (update.hasClass('hide')) {
-            resetForm();
+            //resetForm();
             update.removeClass('hide');
             update.fadeIn(300);
         }
@@ -491,6 +512,12 @@ $(document).ready(function () {
     });
     $("#uc_register_btnCancel").click(function () {
         var pop = $('#formReg');
+        if (!pop.hasClass('hide')) {
+            pop.fadeOut(300, function () { pop.addClass('hide'); });
+        }
+    });
+    $("#uc_email_fag_btnCancel").click(function () {
+        var pop = $('#formSendQuestion');
         if (!pop.hasClass('hide')) {
             pop.fadeOut(300, function () { pop.addClass('hide'); });
         }
@@ -777,11 +804,38 @@ function doLogin() {
 }
 
 function doSendMail() {
+    var errEl = $('#uc_email_fag_message');
     var email = $("#uc_email_fag_txtEmail").val();
     var fullname = $("#uc_email_fag_txtFullName").val();
     var phone = $("#uc_email_fag_txtPhone").val();
     var productname = $("#uc_email_fag_txtProductName").val();
     var mailcontent = $("#uc_email_fag_txtContent").val();
+    var isValid = true;
+    $('.form input.textbox').removeClass('error');
+
+    errEl.text(', ');
+
+    if (!isEmail(email) || email == '') {
+        errEl.text(errEl.text() + 'Email không hợp lệ, ');
+        $("#uc_email_fag_txtEmail").addClass('error');
+        isValid = false;
+    }
+
+    if (mailcontent=='') {
+        errEl.text(errEl.text()+'Nội dung câu hỏi là bắt buộc, ');
+        $("#uc_email_fag_txtContent").addClass('error');
+        isValid = false;
+        
+    }    
+
+    var err = errEl.text();
+
+    if (err.length >= 2) { err = err.substring(2, err.length - 2); }
+    if (err.length >= 2) { err = err.substring(0, err.length); }
+    errEl.text(err);
+
+    if (isValid == false) return false;
+    errEl.text('');
 
     $.ajax({
         type: 'POST',
@@ -791,7 +845,8 @@ function doSendMail() {
         success: function (response) {
             response = jQuery.parseJSON(response);
             if (response.message == "ok") {
-                $("#uc_email_fag_message").text('Câu hỏi được gửi thành công!!!!');
+                alert('Câu hỏi được gửi thành công!!!!');
+                $('#uc_email_fag_btnCancel').click();
             } else {
                 $("#uc_email_fag_message").text('Câu hỏi được gửi không thành công!!!!');
             }

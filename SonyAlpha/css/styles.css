@@ -223,10 +223,10 @@ border-bottom: 2px solid #f04202;
 .main-slider .bx-controls .bx-prev:before { content: ''; position: absolute; left: 29px; top: 14px; background: url('../img/icons.png') no-repeat 0px -204px; height: 62px; width: 32px;}
 .main-slider .bx-controls .bx-next:before { content: ''; position: absolute; left: 29px; top: 14px; background: url('../img/icons.png') no-repeat -64px -204px; height: 62px; width: 32px;}
 .main-slider .bx-controls .bx-prev,
-.main-slider .bx-controls .bx-next {width: 90px; height: 90px;border-radius: 45px;-webkit-border-radius: 45px;-moz-border-radius: 45px;top: 40%;margin-top: -45px;}
-.main-slider .bx-controls .bx-prev { left: 30px;}
-.main-slider .bx-controls .bx-next { right: 30px;}
-.banner_container.type_0{ margin-top: -54px;}
+.main-slider .bx-controls .bx-next {width: 90px; height: 90px;border-radius: 45px;-webkit-border-radius: 45px;-moz-border-radius: 45px;top: 50%;margin-top: -45px;}
+.main-slider .bx-controls .bx-prev { left: -45px;}
+.main-slider .bx-controls .bx-next { right: -45px;}
+.banner_container.type_0{ margin-top: -54px; position: relative;}
 .banner_container.type_1{
     width: 698px;
     height:360px;
@@ -590,6 +590,7 @@ Author URI: http://dev7studios.com
 .news_detail .description { font-weight: bold; margin-bottom: 15px; font-size: 15px;}
 
 .album_page { margin: 20px 0px; overflow: hidden;}
+.tab_container .album_page { margin: 20px -43px;}
 .ul_list_albums { font-size: 0; left: 0.5%; position: relative;}
 .ul_list_albums li{ float: left; width: 29%; margin:0px 2% 20px 2%;}
 .ul_list_albums li.last-child{width: 95%;}
@@ -599,7 +600,8 @@ Author URI: http://dev7studios.com
 .ul_list_albums.ul_list_photo .album { padding: 0px 0px 0px 0px;}
 .album .cover{border: solid 1px #ccc; position: relative;box-shadow: 1px 1px 3px rgba(0,0,0,0.2);-webkit-box-shadow: 1px 1px 3px rgba(0,0,0,0.2);-moz-box-shadow: 1px 1px 3px rgba(0,0,0,0.2);}
 .album .cover a { display: block; overflow: hidden; border: solid 5px #fff; height: 155px;}
-.ul_list_photo .album .cover img { max-width: 270px;}
+.ul_list_albums .album .cover img { min-height: 165px; margin: auto; display: block;}
+.ul_list_photo .album .cover img { max-width: 270px; min-height: 0;}
 .album .album_title{font-size: 15px;color: #fe3500;margin-top: 10px; display: block;}
 .album .info {font-size: 13px;font-family: Tahoma;color: #000000; line-height: 18px;}
 .album .photo-info { position: absolute; z-index: 1; width: auto; left: 5px; right: 5px; bottom: 5px; height: 26px; line-height: 26px; background: rgba(0,0,0,0.5); color: #fff; font-size: 12px;}
@@ -612,8 +614,8 @@ Author URI: http://dev7studios.com
 
 
 #albumSlide{ margin: 20px 30px; overflow: hidden; border: solid 1px #ccc; max-height: 350px; position: relative;}
-#albumSlide .nivoSlider { width: auto; max-height: 340px; background: #efefef; border: solid 5px #fff;}
-#albumSlide .nivoSlider > img { width: auto; }
+#albumSlide .nivoSlider { width: auto; height: 340px; background: #efefef; border: solid 5px #fff;}
+#albumSlide .nivoSlider > img { width: 100% !important; min-height: 340px; margin: auto; display: block;}
 #albumSlide .nivo-controlNav {position: absolute;right: 20px;bottom: 0px;z-index: 100; font-size: 0;}
 #albumSlide .nivo-controlNav a {cursor:pointer;font-size: 0;}
 
@@ -805,9 +807,9 @@ border-radius: 5px;-webkit-border-radius: 5px;-moz-border-radius:5px;padding-top
 .img_bg { position: absolute; right: 50px; bottom: 20px;}
 .user_form { width: 60%}
 .user_form li {color: #414042;border-bottom: 1px solid #dcddde; line-height: 36px; height: 36px; vertical-align: middle; font-size: 14px;}
-.new_album {height: 175px;border: dashed 1px #ccc;margin: 5px; position: relative; color: #fe3500;}
+.new_album {height: 165px;border: dashed 1px #ccc;margin: 5px; position: relative; color: #fe3500;}
 .new_album .ico-add{ font-size: 20px; font-weight: bold; height: 30px; width: 30px; position: absolute; top: 10px; right: 10px;}
-.new_album a { line-height: 175px; vertical-align: middle; text-align: center; font-size: 15px; display: inline-block; width: 100%;color: #fe3500;}
+.new_album a { line-height: 165px; vertical-align: middle; text-align: center; font-size: 15px; display: inline-block; width: 100%;color: #fe3500;}
 .user_upload_page { margin: 50px 100px; border: solid 1px #efefef; padding: 10px;}
 .ul_upload li { padding: 5px 0px;}
 .ul_upload .caption { font-size: 14px; font-weight: bold;}
@@ -840,7 +842,7 @@ border-radius: 5px;-webkit-border-radius: 5px;-moz-border-radius:5px;padding-top
 .faq_page .toolbar { margin: 0px 10px 10px 0px;}
 .ico-map {background: url(../img/map.png) no-repeat left top scroll transparent; display: inline-block; height: 37px; width: 38px; margin: auto; font-size: 0;}
 
-.info_search{width: 187px;height: 112px;background: url(../img/bg_search.png) no-repeat left top scroll #fff;color: #000;position: absolute;right: 6px;top: -139px;padding-bottom: 10px;background-size: 100% 100%;-webkit-background-size: 100% 100%;-moz-background-size: 100% 100%;}
+.info_search{width: 184px;height: 112px;background: url(../img/bg_search.png) no-repeat 5px 5px scroll #FFF;color: #000;position: absolute;right: 12px;top: -138px;padding-bottom: 10px;background-size: 174px 106px;-webkit-background-size: 174px 106px;-moz-background-size: 174px 106px;}
 .info_search .title{margin: 40px 10px 0px;}
 .info_search .select{margin: 5px 10px 0px 10px;}
 .info_search select { outline: none; width: 100%;}
