@@ -396,7 +396,9 @@ $(document).ready(function () {
         var items = mainBanner.find('.item');
         for (var i = 0; i < items.length; i++) {
             if ($(items[i]).attr('src').indexOf('youtube') != -1) {
-                $(items[i]).parent().attr('data-video',getYoutubeid($(items[i]).attr('src')));
+                var videoId = getYoutubeid($(items[i]).attr('src'));
+                $(items[i]).attr('src','http://img.youtube.com/vi/'+videoId+'/0.jpg');
+                $(items[i]).parent().attr('data-video',videoId);
             }
             if ($(items[i]).attr('src').indexOf('.swf') != -1) {
                 var ifrm = '<embed height="360" width="698" src="' + $(items[i]).attr('src') + '" name="flashBanner" quality="high" scale="noborder" wmode="transparent" allowscriptaccess="sameDomain">';
@@ -405,18 +407,23 @@ $(document).ready(function () {
         };
     }
     if (fluidBanner.length) {
+        var iframe;
         fluidBanner.addClass('main-slider');
         var slider = fluidBanner.children().addClass("fluid-slider").bxSlider({
             slideWidth: 930,minSlides: 1,maxSlides: 1,controls: true,pager: false,auto: true,speed: 600,useCSS: true,autoControls: true,
             onSlideAfter: function($slideElement, oldIndex, newIndex){
+                if(iframe!=null)iframe.remove();
                 var li = $slideElement;
                 var videoId = li.children().attr('data-video');
                 if(videoId!==undefined){
-                    var ifrm = $('<iframe></iframe>');
-                    ifrm.attr("src", 'http://www.youtube.com/embed/' + videoId + '?autohide=1&wmode=transparent&autoplay=1').width('100%');
+                    iframe = $('<iframe></iframe>');
+                    iframe.attr("src", 'http://www.youtube.com/embed/' + videoId + '?autohide=1&wmode=transparent&autoplay=1').width('100%');
                     //$(items[i]).replaceWith(ifrm);
-                    li.html(ifrm);
+                    $(li.children()[0]).hide();
+                    li.append(iframe);
                     $('.bx-stop').click();
+                }else{
+                    if($('.bx-stop').hasClass('active'))$('.bx-start').click();
                 }
             }
         });

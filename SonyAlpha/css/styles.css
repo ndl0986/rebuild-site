@@ -212,7 +212,7 @@ border-bottom: 2px solid #f04202;
 .fluid-slider li { overflow: hidden;}
 .fluid-slider li .slide-item { position: relative;}
 .fluid-slider .img { position: relative; z-index: 1; }
-.fluid-slider .img img{ max-width: 100%; display: block;}
+.fluid-slider .img img{ max-width: none; width: 100%; display: block;}
 .fluid-slider .caption { text-transform: uppercase; letter-spacing: -0.05em; position: absolute; z-index: 2; color: #fff; display: block; line-height: 120%; background: none; padding: 0; top:160px; left: 140px;}
 .fluid-slider li iframe { height: 100%;}
 
