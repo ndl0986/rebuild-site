@@ -455,7 +455,7 @@ Author URI: http://dev7studios.com
 .gr_border_content {font-size: 0; text-align: center; width: 98%; margin: 20px auto 0px auto;}
 .banner_content_home {display: inline-block; vertical-align: top; width: 18%; margin: 0px 1%; cursor: pointer;}
 .banner_content_home img {margin: auto;}
-
+.banner_content_home .text a {color: #333;font-size: 14px;line-height: 20px;font-weight: bold;}
 .shop_body{width: 858px; overflow: hidden; padding: 20px 15px 0px 15px;margin-bottom: 15px;border: 1px solid #d6d6d6;-moz-border-radius: 5px;-webkit-border-radius: 5px;border-radius: 5px;margin: 20px;}
 .main_tab_alpha_pro {width: 858px;background: url(../img/bg_title_proshop.png) no-repeat;font: Arial;font-size: 13px;color: white;}
 .main_tab_alpha{width:858px;background:url(../img/banner_alpha_shop.png) no-repeat;font:Arial;font-size:13px;color:white; padding-bottom: 20px;}
@@ -502,7 +502,7 @@ Author URI: http://dev7studios.com
 .sony_center_contact .label { width: 80px;}
 
 .ul_table { display: table; width: 100%; }
-.effect {display: block; max-height: 500px;transition:all 0.3s linear;-webkit-transition:all 0.3s linear;-moz-transition:all 0.3s linear; padding-top: 20px;}
+.effect {display: block; transition:all 0.3s linear;-webkit-transition:all 0.3s linear;-moz-transition:all 0.3s linear; padding-top: 20px;}
 .effect.collapse {max-height: 0px; overflow: hidden;}
 .table_header{display: table-row; background: #555; height: 40px; line-height: 40px;}
 .table_header > div { display: table-cell; color: #fff;max-width: 250px; padding: 0px 10px; font-weight: bold;}
