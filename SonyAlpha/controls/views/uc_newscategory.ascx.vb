@@ -6,6 +6,7 @@ Public Class uc_newscategory
     Dim bllNews As New SonyAlphaLibs.News
     Public listNewsInCat As New List(Of SonyAlphaLibs.News)
     Public listTop As New List(Of SonyAlphaLibs.News)
+    Public listTopCat As New List(Of SonyAlphaLibs.NewsCategory)
     Public bolType As Boolean = False
     Public intMenu As String
     Public catId As String
@@ -31,6 +32,7 @@ Public Class uc_newscategory
                 bolType = True
                 Dim listIds As New List(Of Integer)
                 For Each newsCategory As NewsCategory In lstCats
+                    listTopCat.Add(newsCategory)
                     listIds.Add(newsCategory.Id)
                     Dim bllItemNews As List(Of SonyAlphaLibs.News)
                     bllItemNews = SonyAlphaLibs.Services.NewsServices.getListNewsByCategory(newsCategory.Id, CN.ConnectionString)

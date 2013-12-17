@@ -529,10 +529,10 @@ Author URI: http://dev7studios.com
 .list_collection li { display: inline-block; width: 50%; height: 200px; overflow: hidden; position: relative; z-index: 1; font-size: 13px;}
 .list_collection li img { width: 100%; max-width: none; margin: auto;}
 .list_collection .title_banner_text { position: absolute; bottom: 0px; left: 0; right: 0; background: rgba(0,0,0,0.7); height: 40px; overflow: hidden;}
+.list_collection .category_title { text-decoration: none; position: absolute; top: 0px; left: 0; right: 0; background: rgba(250,80,0,0.7); height: 40px; overflow: hidden;text-indent: 14px;line-height: 40px;font-size: 16px;}
 .title_banner_text a { font-size: 14px; display: block; margin: 0px 15px; line-height: 40px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;}
 .list_news li { min-height: 260px; width: 48%; vertical-align: top; display: inline-block; margin-bottom: 20px;margin-right: 2%; border-bottom: dashed 1px #000;}
 .list_news .detail_item { padding-right: 10px;}
-
 
 #sonyCenterSlides{ float: right; width: 570px; padding: 15px 20px; position: relative;}
 #sonyCenterSlides li{ height: 315px; border-radius: 20px;-webkit-border-radius: 20px;-moz-border-radius: 20px; overflow: hidden;}
