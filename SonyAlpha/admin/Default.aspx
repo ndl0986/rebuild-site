@@ -7,6 +7,7 @@
     <meta http-equiv="Content-Type" content="text/aspx; charset=utf-8" />
     <link rel="stylesheet" type="text/css" href="../css/reset.css"/>
     <link rel="stylesheet" type="text/css" href="../css/admin.css"/>
+    <link rel="stylesheet" type="text/css" href="../js/plugins/jquery.fancybox.css?v=2.1.5" media="screen" />
     <script type="text/javascript" language="javascript" src="../js/libs/jquery-2.0.3.min.js"></script>  
 </head>
 <body>
@@ -95,7 +96,6 @@
     </div>
     </form>
     <script type="text/javascript" language="javascript" src="../js/libs/bootstrap.min.js"></script>
-    <script type="text/javascript" language="javascript" src="../js/plugins/jquery.bxslider.min.js"></script>
     <script type="text/javascript" language="javascript" src="../js/plugins/jquery.validate.js"></script>
     <script type="text/javascript">
         function ConfirmDelete(str) {

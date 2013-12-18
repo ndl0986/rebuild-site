@@ -110,6 +110,7 @@
   <ItemGroup>
     <Content Include="admin\Default.aspx" />
     <Content Include="admin\FileManager.aspx" />
+    <Content Include="admin\FilePhotos.aspx" />
     <Content Include="admin\Login.aspx" />
     <Content Include="admin\TestPage.aspx" />
     <Content Include="controls\admin\uc_account.ascx" />
@@ -734,6 +735,13 @@
     <Compile Include="admin\FileManager.aspx.vb">
       <DependentUpon>FileManager.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="admin\FilePhotos.aspx.designer.vb">
+      <DependentUpon>FilePhotos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\FilePhotos.aspx.vb">
+      <DependentUpon>FilePhotos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="admin\Login.aspx.designer.vb">
       <DependentUpon>Login.aspx</DependentUpon>

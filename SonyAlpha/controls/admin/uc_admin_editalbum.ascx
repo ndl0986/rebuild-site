@@ -25,6 +25,7 @@
                 </div>
             </li>
             <li>
+                <a href="FilePhotos.aspx" class="browser btn button fancybox"><span class="label">Browse to add photo</span></a>
                 <asp:GridView EmptyDataText="Không có photo nào" ID="grvPhotos" runat="server" AllowPaging="True" AllowSorting="True" SkinID="Defaultgridview" AutoGenerateColumns="False" CssClass="datatable" GridLines="None" PageSize=20>
                     <HeaderStyle CssClass="girdheader"/>
                     <Columns>
@@ -55,6 +56,7 @@
         </ul>
     </div>
 </div>
+<script type="text/javascript" src="/js/plugins/jquery.fancybox.js?v=2.1.5"></script>
 <script type="text/javascript">
     $(document).ready(function () {
         var setCovers = $('.datatable input[type=checkbox]');
@@ -66,7 +68,13 @@
                 $('#txtPhotoURL').val(img);
             });
         });
-
-
+        $('.fancybox').fancybox({
+            'width': '75%',
+            'height': '75%',
+            'autoScale': false,
+            'transitionIn': 'none',
+            'transitionOut': 'none',
+            'type': 'iframe'
+        });
     });
 </script>

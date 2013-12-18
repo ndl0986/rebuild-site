@@ -346,6 +346,51 @@ namespace SonyAlphaLibs.Services
             #endregion
         }
 
+        public static bool setPhoto2Album(int albumId, List<int> listPhotos, string connString)
+        {
+            #region code
+            bool rs = false;
+            string photoIds = "";
+            if (listPhotos != null && listPhotos.Count > 0)
+            {
+                foreach (int photo in listPhotos)
+                {
+                    photoIds += photo + ",";
+                }
+            }
+            if (photoIds.EndsWith(","))
+            {
+                photoIds = photoIds.Substring(0, photoIds.Length - 1);
+            }
+            using (SqlConnection conn = new SqlConnection(connString))
+            {
+                try
+                {
+                    conn.Open();
+                    using (SqlCommand cmd = conn.CreateCommand())
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.CommandText = "sony_sp_update_album_add_album_image";
+                        cmd.Parameters.AddWithValue("@albumId", albumId);
+                        cmd.Parameters.AddWithValue("@albumImage", photoIds);
+                        SqlParameter returnVal = new SqlParameter("@returnVal", SqlDbType.Int);
+                        returnVal.Direction = ParameterDirection.Output;
+                        cmd.Parameters.Add(returnVal);
+
+                        cmd.ExecuteNonQuery();
+                        rs = ((int)cmd.Parameters["@returnVal"].Value != 0);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    writeLog("", "Update Set Photo to Album Error: " + ex.Message, connString);
+                    return false;
+                }
+            }
+            return rs;
+            #endregion
+        }
+
         public static bool setComment2Album(AlbumComment albumComment, string connString)
         {
             #region code
