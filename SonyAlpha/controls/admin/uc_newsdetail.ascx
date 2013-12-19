@@ -44,6 +44,18 @@
                     <asp:HiddenField runat="server" ID="hdfPhotos" clientidmode="Static"/>
                 </div>
             </li>
+            <li class="row clearfix">
+                <div class="caption" >Tin Hot :</div>
+                <div class="item">
+                    <asp:CheckBox runat="server" ID="chkIsHot" Checked="False"/>
+                </div>
+            </li>
+            <li class="row clearfix">
+                <div class="caption">Thứ tự :</div>
+                <div class="item">
+                    <asp:TextBox runat="server" ID="txtSortOrder" ClientIDMode="Static" CssClass="textbox" required maxlength="3"></asp:TextBox>
+                </div>
+            </li>
             <li class="row clerafix">
                 <div class="item textright" >
                     <asp:Button runat="server" CssClass="button action btnOk" ID="btnSave" Text="Lưu" Enabled="false" />

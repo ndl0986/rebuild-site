@@ -14,6 +14,8 @@ Public Class uc_newsdetail1
             txtDescription.Text = news.Description
             fckEditor.Value = news.Detail
             txtPhotoURL.Text = news.NewsImage
+            chkIsHot.Checked = news.IsHot
+            txtSortOrder.Text = news.SortOrder
         End If
     End Sub
     Private Sub Page_Init(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Init
@@ -45,6 +47,9 @@ Public Class uc_newsdetail1
             myNews.CategoryId = ddlGroup.SelectedValue
             myNews.Published = CBool(chkPublished.Checked)
             myNews.NewsImage = txtPhotoURL.Text
+            myNews.IsHot = CBool(chkIsHot.Checked)
+            myNews.SortOrder = txtSortOrder.Text
+            myNews.Id = CInt(Request.QueryString("id"))
 
             Dim result As Boolean
             If bolUpdate = False Then

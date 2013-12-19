@@ -77,6 +77,24 @@ Partial Public Class uc_newsdetail1
     Protected WithEvents hdfPhotos As Global.System.Web.UI.WebControls.HiddenField
 
     '''<summary>
+    '''chkIsHot control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents chkIsHot As Global.System.Web.UI.WebControls.CheckBox
+
+    '''<summary>
+    '''txtSortOrder control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtSortOrder As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
     '''btnSave control.
     '''</summary>
     '''<remarks>

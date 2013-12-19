@@ -2,11 +2,11 @@
 Imports SonyAlphaLibs.Services
 Public Class uc_newscategory
     Inherits System.Web.UI.UserControl
-    Dim bllNewsCategory As New SonyAlphaLibs.NewsCategory
-    Dim bllNews As New SonyAlphaLibs.News
-    Public listNewsInCat As New List(Of SonyAlphaLibs.News)
-    Public listTop As New List(Of SonyAlphaLibs.News)
-    Public listTopCat As New List(Of SonyAlphaLibs.NewsCategory)
+    Dim bllNewsCategory As New NewsCategory
+    Dim bllNews As New News
+    Public listNewsInCat As New List(Of News)
+    Public listTop As New List(Of News)
+    Public listTopCat As New List(Of NewsCategory)
     Public bolType As Boolean = False
     Public intMenu As String
     Public catId As String
@@ -24,7 +24,7 @@ Public Class uc_newscategory
             intMenu = Request.QueryString("mId")
             bllNewsCategory.Id = CInt(catId)
             Dim pgUrl As String = Request.RawUrl
-            Dim lstCats As New List(Of SonyAlphaLibs.NewsCategory)
+            Dim lstCats As New List(Of NewsCategory)
 
             Dim totalNews As Integer = 0
             lstCats = bllNewsCategory.getListChild(CN.ConnectionString)
@@ -34,10 +34,29 @@ Public Class uc_newscategory
                 For Each newsCategory As NewsCategory In lstCats
                     listTopCat.Add(newsCategory)
                     listIds.Add(newsCategory.Id)
-                    Dim bllItemNews As List(Of SonyAlphaLibs.News)
-                    bllItemNews = SonyAlphaLibs.Services.NewsServices.getListNewsByCategory(newsCategory.Id, CN.ConnectionString)
+                    Dim bllItemNews As IList(Of News)
+                    bllItemNews = NewsServices.getListNewsByCategory(newsCategory.Id, CN.ConnectionString)
                     If bllItemNews.Count > 0 Then
-                        listTop.Add(bllItemNews.Item(bllItemNews.Count - 1))
+                        'listTop.Add(bllItemNews.Item(bllItemNews.Count - 1))
+                        
+                        Dim numHot = Aggregate _news In bllItemNews
+                                      Where _news.IsHot = True
+                                      Order By _news.SortOrder
+                                      Into Count()
+                        Dim hasHot = numHot > 0
+                        Dim topNews As News
+                        If hasHot Then
+                            Dim tmp = From _news In bllItemNews
+                                  Where _news.IsHot = True
+                                  Order By _news.SortOrder
+                                  Select _news
+                            topNews = tmp.First()
+                        Else
+                            topNews = bllItemNews.Item(bllItemNews.Count - 1)
+                        End If
+                        
+                        'Take 1
+                        listTop.Add(topNews)
                     End If
                 Next
                 listNewsInCat = NewsServices.getListNewsByCategoryIds(listIds, pageNum, pageSize, 0, "created", CN.ConnectionString, totalNews)
@@ -45,14 +64,7 @@ Public Class uc_newscategory
                 If totalNews > 0 Then
                     GeneratePaging(listPaging, totalNews, pageSize, pgUrl, totalPage)
                 End If
-                'For Each bllItem As SonyAlphaLibs.NewsCategory In lstCats
-                '    Dim bllItemNews As List(Of SonyAlphaLibs.News)
-                '    bllItemNews = SonyAlphaLibs.Services.NewsServices.getListNewsByCategory(bllItem.Id, CN.ConnectionString)
-                '    listNewsInCat.AddRange(bllItemNews)
-                '    If bllItemNews.Count > 0 Then
-                '        listTop.Add(bllItemNews.Item(bllItemNews.Count - 1))
-                '    End If
-                'Next
+                
             Else
                 bolType = False
                 'listNewsInCat = SonyAlphaLibs.Services.NewsServices.getListNewsByCategory(catId, CN.ConnectionString)
@@ -63,8 +75,8 @@ Public Class uc_newscategory
                     GeneratePaging(listPaging, totalNews, pageSize, pgUrl, totalPage)
                 End If
 
-                Dim bllSetting As New SonyAlphaLibs.Setting
-                Dim bllPage As New SonyAlphaLibs.Page
+                Dim bllSetting As New Setting
+                Dim bllPage As New Page
                 bllSetting.Name = "menu_kythuat"
                 Dim intKyThuat As Integer = CInt(bllSetting.getByName(CN.ConnectionString))
                 Dim strHeader As String
