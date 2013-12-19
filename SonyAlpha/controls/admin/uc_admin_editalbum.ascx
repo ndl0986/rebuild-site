@@ -9,7 +9,7 @@
         <ul class="form">
             <li class="row clerafix">
                 <div class="caption" >Album's name :</div>
-                <div class="item"><asp:TextBox runat="server" ID="txtName" CssClass="textbox" required maxlength="500"></asp:TextBox><a href="?tpl=addphotos&aid=<%=Request.QueryString("id") %>" class="floatright button action"><span class="icon icon68"></span></a></div>
+                <div class="item"><asp:TextBox runat="server" ID="txtName" CssClass="textbox" required maxlength="500"></asp:TextBox> <a href="FilePhotos.aspx" class="browser btn button fancybox floatright"><span class="label">Browse to add photo</span></a><a href="?tpl=addphotos&aid=<%=Request.QueryString("id") %>" class="floatright button action"><span class="icon icon68"></span></a></div>
             </li>
             <li class="row clerafix">
                 <div class="caption" >Loại Album :</div>
@@ -21,11 +21,9 @@
                 <div class="caption" >Ảnh cover :</div>
                 <div class="item">
                     <input id="txtPhotoURL" style="width:100%;" runat="server" clientidmode="Static" type="text" class="textbox" placeholder="URL photo ..." />
-                    <asp:HiddenField runat="server" ID="hdfPhotos" clientidmode="Static"/>
                 </div>
             </li>
             <li>
-                <a href="FilePhotos.aspx" class="browser btn button fancybox"><span class="label">Browse to add photo</span></a>
                 <asp:GridView EmptyDataText="Không có photo nào" ID="grvPhotos" runat="server" AllowPaging="True" AllowSorting="True" SkinID="Defaultgridview" AutoGenerateColumns="False" CssClass="datatable" GridLines="None" PageSize=20>
                     <HeaderStyle CssClass="girdheader"/>
                     <Columns>
@@ -56,6 +54,7 @@
         </ul>
     </div>
 </div>
+<asp:HiddenField id="hdfSelected" runat="server" ClientIDMode="Static" />
 <script type="text/javascript" src="/js/plugins/jquery.fancybox.js?v=2.1.5"></script>
 <script type="text/javascript">
     $(document).ready(function () {
@@ -68,13 +67,20 @@
                 $('#txtPhotoURL').val(img);
             });
         });
+        var selVal;
         $('.fancybox').fancybox({
             'width': '75%',
             'height': '75%',
             'autoScale': false,
             'transitionIn': 'none',
             'transitionOut': 'none',
-            'type': 'iframe'
+            'type': 'iframe',
+            afterLoad: function () {
+                selVal = $('.fancybox-iframe').contents().find('#selectPhotos');
+            },
+            afterClose: function () {
+                $('#hdfSelected').val() == '' ? $('#hdfSelected').val(selVal.val()) : $('#hdfSelected').val($('#hdfSelected').val() + ',' + selVal.val());
+            }
         });
     });
 </script>

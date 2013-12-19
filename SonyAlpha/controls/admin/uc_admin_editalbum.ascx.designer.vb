@@ -41,15 +41,6 @@ Partial Public Class uc_admin_editalbum
     Protected WithEvents txtPhotoURL As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''hdfPhotos control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents hdfPhotos As Global.System.Web.UI.WebControls.HiddenField
-
-    '''<summary>
     '''grvPhotos control.
     '''</summary>
     '''<remarks>
@@ -66,4 +57,13 @@ Partial Public Class uc_admin_editalbum
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents btnSave As Global.System.Web.UI.HtmlControls.HtmlButton
+
+    '''<summary>
+    '''hdfSelected control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents hdfSelected As Global.System.Web.UI.WebControls.HiddenField
 End Class

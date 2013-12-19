@@ -15,6 +15,8 @@ Public Class uc_admin_editalbum
         txtPhotoURL.Value = myAlbum.AlbumCover
         grvPhotos.DataSource = myListPhoto
         grvPhotos.DataBind()
+
+        hdfSelected.Value = myAlbum.AlbumImage
     End Sub
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         Dim id As String
@@ -46,6 +48,8 @@ Public Class uc_admin_editalbum
                 myAlbum.setPhoto2Album(myListPhoto, CN.ConnectionString)
                 grvPhotos.DataSource = myListPhoto
                 grvPhotos.DataBind()
+                myAlbum = myAlbum.getById(CN.ConnectionString)
+                hdfSelected.Value = myAlbum.AlbumImage
             End If
         Catch ex As Exception
 
@@ -63,6 +67,7 @@ Public Class uc_admin_editalbum
             myAlbum.FullName = txtName.Text
             myAlbum.AlbumType = ddlAlbumType.SelectedValue
             myAlbum.AlbumCover = txtPhotoURL.Value
+            myAlbum.AlbumImage = hdfSelected.Value
             If myAlbum.update(CN.ConnectionString) Then
                 'ScriptManager.RegisterStartupScript(Me, GetType(String), "Message", "alert('Lưu Album thành công !!!');window.location.href", True)
                 Response.Redirect("?tpl=albums")
