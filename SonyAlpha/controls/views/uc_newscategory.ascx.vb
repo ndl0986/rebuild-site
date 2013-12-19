@@ -11,7 +11,8 @@ Public Class uc_newscategory
     Public intMenu As String
     Public catId As String
     Public pageNum As Integer
-    Public pageSize As Integer = 6
+    Public pageSize6 As Integer = 6
+    Public pageSize5 As Integer = 5
     Public totalPage As Integer = 0
     Public listPaging As New List(Of Paging)
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
@@ -38,7 +39,7 @@ Public Class uc_newscategory
                     bllItemNews = NewsServices.getListNewsByCategory(newsCategory.Id, CN.ConnectionString)
                     If bllItemNews.Count > 0 Then
                         'listTop.Add(bllItemNews.Item(bllItemNews.Count - 1))
-                        
+
                         Dim numHot = Aggregate _news In bllItemNews
                                       Where _news.IsHot = True
                                       Order By _news.SortOrder
@@ -54,25 +55,25 @@ Public Class uc_newscategory
                         Else
                             topNews = bllItemNews.Item(bllItemNews.Count - 1)
                         End If
-                        
+
                         'Take 1
                         listTop.Add(topNews)
                     End If
                 Next
-                listNewsInCat = NewsServices.getListNewsByCategoryIds(listIds, pageNum, pageSize, 0, "created", CN.ConnectionString, totalNews)
+                listNewsInCat = NewsServices.getListNewsByCategoryIds(listIds, pageNum, pageSize6, 0, "created", CN.ConnectionString, totalNews)
 
                 If totalNews > 0 Then
-                    GeneratePaging(listPaging, totalNews, pageSize, pgUrl, totalPage)
+                    GeneratePaging(listPaging, totalNews, pageSize6, pgUrl, totalPage)
                 End If
-                
+
             Else
                 bolType = False
                 'listNewsInCat = SonyAlphaLibs.Services.NewsServices.getListNewsByCategory(catId, CN.ConnectionString)
                 Dim listIds As New List(Of Integer)
                 listIds.Add(catId)
-                listNewsInCat = NewsServices.getListNewsByCategoryIds(listIds, pageNum, pageSize, 0, "created", CN.ConnectionString, totalNews)
+                listNewsInCat = NewsServices.getListNewsByCategoryIds(listIds, pageNum, pageSize5, 1, "", CN.ConnectionString, totalNews)
                 If totalNews > 0 Then
-                    GeneratePaging(listPaging, totalNews, pageSize, pgUrl, totalPage)
+                    GeneratePaging(listPaging, totalNews, pageSize6, pgUrl, totalPage)
                 End If
 
                 Dim bllSetting As New Setting
@@ -107,7 +108,7 @@ Public Class uc_newscategory
                 pagingPrev.PageUrl = pgUrl + "&page=" + (pageNum - 1).ToString()
                 listPaging.Add(pagingPrev)
             End If
-            For i As Integer = 0 To totalPage Step 1
+            For i As Integer = 0 To totalPage + 1 Step 1
                 Dim paging As New Paging
                 paging.PageNum = i.ToString()
                 paging.PageText = (i + 1).ToString()
@@ -117,7 +118,7 @@ Public Class uc_newscategory
                 paging.PageUrl = pgUrl + "&page=" + i.ToString()
                 listPaging.Add(paging)
             Next
-            If totalPage > 1 And pageNum < totalPage Then
+            If totalPage > 1 And pageNum <= totalPage Then
                 Dim pagingNext As New Paging
                 pagingNext.PageNum = (pageNum + 1).ToString()
                 pagingNext.PageText = "Sau >>"
