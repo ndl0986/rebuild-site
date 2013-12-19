@@ -113,6 +113,23 @@ namespace SonyAlphaLibs
             set { relatedNewsIds = value; }
         }
 
+        private bool isHot;
+
+        public bool IsHot
+        {
+            get { return isHot; }
+            set { isHot = value; }
+        }
+
+        private int sortOrder;
+
+        public int SortOrder
+        {
+            get { return sortOrder; }
+            set { sortOrder = value; }
+        }
+
+
         #endregion
 
         #region base method

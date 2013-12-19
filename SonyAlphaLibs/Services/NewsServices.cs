@@ -13,13 +13,13 @@ namespace SonyAlphaLibs.Services
         public static bool addNews(News news, string connString)
         {
             #region code
-            bool rs = false;
-            using (SqlConnection conn = new SqlConnection(connString))
+            var rs = false;
+            using (var conn = new SqlConnection(connString))
             {
                 try
                 {
                     conn.Open();
-                    using (SqlCommand cmd = conn.CreateCommand())
+                    using (var cmd = conn.CreateCommand())
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.CommandText = "sony_sp_add_news";
@@ -36,9 +36,13 @@ namespace SonyAlphaLibs.Services
                         cmd.Parameters.AddWithValue("@likeCount", news.LikeCount);
                         cmd.Parameters.AddWithValue("@newsImage", news.NewsImage);
                         cmd.Parameters.AddWithValue("@relatedNewsIds", news.RelatedNewsIds);
+                        cmd.Parameters.AddWithValue("@ishot", news.IsHot);
+                        cmd.Parameters.AddWithValue("@sortorder", news.SortOrder);
                         
-                        SqlParameter returnVal = new SqlParameter("@returnVal", SqlDbType.Int);
-                        returnVal.Direction = ParameterDirection.Output;
+                        var returnVal = new SqlParameter("@returnVal", SqlDbType.Int)
+                        {
+                            Direction = ParameterDirection.Output
+                        };
                         cmd.Parameters.Add(returnVal);
 
                         cmd.ExecuteNonQuery();
@@ -57,13 +61,13 @@ namespace SonyAlphaLibs.Services
         public static bool updateNews(News news, string connString)
         {
             #region code
-            bool rs = false;
-            using (SqlConnection conn = new SqlConnection(connString))
+            var rs = false;
+            using (var conn = new SqlConnection(connString))
             {
                 try
                 {
                     conn.Open();
-                    using (SqlCommand cmd = conn.CreateCommand())
+                    using (var cmd = conn.CreateCommand())
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.CommandText = "sony_sp_update_news";
@@ -81,16 +85,20 @@ namespace SonyAlphaLibs.Services
                         cmd.Parameters.AddWithValue("@likeCount", news.LikeCount);
                         cmd.Parameters.AddWithValue("@newsImage", news.NewsImage);
                         cmd.Parameters.AddWithValue("@relatedNewsIds", news.RelatedNewsIds);
+                        cmd.Parameters.AddWithValue("@ishot", news.IsHot);
+                        cmd.Parameters.AddWithValue("@sortorder", news.SortOrder);
 
-                        SqlParameter returnVal = new SqlParameter("@returnVal", SqlDbType.Int);
-                        returnVal.Direction = ParameterDirection.Output;
+                        var returnVal = new SqlParameter("@returnVal", SqlDbType.Int)
+                        {
+                            Direction = ParameterDirection.Output
+                        };
                         cmd.Parameters.Add(returnVal);
 
                         cmd.ExecuteNonQuery();
                         rs = ((int)cmd.Parameters["@returnVal"].Value != 0);
                     }
                 }
-                catch (Exception ex)
+                catch
                 {
                     return false;
                 }
@@ -166,6 +174,9 @@ namespace SonyAlphaLibs.Services
                                 news.RelatedNewsIds = reader["relatedNewsIds"].ToString();                                
                                 news.Created = (DateTime)reader["created"];
                                 news.Updated = (DateTime)reader["updated"];
+                                news.IsHot = reader["ishot"].ToString().Equals("1") || reader["ishot"].ToString().Equals("True");
+                                news.SortOrder = reader["sortorder"] == null ? 0 :
+                                    String.IsNullOrEmpty(reader["sortorder"].ToString()) ? 0 : (int)reader["sortorder"];
                                 lists.Add(news);
                             }
                         }
@@ -215,6 +226,9 @@ namespace SonyAlphaLibs.Services
                                 news.RelatedNewsIds = reader["relatedNewsIds"].ToString();
                                 news.Created = (DateTime)reader["created"];
                                 news.Updated = (DateTime)reader["updated"];
+                                news.IsHot = reader["ishot"].ToString().Equals("1") || reader["ishot"].ToString().Equals("True");
+                                news.SortOrder = reader["sortorder"] == null ? 0 :
+                                    String.IsNullOrEmpty(reader["sortorder"].ToString()) ? 0 : (int)reader["sortorder"];
                             }
                         }
                     }
@@ -485,6 +499,9 @@ namespace SonyAlphaLibs.Services
                                 news.RelatedNewsIds = reader["relatedNewsIds"].ToString();
                                 news.Created = (DateTime)reader["created"];
                                 news.Updated = (DateTime)reader["updated"];
+                                news.IsHot = reader["ishot"].ToString().Equals("1") || reader["ishot"].ToString().Equals("True");
+                                news.SortOrder = reader["sortorder"] == null ? 0 :
+                                    String.IsNullOrEmpty(reader["sortorder"].ToString()) ? 0 : (int)reader["sortorder"];
                                 lists.Add(news);
                             }
                         }
@@ -516,14 +533,7 @@ namespace SonyAlphaLibs.Services
             String listCategoryIds = "";
             if (categoryIds != null && categoryIds.Count > 0)
             {
-                foreach (int id in categoryIds)
-                {
-                    listCategoryIds += id.ToString() + ",";
-                }
-                if (listCategoryIds.EndsWith(","))
-                {
-                    listCategoryIds = listCategoryIds.Substring(0, listCategoryIds.Length - 1);
-                }
+                listCategoryIds = string.Join(",", categoryIds);
             }
             using (SqlConnection conn = new SqlConnection(connString))
             {
@@ -569,6 +579,9 @@ namespace SonyAlphaLibs.Services
                                 news.RelatedNewsIds = reader["relatedNewsIds"].ToString();
                                 news.Created = (DateTime)reader["created"];
                                 news.Updated = (DateTime)reader["updated"];
+                                news.IsHot = reader["ishot"].ToString().Equals("1") || reader["ishot"].ToString().Equals("True");
+                                news.SortOrder = reader["sortorder"] == null ? 0 : 
+                                    String.IsNullOrEmpty(reader["sortorder"].ToString()) ? 0 : (int)reader["sortorder"];
                                 lists.Add(news);
                             }
                             
@@ -628,6 +641,9 @@ namespace SonyAlphaLibs.Services
                                 news.RelatedNewsIds = reader["relatedNewsIds"].ToString();
                                 news.Created = (DateTime)reader["created"];
                                 news.Updated = (DateTime)reader["updated"];
+                                news.IsHot = reader["ishot"].ToString().Equals("1") || reader["ishot"].ToString().Equals("True");
+                                news.SortOrder = reader["sortorder"] == null ? 0 :
+                                    String.IsNullOrEmpty(reader["sortorder"].ToString()) ? 0 : (int)reader["sortorder"];
                                 lists.Add(news);
                             }
                         }
@@ -689,6 +705,9 @@ namespace SonyAlphaLibs.Services
                                 news.RelatedNewsIds = reader["relatedNewsIds"].ToString();
                                 news.Created = (DateTime)reader["created"];
                                 news.Updated = (DateTime)reader["updated"];
+                                news.IsHot = reader["ishot"].ToString().Equals("1") || reader["ishot"].ToString().Equals("True");
+                                news.SortOrder = reader["sortorder"] == null ? 0 :
+                                    String.IsNullOrEmpty(reader["sortorder"].ToString()) ? 0 : (int)reader["sortorder"];
                                 lists.Add(news);
                             }
                         }
@@ -786,6 +805,9 @@ namespace SonyAlphaLibs.Services
                                 news.RelatedNewsIds = reader["relatedNewsIds"].ToString();
                                 news.Created = (DateTime)reader["created"];
                                 news.Updated = (DateTime)reader["updated"];
+                                news.IsHot = reader["ishot"].ToString().Equals("1") || reader["ishot"].ToString().Equals("True");
+                                news.SortOrder = reader["sortorder"] == null ? 0 :
+                                    String.IsNullOrEmpty(reader["sortorder"].ToString()) ? 0 : (int)reader["sortorder"];
                                 lists.Add(news);
                             }
                         }
@@ -883,6 +905,9 @@ namespace SonyAlphaLibs.Services
                                 }
                                 news.Created = (DateTime)reader["created"];
                                 news.Updated = (DateTime)reader["updated"];
+                                news.IsHot = reader["ishot"].ToString().Equals("1") || reader["ishot"].ToString().Equals("True");
+                                news.SortOrder = reader["sortorder"] == null ? 0 :
+                                    String.IsNullOrEmpty(reader["sortorder"].ToString()) ? 0 : (int)reader["sortorder"];
                                 lists.Add(news);
                             }
                         }
@@ -940,6 +965,9 @@ namespace SonyAlphaLibs.Services
                                 news.RelatedNewsIds = reader["relatedNewsIds"].ToString();
                                 news.Created = (DateTime)reader["created"];
                                 news.Updated = (DateTime)reader["updated"];
+                                news.IsHot = reader["ishot"].ToString().Equals("1") || reader["ishot"].ToString().Equals("True");
+                                news.SortOrder = reader["sortorder"] == null ? 0 :
+                                    String.IsNullOrEmpty(reader["sortorder"].ToString()) ? 0 : (int)reader["sortorder"];
                                 lists.Add(news);
                             }
                         }

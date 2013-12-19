@@ -1,0 +1,174 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="SonyAlphaLibs.Album" Collapsed="true">
+    <Position X="11.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAEQAAgEACAIRoAAAEaABAQAAAQAAgAQBAACgAIGEAA=</HashCode>
+      <FileName>Classes\Album.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="SonyAlphaLibs.AlbumComment" Collapsed="true">
+    <Position X="25.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAEAAAAAAAAAAAAAAQAgAAAAoAAAQACgAEGAgA=</HashCode>
+      <FileName>Classes\AlbumComment.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="SonyAlphaLibs.Banner" Collapsed="true">
+    <Position X="5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAgEAAAIBAAQAAAAEIgAIAAAAiAAGAAA=</HashCode>
+      <FileName>Classes\Banner.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="SonyAlphaLibs.BannerPhoto" Collapsed="true">
+    <Position X="14" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAARAAAAAQAAAAAAAAAAAAAAAAAAAAAgAEAAIABAEA=</HashCode>
+      <FileName>Classes\BannerPhoto.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SonyAlphaLibs.BaseModel" Collapsed="true">
+    <Position X="22" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACACAAAAAAAAAAAAAAAAAAAABAAAAAQAQAAAAEAgAgA=</HashCode>
+      <FileName>Classes\BaseModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SonyAlphaLibs.Menu" Collapsed="true">
+    <Position X="34.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEIIgIBAEAAAAAAEAAAAAQACAAEAggIAgAAiAAGCCA=</HashCode>
+      <FileName>Classes\Menu.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="SonyAlphaLibs.News" Collapsed="true">
+    <Position X="2.75" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEIAACRCAoBkAEKAQAgAwAAIAEAgAAAAgIgEBOCCA=</HashCode>
+      <FileName>Classes\News.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="SonyAlphaLibs.NewsCategory" Collapsed="true">
+    <Position X="2.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAYAIAACAAAAAAAAAAAAQAAAAEggAAAgAAgIAGAGA=</HashCode>
+      <FileName>Classes\NewsCategory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SonyAlphaLibs.Page" Collapsed="true">
+    <Position X="9.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAIAAEQCAAAEAAACAAAAQgAAAQEgAAEFAAiQBGACE=</HashCode>
+      <FileName>Classes\Page.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="SonyAlphaLibs.PageBanner" Collapsed="true">
+    <Position X="27.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAEAAAAQAAAAAAAAAAAAAAABAgAAAgAAgIABAAA=</HashCode>
+      <FileName>Classes\PageBanner.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SonyAlphaLibs.Paging" Collapsed="true">
+    <Position X="45.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAAAAAAAAAAAAACAAAAAgAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Classes\Paging.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SonyAlphaLibs.Permission" Collapsed="true">
+    <Position X="18.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAQAAAAAAAAAAAAAQQAQAAEAkAAACAAiAAmAAA=</HashCode>
+      <FileName>Classes\Permission.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="SonyAlphaLibs.Photo" Collapsed="true">
+    <Position X="41" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QEyAAUAMQAAgBFAoJkQEAAYESQAMBlgESEAAhABGgA0=</HashCode>
+      <FileName>Classes\Photo.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="SonyAlphaLibs.Product" Collapsed="true">
+    <Position X="32" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gFQBQQEWCQIhAggAIAhDAAQIwQIEAuAACAAggAhGAEE=</HashCode>
+      <FileName>Classes\Product.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="SonyAlphaLibs.ProductCategory" Collapsed="true">
+    <Position X="23" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAIAAAAgAAAAIAAAAAQAgAAEAoAAAgCAgAAGgGA=</HashCode>
+      <FileName>Classes\ProductCategory.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="SonyAlphaLibs.Province" Collapsed="true">
+    <Position X="7.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAgQAgAIAAIAgAAGAAI=</HashCode>
+      <FileName>Classes\Province.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="SonyAlphaLibs.QuestionAnswer" Collapsed="true">
+    <Position X="36.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAQAAgAEAAAAggAGAAI=</HashCode>
+      <FileName>Classes\QuestionAnswer.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="SonyAlphaLibs.Setting" Collapsed="true">
+    <Position X="38.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAEAAAQAAAAEAgAAAAAgiAAGAAA=</HashCode>
+      <FileName>Classes\Setting.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="SonyAlphaLibs.SonyCenter" Collapsed="true">
+    <Position X="43.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACQYAAAgGAiAAAAIgAIAASACAIGAgAiAAAAogAGAAI=</HashCode>
+      <FileName>Classes\SonyCenter.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="SonyAlphaLibs.User" Collapsed="true">
+    <Position X="29.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAggAEACIABKAkEASAAAQkAIAAAgggAQIAoAEGEAE=</HashCode>
+      <FileName>Classes\User.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="SonyAlphaLibs.UserGroup" Collapsed="true">
+    <Position X="20.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAQAAAAAAAAAAAAAAAAQAAAAAAgAAAAAAgAAGAAE=</HashCode>
+      <FileName>Classes\UserGroup.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="SonyAlphaLibs.UserSearch" Collapsed="true">
+    <Position X="0.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAIAAAAAAAAAAAAAAAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>Classes\UserSearch.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
