@@ -4,6 +4,7 @@ Public Class uc_album
     Inherits System.Web.UI.UserControl
     Public bllAlbums As New List(Of SonyAlphaLibs.Album)
     Public intMenu As String
+    Public intAlbumImages As String
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         Try
             bllAlbums = SonyAlphaLibs.Services.AlbumServices.getListAllNormalAlbum(CN.ConnectionString)

@@ -8,6 +8,7 @@
     <ul class="ul_list_albums clearfix">
     <% Dim i As Integer = 0%>
     <%For Each album In bllAlbums%>
+        <% intAlbumImages = intAlbumImages + "," + album.AlbumImage%>
         <%If i = (bllAlbums.Count - 1) Then%><li class="last-child"><%Else%><li><%End If%>
             <div class="album">
                 <div class="cover"><a href="<%="album/" & album.Id & "?mId=" & intMenu%>"><img alt="<%=album.AlbumCover %>" src="<%=album.AlbumCover%>" /></a></div>
@@ -19,4 +20,5 @@
     <%Next%>
     </ul>
 <% End If%>
+<div id="randomSRC" class="hidden"><%=intAlbumImages %></div>
 </div>

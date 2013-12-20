@@ -30,6 +30,13 @@ function getUserInfoFromCookie(){
     window._user = user;
     return window._user;
 }
+Array.prototype.getRandom= function(num, cut){
+    var A= cut? this:this.slice(0);
+    A.sort(function(){
+        return .5-Math.random();
+    });
+    return A.splice(0, num);
+}
 function checkLoged() { 
     var isLoged = getUserInfoFromCookie();
     //console.log(getCookie('SonyAlpha'));
@@ -179,7 +186,7 @@ function parseAlbumSlide(){
             boxCols: 8,
             boxRows: 4,
             animSpeed: 500,
-            pauseTime: 3000,
+            pauseTime: 5000,
             startSlide: 0,
             directionNav: false,
             directionNavHide: true,
@@ -192,6 +199,58 @@ function parseAlbumSlide(){
             manualAdvance: false
         });        
     }
+}
+
+function parseAlbumBanner(){
+    var arr = $('#randomSRC').text().split(',');
+    arr=arr.filter(function(e){return e});
+    $.ajax({
+        type: 'GET',
+        timeout: 5000,
+        url: '/service.aspx?name=getlistphotos',
+        data: {ids:arr.join()},
+        success: function (response) {
+            response = jQuery.parseJSON(response);
+            var t = setInterval(function(){
+                parseRandowmAlbumBanner($.parseJSON(response.message));
+            },5300);
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log(textStatus);
+        },
+        complete: function(){
+        }
+    });    
+}
+
+function parseRandowmAlbumBanner(data){
+    var arr = data.getRandom(50);
+    var slide = $('<div class="slide-random"></div>');
+    $('#albumSlide').html(slide);
+    var l = arr.length;
+    var html;
+    var arrHTML = [];
+    for(var i=0;i<l;i++){
+        //var img  = '<a href="javascript:void(0);"><img class="random-img" style="display:none;" alt="" src="'+arr[i].FileName+'"/></a>';
+        //html+= img;
+        var a = $('<a></a>');
+        var img = new Image();
+        img.onload = function(){
+            var t = this;
+            $(t).fadeIn(i+300);
+            setTimeout(function(){$(t).fadeOut(350-i);},5000);
+        }
+        img.src = arr[i].FileName;
+        img.setAttribute('class','random-img');
+        img.setAttribute('style','display:none;');
+        a.html(img);
+        arrHTML.push(a);
+    }
+    slide.html(arrHTML);
+}
+
+function fadeInImg(){
+    $('.random-img').load(function(){$(this).fadeIn()});
 }
 
 function parseComments(data){
@@ -558,7 +617,8 @@ $(document).ready(function () {
             });
             break;
         case 'album':
-            parseAlbumSlide();
+            //parseAlbumSlide();
+            parseAlbumBanner();
             if(window._user!=null)$('#uc_album_btnUpload').removeClass('hidden');
             $('#uc_album_btnSeach').click(function(){
                 if($('#txtKeywords').val()!='')window.location.href = 'searchuser.aspx?key=' + $('#txtKeywords').val();

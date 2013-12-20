@@ -588,6 +588,7 @@ Author URI: http://dev7studios.com
 .news_detail .view_count {width: 100%;color: #000;font-size: 14px;font-style: italic;margin-top: 5px;}
 .news_detail .content { margin-top: 20px;}
 .news_detail .description { font-weight: bold; margin-bottom: 15px; font-size: 15px;}
+.news_detail.single .description { font-weight: normal; margin-bottom: 15px; font-size: 13px; line-height: 18px;}
 
 .album_page { margin: 20px 0px; overflow: hidden;}
 .tab_container .album_page { margin: 20px -43px;}
@@ -618,6 +619,9 @@ Author URI: http://dev7studios.com
 #albumSlide .nivoSlider > img { width: 100% !important; min-height: 340px; margin: auto; display: block;}
 #albumSlide .nivo-controlNav {position: absolute;right: 20px;bottom: 0px;z-index: 100; font-size: 0;}
 #albumSlide .nivo-controlNav a {cursor:pointer;font-size: 0;}
+#albumSlide .slide-random { font-size: 0;}
+#albumSlide .slide-random a { display: inline-block; width: 10%; height: 50px; overflow: hidden;}
+#albumSlide .random-img { width: auto; min-height: 50px;}
 
 .album .cover .share-fb{ display:inline-block; width: 16px; height: 16px; vertical-align: middle; margin: 0px 4px; border: solid 1px #fff; background:url(http://static.ak.facebook.com/images/share/facebook_share_icon.gif?6:26981) no-repeat top right; } 
 .album .cover .share-fb:hover { color:#fff; border-color:#295582; background:#3b5998 url(http://static.ak.facebook.com/images/share/facebook_share_icon.gif?6:26981) no-repeat top right; text-decoration:none; } 

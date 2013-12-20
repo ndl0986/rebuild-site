@@ -84,6 +84,8 @@ Public Class Service
                         GetOwnerOfPhoto()
                     Case "getIfVoted"
                         GetIfVoted()
+                    Case "getlistphotos"
+                        GetListPhotos()
                 End Select
             Else
                 GetMyResponse("500", "Nothing todo!")
@@ -101,6 +103,18 @@ Public Class Service
             GetMyResponse("500", "fail: " + ex.Message)
         End Try
     End Sub
+
+    Private Sub GetListPhotos()
+        Try
+            Dim photoIds As String = Request.QueryString("ids")
+            Dim listPhotos As New List(Of Photo)
+            listPhotos = PhotoServices.getListPhotos(photoIds, CN.ConnectionString)
+            GetMyResponse("200", New JavaScriptSerializer().Serialize(listPhotos))
+        Catch ex As Exception
+            GetMyResponse("500", "fail: " + ex.Message)
+        End Try
+    End Sub
+
     Private Sub DoLogin()
         Try
             Dim username As String = Request.Params.Get("username")

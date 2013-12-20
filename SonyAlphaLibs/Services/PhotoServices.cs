@@ -204,6 +204,42 @@ namespace SonyAlphaLibs.Services
             #endregion
         }
 
+        public static List<Photo> getListPhotos(string ids,string connString)
+        {
+            #region code
+            List<Photo> lists = new List<Photo>();
+            using (SqlConnection conn = new SqlConnection(connString))
+            {
+                try
+                {
+                    conn.Open();
+                    using (SqlCommand cmd = conn.CreateCommand())
+                    {
+                        cmd.CommandType = CommandType.Text;
+                        cmd.CommandText = "SELECT [id],[filename] FROM [sony_photo] WHERE id IN ("+ids+")";
+
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                Photo photo = new Photo();
+                                photo.Id = (int)reader["id"];
+                                photo.FileName = reader["filename"].ToString();
+                                lists.Add(photo);
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    writeLog("", "Get ListPhotos Error: " + ex.Message, connString);
+                    return new List<Photo>();
+                }
+            }
+            return lists;
+            #endregion
+        }
+
         public static Photo getById(int id, string connString)
         {
             #region code
