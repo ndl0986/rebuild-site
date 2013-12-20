@@ -85,7 +85,7 @@
 
         function removeItem(item, value) {
             var index = findItemIndex(value);
-            listItems.splice(index, 1);
+            listItems=listItems.splice(index, 1);
             item.remove();
             updateValue();
         }
@@ -95,8 +95,8 @@
             var li = $('<li></li>');
             var a = $('<a class="thumb"></a>').attr('href', link);
             var btn = $('<a class="button red del" href="javascript:void(0);">-</a>')
-            var img = $('<img alt="" src="' + src + '" />');
-            var txt = $('<input type="nummber" class="textbox small" value="' + listPhotos.children().length + '" />')
+            var img = $('<img alt="" src="' + src + '" >');
+            var txt = $('<input type="nummber" class="textbox small" value="' + listPhotos.children().length + '" >')
             objItem = txt.val() + '*' + src + '*' + link;
             btn.attr('value', objItem);
             btn.click(function () {

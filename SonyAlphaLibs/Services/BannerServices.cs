@@ -290,5 +290,37 @@ namespace SonyAlphaLibs.Services
             return lists;
             #endregion
         }
+
+        public static bool removePhotoOfBanner(int id, string connString)
+        {
+            #region code
+            bool rs = false;
+            using (SqlConnection conn = new SqlConnection(connString))
+            {
+                try
+                {
+                    conn.Open();
+                    using (SqlCommand cmd = conn.CreateCommand())
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.CommandText = "sony_sp_delete_banner_photo_by_banner_id";
+                        cmd.Parameters.AddWithValue("@bannerId", id);
+                        SqlParameter returnVal = new SqlParameter("@returnVal", SqlDbType.Int);
+                        returnVal.Direction = ParameterDirection.Output;
+                        cmd.Parameters.Add(returnVal);
+
+                        cmd.ExecuteNonQuery();
+                        rs = ((int)cmd.Parameters["@returnVal"].Value != 0);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    writeLog("", "Delete Banner Photo Error: " + ex.Message, connString);
+                    return false;
+                }
+            }
+            return rs;
+            #endregion
+        } 
     }
 }

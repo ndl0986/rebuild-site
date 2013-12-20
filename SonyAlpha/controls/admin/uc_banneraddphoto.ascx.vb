@@ -48,15 +48,18 @@ Public Class uc_banneraddphoto
 
             myPhotos.Clear()
             For Each item As String In arr
-                Dim arrItem As Array
-                arrItem = item.Split("*")
-                Dim bannerPhoto As New SonyAlphaLibs.BannerPhoto
-                bannerPhoto.BannerId = myBanner.Id
-                bannerPhoto.ImageUrl = arrItem(1).ToString
-                bannerPhoto.SortOrder = CInt(arrItem(0))
-                bannerPhoto.Link2 = arrItem(2).ToString
-                myPhotos.Add(bannerPhoto)
+                If item <> "" Then
+                    Dim arrItem As Array
+                    arrItem = item.Split("*")
+                    Dim bannerPhoto As New SonyAlphaLibs.BannerPhoto
+                    bannerPhoto.BannerId = myBanner.Id
+                    bannerPhoto.ImageUrl = arrItem(1).ToString
+                    bannerPhoto.SortOrder = CInt(arrItem(0))
+                    bannerPhoto.Link2 = arrItem(2).ToString
+                    myPhotos.Add(bannerPhoto)
+                End If
             Next
+            BannerServices.removePhotoOfBanner(myBanner.Id, CN.ConnectionString)
             myBanner.ListPhotos = myPhotos
 
             Dim result
