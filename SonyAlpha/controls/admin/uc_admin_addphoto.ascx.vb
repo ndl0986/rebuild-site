@@ -157,7 +157,7 @@ Public Class uc_admin_addphoto
                     myPhoto.add(CN.ConnectionString)
                     myPhoto.Id = SonyAlphaLibs.Services.PhotoServices.getCurrentMaxId("sony_photo", CN.ConnectionString)
                     If CheckDuplicate() Then
-                        result = myAlbum.setPhoto2Album(myPhoto, CN.ConnectionString)
+                        result = myAlbum.SetPhoto2Album(myPhoto, CN.ConnectionString)
                     End If
                 Else
                     result = myPhoto.update(CN.ConnectionString)
