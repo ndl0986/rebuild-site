@@ -72,7 +72,7 @@ namespace SonyAlphaLibs
 
         public int getCurrentMaxId(String connString)
         {
-            return NewsServices.getCurrentMaxId("sony_news_category", connString);
+            return NewsServices.GetCurrentMaxId("sony_news_category", connString);
         }
 
         public List<NewsCategory> getListNewsSameParent(String connString)

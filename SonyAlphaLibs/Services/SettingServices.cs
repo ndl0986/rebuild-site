@@ -99,7 +99,7 @@ namespace SonyAlphaLibs.Services
                 }
                 catch (Exception ex)
                 {
-                    writeLog("", "Delete Setting Error: " + ex.Message, connString);
+                    WriteLog("", "Delete Setting Error: " + ex.Message, connString);
                     return false;
                 }
             }

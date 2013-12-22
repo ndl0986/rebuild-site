@@ -516,7 +516,7 @@ namespace SonyAlphaLibs.Services
                 }
                 catch (Exception ex)
                 {
-                    writeLog("", "Get User Error: " + ex.Message, connString);
+                    WriteLog("", "Get User Error: " + ex.Message, connString);
                     return new List<UserSearch>();
                 }
             }

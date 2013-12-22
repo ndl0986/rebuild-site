@@ -85,7 +85,7 @@ namespace SonyAlphaLibs
 
         public int getCurrentMaxId(String connString)
         {
-            return BannerServices.getCurrentMaxId("sony_banner", connString);
+            return BannerServices.GetCurrentMaxId("sony_banner", connString);
         }
         #endregion
 

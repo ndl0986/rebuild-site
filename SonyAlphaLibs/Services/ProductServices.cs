@@ -49,7 +49,7 @@ namespace SonyAlphaLibs.Services
                 }
                 catch (Exception ex)
                 {
-                    writeLog("", "Add Product Error: " + ex.Message, connString);
+                    WriteLog("", "Add Product Error: " + ex.Message, connString);
                     return false;
                 }
             }
@@ -98,7 +98,7 @@ namespace SonyAlphaLibs.Services
                 }
                 catch (Exception ex)
                 {
-                    writeLog("", "Add Product Error: " + ex.Message, connString);
+                    WriteLog("", "Add Product Error: " + ex.Message, connString);
                     return false;
                 }
             }
@@ -130,7 +130,7 @@ namespace SonyAlphaLibs.Services
                 }
                 catch (Exception ex)
                 {
-                    writeLog("", "Delete Product Error: " + ex.Message, connString);
+                    WriteLog("", "Delete Product Error: " + ex.Message, connString);
                     return false;
                 }
             }
@@ -185,7 +185,7 @@ namespace SonyAlphaLibs.Services
                 }
                 catch (Exception ex)
                 {
-                    writeLog("", "Get All Product Error: " + ex.Message, connString);
+                    WriteLog("", "Get All Product Error: " + ex.Message, connString);
                     return new List<Product>();
                 }
             }
@@ -239,7 +239,7 @@ namespace SonyAlphaLibs.Services
                 }
                 catch (Exception ex)
                 {
-                    writeLog("", "Get Product Error: " + ex.Message, connString);
+                    WriteLog("", "Get Product Error: " + ex.Message, connString);
                     return new Product();
                 }
             }
@@ -276,7 +276,7 @@ namespace SonyAlphaLibs.Services
                 }
                 catch (Exception ex)
                 {
-                    writeLog("", "Add Product Category Error: " + ex.Message, connString);
+                    WriteLog("", "Add Product Category Error: " + ex.Message, connString);
                     return false;
                 }
             }
@@ -314,7 +314,7 @@ namespace SonyAlphaLibs.Services
                 }
                 catch (Exception ex)
                 {
-                    writeLog("", "Update Product Category Error: " + ex.Message, connString);
+                    WriteLog("", "Update Product Category Error: " + ex.Message, connString);
                     return false;
                 }
             }
@@ -346,7 +346,7 @@ namespace SonyAlphaLibs.Services
                 }
                 catch (Exception ex)
                 {
-                    writeLog("", "Delete Product Category Error: " + ex.Message, connString);
+                    WriteLog("", "Delete Product Category Error: " + ex.Message, connString);
                     return false;
                 }
             }
@@ -389,7 +389,7 @@ namespace SonyAlphaLibs.Services
                 }
                 catch (Exception ex)
                 {
-                    writeLog("", "Get All Product Category Error: " + ex.Message, connString);
+                    WriteLog("", "Get All Product Category Error: " + ex.Message, connString);
                     return new List<ProductCategory>();
                 }
             }
@@ -431,7 +431,7 @@ namespace SonyAlphaLibs.Services
                 }
                 catch (Exception ex)
                 {
-                    writeLog("", "Get Product Category Error: " + ex.Message, connString);
+                    WriteLog("", "Get Product Category Error: " + ex.Message, connString);
                     return new ProductCategory();
                 }
             }
@@ -487,7 +487,7 @@ namespace SonyAlphaLibs.Services
                 }
                 catch (Exception ex)
                 {
-                    writeLog("", "Get All Product Error: " + ex.Message, connString);
+                    WriteLog("", "Get All Product Error: " + ex.Message, connString);
                     return new List<Product>();
                 }
             }
@@ -531,7 +531,7 @@ namespace SonyAlphaLibs.Services
                 }
                 catch (Exception ex)
                 {
-                    writeLog("", "Get All Product Category Error: " + ex.Message, connString);
+                    WriteLog("", "Get All Product Category Error: " + ex.Message, connString);
                     return new List<ProductCategory>();
                 }
             }
@@ -574,7 +574,7 @@ namespace SonyAlphaLibs.Services
                 }
                 catch (Exception ex)
                 {
-                    writeLog("", "Get All Child Product Category Error: " + ex.Message, connString);
+                    WriteLog("", "Get All Child Product Category Error: " + ex.Message, connString);
                     return new List<ProductCategory>();
                 }
             }

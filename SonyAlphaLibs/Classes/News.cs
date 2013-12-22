@@ -172,7 +172,7 @@ namespace SonyAlphaLibs
 
         public int getCurrentMaxId(String connString)
         {
-            return NewsServices.getCurrentMaxId("sony_news", connString);
+            return NewsServices.GetCurrentMaxId("sony_news", connString);
         }
         #endregion
 

@@ -34,7 +34,7 @@ namespace SonyAlphaLibs.Services
                 }
                 catch (Exception ex)
                 {
-                    writeLog("", "Add Province Error: " + ex.Message, connString);
+                    WriteLog("", "Add Province Error: " + ex.Message, connString);
                     return false;
                 }
             }
@@ -68,7 +68,7 @@ namespace SonyAlphaLibs.Services
                 }
                 catch (Exception ex)
                 {
-                    writeLog("", "Update Province Error: " + ex.Message, connString);
+                    WriteLog("", "Update Province Error: " + ex.Message, connString);
                     return false;
                 }
             }
@@ -100,7 +100,7 @@ namespace SonyAlphaLibs.Services
                 }
                 catch (Exception ex)
                 {
-                    writeLog("", "Delete Province Error: " + ex.Message, connString);
+                    WriteLog("", "Delete Province Error: " + ex.Message, connString);
                     return false;
                 }
             }
@@ -137,7 +137,7 @@ namespace SonyAlphaLibs.Services
                 }
                 catch (Exception ex)
                 {
-                    writeLog("", "Get All Province Error: " + ex.Message, connString);
+                    WriteLog("", "Get All Province Error: " + ex.Message, connString);
                     return new List<Province>();
                 }
             }
@@ -173,7 +173,7 @@ namespace SonyAlphaLibs.Services
                 }
                 catch (Exception ex)
                 {
-                    writeLog("", "Get All Province Error: " + ex.Message, connString);
+                    WriteLog("", "Get All Province Error: " + ex.Message, connString);
                     return new Province();
                 }
             }
@@ -211,7 +211,7 @@ namespace SonyAlphaLibs.Services
                 }
                 catch (Exception ex)
                 {
-                    writeLog("", "Get All Province By Name Error: " + ex.Message, connString);
+                    WriteLog("", "Get All Province By Name Error: " + ex.Message, connString);
                     return new List<Province>();
                 }
             }

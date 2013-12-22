@@ -119,7 +119,7 @@ namespace SonyAlphaLibs
 
         public int getCurrentMaxId(String connString)
         {
-            return PageServices.getCurrentMaxId("sony_page", connString);
+            return PageServices.GetCurrentMaxId("sony_page", connString);
         }
 
         #endregion

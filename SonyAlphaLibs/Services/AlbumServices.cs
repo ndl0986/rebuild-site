@@ -1,55 +1,62 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
 using System.Data;
+using System.Data.SqlClient;
+using System.Linq;
 
 namespace SonyAlphaLibs.Services
 {
     public class AlbumServices : BaseService
     {
-
-        public static bool addAlbum(Album album, string connString)
+        public static bool AddAlbum(Album album, string connString)
         {
             #region code
-            bool rs = false;
-            using (SqlConnection conn = new SqlConnection(connString))
+
+            bool rs;
+            using (var conn = new SqlConnection(connString))
             {
                 try
                 {
                     conn.Open();
-                    using (SqlCommand cmd = conn.CreateCommand())
+                    using (var cmd = conn.CreateCommand())
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.CommandText = "sony_sp_add_album";
                         cmd.Parameters.AddWithValue("@fullname", album.FullName);
-                        cmd.Parameters.AddWithValue("@albumCreator", String.IsNullOrEmpty(album.AlbumCreator) ? "admin" : album.AlbumCreator);
-                        cmd.Parameters.AddWithValue("@albumImage", String.IsNullOrEmpty(album.AlbumImage) ? "" : album.AlbumImage);
+                        cmd.Parameters.AddWithValue("@albumCreator",
+                            String.IsNullOrEmpty(album.AlbumCreator) ? "admin" : album.AlbumCreator);
+                        cmd.Parameters.AddWithValue("@albumImage",
+                            String.IsNullOrEmpty(album.AlbumImage) ? "" : album.AlbumImage);
                         cmd.Parameters.AddWithValue("@viewCount", album.ViewCount);
                         cmd.Parameters.AddWithValue("@albumType", album.AlbumType);
                         cmd.Parameters.AddWithValue("@albumCover", album.AlbumCover);
-                        SqlParameter returnVal = new SqlParameter("@returnVal", SqlDbType.Int);
-                        returnVal.Direction = ParameterDirection.Output;
+                        var returnVal = new SqlParameter("@returnVal", SqlDbType.Int)
+                        {
+                            Direction = ParameterDirection.Output
+                        };
                         cmd.Parameters.Add(returnVal);
 
                         cmd.ExecuteNonQuery();
-                        rs = ((int)cmd.Parameters["@returnVal"].Value != 0);
+                        rs = ((int) cmd.Parameters["@returnVal"].Value != 0);
                     }
                 }
                 catch (Exception ex)
                 {
-                    writeLog("", "Add Album Error: " + ex.Message, connString);
+                    WriteLog("", "Add Album Error: " + ex.Message, connString);
                     return false;
                 }
             }
             return rs;
+
             #endregion
         }
 
-        public static bool updateAlbum(Album album, string connString)
+        public static bool UpdateAlbum(Album album, string connString)
         {
             #region code
-            bool rs = false;
-            using (SqlConnection conn = new SqlConnection(connString))
+
+            bool rs;
+            using (var conn = new SqlConnection(connString))
             {
                 try
                 {
@@ -60,34 +67,40 @@ namespace SonyAlphaLibs.Services
                         cmd.CommandText = "sony_sp_update_album";
                         cmd.Parameters.AddWithValue("@id", album.Id);
                         cmd.Parameters.AddWithValue("@fullname", album.FullName);
-                        cmd.Parameters.AddWithValue("@albumCreator", String.IsNullOrEmpty(album.AlbumCreator) ? "admin" : album.AlbumCreator);
-                        cmd.Parameters.AddWithValue("@albumImage", String.IsNullOrEmpty(album.AlbumImage) ? "" : album.AlbumImage);
+                        cmd.Parameters.AddWithValue("@albumCreator",
+                            String.IsNullOrEmpty(album.AlbumCreator) ? "admin" : album.AlbumCreator);
+                        cmd.Parameters.AddWithValue("@albumImage",
+                            String.IsNullOrEmpty(album.AlbumImage) ? "" : album.AlbumImage);
                         cmd.Parameters.AddWithValue("@viewCount", album.ViewCount);
                         cmd.Parameters.AddWithValue("@albumType", album.AlbumType);
                         cmd.Parameters.AddWithValue("@albumCover", album.AlbumCover);
-                        SqlParameter returnVal = new SqlParameter("@returnVal", SqlDbType.Int);
-                        returnVal.Direction = ParameterDirection.Output;
+                        var returnVal = new SqlParameter("@returnVal", SqlDbType.Int)
+                        {
+                            Direction = ParameterDirection.Output
+                        };
                         cmd.Parameters.Add(returnVal);
 
                         cmd.ExecuteNonQuery();
-                        rs = ((int)cmd.Parameters["@returnVal"].Value != 0);
+                        rs = ((int) cmd.Parameters["@returnVal"].Value != 0);
                     }
                 }
                 catch (Exception ex)
                 {
-                    writeLog("", "Update Album Error: " + ex.Message, connString);
+                    WriteLog("", "Update Album Error: " + ex.Message, connString);
                     return false;
                 }
             }
             return rs;
+
             #endregion
         }
 
-        public static bool removeById(int id, string connString)
+        public static bool RemoveById(int id, string connString)
         {
             #region code
-            bool rs = false;
-            using (SqlConnection conn = new SqlConnection(connString))
+
+            bool rs;
+            using (var conn = new SqlConnection(connString))
             {
                 try
                 {
@@ -97,29 +110,33 @@ namespace SonyAlphaLibs.Services
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.CommandText = "sony_sp_delete_album_by_id";
                         cmd.Parameters.AddWithValue("@id", id);
-                        SqlParameter returnVal = new SqlParameter("@returnVal", SqlDbType.Int);
-                        returnVal.Direction = ParameterDirection.Output;
+                        var returnVal = new SqlParameter("@returnVal", SqlDbType.Int)
+                        {
+                            Direction = ParameterDirection.Output
+                        };
                         cmd.Parameters.Add(returnVal);
 
                         cmd.ExecuteNonQuery();
-                        rs = ((int)cmd.Parameters["@returnVal"].Value != 0);
+                        rs = ((int) cmd.Parameters["@returnVal"].Value != 0);
                     }
                 }
                 catch (Exception ex)
                 {
-                    writeLog("", "Delete Album Error: " + ex.Message, connString);
+                    WriteLog("", "Delete Album Error: " + ex.Message, connString);
                     return false;
                 }
             }
             return rs;
+
             #endregion
         }
 
-        public static List<Album> getListAll(string connString)
+        public static List<Album> GetListAll(string connString)
         {
             #region code
-            List<Album> lists = new List<Album>();
-            using (SqlConnection conn = new SqlConnection(connString))
+
+            var lists = new List<Album>();
+            using (var conn = new SqlConnection(connString))
             {
                 try
                 {
@@ -133,17 +150,22 @@ namespace SonyAlphaLibs.Services
                         {
                             while (reader.Read())
                             {
-                                Album album = new Album();
-                                album.Id = (int)reader["id"];
-                                album.FullName = reader["fullname"].ToString();
-                                album.AlbumCreator = reader["albumCreator"].ToString();
-                                album.AlbumImage = reader["albumImage"].ToString();
-                                album.ViewCount = (int)reader["viewCount"];
-                                album.AlbumType = String.IsNullOrEmpty(reader["albumType"].ToString()) ? 0 : (int)reader["albumType"];
-                                album.AlbumCover = reader["albumCover"].ToString();
-                                album.TotalPhoto = (int)reader["TotalPhoto"];
-                                album.Created = (DateTime)reader["created"];
-                                album.Updated = (DateTime)reader["updated"];
+                                var album = new Album
+                                {
+                                    Id = (int) reader["id"],
+                                    FullName = reader["fullname"].ToString(),
+                                    AlbumCreator = reader["albumCreator"].ToString(),
+                                    AlbumImage = reader["albumImage"].ToString(),
+                                    ViewCount = (int) reader["viewCount"],
+                                    AlbumType =
+                                        String.IsNullOrEmpty(reader["albumType"].ToString())
+                                            ? 0
+                                            : (int) reader["albumType"],
+                                    AlbumCover = reader["albumCover"].ToString(),
+                                    TotalPhoto = (int) reader["TotalPhoto"],
+                                    Created = (DateTime) reader["created"],
+                                    Updated = (DateTime) reader["updated"]
+                                };
                                 lists.Add(album);
                             }
                         }
@@ -151,19 +173,21 @@ namespace SonyAlphaLibs.Services
                 }
                 catch (Exception ex)
                 {
-                    writeLog("", "Get All Album Error: " + ex.Message, connString);
+                    WriteLog("", "Get All Album Error: " + ex.Message, connString);
                     return new List<Album>();
                 }
             }
             return lists;
+
             #endregion
         }
 
-        public static Album getById(int id, string connString)
+        public static Album GetById(int id, string connString)
         {
             #region code
-            Album album = new Album();
-            using (SqlConnection conn = new SqlConnection(connString))
+
+            var album = new Album();
+            using (var conn = new SqlConnection(connString))
             {
                 try
                 {
@@ -178,37 +202,41 @@ namespace SonyAlphaLibs.Services
                         {
                             while (reader.Read())
                             {
-                                album.Id = (int)reader["id"];
+                                album.Id = (int) reader["id"];
                                 album.FullName = reader["fullname"].ToString();
                                 album.AlbumCreator = reader["albumCreator"].ToString();
                                 album.AlbumImage = reader["albumImage"].ToString();
-                                album.ViewCount = (int)reader["viewCount"];
-                                album.AlbumType = String.IsNullOrEmpty(reader["albumType"].ToString()) ? 0 : (int)reader["albumType"];
+                                album.ViewCount = (int) reader["viewCount"];
+                                album.AlbumType = String.IsNullOrEmpty(reader["albumType"].ToString())
+                                    ? 0
+                                    : (int) reader["albumType"];
                                 album.AlbumCover = reader["albumCover"].ToString();
-                                album.TotalPhoto = (int)reader["TotalPhoto"];
-                                album.Created = (DateTime)reader["created"];
-                                album.Updated = (DateTime)reader["updated"];
+                                album.TotalPhoto = (int) reader["TotalPhoto"];
+                                album.Created = (DateTime) reader["created"];
+                                album.Updated = (DateTime) reader["updated"];
                             }
                         }
                     }
                 }
                 catch (Exception ex)
                 {
-                    writeLog("", "Get Album By Id Error: " + ex.Message, connString);
+                    WriteLog("", "Get Album By Id Error: " + ex.Message, connString);
                     return new Album();
                 }
             }
             return album;
+
             #endregion
         }
 
-        public static List<Photo> getPhotoOfAlbum(string listImageIds, string connString)
+        public static List<Photo> GetPhotoOfAlbum(string listImageIds, string connString)
         {
             #region code
-            List<Photo> lists = new List<Photo>();
+
+            var lists = new List<Photo>();
             if (!String.IsNullOrEmpty(listImageIds))
             {
-                using (SqlConnection conn = new SqlConnection(connString))
+                using (var conn = new SqlConnection(connString))
                 {
                     try
                     {
@@ -223,30 +251,34 @@ namespace SonyAlphaLibs.Services
                             {
                                 while (reader.Read())
                                 {
-                                    Photo photo = new Photo();
-                                    photo.Id = (int)reader["id"];
-                                    photo.Title = reader["title"].ToString();
-                                    photo.FileName = reader["filename"].ToString();
-                                    photo.Description = reader["description"].ToString();
-                                    photo.RedirectUrl = reader["redirectUrl"].ToString();
-                                    photo.Status = reader["status"].ToString().Equals("1") || reader["status"].ToString().Equals("True") ? true : false;
-                                    photo.CameraName = reader["cameraName"].ToString();
-                                    photo.CameraModel = reader["cameraModel"].ToString();
-                                    photo.FStop = reader["fStop"].ToString();
-                                    photo.ExposureTime = reader["exposureTime"].ToString();
-                                    photo.ISO = reader["iso"].ToString();
-                                    photo.ExposureBlas = reader["exposureBlas"].ToString();
-                                    photo.FocalLengh = reader["focalLengh"].ToString();
-                                    photo.MaxAperture = reader["maxAperture"].ToString();
-                                    photo.MateringMode = reader["materingMode"].ToString();
-                                    photo.SubjectDistance = reader["subjectDistance"].ToString();
-                                    photo.FlashMode = reader["flashMode"].ToString();
-                                    photo.FlashEnergy = reader["flashEnergy"].ToString();
-                                    photo.ViewCount = (int)reader["viewCount"];
-                                    photo.VoteCount = (int)reader["voteCount"];
-                                    photo.LikeCount = (int)reader["likeCount"];
-                                    photo.Created = (DateTime)reader["created"];
-                                    photo.Updated = (DateTime)reader["updated"];
+                                    var photo = new Photo
+                                    {
+                                        Id = (int) reader["id"],
+                                        Title = reader["title"].ToString(),
+                                        FileName = reader["filename"].ToString(),
+                                        Description = reader["description"].ToString(),
+                                        RedirectUrl = reader["redirectUrl"].ToString(),
+                                        Status =
+                                            reader["status"].ToString().Equals("1") ||
+                                            reader["status"].ToString().Equals("True"),
+                                        CameraName = reader["cameraName"].ToString(),
+                                        CameraModel = reader["cameraModel"].ToString(),
+                                        FStop = reader["fStop"].ToString(),
+                                        ExposureTime = reader["exposureTime"].ToString(),
+                                        ISO = reader["iso"].ToString(),
+                                        ExposureBlas = reader["exposureBlas"].ToString(),
+                                        FocalLengh = reader["focalLengh"].ToString(),
+                                        MaxAperture = reader["maxAperture"].ToString(),
+                                        MateringMode = reader["materingMode"].ToString(),
+                                        SubjectDistance = reader["subjectDistance"].ToString(),
+                                        FlashMode = reader["flashMode"].ToString(),
+                                        FlashEnergy = reader["flashEnergy"].ToString(),
+                                        ViewCount = (int) reader["viewCount"],
+                                        VoteCount = (int) reader["voteCount"],
+                                        LikeCount = (int) reader["likeCount"],
+                                        Created = (DateTime) reader["created"],
+                                        Updated = (DateTime) reader["updated"]
+                                    };
                                     lists.Add(photo);
                                 }
                             }
@@ -254,37 +286,36 @@ namespace SonyAlphaLibs.Services
                     }
                     catch (Exception ex)
                     {
-                        writeLog("", "Get Photo Of Album Error: " + ex.Message, connString);
+                        WriteLog("", "Get Photo Of Album Error: " + ex.Message, connString);
                         return new List<Photo>();
                     }
                 }
             }
-            return lists; 
+            return lists;
+
             #endregion
         }
 
-        public static bool setPhoto2Album(Photo photo, string connString)
-        {
-            throw new NotImplementedException();
-        }
+        //public static bool SetPhoto2Album(Photo photo, string connString)
+        //{
+        //    throw new NotImplementedException();
+        //}
 
-        public static bool setPhoto2Album(int albumId, List<Photo> listPhotos, string connString)
+        public static bool SetPhoto2Album(int albumId, List<Photo> listPhotos, string connString)
         {
             #region code
-            bool rs = false;
+
+            bool rs;
             string photoIds = "";
             if (listPhotos != null && listPhotos.Count > 0)
             {
-                foreach (Photo photo in listPhotos)
-                {
-                    photoIds += photo.Id + ",";
-                }
+                photoIds = listPhotos.Aggregate(photoIds, (current, photo) => current + (photo.Id + ","));
             }
             if (photoIds.EndsWith(","))
             {
                 photoIds = photoIds.Substring(0, photoIds.Length - 1);
             }
-            using (SqlConnection conn = new SqlConnection(connString))
+            using (var conn = new SqlConnection(connString))
             {
                 try
                 {
@@ -295,29 +326,33 @@ namespace SonyAlphaLibs.Services
                         cmd.CommandText = "sony_sp_update_album_add_album_image";
                         cmd.Parameters.AddWithValue("@albumId", albumId);
                         cmd.Parameters.AddWithValue("@albumImage", photoIds);
-                        SqlParameter returnVal = new SqlParameter("@returnVal", SqlDbType.Int);
-                        returnVal.Direction = ParameterDirection.Output;
+                        var returnVal = new SqlParameter("@returnVal", SqlDbType.Int)
+                        {
+                            Direction = ParameterDirection.Output
+                        };
                         cmd.Parameters.Add(returnVal);
 
                         cmd.ExecuteNonQuery();
-                        rs = ((int)cmd.Parameters["@returnVal"].Value != 0);
+                        rs = ((int) cmd.Parameters["@returnVal"].Value != 0);
                     }
                 }
                 catch (Exception ex)
                 {
-                    writeLog("", "Update Set Photo to Album Error: " + ex.Message, connString);
+                    WriteLog("", "Update Set Photo to Album Error: " + ex.Message, connString);
                     return false;
                 }
             }
             return rs;
+
             #endregion
         }
 
-        public static bool setPhoto2Album(int albumId, int photoId, string connString)
+        public static bool SetPhoto2Album(int albumId, int photoId, string connString)
         {
             #region code
-            bool rs = false;
-            using (SqlConnection conn = new SqlConnection(connString))
+
+            bool rs;
+            using (var conn = new SqlConnection(connString))
             {
                 try
                 {
@@ -328,41 +363,42 @@ namespace SonyAlphaLibs.Services
                         cmd.CommandText = "sony_sp_update_album_add_one_photo";
                         cmd.Parameters.AddWithValue("@albumId", albumId);
                         cmd.Parameters.AddWithValue("@photoId", photoId);
-                        SqlParameter returnVal = new SqlParameter("@returnVal", SqlDbType.Int);
-                        returnVal.Direction = ParameterDirection.Output;
+                        var returnVal = new SqlParameter("@returnVal", SqlDbType.Int)
+                        {
+                            Direction = ParameterDirection.Output
+                        };
                         cmd.Parameters.Add(returnVal);
 
                         cmd.ExecuteNonQuery();
-                        rs = ((int)cmd.Parameters["@returnVal"].Value != 0);
+                        rs = ((int) cmd.Parameters["@returnVal"].Value != 0);
                     }
                 }
                 catch (Exception ex)
                 {
-                    writeLog("", "Update Set Photo to Album Error: " + ex.Message, connString);
+                    WriteLog("", "Update Set Photo to Album Error: " + ex.Message, connString);
                     return false;
                 }
             }
             return rs;
+
             #endregion
         }
 
-        public static bool setPhoto2Album(int albumId, List<int> listPhotos, string connString)
+        public static bool SetPhoto2Album(int albumId, List<int> listPhotos, string connString)
         {
             #region code
-            bool rs = false;
+
+            bool rs;
             string photoIds = "";
             if (listPhotos != null && listPhotos.Count > 0)
             {
-                foreach (int photo in listPhotos)
-                {
-                    photoIds += photo + ",";
-                }
+                photoIds = listPhotos.Aggregate(photoIds, (current, photo) => current + (photo + ","));
             }
             if (photoIds.EndsWith(","))
             {
                 photoIds = photoIds.Substring(0, photoIds.Length - 1);
             }
-            using (SqlConnection conn = new SqlConnection(connString))
+            using (var conn = new SqlConnection(connString))
             {
                 try
                 {
@@ -373,29 +409,33 @@ namespace SonyAlphaLibs.Services
                         cmd.CommandText = "sony_sp_update_album_add_album_image";
                         cmd.Parameters.AddWithValue("@albumId", albumId);
                         cmd.Parameters.AddWithValue("@albumImage", photoIds);
-                        SqlParameter returnVal = new SqlParameter("@returnVal", SqlDbType.Int);
-                        returnVal.Direction = ParameterDirection.Output;
+                        var returnVal = new SqlParameter("@returnVal", SqlDbType.Int)
+                        {
+                            Direction = ParameterDirection.Output
+                        };
                         cmd.Parameters.Add(returnVal);
 
                         cmd.ExecuteNonQuery();
-                        rs = ((int)cmd.Parameters["@returnVal"].Value != 0);
+                        rs = ((int) cmd.Parameters["@returnVal"].Value != 0);
                     }
                 }
                 catch (Exception ex)
                 {
-                    writeLog("", "Update Set Photo to Album Error: " + ex.Message, connString);
+                    WriteLog("", "Update Set Photo to Album Error: " + ex.Message, connString);
                     return false;
                 }
             }
             return rs;
+
             #endregion
         }
 
-        public static bool setComment2Album(AlbumComment albumComment, string connString)
+        public static bool SetComment2Album(AlbumComment albumComment, string connString)
         {
             #region code
-            bool rs = false;
-            using (SqlConnection conn = new SqlConnection(connString))
+
+            bool rs;
+            using (var conn = new SqlConnection(connString))
             {
                 try
                 {
@@ -404,34 +444,39 @@ namespace SonyAlphaLibs.Services
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.CommandText = "sony_sp_add_album_comment";
-                        cmd.Parameters.AddWithValue("@username", String.IsNullOrEmpty(albumComment.UserName) ? "admin" : albumComment.UserName);
+                        cmd.Parameters.AddWithValue("@username",
+                            String.IsNullOrEmpty(albumComment.UserName) ? "admin" : albumComment.UserName);
                         cmd.Parameters.AddWithValue("@albumId", albumComment.AlbumId);
                         cmd.Parameters.AddWithValue("@photoId", albumComment.PhotoId);
                         cmd.Parameters.AddWithValue("@status", albumComment.Status ? 1 : 0);
                         cmd.Parameters.AddWithValue("@comment", albumComment.Comment);
-                        SqlParameter returnVal = new SqlParameter("@returnVal", SqlDbType.Int);
-                        returnVal.Direction = ParameterDirection.Output;
+                        var returnVal = new SqlParameter("@returnVal", SqlDbType.Int)
+                        {
+                            Direction = ParameterDirection.Output
+                        };
                         cmd.Parameters.Add(returnVal);
 
                         cmd.ExecuteNonQuery();
-                        rs = ((int)cmd.Parameters["@returnVal"].Value != 0);
+                        rs = ((int) cmd.Parameters["@returnVal"].Value != 0);
                     }
                 }
                 catch (Exception ex)
                 {
-                    writeLog("", "Add Album Comment Error: " + ex.Message, connString);
+                    WriteLog("", "Add Album Comment Error: " + ex.Message, connString);
                     return false;
                 }
             }
             return rs;
+
             #endregion
         }
 
-        public static List<AlbumComment> getListCommentOfAlbum(int albumId, int photoId, string connString)
+        public static List<AlbumComment> GetListCommentOfAlbum(int albumId, int photoId, string connString)
         {
             #region code
-            List<AlbumComment> lists = new List<AlbumComment>();
-            using (SqlConnection conn = new SqlConnection(connString))
+
+            var lists = new List<AlbumComment>();
+            using (var conn = new SqlConnection(connString))
             {
                 try
                 {
@@ -447,14 +492,18 @@ namespace SonyAlphaLibs.Services
                         {
                             while (reader.Read())
                             {
-                                AlbumComment albumComment = new AlbumComment();
-                                albumComment.Id = (int)reader["id"];
-                                albumComment.UserName = reader["username"].ToString();
-                                albumComment.AlbumId = (int)reader["albumId"];
-                                albumComment.PhotoId = (int)reader["photoId"];
-                                albumComment.Status = reader["status"].ToString().Equals("1") || reader["status"].ToString().Equals("True");
-                                albumComment.Created = (DateTime)reader["created"];
-                                albumComment.Comment = reader["comment"].ToString();
+                                var albumComment = new AlbumComment
+                                {
+                                    Id = (int) reader["id"],
+                                    UserName = reader["username"].ToString(),
+                                    AlbumId = (int) reader["albumId"],
+                                    PhotoId = (int) reader["photoId"],
+                                    Status =
+                                        reader["status"].ToString().Equals("1") ||
+                                        reader["status"].ToString().Equals("True"),
+                                    Created = (DateTime) reader["created"],
+                                    Comment = reader["comment"].ToString()
+                                };
                                 lists.Add(albumComment);
                             }
                         }
@@ -462,18 +511,23 @@ namespace SonyAlphaLibs.Services
                 }
                 catch (Exception ex)
                 {
-                    writeLog("", String.Format("Get Album Comment Error: albumId={0}, photoId={1}, CauseBy:{2}", albumId, photoId, ex.Message), connString);
+                    WriteLog("",
+                        String.Format("Get Album Comment Error: albumId={0}, photoId={1}, CauseBy:{2}", albumId, photoId,
+                            ex.Message), connString);
                     return new List<AlbumComment>();
                 }
             }
             return lists;
+
             #endregion
         }
-        public static List<AlbumComment> getListCommentOfAlbum(int photoId, string connString)
+
+        public static List<AlbumComment> GetListCommentOfAlbum(int photoId, string connString)
         {
             #region code
-            List<AlbumComment> lists = new List<AlbumComment>();
-            using (SqlConnection conn = new SqlConnection(connString))
+
+            var lists = new List<AlbumComment>();
+            using (var conn = new SqlConnection(connString))
             {
                 try
                 {
@@ -488,14 +542,18 @@ namespace SonyAlphaLibs.Services
                         {
                             while (reader.Read())
                             {
-                                AlbumComment albumComment = new AlbumComment();
-                                albumComment.Id = (int)reader["id"];
-                                albumComment.UserName = reader["username"].ToString();
-                                albumComment.AlbumId = (int)reader["albumId"];
-                                albumComment.PhotoId = (int)reader["photoId"];
-                                albumComment.Status = reader["status"].ToString().Equals("1") || reader["status"].ToString().Equals("True");
-                                albumComment.Created = (DateTime)reader["created"];
-                                albumComment.Comment = reader["comment"].ToString();
+                                var albumComment = new AlbumComment
+                                {
+                                    Id = (int) reader["id"],
+                                    UserName = reader["username"].ToString(),
+                                    AlbumId = (int) reader["albumId"],
+                                    PhotoId = (int) reader["photoId"],
+                                    Status =
+                                        reader["status"].ToString().Equals("1") ||
+                                        reader["status"].ToString().Equals("True"),
+                                    Created = (DateTime) reader["created"],
+                                    Comment = reader["comment"].ToString()
+                                };
                                 lists.Add(albumComment);
                             }
                         }
@@ -503,18 +561,22 @@ namespace SonyAlphaLibs.Services
                 }
                 catch (Exception ex)
                 {
-                    writeLog("", String.Format("Get Album Comment Error: photoId={1}, CauseBy:{2}", photoId, ex.Message), connString);
+                    WriteLog("", String.Format("Get Album Comment Error: photoId={0}, CauseBy:{1}", photoId, ex.Message),
+                        connString);
                     return new List<AlbumComment>();
                 }
             }
             return lists;
+
             #endregion
         }
-        public static int getViewCount(int albumId, string connString)
+
+        public static int GetViewCount(int albumId, string connString)
         {
             #region code
+
             int rs = 0;
-            using (SqlConnection conn = new SqlConnection(connString))
+            using (var conn = new SqlConnection(connString))
             {
                 try
                 {
@@ -524,35 +586,38 @@ namespace SonyAlphaLibs.Services
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.CommandText = "sony_sp_get_album_view_count";
                         cmd.Parameters.AddWithValue("@albumId", albumId);
-                        SqlParameter returnVal = new SqlParameter("@returnVal", SqlDbType.Int);
-                        returnVal.Direction = ParameterDirection.Output;
+                        var returnVal = new SqlParameter("@returnVal", SqlDbType.Int)
+                        {
+                            Direction = ParameterDirection.Output
+                        };
                         cmd.Parameters.Add(returnVal);
 
                         cmd.ExecuteNonQuery();
-                        rs = (int)cmd.Parameters["@returnVal"].Value;
+                        rs = (int) cmd.Parameters["@returnVal"].Value;
                     }
                 }
                 catch (Exception ex)
                 {
-                    writeLog("", "Update Album Error: " + ex.Message, connString);
+                    WriteLog("", "Update Album Error: " + ex.Message, connString);
                     return rs;
                 }
             }
             return rs;
+
             #endregion
         }
 
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="albumId"></param>
         /// <param name="connString"></param>
         /// <returns>return new view count (view count after updating)</returns>
-        public static int increaseView(int albumId, string connString)
+        public static int IncreaseView(int albumId, string connString)
         {
             #region code
+
             int rs = 0;
-            using (SqlConnection conn = new SqlConnection(connString))
+            using (var conn = new SqlConnection(connString))
             {
                 try
                 {
@@ -562,29 +627,33 @@ namespace SonyAlphaLibs.Services
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.CommandText = "sony_sp_increase_album_view_count";
                         cmd.Parameters.AddWithValue("@albumId", albumId);
-                        SqlParameter returnVal = new SqlParameter("@returnVal", SqlDbType.Int);
-                        returnVal.Direction = ParameterDirection.Output;
+                        var returnVal = new SqlParameter("@returnVal", SqlDbType.Int)
+                        {
+                            Direction = ParameterDirection.Output
+                        };
                         cmd.Parameters.Add(returnVal);
 
                         cmd.ExecuteNonQuery();
-                        rs = (int)cmd.Parameters["@returnVal"].Value;
+                        rs = (int) cmd.Parameters["@returnVal"].Value;
                     }
                 }
                 catch (Exception ex)
                 {
-                    writeLog("", "Update Album Error: " + ex.Message, connString);
+                    WriteLog("", "Update Album Error: " + ex.Message, connString);
                     return rs;
                 }
             }
             return rs;
+
             #endregion
         }
 
-        public static List<Album> getListAllNormalAlbum(string connString)
+        public static List<Album> GetListAllNormalAlbum(string connString)
         {
             #region code
-            List<Album> lists = new List<Album>();
-            using (SqlConnection conn = new SqlConnection(connString))
+
+            var lists = new List<Album>();
+            using (var conn = new SqlConnection(connString))
             {
                 try
                 {
@@ -598,17 +667,19 @@ namespace SonyAlphaLibs.Services
                         {
                             while (reader.Read())
                             {
-                                Album album = new Album();
-                                album.Id = (int)reader["id"];
-                                album.FullName = reader["fullname"].ToString();
-                                album.AlbumCreator = reader["albumCreator"].ToString();
-                                album.AlbumImage = reader["albumImage"].ToString();
-                                album.ViewCount = (int)reader["viewCount"];
-                                album.AlbumType = (int)reader["albumType"];
-                                album.AlbumCover = reader["albumCover"].ToString();
-                                album.TotalPhoto = (int)reader["TotalPhoto"];
-                                album.Created = (DateTime)reader["created"];
-                                album.Updated = (DateTime)reader["updated"];
+                                var album = new Album
+                                {
+                                    Id = (int) reader["id"],
+                                    FullName = reader["fullname"].ToString(),
+                                    AlbumCreator = reader["albumCreator"].ToString(),
+                                    AlbumImage = reader["albumImage"].ToString(),
+                                    ViewCount = (int) reader["viewCount"],
+                                    AlbumType = (int) reader["albumType"],
+                                    AlbumCover = reader["albumCover"].ToString(),
+                                    TotalPhoto = (int) reader["TotalPhoto"],
+                                    Created = (DateTime) reader["created"],
+                                    Updated = (DateTime) reader["updated"]
+                                };
                                 lists.Add(album);
                             }
                         }
@@ -616,19 +687,21 @@ namespace SonyAlphaLibs.Services
                 }
                 catch (Exception ex)
                 {
-                    writeLog("", "Get All Album Error: " + ex.Message, connString);
+                    WriteLog("", "Get All Album Error: " + ex.Message, connString);
                     return new List<Album>();
                 }
             }
             return lists;
+
             #endregion
         }
 
-        public static List<Album> getListAllAlbumForCenter(string connString)
+        public static List<Album> GetListAllAlbumForCenter(string connString)
         {
             #region code
-            List<Album> lists = new List<Album>();
-            using (SqlConnection conn = new SqlConnection(connString))
+
+            var lists = new List<Album>();
+            using (var conn = new SqlConnection(connString))
             {
                 try
                 {
@@ -642,16 +715,18 @@ namespace SonyAlphaLibs.Services
                         {
                             while (reader.Read())
                             {
-                                Album album = new Album();
-                                album.Id = (int)reader["id"];
-                                album.FullName = reader["fullname"].ToString();
-                                album.AlbumCreator = reader["albumCreator"].ToString();
-                                album.AlbumImage = reader["albumImage"].ToString();
-                                album.ViewCount = (int)reader["viewCount"];
-                                album.AlbumType = (int)reader["albumType"];
-                                album.AlbumCover = reader["albumCover"].ToString();
-                                album.Created = (DateTime)reader["created"];
-                                album.Updated = (DateTime)reader["updated"];
+                                var album = new Album
+                                {
+                                    Id = (int) reader["id"],
+                                    FullName = reader["fullname"].ToString(),
+                                    AlbumCreator = reader["albumCreator"].ToString(),
+                                    AlbumImage = reader["albumImage"].ToString(),
+                                    ViewCount = (int) reader["viewCount"],
+                                    AlbumType = (int) reader["albumType"],
+                                    AlbumCover = reader["albumCover"].ToString(),
+                                    Created = (DateTime) reader["created"],
+                                    Updated = (DateTime) reader["updated"]
+                                };
                                 lists.Add(album);
                             }
                         }
@@ -659,19 +734,21 @@ namespace SonyAlphaLibs.Services
                 }
                 catch (Exception ex)
                 {
-                    writeLog("", "Get All Album Error: " + ex.Message, connString);
+                    WriteLog("", "Get All Album Error: " + ex.Message, connString);
                     return new List<Album>();
                 }
             }
             return lists;
+
             #endregion
         }
 
-        public static List<Album> getListAllAlbumForProductCategory(string connString)
+        public static List<Album> GetListAllAlbumForProductCategory(string connString)
         {
             #region code
-            List<Album> lists = new List<Album>();
-            using (SqlConnection conn = new SqlConnection(connString))
+
+            var lists = new List<Album>();
+            using (var conn = new SqlConnection(connString))
             {
                 try
                 {
@@ -685,16 +762,18 @@ namespace SonyAlphaLibs.Services
                         {
                             while (reader.Read())
                             {
-                                Album album = new Album();
-                                album.Id = (int)reader["id"];
-                                album.FullName = reader["fullname"].ToString();
-                                album.AlbumCreator = reader["albumCreator"].ToString();
-                                album.AlbumImage = reader["albumImage"].ToString();
-                                album.ViewCount = (int)reader["viewCount"];
-                                album.AlbumType = (int)reader["albumType"];
-                                album.AlbumCover = reader["albumCover"].ToString();
-                                album.Created = (DateTime)reader["created"];
-                                album.Updated = (DateTime)reader["updated"];
+                                var album = new Album
+                                {
+                                    Id = (int) reader["id"],
+                                    FullName = reader["fullname"].ToString(),
+                                    AlbumCreator = reader["albumCreator"].ToString(),
+                                    AlbumImage = reader["albumImage"].ToString(),
+                                    ViewCount = (int) reader["viewCount"],
+                                    AlbumType = (int) reader["albumType"],
+                                    AlbumCover = reader["albumCover"].ToString(),
+                                    Created = (DateTime) reader["created"],
+                                    Updated = (DateTime) reader["updated"]
+                                };
                                 lists.Add(album);
                             }
                         }
@@ -702,19 +781,21 @@ namespace SonyAlphaLibs.Services
                 }
                 catch (Exception ex)
                 {
-                    writeLog("", "Get All Album Error: " + ex.Message, connString);
+                    WriteLog("", "Get All Album Error: " + ex.Message, connString);
                     return new List<Album>();
                 }
             }
             return lists;
+
             #endregion
         }
 
-        public static bool removeCommentById(int id, string connString)
+        public static bool RemoveCommentById(int id, string connString)
         {
             #region code
-            bool rs = false;
-            using (SqlConnection conn = new SqlConnection(connString))
+
+            bool rs;
+            using (var conn = new SqlConnection(connString))
             {
                 try
                 {
@@ -724,29 +805,33 @@ namespace SonyAlphaLibs.Services
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.CommandText = "sony_sp_delete_album_comment_by_id";
                         cmd.Parameters.AddWithValue("@id", id);
-                        SqlParameter returnVal = new SqlParameter("@returnVal", SqlDbType.Int);
-                        returnVal.Direction = ParameterDirection.Output;
+                        var returnVal = new SqlParameter("@returnVal", SqlDbType.Int)
+                        {
+                            Direction = ParameterDirection.Output
+                        };
                         cmd.Parameters.Add(returnVal);
 
                         cmd.ExecuteNonQuery();
-                        rs = ((int)cmd.Parameters["@returnVal"].Value != 0);
+                        rs = ((int) cmd.Parameters["@returnVal"].Value != 0);
                     }
                 }
                 catch (Exception ex)
                 {
-                    writeLog("", "Delete Album Comment Error: " + ex.Message, connString);
+                    WriteLog("", "Delete Album Comment Error: " + ex.Message, connString);
                     return false;
                 }
             }
             return rs;
+
             #endregion
         }
 
-        public static bool updateAlbumComment(int id, string comment, string connString)
+        public static bool UpdateAlbumComment(int id, string comment, string connString)
         {
             #region code
-            bool rs = false;
-            using (SqlConnection conn = new SqlConnection(connString))
+
+            bool rs;
+            using (var conn = new SqlConnection(connString))
             {
                 try
                 {
@@ -757,29 +842,33 @@ namespace SonyAlphaLibs.Services
                         cmd.CommandText = "sony_sp_update_album_comment";
                         cmd.Parameters.AddWithValue("@id", id);
                         cmd.Parameters.AddWithValue("@comment", comment);
-                        SqlParameter returnVal = new SqlParameter("@returnVal", SqlDbType.Int);
-                        returnVal.Direction = ParameterDirection.Output;
+                        var returnVal = new SqlParameter("@returnVal", SqlDbType.Int)
+                        {
+                            Direction = ParameterDirection.Output
+                        };
                         cmd.Parameters.Add(returnVal);
 
                         cmd.ExecuteNonQuery();
-                        rs = ((int)cmd.Parameters["@returnVal"].Value != 0);
+                        rs = ((int) cmd.Parameters["@returnVal"].Value != 0);
                     }
                 }
                 catch (Exception ex)
                 {
-                    writeLog("", "Update Album Comment Error: " + ex.Message, connString);
+                    WriteLog("", "Update Album Comment Error: " + ex.Message, connString);
                     return false;
                 }
             }
             return rs;
+
             #endregion
         }
 
-        public static int getTotalPhotoOfAlbum(int albumId, string connString)
+        public static int GetTotalPhotoOfAlbum(int albumId, string connString)
         {
             #region code
+
             int rs = 0;
-            using (SqlConnection conn = new SqlConnection(connString))
+            using (var conn = new SqlConnection(connString))
             {
                 try
                 {
@@ -789,54 +878,65 @@ namespace SonyAlphaLibs.Services
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.CommandText = "sony_sp_get_album_photo";
                         cmd.Parameters.AddWithValue("@albumId", albumId);
-                        SqlParameter returnVal = new SqlParameter("@returnVal", SqlDbType.Int);
-                        returnVal.Direction = ParameterDirection.Output;
+                        var returnVal = new SqlParameter("@returnVal", SqlDbType.Int)
+                        {
+                            Direction = ParameterDirection.Output
+                        };
                         cmd.Parameters.Add(returnVal);
 
                         cmd.ExecuteNonQuery();
-                        rs = (int)cmd.Parameters["@returnVal"].Value;
+                        rs = (int) cmd.Parameters["@returnVal"].Value;
                     }
                 }
                 catch (Exception ex)
                 {
-                    writeLog("", "Get Album Error: " + ex.Message, connString);
+                    WriteLog("", "Get Album Error: " + ex.Message, connString);
                     return rs;
                 }
             }
             return rs;
+
             #endregion
         }
+
         /// <summary>
-        /// Get list all album comment
+        ///     Get list all album comment
         /// </summary>
         /// <param name="connString"></param>
         /// <returns></returns>
-        public static List<AlbumComment> getListComment(string connString)
+        public static List<AlbumComment> GetListComment(string connString)
         {
             #region code
-            List<AlbumComment> lists = new List<AlbumComment>();
-            using (SqlConnection conn = new SqlConnection(connString))
+
+            var lists = new List<AlbumComment>();
+            using (var conn = new SqlConnection(connString))
             {
                 try
                 {
                     conn.Open();
-                    using (SqlCommand cmd = conn.CreateCommand())
+                    using (var cmd = conn.CreateCommand())
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.CommandText = "sony_sp_get_all_album_comment";
 
-                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        using (var reader = cmd.ExecuteReader())
                         {
                             while (reader.Read())
                             {
-                                AlbumComment albumComment = new AlbumComment();
-                                albumComment.Id = (int)reader["id"];
-                                albumComment.AlbumId = String.IsNullOrEmpty(reader["albumId"].ToString()) ? 0 : (int)reader["albumId"];
-                                albumComment.PhotoId = String.IsNullOrEmpty(reader["photoId"].ToString()) ? 0 : (int)reader["photoId"];
-                                albumComment.Comment = reader["comment"].ToString();
-                                albumComment.Status = reader["status"].ToString().Equals("1") || reader["status"].ToString().Equals("True");
-                                albumComment.UserName = reader["username"].ToString();
-                                albumComment.Created = (DateTime)reader["created"];
+                                var albumComment = new AlbumComment
+                                {
+                                    Id = (int) reader["id"],
+                                    AlbumId =
+                                        String.IsNullOrEmpty(reader["albumId"].ToString()) ? 0 : (int) reader["albumId"],
+                                    PhotoId =
+                                        String.IsNullOrEmpty(reader["photoId"].ToString()) ? 0 : (int) reader["photoId"],
+                                    Comment = reader["comment"].ToString(),
+                                    Status =
+                                        reader["status"].ToString().Equals("1") ||
+                                        reader["status"].ToString().Equals("True"),
+                                    UserName = reader["username"].ToString(),
+                                    Created = (DateTime) reader["created"]
+                                };
                                 lists.Add(albumComment);
                             }
                         }
@@ -844,37 +944,44 @@ namespace SonyAlphaLibs.Services
                 }
                 catch (Exception ex)
                 {
-                    writeLog("", "Get All AlbumComment Error: " + ex.Message, connString);
+                    WriteLog("", "Get All AlbumComment Error: " + ex.Message, connString);
                     return new List<AlbumComment>();
                 }
             }
             return lists;
+
             #endregion
         }
 
-        public static AlbumComment getCommentById(int commentId, string connString)
+        public static AlbumComment GetCommentById(int commentId, string connString)
         {
             #region code
-            AlbumComment rs = new AlbumComment();
-            using (SqlConnection conn = new SqlConnection(connString))
+
+            var rs = new AlbumComment();
+            using (var conn = new SqlConnection(connString))
             {
                 try
                 {
                     conn.Open();
-                    using (SqlCommand cmd = conn.CreateCommand())
+                    using (var cmd = conn.CreateCommand())
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.CommandText = "sony_sp_get_album_comment_by_id";
                         cmd.Parameters.AddWithValue("@id", commentId);
 
-                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        using (var reader = cmd.ExecuteReader())
                         {
                             while (reader.Read())
                             {
-                                rs.AlbumId = String.IsNullOrEmpty(reader["albumId"].ToString()) ? 0 : (int)reader["albumId"];
-                                rs.PhotoId = String.IsNullOrEmpty(reader["photoId"].ToString()) ? 0 : (int)reader["photoId"];
+                                rs.AlbumId = String.IsNullOrEmpty(reader["albumId"].ToString())
+                                    ? 0
+                                    : (int) reader["albumId"];
+                                rs.PhotoId = String.IsNullOrEmpty(reader["photoId"].ToString())
+                                    ? 0
+                                    : (int) reader["photoId"];
                                 rs.Comment = reader["comment"].ToString();
-                                rs.Status = reader["status"].ToString().Equals("1") || reader["status"].ToString().Equals("True");
+                                rs.Status = reader["status"].ToString().Equals("1") ||
+                                            reader["status"].ToString().Equals("True");
                                 rs.UserName = reader["username"].ToString();
                             }
                         }
@@ -882,11 +989,12 @@ namespace SonyAlphaLibs.Services
                 }
                 catch (Exception ex)
                 {
-                    writeLog("", "Get Album Comment Error: " + ex.Message, connString);
+                    WriteLog("", "Get Album Comment Error: " + ex.Message, connString);
                     return new AlbumComment();
                 }
             }
             return rs;
+
             #endregion
         }
     }

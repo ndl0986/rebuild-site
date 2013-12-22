@@ -72,46 +72,46 @@ namespace SonyAlphaLibs
         #region base method
         public bool add(String connString)
         {
-            return AlbumServices.addAlbum(this, connString);
+            return AlbumServices.AddAlbum(this, connString);
         }
 
         public bool add()
         {
-            return AlbumServices.addAlbum(this, base.ConnString);
+            return AlbumServices.AddAlbum(this, base.ConnString);
         }
 
         public bool update(String connString)
         {
-            return AlbumServices.updateAlbum(this, connString);
+            return AlbumServices.UpdateAlbum(this, connString);
         }
 
         public bool removeById(String connString)
         {
-            return AlbumServices.removeById(base.Id, connString);
+            return AlbumServices.RemoveById(base.Id, connString);
         }
 
         public List<Album> getListAll(String connString)
         {
-            return AlbumServices.getListAll(connString);
+            return AlbumServices.GetListAll(connString);
         }
 
         public List<Album> getListNormal(String connString) {
-            return AlbumServices.getListAllNormalAlbum(connString);
+            return AlbumServices.GetListAllNormalAlbum(connString);
         }
 
         public List<Album> getListTypeCenter(String connString) {
-            return AlbumServices.getListAllAlbumForCenter(connString);
+            return AlbumServices.GetListAllAlbumForCenter(connString);
         }
 
         public List<Album> getListTypeProduct(String connString)
         {
-            return AlbumServices.getListAllAlbumForProductCategory(connString);
+            return AlbumServices.GetListAllAlbumForProductCategory(connString);
         }
 
         public Album getById(String connString)
         {
-            Album album = AlbumServices.getById(base.Id, connString);
-            album.ListPhotos = AlbumServices.getPhotoOfAlbum(album.AlbumImage, connString);
+            Album album = AlbumServices.GetById(base.Id, connString);
+            album.ListPhotos = AlbumServices.GetPhotoOfAlbum(album.AlbumImage, connString);
             return album;
         }
         #endregion
@@ -119,7 +119,7 @@ namespace SonyAlphaLibs
         #region ext method
         public List<Photo> getPhotoOfAlbum(String connString)
         {
-            return AlbumServices.getPhotoOfAlbum(this.albumImage, connString);
+            return AlbumServices.GetPhotoOfAlbum(this.albumImage, connString);
         }
 
         public bool setPhoto2Album(Photo photo, String connString)
@@ -129,37 +129,37 @@ namespace SonyAlphaLibs
 
         public bool setPhoto2Album(List<Photo> listPhotos, String connString)
         {
-            return AlbumServices.setPhoto2Album(base.Id, listPhotos, connString);
+            return AlbumServices.SetPhoto2Album(base.Id, listPhotos, connString);
         }
 
         private bool setPhoto2Album(int albumId, int photoId, String connString)
         {
-            return AlbumServices.setPhoto2Album(albumId, photoId, connString);
+            return AlbumServices.SetPhoto2Album(albumId, photoId, connString);
         }
 
         public bool setComment2AlbumPhoto(AlbumComment albumComment, String connString)
         {
-            return AlbumServices.setComment2Album(albumComment, connString);
+            return AlbumServices.SetComment2Album(albumComment, connString);
         }
 
         public List<AlbumComment> getCommentOfAlbumPhoto(int photoId, String connString)
         {
-            return AlbumServices.getListCommentOfAlbum(base.Id, photoId, connString);
+            return AlbumServices.GetListCommentOfAlbum(base.Id, photoId, connString);
         }
 
         public int getViewCount(String connString)
         {
-            return AlbumServices.getViewCount(base.Id, connString);
+            return AlbumServices.GetViewCount(base.Id, connString);
         }
 
         public int increaseView(String connString)
         {
-            return AlbumServices.increaseView(base.Id, connString);
+            return AlbumServices.IncreaseView(base.Id, connString);
         }
 
         public int getCurrentMaxId(String connString)
         {
-            return AlbumServices.getCurrentMaxId("sony_album", connString);
+            return AlbumServices.GetCurrentMaxId("sony_album", connString);
         }
         #endregion
 

@@ -131,7 +131,7 @@ namespace SonyAlphaLibs.Services
                 }
                 catch (Exception ex)
                 {
-                    writeLog("", "Delete News Error: " + ex.Message, connString);
+                    WriteLog("", "Delete News Error: " + ex.Message, connString);
                     return false;
                 }
             }
@@ -1006,7 +1006,7 @@ namespace SonyAlphaLibs.Services
                 }
                 catch (Exception ex)
                 {
-                    writeLog("", "Update News Error: " + ex.Message, connString);
+                    WriteLog("", "Update News Error: " + ex.Message, connString);
                     return rs;
                 }
             }

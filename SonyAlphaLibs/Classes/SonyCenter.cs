@@ -142,7 +142,7 @@ namespace SonyAlphaLibs
 
         public int getCurrentMaxId(String connString)
         {
-            return SonyCenterServices.getCurrentMaxId("sony_center", connString);
+            return SonyCenterServices.GetCurrentMaxId("sony_center", connString);
         }
         #endregion
     }

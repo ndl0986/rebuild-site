@@ -34,7 +34,7 @@ namespace SonyAlphaLibs.Services
                 }
                 catch (Exception ex)
                 {
-                    writeLog("", "Add Faq Error: " + ex.Message, connString);
+                    WriteLog("", "Add Faq Error: " + ex.Message, connString);
                     return false;
                 }
             }
@@ -68,7 +68,7 @@ namespace SonyAlphaLibs.Services
                 }
                 catch (Exception ex)
                 {
-                    writeLog("", "Update Faq Error: " + ex.Message, connString);
+                    WriteLog("", "Update Faq Error: " + ex.Message, connString);
                     return false;
                 }
             }
@@ -100,7 +100,7 @@ namespace SonyAlphaLibs.Services
                 }
                 catch (Exception ex)
                 {
-                    writeLog("", "Delete Faq Error: " + ex.Message, connString);
+                    WriteLog("", "Delete Faq Error: " + ex.Message, connString);
                     return false;
                 }
             }
@@ -137,7 +137,7 @@ namespace SonyAlphaLibs.Services
                 }
                 catch (Exception ex)
                 {
-                    writeLog("", "Get All QuestionAnswer Error: " + ex.Message, connString);
+                    WriteLog("", "Get All QuestionAnswer Error: " + ex.Message, connString);
                     return new List<QuestionAnswer>();
                 }
             }
@@ -173,7 +173,7 @@ namespace SonyAlphaLibs.Services
                 }
                 catch (Exception ex)
                 {
-                    writeLog("", "Get QuestionAnswer Error: " + ex.Message, connString);
+                    WriteLog("", "Get QuestionAnswer Error: " + ex.Message, connString);
                     return new QuestionAnswer();
                 }
             }

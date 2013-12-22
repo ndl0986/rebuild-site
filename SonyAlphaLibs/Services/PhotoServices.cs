@@ -53,7 +53,7 @@ namespace SonyAlphaLibs.Services
                 }
                 catch (Exception ex)
                 {
-                    writeLog("", "Add Photo Error: " + ex.Message, connString);
+                    WriteLog("", "Add Photo Error: " + ex.Message, connString);
                     return false;
                 }
             }
@@ -106,7 +106,7 @@ namespace SonyAlphaLibs.Services
                 }
                 catch (Exception ex)
                 {
-                    writeLog("", "Update Photo Error: " + ex.Message, connString);
+                    WriteLog("", "Update Photo Error: " + ex.Message, connString);
                     return false;
                 }
             }
@@ -138,7 +138,7 @@ namespace SonyAlphaLibs.Services
                 }
                 catch (Exception ex)
                 {
-                    writeLog("", "Delete Photo Error: " + ex.Message, connString);
+                    WriteLog("", "Delete Photo Error: " + ex.Message, connString);
                     return false;
                 }
             }
@@ -196,7 +196,7 @@ namespace SonyAlphaLibs.Services
                 }
                 catch (Exception ex)
                 {
-                    writeLog("", "Get All Photo Error: " + ex.Message, connString);
+                    WriteLog("", "Get All Photo Error: " + ex.Message, connString);
                     return new List<Photo>();
                 }
             }
@@ -232,7 +232,7 @@ namespace SonyAlphaLibs.Services
                 }
                 catch (Exception ex)
                 {
-                    writeLog("", "Get ListPhotos Error: " + ex.Message, connString);
+                    WriteLog("", "Get ListPhotos Error: " + ex.Message, connString);
                     return new List<Photo>();
                 }
             }
@@ -289,7 +289,7 @@ namespace SonyAlphaLibs.Services
                 }
                 catch (Exception ex)
                 {
-                    writeLog("", "Get Photo Error: " + ex.Message, connString);
+                    WriteLog("", "Get Photo Error: " + ex.Message, connString);
                     return new Photo();
                 }
             }
@@ -321,7 +321,7 @@ namespace SonyAlphaLibs.Services
                 }
                 catch (Exception ex)
                 {
-                    writeLog("", "Get Photo Error: " + ex.Message, connString);
+                    WriteLog("", "Get Photo Error: " + ex.Message, connString);
                     return rs;
                 }
             }
@@ -353,7 +353,7 @@ namespace SonyAlphaLibs.Services
                 }
                 catch (Exception ex)
                 {
-                    writeLog("", "Get Photo Error: " + ex.Message, connString);
+                    WriteLog("", "Get Photo Error: " + ex.Message, connString);
                     return rs;
                 }
             }
@@ -385,7 +385,7 @@ namespace SonyAlphaLibs.Services
                 }
                 catch (Exception ex)
                 {
-                    writeLog("", "Get Photo Error: " + ex.Message, connString);
+                    WriteLog("", "Get Photo Error: " + ex.Message, connString);
                     return rs;
                 }
             }
@@ -417,7 +417,7 @@ namespace SonyAlphaLibs.Services
                 }
                 catch (Exception ex)
                 {
-                    writeLog("", "Update Photo Error: " + ex.Message, connString);
+                    WriteLog("", "Update Photo Error: " + ex.Message, connString);
                     return rs;
                 }
             }
@@ -450,7 +450,7 @@ namespace SonyAlphaLibs.Services
                 }
                 catch (Exception ex)
                 {
-                    writeLog("", "Update Photo Error: " + ex.Message, connString);
+                    WriteLog("", "Update Photo Error: " + ex.Message, connString);
                     return rs;
                 }
             }
@@ -482,7 +482,7 @@ namespace SonyAlphaLibs.Services
                 }
                 catch (Exception ex)
                 {
-                    writeLog("", "Update Photo Error: " + ex.Message, connString);
+                    WriteLog("", "Update Photo Error: " + ex.Message, connString);
                     return rs;
                 }
             }
@@ -529,7 +529,7 @@ namespace SonyAlphaLibs.Services
                 }
                 catch (Exception ex)
                 {
-                    writeLog("", "Set Photo to Product Error: " + ex.Message, connString);
+                    WriteLog("", "Set Photo to Product Error: " + ex.Message, connString);
                     return false;
                 }
             }
@@ -574,7 +574,7 @@ namespace SonyAlphaLibs.Services
                 }
                 catch (Exception ex)
                 {
-                    writeLog("", "getPhotoOfProduct Error: " + ex.Message, connString);
+                    WriteLog("", "getPhotoOfProduct Error: " + ex.Message, connString);
                     return new List<String>();
                 }
             }
@@ -633,7 +633,7 @@ namespace SonyAlphaLibs.Services
                 }
                 catch (Exception ex)
                 {
-                    writeLog("", "Get All Photo Error: " + ex.Message, connString);
+                    WriteLog("", "Get All Photo Error: " + ex.Message, connString);
                     return new List<Photo>();
                 }
             }
@@ -693,7 +693,7 @@ namespace SonyAlphaLibs.Services
                 }
                 catch (Exception ex)
                 {
-                    writeLog("", "Get All Photo Error: " + ex.Message, connString);
+                    WriteLog("", "Get All Photo Error: " + ex.Message, connString);
                     return new List<Photo>();
                 }
             }
@@ -726,7 +726,7 @@ namespace SonyAlphaLibs.Services
                 }
                 catch (Exception ex)
                 {
-                    writeLog("", "Get Photo Error: " + ex.Message, connString);
+                    WriteLog("", "Get Photo Error: " + ex.Message, connString);
                     return rs;
                 }
             }
@@ -759,7 +759,7 @@ namespace SonyAlphaLibs.Services
                 }
                 catch (Exception ex)
                 {
-                    writeLog("", "Get Photo Error: " + ex.Message, connString);
+                    WriteLog("", "Get Photo Error: " + ex.Message, connString);
                     return rs;
                 }
             }

@@ -54,7 +54,7 @@ namespace SonyAlphaLibs
         #region base method
         public bool add(string connString)
         {
-            return AlbumServices.setComment2Album(this, connString);
+            return AlbumServices.SetComment2Album(this, connString);
         }
 
         public bool update(string connString)
@@ -65,7 +65,7 @@ namespace SonyAlphaLibs
 
         public List<AlbumComment> getListAll(string connString)
         {
-            return AlbumServices.getListComment(connString);
+            return AlbumServices.GetListComment(connString);
         }
 
         public AlbumComment getById(string connString)
@@ -76,7 +76,7 @@ namespace SonyAlphaLibs
 
         public bool removeById(string connString)
         {
-            return AlbumServices.removeCommentById(base.Id, connString);
+            return AlbumServices.RemoveCommentById(base.Id, connString);
         }
         #endregion
 

@@ -36,7 +36,7 @@ namespace SonyAlphaLibs.Services
                 }
                 catch (Exception ex)
                 {
-                    writeLog("", "Add Banner Error: " + ex.Message, connString);
+                    WriteLog("", "Add Banner Error: " + ex.Message, connString);
                     return false;
                 }
             }
@@ -71,7 +71,7 @@ namespace SonyAlphaLibs.Services
                 }
                 catch (Exception ex)
                 {
-                    writeLog("", "Update Banner Error: " + ex.Message, connString);
+                    WriteLog("", "Update Banner Error: " + ex.Message, connString);
                     return false;
                 }
             }
@@ -103,7 +103,7 @@ namespace SonyAlphaLibs.Services
                 }
                 catch (Exception ex)
                 {
-                    writeLog("", "Delete Banner Error: " + ex.Message, connString);
+                    WriteLog("", "Delete Banner Error: " + ex.Message, connString);
                     return false;
                 }
             }
@@ -143,7 +143,7 @@ namespace SonyAlphaLibs.Services
                 }
                 catch (Exception ex)
                 {
-                    writeLog("", "Get All Banner Error: " + ex.Message, connString);
+                    WriteLog("", "Get All Banner Error: " + ex.Message, connString);
                     return new List<Banner>();
                 }
             }
@@ -182,7 +182,7 @@ namespace SonyAlphaLibs.Services
                 }
                 catch (Exception ex)
                 {
-                    writeLog("", "Get Banner By Id Error: " + ex.Message, connString);
+                    WriteLog("", "Get Banner By Id Error: " + ex.Message, connString);
                     return new Banner();
                 }
             }
@@ -240,7 +240,7 @@ namespace SonyAlphaLibs.Services
                     }
                     catch (Exception ex)
                     {
-                        writeLog("", "Set Photo Banner Error: " + ex.Message, connString);
+                        WriteLog("", "Set Photo Banner Error: " + ex.Message, connString);
                         rs = false;
                         //throw;
                     }
@@ -283,7 +283,7 @@ namespace SonyAlphaLibs.Services
                 }
                 catch (Exception ex)
                 {
-                    writeLog("", "Get Photo Of Banner Error: " + ex.Message, connString);
+                    WriteLog("", "Get Photo Of Banner Error: " + ex.Message, connString);
                     return new List<BannerPhoto>();
                 }
             }
@@ -315,7 +315,7 @@ namespace SonyAlphaLibs.Services
                 }
                 catch (Exception ex)
                 {
-                    writeLog("", "Delete Banner Photo Error: " + ex.Message, connString);
+                    WriteLog("", "Delete Banner Photo Error: " + ex.Message, connString);
                     return false;
                 }
             }

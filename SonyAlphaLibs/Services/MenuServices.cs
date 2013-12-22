@@ -106,7 +106,7 @@ namespace SonyAlphaLibs.Services
                 }
                 catch (Exception ex)
                 {
-                    writeLog("", "Delete Menu Error: " + ex.Message, connString);
+                    WriteLog("", "Delete Menu Error: " + ex.Message, connString);
                     return false;
                 }
             }
@@ -519,7 +519,7 @@ namespace SonyAlphaLibs.Services
                 }
                 catch (Exception ex)
                 {
-                    writeLog("", "Delete Menu Banner Error: " + ex.Message, connString);
+                    WriteLog("", "Delete Menu Banner Error: " + ex.Message, connString);
                     return false;
                 }
             }
