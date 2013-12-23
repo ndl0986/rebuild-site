@@ -148,7 +148,12 @@ Public Class _Default
 
         topmenu.InnerHtml = "<ul id=""nav"">"
         For Each rRoot As SonyAlphaLibs.Menu In tbl
-            topmenu.InnerHtml = topmenu.InnerHtml & "<li id=""menu_" & rRoot.Id & """><a href=""" & rRoot.SeoUrl & "?mId=" & rRoot.Id & """>" & rRoot.Name & "</a>"
+            If rRoot.SeoUrl.IndexOf("?") = -1 Then
+                topmenu.InnerHtml = topmenu.InnerHtml & "<li id=""menu_" & rRoot.Id & """><a href=""" & rRoot.SeoUrl & "?mId=" & rRoot.Id & """>" & rRoot.Name & "</a>"
+            Else
+                topmenu.InnerHtml = topmenu.InnerHtml & "<li id=""menu_" & rRoot.Id & """><a href=""" & rRoot.SeoUrl & "&mId=" & rRoot.Id & """>" & rRoot.Name & "</a>"
+            End If
+
             Dim tblSe As New List(Of SonyAlphaLibs.Menu)
             tblSe = MenuServices.getListMenuByParent(rRoot.Id, CN.ConnectionString)
             If (tblSe.Count > 0) Then

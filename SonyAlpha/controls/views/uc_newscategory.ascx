@@ -6,11 +6,11 @@
     <%If listTop.Count > 0 Then%><ul class="list_collection clearfix">
         <% For Each row As News In listTop%><li>
             <div class="clearfix">
-                <a class="category_title" href="<%= listTopCat.Item(listTop.IndexOf(row)).SeoUrl %>"
+                <a class="category_title" href="<%= listTopCat.Item(listTop.IndexOf(row)).SeoUrl & "?mId=" & intMenu & "&cId=" & catId %>"
                     target="_blank">
                     <%= listTopCat.Item(listTop.IndexOf(row)).Name%></a><img src="<%=row.NewsImage%>"
                         alt="" /><div class="title_banner_text">
-                            <a href="<%=row.SeoUrl & "?mId=" & intMenu & "&cId=" & catId%>">
+                            <a href="<%=row.SeoUrl & "?mId=" & intMenu & "&cId=" & parentId%>">
                                 <%= row.Title%></a></div>
             </div>
         </li>
@@ -21,7 +21,7 @@
         <%  For Each row As News In listNewsInCat%><li>
             <div class="detail_item">
                 <div class="title_news">
-                    <a href="<%=row.SeoUrl & "?mId=" & intMenu & "&cId=" & catId%>">
+                    <a href="<%=row.SeoUrl & "?mId=" & intMenu & "&cId=" & parentId%>">
                         <%= row.Title%></a></div>
                 <div class="wap_news clearfix">
                     <div class="thumb_news">
@@ -29,13 +29,13 @@
                             <%= row.ViewCount%>
                             lượt xem</div>
                         <div class="wap_img">
-                            <a href="<%=row.SeoUrl & "?mId=" & intMenu & "&cId=" & catId%>">
+                            <a href="<%=row.SeoUrl & "?mId=" & intMenu & "&cId=" & parentId%>">
                                 <img alt="" src="<%=row.NewsImage%>"></a></div>
                     </div>
                     <div class="des_news">
                         <%= row.Description%></div>
                     <div class="chitiet">
-                        <a href="<%=row.SeoUrl & "?mId=" & intMenu & "&cId=" & catId%>">Xem chi tiết &gt;&gt;</a></div>
+                        <a href="<%=row.SeoUrl & "?mId=" & intMenu & "&cId=" & parentId%>">Xem chi tiết &gt;&gt;</a></div>
                 </div>
             </div>
         </li>

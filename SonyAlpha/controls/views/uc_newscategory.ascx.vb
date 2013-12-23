@@ -10,6 +10,7 @@ Public Class uc_newscategory
     Public bolType As Boolean = False
     Public intMenu As String
     Public catId As String
+    Public parentId As String
     Public pageNum As Integer
     Public pageSize6 As Integer = 6
     Public pageSize5 As Integer = 5
@@ -23,44 +24,79 @@ Public Class uc_newscategory
             End If
             catId = Request.QueryString("id")
             intMenu = Request.QueryString("mId")
+            parentId = Request.QueryString("cId")
             bllNewsCategory.Id = CInt(catId)
             Dim pgUrl As String = Request.RawUrl
             Dim lstCats As New List(Of NewsCategory)
 
             Dim totalNews As Integer = 0
             lstCats = bllNewsCategory.getListChild(CN.ConnectionString)
-            If lstCats.Count > 0 Then
+
+            If parentId <> "" Then
                 bolType = True
                 Dim listIds As New List(Of Integer)
-                For Each newsCategory As NewsCategory In lstCats
-                    listTopCat.Add(newsCategory)
-                    listIds.Add(newsCategory.Id)
-                    Dim bllItemNews As IList(Of News)
-                    bllItemNews = NewsServices.getListNewsByCategory(newsCategory.Id, CN.ConnectionString)
-                    If bllItemNews.Count > 0 Then
-                        'listTop.Add(bllItemNews.Item(bllItemNews.Count - 1))
+                If lstCats.Count > 0 Then
+                    For Each newsCategory As NewsCategory In lstCats
+                        listTopCat.Add(newsCategory)
+                        listIds.Add(newsCategory.Id)
+                        Dim bllItemNews As IList(Of News)
+                        bllItemNews = NewsServices.getListNewsByCategory(newsCategory.Id, CN.ConnectionString)
+                        If bllItemNews.Count > 0 Then
+                            'listTop.Add(bllItemNews.Item(bllItemNews.Count - 1))
 
-                        Dim numHot = Aggregate _news In bllItemNews
+                            Dim numHot = Aggregate _news In bllItemNews
+                                          Where _news.IsHot = True
+                                          Order By _news.SortOrder
+                                          Into Count()
+                            Dim hasHot = numHot > 0
+                            Dim topNews As News
+                            If hasHot Then
+                                Dim tmp = From _news In bllItemNews
                                       Where _news.IsHot = True
                                       Order By _news.SortOrder
-                                      Into Count()
-                        Dim hasHot = numHot > 0
-                        Dim topNews As News
-                        If hasHot Then
-                            Dim tmp = From _news In bllItemNews
-                                  Where _news.IsHot = True
-                                  Order By _news.SortOrder
-                                  Select _news
-                            topNews = tmp.First()
-                        Else
-                            topNews = bllItemNews.Item(bllItemNews.Count - 1)
-                        End If
+                                      Select _news
+                                topNews = tmp.First()
+                            Else
+                                topNews = bllItemNews.Item(bllItemNews.Count - 1)
+                            End If
 
-                        'Take 1
-                        listTop.Add(topNews)
-                    End If
-                Next
-                listNewsInCat = NewsServices.getListNewsByCategoryIds(listIds, pageNum, pageSize6, 0, "created", CN.ConnectionString, totalNews)
+                            'Take 1
+                            listTop.Add(topNews)
+                        End If
+                    Next
+                    listNewsInCat = NewsServices.getListNewsByCategoryIds(listIds, pageNum, pageSize6, 0, "created", CN.ConnectionString, totalNews)
+                Else
+                    lstCats = NewsServices.getListCategoryChild(CInt(parentId), CN.ConnectionString)
+                    For Each newsCategory As NewsCategory In lstCats
+                        listTopCat.Add(newsCategory)
+                        Dim bllItemNews As IList(Of News)
+                        bllItemNews = NewsServices.getListNewsByCategory(newsCategory.Id, CN.ConnectionString)
+                        If bllItemNews.Count > 0 Then
+                            'listTop.Add(bllItemNews.Item(bllItemNews.Count - 1))
+
+                            Dim numHot = Aggregate _news In bllItemNews
+                                          Where _news.IsHot = True
+                                          Order By _news.SortOrder
+                                          Into Count()
+                            Dim hasHot = numHot > 0
+                            Dim topNews As News
+                            If hasHot Then
+                                Dim tmp = From _news In bllItemNews
+                                      Where _news.IsHot = True
+                                      Order By _news.SortOrder
+                                      Select _news
+                                topNews = tmp.First()
+                            Else
+                                topNews = bllItemNews.Item(bllItemNews.Count - 1)
+                            End If
+
+                            'Take 1
+                            listTop.Add(topNews)
+                        End If
+                    Next
+                    listIds.Add(catId)
+                    listNewsInCat = NewsServices.getListNewsByCategoryIds(listIds, pageNum, pageSize6, 0, "created", CN.ConnectionString, totalNews)
+                End If
 
                 If totalNews > 0 Then
                     GeneratePaging(listPaging, totalNews, pageSize6, pgUrl, totalPage)
