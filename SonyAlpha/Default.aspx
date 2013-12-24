@@ -9,11 +9,11 @@
 <!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]><html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]><html class="no-js ie8 lt-ie9"> <![endif]-->
-<!--[if IE 9]><html class="no-js ie9 lt-ie9"> <![endif]-->
-<!--[if gt IE 9]><!--> <html class="lt-ie10 no-js"> <!--<![endif]-->
+<!--[if IE 9]><html class="no-js ie9 lt-ie10"> <![endif]-->
+<!--[if gt IE 9]><!--> <html> <!--<![endif]-->
 <head runat="server">
     <title>Sony Alpha</title>
-    <link rel="SHORTCUT ICON" href="logo.ico"/>
+    <link rel="SHORTCUT ICON" href="img/favicon.png"/>
     <meta content="" name="copyright" />
     <meta name="Description" content=""/>
     <meta name="Keywords" content=""/>
@@ -32,22 +32,7 @@
     <form id="form1" runat="server">
     <ajaxToolkit:ToolkitScriptManager ID="ToolkitScriptManager" runat="server" ScriptMode="Release" ></ajaxToolkit:ToolkitScriptManager>
     <script type="text/javascript" src="/js/libs/jquery-2.0.3.min.js"></script>
-    <div id="header" class="clearfix">
-        <div id="page_header" class="header_content clearfix"><div class="header-top-national">Việt Nam</div></div>
-        <div id="userStatus" class="clearfix">
-            <div class="logined" style="display:none;"><a id="viewProfile" href="javascript:void(0);"><asp:Label runat="server" ClientIDMode="Static" ID="lblUser" class="text username"></asp:Label></a>&nbsp;|&nbsp;<a href="/logout">Logout</a></div>
-            <div class="not_logined" style="display:none;"><a id="hplSignup" href="javascript:void(0);">Đăng ký</a><a id="hplSignin" href="javascript:void(0);">Đăng nhập</a></div>
-        </div>
-        <div class="header-top-menu"><a href="http://www.sony.com.vn/support/productcategory/e+mount+camera" style="color: #FFF;">Hỗ trợ NEX</a>  |  <a href="http://www.sony.com.vn/support/productcategory/dslr+camera" style="color: #FFF;">Hỗ trợ DSLR</a> </div>
-        <div id="topmenu" runat="server"></div>
-    </div>
-    <div id="container">
-        <div id="breadcum" class="breadcum clearfix"></div>
-        <div id="banner" runat="server" class="clearfix"></div>
-        <asp:UpdatePanel ID="UpdatePanelMain" runat="server" class="clearfix"><ContentTemplate><asp:PlaceHolder runat="server" ID="plhMain"></asp:PlaceHolder></ContentTemplate></asp:UpdatePanel>
-    </div>
-    <asp:HiddenField ID="hdfPage" Value="" runat="server" /><asp:HiddenField ID="hdfMenu" Value="" runat="server" />
-    <div id="footer" runat="server" class="clearfix"></div>
+    <div id="header" class="clearfix"><div id="page_header" class="header_content clearfix"><div class="header-top-national">Việt Nam</div></div><div id="userStatus" class="clearfix"><div class="logined" style="display:none;"><a id="viewProfile" href="javascript:void(0);"><asp:Label runat="server" ClientIDMode="Static" ID="lblUser" class="text username"></asp:Label></a>&nbsp;|&nbsp;<a href="/logout">Logout</a></div><div class="not_logined" style="display:none;"><a id="hplSignup" href="javascript:void(0);">Đăng ký</a><a id="hplSignin" href="javascript:void(0);">Đăng nhập</a></div></div><div class="header-top-menu"><a href="http://www.sony.com.vn/support/productcategory/e+mount+camera" style="color: #FFF;">Hỗ trợ NEX</a>  |  <a href="http://www.sony.com.vn/support/productcategory/dslr+camera" style="color: #FFF;">Hỗ trợ DSLR</a> </div><div id="topmenu" runat="server"></div></div><div id="container"><div id="breadcum" class="breadcum clearfix"></div><div id="banner" runat="server" class="clearfix"></div><asp:UpdatePanel ID="UpdatePanelMain" runat="server" class="clearfix"><ContentTemplate><asp:PlaceHolder runat="server" ID="plhMain"></asp:PlaceHolder></ContentTemplate></asp:UpdatePanel></div><asp:HiddenField ID="hdfPage" Value="" runat="server" /><asp:HiddenField ID="hdfMenu" Value="" runat="server" /><div id="footer" runat="server" class="clearfix"></div>
     </form>
     </div>
     <div id="formReg" style="display:none;" class="bgFormPopup hide"><a class="close"></a><uc1:uc_register ID="uc_register1" runat="server" /></div>

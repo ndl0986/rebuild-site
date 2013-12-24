@@ -570,7 +570,47 @@ namespace SonyAlphaLibs.Services
 
             #endregion
         }
+        public static List<AlbumComment> getListCommentByAlbum(int albumId, string connString)
+        {
+            #region code
+            List<AlbumComment> lists = new List<AlbumComment>();
+            using (SqlConnection conn = new SqlConnection(connString))
+            {
+                try
+                {
+                    conn.Open();
+                    using (SqlCommand cmd = conn.CreateCommand())
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.CommandText = "sony_sp_get_all_album_photo_comment_by_album_id";
+                        cmd.Parameters.AddWithValue("@albumId", albumId);
 
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                AlbumComment albumComment = new AlbumComment();
+                                albumComment.Id = (int)reader["id"];
+                                albumComment.UserName = reader["username"].ToString();
+                                albumComment.AlbumId = (int)reader["albumId"];
+                                albumComment.PhotoId = (int)reader["photoId"];
+                                albumComment.Status = reader["status"].ToString().Equals("1") || reader["status"].ToString().Equals("True");
+                                albumComment.Created = (DateTime)reader["created"];
+                                albumComment.Comment = reader["comment"].ToString();
+                                lists.Add(albumComment);
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    writeLog("", String.Format("Get Album Comment Error: photoId={1}, CauseBy:{2}", albumId, ex.Message), connString);
+                    return new List<AlbumComment>();
+                }
+            }
+            return lists;
+            #endregion
+        }
         public static int GetViewCount(int albumId, string connString)
         {
             #region code
@@ -973,12 +1013,18 @@ namespace SonyAlphaLibs.Services
                         {
                             while (reader.Read())
                             {
+<<<<<<< .mine
+                                rs.Id = commentId;
+                                rs.AlbumId = String.IsNullOrEmpty(reader["albumId"].ToString()) ? 0 : (int)reader["albumId"];
+                                rs.PhotoId = String.IsNullOrEmpty(reader["photoId"].ToString()) ? 0 : (int)reader["photoId"];
+=======
                                 rs.AlbumId = String.IsNullOrEmpty(reader["albumId"].ToString())
                                     ? 0
                                     : (int) reader["albumId"];
                                 rs.PhotoId = String.IsNullOrEmpty(reader["photoId"].ToString())
                                     ? 0
                                     : (int) reader["photoId"];
+>>>>>>> .r491
                                 rs.Comment = reader["comment"].ToString();
                                 rs.Status = reader["status"].ToString().Equals("1") ||
                                             reader["status"].ToString().Equals("True");

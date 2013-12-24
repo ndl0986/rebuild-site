@@ -53,9 +53,9 @@
             for (var i = 0; i < listItems.length; i++) {
                 var arr = listItems[i].split('*');
                 var li = $('<li></li>');
-                var a = $('<a class="thumb"></a>').attr('href', arr[1]);
+                var a = $('<a class="thumb"></a>').attr('href', arr[2]);
                 var btn = $('<a class="button red del" href="javascript:void(0);">-</a>')
-                var img = $('<img alt="" src=' + arr[2] + '/>');
+                var img = $('<img alt="" src="' + arr[1] + '" />');
                 var txt = $('<input type="nummber" class="textbox small" value="' + arr[0] + '" />')
                 btn.attr('value', listItems[i]);
                 btn.click(function () {

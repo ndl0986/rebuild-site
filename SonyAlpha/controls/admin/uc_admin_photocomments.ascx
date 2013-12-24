@@ -7,7 +7,7 @@
 <div class="content">
     <div class="section">
         <asp:Label runat="server" ID="lblMessage"></asp:Label>
-        <h4 class="heading">Danh sách Bình luận<a href="?tpl=addadmincomment" class="floatright button action"><span class="icon icon68"></span></a></h4>
+        <h4 class="heading">Danh sách Comments <asp:DropDownList runat="server" ID="ddlAlbums" AutoPostBack="True"></asp:DropDownList><a href="?tpl=addadmincomment" class="floatright button action"><span class="icon icon68"></span></a></h4>
         <asp:GridView EmptyDataText="Không có bình luận nào" ID="grvAlbumComments" runat="server" 
             AllowPaging="True" AllowSorting="True" DataSourceID="objAlbumComments"
             SkinID="Defaultgridview" AutoGenerateColumns="False" CssClass="datatable" 
@@ -15,9 +15,15 @@
             <HeaderStyle CssClass="girdheader"/>
             <Columns>
                 <asp:BoundField DataField="Id" HeaderText="Id" SortExpression="Id" ReadOnly="true"/>
-                <asp:BoundField DataField="UserName" HeaderText="UserName" SortExpression="UserName" />
-                <asp:BoundField DataField="AlbumId" HeaderText="AlbumId" SortExpression="AlbumId" />
-                <asp:BoundField DataField="PhotoId" HeaderText="PhotoId" SortExpression="PhotoId" />
+                <asp:BoundField DataField="UserName" HeaderText="User" />
+                <asp:BoundField DataField="AlbumId" HeaderText="Album" ><HeaderStyle CssClass="hiddencol" /><ItemStyle CssClass="hiddencol" /></asp:BoundField>
+                <asp:BoundField DataField="PhotoId" HeaderText="Photo"><HeaderStyle CssClass="hiddencol" /><ItemStyle CssClass="hiddencol" /></asp:BoundField>
+                <asp:TemplateField ItemStyle-CssClass="img_preview">
+                    <ItemTemplate>
+                        <asp:Image runat="server" ID="photoImage" />
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:BoundField DataField="Comment" HeaderText="Nội dung" />
                 <asp:TemplateField HeaderText="Commands" ShowHeader="False" HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center">
                     <ItemTemplate>
                         <%--<asp:LinkButton ID="lEdit" runat="server" CausesValidation="False" CommandName="Select" Text="Edit" CssClass="button"><span class="icon icon46"></span></asp:LinkButton>--%>
@@ -28,13 +34,11 @@
             <FooterStyle Font-Bold="True" ForeColor="White" />
             <PagerStyle CssClass="pagepad" HorizontalAlign="Right" />
         </asp:GridView>
+        <div class="pagesize">Hiển thị <asp:DropDownList runat="server" ID="ddlPageSize" AutoPostBack="True"><asp:ListItem Selected="True" Value="10">10</asp:ListItem><asp:ListItem Value="20">20</asp:ListItem><asp:ListItem Value="50">50</asp:ListItem></asp:DropDownList></div>
     </div>
 </div>
 <asp:ObjectDataSource ID="objAlbumComments" runat="server" DeleteMethod="removeById" SelectMethod="getListAll" TypeName="SonyAlphaLibs.AlbumComment">
     <SelectParameters>
         <asp:Parameter Name="connString" Type="String" />
     </SelectParameters>
-    <DeleteParameters>
-        <asp:Parameter Name="connString" Type="String" />
-    </DeleteParameters>
 </asp:ObjectDataSource>

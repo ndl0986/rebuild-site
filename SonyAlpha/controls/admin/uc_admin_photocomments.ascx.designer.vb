@@ -23,6 +23,15 @@ Partial Public Class uc_admin_photocomments
     Protected WithEvents lblMessage As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
+    '''ddlAlbums control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents ddlAlbums As Global.System.Web.UI.WebControls.DropDownList
+
+    '''<summary>
     '''grvAlbumComments control.
     '''</summary>
     '''<remarks>
@@ -30,6 +39,15 @@ Partial Public Class uc_admin_photocomments
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents grvAlbumComments As Global.System.Web.UI.WebControls.GridView
+
+    '''<summary>
+    '''ddlPageSize control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents ddlPageSize As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
     '''objAlbumComments control.

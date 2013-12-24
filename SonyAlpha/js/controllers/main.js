@@ -176,7 +176,9 @@ function parseAlbumSlide(){
             for(var i=0;i<items.length;i++){arr.push(items[i]);}
             var itemsClone = getRandomArrayElements(arr,5);
             for(var i=0;i<itemsClone.length;i++){
-                slide.append($(itemsClone[i]).clone());
+                var img = $(itemsClone[i]).clone();
+                img.removeClass('lazy').attr('src',$(itemsClone[i]).attr('data-original'));
+                slide.append(img);
             }
             
         }
@@ -202,6 +204,7 @@ function parseAlbumSlide(){
 }
 
 function parseAlbumBanner(){
+    showLoading($('#albumSlide'));
     var arr = $('#randomSRC').text().split(',');
     arr=arr.filter(function(e){return e});
     $.ajax({
@@ -247,10 +250,7 @@ function parseRandowmAlbumBanner(data){
         arrHTML.push(a);
     }
     slide.html(arrHTML);
-}
-
-function fadeInImg(){
-    $('.random-img').load(function(){$(this).fadeIn()});
+    hideLoading()
 }
 
 function parseComments(data){
@@ -476,7 +476,7 @@ $(document).ready(function () {
                 var videoId = li.children().attr('data-video');
                 if(videoId!==undefined){
                     iframe = $('<iframe></iframe>');
-                    iframe.attr("src", 'http://www.youtube.com/embed/' + videoId + '?autohide=1&wmode=transparent&autoplay=1').width('100%');
+                    iframe.attr("src", 'http://www.youtube.com/embed/' + videoId + '?autohide=1&wmode=transparent&autoplay=1').width('100%').height(li.height());
                     //$(items[i]).replaceWith(ifrm);
                     $(li.children()[0]).hide();
                     li.append(iframe);
@@ -608,6 +608,7 @@ $(document).ready(function () {
             $('#uc_seller_btnSearch').click(function(){
                 window.location.href = "/seller.aspx?mId=2&pId=" + $('#ddlProvince').val();
             });
+            $('img.lazy').lazyload({effect : 'fadeIn'});
             break;
         case 'sellerdetail':
             parseSonyCenterSlide();
@@ -631,6 +632,10 @@ $(document).ready(function () {
             break;
         case 'albumdetail':
             parseAlbumSlide();
+            $('img.lazy').lazyload({effect : 'fadeIn'});
+            break;
+        case 'useralbum':
+            $('img.lazy').lazyload({effect : 'fadeIn'});
             break;
         case 'photo':
             var albumId = $('#hdfAlbumId').val(), photoId = $('#imgMain').attr('data-id');
@@ -670,6 +675,12 @@ $(document).ready(function () {
                 });
                 $('#loadContent').slideDown(300);
             });
+        case 'news':
+            $('img.lazy').lazyload({effect : 'fadeIn'});
+            break;
+        case 'newsdetail':
+            $('img.lazy').lazyload({effect : 'fadeIn'});
+            break;
         default:
             break;
     }

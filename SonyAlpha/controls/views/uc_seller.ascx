@@ -10,7 +10,7 @@
             <li class="sonycenter_info">
                 <div class="item">
                     <a class="sony_center_title" href="<%="seller/" & shop.Id & "?mId=" & intMenu %>"><%= shop.Name%></a>
-                    <a class="sony_center_image" href="<%="seller/" & shop.Id & "?mId=" & intMenu %>"><%If String.IsNullOrEmpty(shop.SonyCenterCover) Then%><img class="lazyload" src="/upload/image/images.jpg" alt="<%= shop.Name %>"/></a><%Else%><img class="lazyload" src="<%=shop.SonyCenterCover%>" alt="<%= shop.Name %>"/></a><%End If%>
+                    <a class="sony_center_image" href="<%="seller/" & shop.Id & "?mId=" & intMenu %>"><%If String.IsNullOrEmpty(shop.SonyCenterCover) Then%><img class="lazy" data-original="/upload/image/images.jpg" alt="<%= shop.Name %>"/></a><%Else%><img class="lazy" data-original="<%=shop.SonyCenterCover%>" alt="<%= shop.Name %>"/></a><%End If%>
                     <div class="sony_center_contact">
                         <div><span class="label">Địa chỉ :</span><span><%= shop.Address%></span></div>
                         <div><span class="label">Điện thoại :</span><span><%= shop.Phone%></span></div>

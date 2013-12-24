@@ -6,7 +6,7 @@
     <%For Each photo In bllPhoto%>
         <li>
             <div class="album">
-                <div class="cover"><a href="<%="/photo/" & photo.Id & "?cId=" & catId & "&mId=" & intMenu%>"><img alt="<%=photo.FileName%>" src="<%=photo.FileName%>" /></a><div class="photo-info"><a class="share-fb" href="https://www.facebook.com/sharer/sharer.php?u=<%=photo.FileName%>" target="_blank"></a><span><%= photo.ViewCount%>&nbsp;lượt xem</span></div></div>
+                <div class="cover"><a href="<%="/photo/" & photo.Id & "?cId=" & catId & "&mId=" & intMenu%>"><img class="lazy" alt="<%=photo.FileName%>" data-original="<%=photo.FileName%>" /></a><div class="photo-info"><a class="share-fb" href="https://www.facebook.com/sharer/sharer.php?u=<%=photo.FileName%>" target="_blank"></a><span><%= photo.ViewCount%>&nbsp;lượt xem</span></div></div>
             </div>
         </li>
     <%Next%>

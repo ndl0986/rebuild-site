@@ -69,14 +69,19 @@ namespace SonyAlphaLibs
         }
 
         public AlbumComment getById(string connString)
-        { 
-            //return AlbumServices.getAlbumComment(base.Id, connString);
-            return new AlbumComment();
+        {
+            return AlbumServices.getCommentById(base.Id, connString);
+            //return new AlbumComment();
         }
 
         public bool removeById(string connString)
         {
             return AlbumServices.RemoveCommentById(base.Id, connString);
+        }
+
+        public List<AlbumComment> getListCommentByAlbum(int albumId, string connString)
+        {
+            return AlbumServices.getListCommentByAlbum(albumId, connString);
         }
         #endregion
 

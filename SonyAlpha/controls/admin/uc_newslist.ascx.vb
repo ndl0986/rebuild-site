@@ -50,8 +50,25 @@ Public Class uc_newslist
             myNews = myNews.getById(CN.ConnectionString)
             myNews.removeById(CN.ConnectionString)
 
+            If CInt(ddlNewsCategory.SelectedValue) <> 0 Then
+                objNews.SelectMethod = "getListByCategory"
+                objNews.SelectParameters.Item("connString").DefaultValue = CN.ConnectionString
+                If objNews.SelectParameters.Count = 1 Then
+                    objNews.SelectParameters.Add("categoryId", ddlNewsCategory.SelectedValue)
+                Else
+                    objNews.SelectParameters.Item("categoryId").DefaultValue = ddlNewsCategory.SelectedValue
+                End If
+            Else
+                If objNews.SelectParameters.Count = 2 Then
+                    objNews.SelectParameters.RemoveAt(1)
+                End If
+                objNews.SelectMethod = "getListAll"
+                objNews.SelectParameters.Item("connString").DefaultValue = CN.ConnectionString
+            End If
+            grvNews.PageSize = ddlPageSize.SelectedValue
             grvNews.DataSourceID = ""
             grvNews.DataSourceID = "objNews"
+            grvNews.DataBind()
         End If
     End Sub
 

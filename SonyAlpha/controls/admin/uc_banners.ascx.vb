@@ -2,7 +2,7 @@
 Imports SonyAlphaLibs.Services
 Public Class uc_banners
     Inherits System.Web.UI.UserControl
-    Dim myBanner As SonyAlphaLibs.Banner
+    Dim myBanner As New SonyAlphaLibs.Banner
     Private Sub Page_Init(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Init
         objBanner.SelectParameters.Item("connString").DefaultValue = CN.ConnectionString
     End Sub

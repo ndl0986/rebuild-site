@@ -25,7 +25,7 @@
             </li>
             <li class="row clerafix">
                 <div class="item textright" >
-                    <button class="action btnOk" runat="server" ID="btnSave" disabled="disabled" ><span class="label">Lưu</span></button>
+                    <asp:Button runat="server" CssClass="button action btnOk" ID="btnSave" Text="Lưu" Enabled="false" />
                     <a href="javascript:void(0);" class="button action" id="btnCancel"><span class="label">Hủy</span></a>
                 </div>
             </li>
