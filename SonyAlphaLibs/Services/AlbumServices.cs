@@ -8,10 +8,9 @@ namespace SonyAlphaLibs.Services
 {
     public class AlbumServices : BaseService
     {
-        public static bool AddAlbum(Album album, string connString)
+        public static bool addAlbum(Album album, string connString)
         {
             #region code
-
             bool rs;
             using (var conn = new SqlConnection(connString))
             {
@@ -42,7 +41,7 @@ namespace SonyAlphaLibs.Services
                 }
                 catch (Exception ex)
                 {
-                    WriteLog("", "Add Album Error: " + ex.Message, connString);
+                    writeLog ("", "Add Album Error: " + ex.Message, connString);
                     return false;
                 }
             }
@@ -51,7 +50,7 @@ namespace SonyAlphaLibs.Services
             #endregion
         }
 
-        public static bool UpdateAlbum(Album album, string connString)
+        public static bool updateAlbum(Album album, string connString)
         {
             #region code
 
@@ -86,7 +85,7 @@ namespace SonyAlphaLibs.Services
                 }
                 catch (Exception ex)
                 {
-                    WriteLog("", "Update Album Error: " + ex.Message, connString);
+                    writeLog("", "Update Album Error: " + ex.Message, connString);
                     return false;
                 }
             }
@@ -95,7 +94,7 @@ namespace SonyAlphaLibs.Services
             #endregion
         }
 
-        public static bool RemoveById(int id, string connString)
+        public static bool removeById(int id, string connString)
         {
             #region code
 
@@ -122,7 +121,7 @@ namespace SonyAlphaLibs.Services
                 }
                 catch (Exception ex)
                 {
-                    WriteLog("", "Delete Album Error: " + ex.Message, connString);
+                    writeLog("", "Delete Album Error: " + ex.Message, connString);
                     return false;
                 }
             }
@@ -131,7 +130,7 @@ namespace SonyAlphaLibs.Services
             #endregion
         }
 
-        public static List<Album> GetListAll(string connString)
+        public static List<Album> getListAll(string connString)
         {
             #region code
 
@@ -173,7 +172,7 @@ namespace SonyAlphaLibs.Services
                 }
                 catch (Exception ex)
                 {
-                    WriteLog("", "Get All Album Error: " + ex.Message, connString);
+                    writeLog("", "Get All Album Error: " + ex.Message, connString);
                     return new List<Album>();
                 }
             }
@@ -182,7 +181,7 @@ namespace SonyAlphaLibs.Services
             #endregion
         }
 
-        public static Album GetById(int id, string connString)
+        public static Album getById(int id, string connString)
         {
             #region code
 
@@ -220,7 +219,7 @@ namespace SonyAlphaLibs.Services
                 }
                 catch (Exception ex)
                 {
-                    WriteLog("", "Get Album By Id Error: " + ex.Message, connString);
+                    writeLog("", "Get Album By Id Error: " + ex.Message, connString);
                     return new Album();
                 }
             }
@@ -229,7 +228,7 @@ namespace SonyAlphaLibs.Services
             #endregion
         }
 
-        public static List<Photo> GetPhotoOfAlbum(string listImageIds, string connString)
+        public static List<Photo> getPhotoOfAlbum(string listImageIds, string connString)
         {
             #region code
 
@@ -286,7 +285,7 @@ namespace SonyAlphaLibs.Services
                     }
                     catch (Exception ex)
                     {
-                        WriteLog("", "Get Photo Of Album Error: " + ex.Message, connString);
+                        writeLog("", "Get Photo Of Album Error: " + ex.Message, connString);
                         return new List<Photo>();
                     }
                 }
@@ -301,7 +300,7 @@ namespace SonyAlphaLibs.Services
         //    throw new NotImplementedException();
         //}
 
-        public static bool SetPhoto2Album(int albumId, List<Photo> listPhotos, string connString)
+        public static bool setPhoto2Album(int albumId, List<Photo> listPhotos, string connString)
         {
             #region code
 
@@ -338,7 +337,7 @@ namespace SonyAlphaLibs.Services
                 }
                 catch (Exception ex)
                 {
-                    WriteLog("", "Update Set Photo to Album Error: " + ex.Message, connString);
+                    writeLog("", "Update Set Photo to Album Error: " + ex.Message, connString);
                     return false;
                 }
             }
@@ -347,7 +346,7 @@ namespace SonyAlphaLibs.Services
             #endregion
         }
 
-        public static bool SetPhoto2Album(int albumId, int photoId, string connString)
+        public static bool setPhoto2Album(int albumId, int photoId, string connString)
         {
             #region code
 
@@ -375,7 +374,7 @@ namespace SonyAlphaLibs.Services
                 }
                 catch (Exception ex)
                 {
-                    WriteLog("", "Update Set Photo to Album Error: " + ex.Message, connString);
+                    writeLog("", "Update Set Photo to Album Error: " + ex.Message, connString);
                     return false;
                 }
             }
@@ -384,7 +383,7 @@ namespace SonyAlphaLibs.Services
             #endregion
         }
 
-        public static bool SetPhoto2Album(int albumId, List<int> listPhotos, string connString)
+        public static bool setPhoto2Album(int albumId, List<int> listPhotos, string connString)
         {
             #region code
 
@@ -421,7 +420,7 @@ namespace SonyAlphaLibs.Services
                 }
                 catch (Exception ex)
                 {
-                    WriteLog("", "Update Set Photo to Album Error: " + ex.Message, connString);
+                    writeLog("", "Update Set Photo to Album Error: " + ex.Message, connString);
                     return false;
                 }
             }
@@ -430,7 +429,7 @@ namespace SonyAlphaLibs.Services
             #endregion
         }
 
-        public static bool SetComment2Album(AlbumComment albumComment, string connString)
+        public static bool setComment2Album(AlbumComment albumComment, string connString)
         {
             #region code
 
@@ -462,7 +461,7 @@ namespace SonyAlphaLibs.Services
                 }
                 catch (Exception ex)
                 {
-                    WriteLog("", "Add Album Comment Error: " + ex.Message, connString);
+                    writeLog("", "Add Album Comment Error: " + ex.Message, connString);
                     return false;
                 }
             }
@@ -471,7 +470,7 @@ namespace SonyAlphaLibs.Services
             #endregion
         }
 
-        public static List<AlbumComment> GetListCommentOfAlbum(int albumId, int photoId, string connString)
+        public static List<AlbumComment> getListCommentOfAlbum(int albumId, int photoId, string connString)
         {
             #region code
 
@@ -511,7 +510,7 @@ namespace SonyAlphaLibs.Services
                 }
                 catch (Exception ex)
                 {
-                    WriteLog("",
+                    writeLog("",
                         String.Format("Get Album Comment Error: albumId={0}, photoId={1}, CauseBy:{2}", albumId, photoId,
                             ex.Message), connString);
                     return new List<AlbumComment>();
@@ -522,7 +521,7 @@ namespace SonyAlphaLibs.Services
             #endregion
         }
 
-        public static List<AlbumComment> GetListCommentOfAlbum(int photoId, string connString)
+        public static List<AlbumComment> getListCommentOfAlbum(int photoId, string connString)
         {
             #region code
 
@@ -561,7 +560,7 @@ namespace SonyAlphaLibs.Services
                 }
                 catch (Exception ex)
                 {
-                    WriteLog("", String.Format("Get Album Comment Error: photoId={0}, CauseBy:{1}", photoId, ex.Message),
+                    writeLog("", String.Format("Get Album Comment Error: photoId={0}, CauseBy:{1}", photoId, ex.Message),
                         connString);
                     return new List<AlbumComment>();
                 }
@@ -611,7 +610,7 @@ namespace SonyAlphaLibs.Services
             return lists;
             #endregion
         }
-        public static int GetViewCount(int albumId, string connString)
+        public static int getViewCount(int albumId, string connString)
         {
             #region code
 
@@ -638,7 +637,7 @@ namespace SonyAlphaLibs.Services
                 }
                 catch (Exception ex)
                 {
-                    WriteLog("", "Update Album Error: " + ex.Message, connString);
+                    writeLog("", "Update Album Error: " + ex.Message, connString);
                     return rs;
                 }
             }
@@ -652,7 +651,7 @@ namespace SonyAlphaLibs.Services
         /// <param name="albumId"></param>
         /// <param name="connString"></param>
         /// <returns>return new view count (view count after updating)</returns>
-        public static int IncreaseView(int albumId, string connString)
+        public static int increaseView(int albumId, string connString)
         {
             #region code
 
@@ -679,7 +678,7 @@ namespace SonyAlphaLibs.Services
                 }
                 catch (Exception ex)
                 {
-                    WriteLog("", "Update Album Error: " + ex.Message, connString);
+                    writeLog("", "Update Album Error: " + ex.Message, connString);
                     return rs;
                 }
             }
@@ -688,7 +687,7 @@ namespace SonyAlphaLibs.Services
             #endregion
         }
 
-        public static List<Album> GetListAllNormalAlbum(string connString)
+        public static List<Album> getListAllNormalAlbum(string connString)
         {
             #region code
 
@@ -727,7 +726,7 @@ namespace SonyAlphaLibs.Services
                 }
                 catch (Exception ex)
                 {
-                    WriteLog("", "Get All Album Error: " + ex.Message, connString);
+                    writeLog("", "Get All Album Error: " + ex.Message, connString);
                     return new List<Album>();
                 }
             }
@@ -736,7 +735,7 @@ namespace SonyAlphaLibs.Services
             #endregion
         }
 
-        public static List<Album> GetListAllAlbumForCenter(string connString)
+        public static List<Album> getListAllAlbumForCenter(string connString)
         {
             #region code
 
@@ -774,7 +773,7 @@ namespace SonyAlphaLibs.Services
                 }
                 catch (Exception ex)
                 {
-                    WriteLog("", "Get All Album Error: " + ex.Message, connString);
+                    writeLog("", "Get All Album Error: " + ex.Message, connString);
                     return new List<Album>();
                 }
             }
@@ -783,7 +782,7 @@ namespace SonyAlphaLibs.Services
             #endregion
         }
 
-        public static List<Album> GetListAllAlbumForProductCategory(string connString)
+        public static List<Album> getListAllAlbumForProductCategory(string connString)
         {
             #region code
 
@@ -821,7 +820,7 @@ namespace SonyAlphaLibs.Services
                 }
                 catch (Exception ex)
                 {
-                    WriteLog("", "Get All Album Error: " + ex.Message, connString);
+                    writeLog("", "Get All Album Error: " + ex.Message, connString);
                     return new List<Album>();
                 }
             }
@@ -830,7 +829,7 @@ namespace SonyAlphaLibs.Services
             #endregion
         }
 
-        public static bool RemoveCommentById(int id, string connString)
+        public static bool removeCommentById(int id, string connString)
         {
             #region code
 
@@ -857,7 +856,7 @@ namespace SonyAlphaLibs.Services
                 }
                 catch (Exception ex)
                 {
-                    WriteLog("", "Delete Album Comment Error: " + ex.Message, connString);
+                    writeLog("", "Delete Album Comment Error: " + ex.Message, connString);
                     return false;
                 }
             }
@@ -866,7 +865,7 @@ namespace SonyAlphaLibs.Services
             #endregion
         }
 
-        public static bool UpdateAlbumComment(int id, string comment, string connString)
+        public static bool updateAlbumComment(int id, string comment, string connString)
         {
             #region code
 
@@ -894,7 +893,7 @@ namespace SonyAlphaLibs.Services
                 }
                 catch (Exception ex)
                 {
-                    WriteLog("", "Update Album Comment Error: " + ex.Message, connString);
+                    writeLog("", "Update Album Comment Error: " + ex.Message, connString);
                     return false;
                 }
             }
@@ -903,7 +902,7 @@ namespace SonyAlphaLibs.Services
             #endregion
         }
 
-        public static int GetTotalPhotoOfAlbum(int albumId, string connString)
+        public static int getTotalPhotoOfAlbum(int albumId, string connString)
         {
             #region code
 
@@ -930,7 +929,7 @@ namespace SonyAlphaLibs.Services
                 }
                 catch (Exception ex)
                 {
-                    WriteLog("", "Get Album Error: " + ex.Message, connString);
+                    writeLog("", "Get Album Error: " + ex.Message, connString);
                     return rs;
                 }
             }
@@ -944,7 +943,7 @@ namespace SonyAlphaLibs.Services
         /// </summary>
         /// <param name="connString"></param>
         /// <returns></returns>
-        public static List<AlbumComment> GetListComment(string connString)
+        public static List<AlbumComment> getListComment(string connString)
         {
             #region code
 
@@ -984,7 +983,7 @@ namespace SonyAlphaLibs.Services
                 }
                 catch (Exception ex)
                 {
-                    WriteLog("", "Get All AlbumComment Error: " + ex.Message, connString);
+                    writeLog("", "Get All AlbumComment Error: " + ex.Message, connString);
                     return new List<AlbumComment>();
                 }
             }
@@ -993,7 +992,7 @@ namespace SonyAlphaLibs.Services
             #endregion
         }
 
-        public static AlbumComment GetCommentById(int commentId, string connString)
+        public static AlbumComment getCommentById(int commentId, string connString)
         {
             #region code
 
@@ -1013,18 +1012,12 @@ namespace SonyAlphaLibs.Services
                         {
                             while (reader.Read())
                             {
-<<<<<<< .mine
-                                rs.Id = commentId;
-                                rs.AlbumId = String.IsNullOrEmpty(reader["albumId"].ToString()) ? 0 : (int)reader["albumId"];
-                                rs.PhotoId = String.IsNullOrEmpty(reader["photoId"].ToString()) ? 0 : (int)reader["photoId"];
-=======
                                 rs.AlbumId = String.IsNullOrEmpty(reader["albumId"].ToString())
                                     ? 0
                                     : (int) reader["albumId"];
                                 rs.PhotoId = String.IsNullOrEmpty(reader["photoId"].ToString())
                                     ? 0
                                     : (int) reader["photoId"];
->>>>>>> .r491
                                 rs.Comment = reader["comment"].ToString();
                                 rs.Status = reader["status"].ToString().Equals("1") ||
                                             reader["status"].ToString().Equals("True");
@@ -1035,7 +1028,7 @@ namespace SonyAlphaLibs.Services
                 }
                 catch (Exception ex)
                 {
-                    WriteLog("", "Get Album Comment Error: " + ex.Message, connString);
+                    writeLog("", "Get Album Comment Error: " + ex.Message, connString);
                     return new AlbumComment();
                 }
             }
