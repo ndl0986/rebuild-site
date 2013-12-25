@@ -18,8 +18,6 @@
                 <asp:BoundField DataField="Name" HeaderText="Tên nhóm" SortExpression="Name" />
                 <asp:BoundField DataField="ParentId" HeaderText="Nhóm Chủ" SortExpression="Id" />
                 <asp:BoundField DataField="SeoUrl" HeaderText="Link URL" SortExpression="SeoUrl" />
-                <asp:ImageField DataImageUrlField="imageUrl" HeaderText="Image" ItemStyle-CssClass="img_preview" />
-                <asp:BoundField DataField="ImageUrl" HeaderText="ImageUrl" SortExpression="ImageUrl"><HeaderStyle CssClass="hiddencol" /><ItemStyle CssClass="hiddencol" /></asp:BoundField>
                 <asp:BoundField DataField="Created" HeaderText="Created" SortExpression="Created" dataformatstring="{0:dd/MM/yyyy}" htmlencode="false" />
                 <asp:BoundField DataField="Updated" HeaderText="Updated" SortExpression="Updated" dataformatstring="{0:dd/MM/yyyy}" htmlencode="false" />
                 <asp:TemplateField HeaderText="Commands" ShowHeader="False" HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign=Center>
